@@ -50,8 +50,8 @@ tag to tell browsers to render the gaps.
         </p>
             </div>
 
-        <div id="wd-lists">
-        <h4>List Tags</h4>
+            <div id="wd-lists">
+            <h4>List Tags</h4>
         <h5>Ordered List Tag</h5>
         How to make pancakes:
         <ol id="wd-pancakes">
@@ -74,7 +74,7 @@ tag to tell browsers to render the gaps.
     <li>Pour and spread the batter into the prepared baking pan. Bake for 60–65 minutes, making sure to loosely cover the bread with aluminum foil halfway through to prevent the top from getting too brown. The bread is done when a toothpick inserted in the center comes out clean with only a few small moist crumbs. This may be after 60–65 minutes depending on your oven, so begin checking every 5 minutes around the 60-minute mark.</li>
     <li>Remove bread from the oven and allow the bread to cool in the pan set on a wire rack for 1 hour. Remove bread from the pan and cool bread directly on the wire rack until ready to slice and serve.</li>
   </ol>
-  </div>
+            
 
   <h5>Unordered List Tag</h5>
 My favorite books (in no particular order)
@@ -91,6 +91,100 @@ Your favorite books (in no particular order)
   <li>Come as you are</li>
   <li>Biography of Malcolm X</li>
 </ul>
+            </div>
+
+            <div id="wd-tables">
+            <h4>Table Tag</h4>
+            <table border={1} width="100%">
+            <thead>
+                <tr>
+                <th>Quiz</th>
+                <th>Topic</th>
+                <th>Date</th>
+                <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Q1</td>
+                <td>HTML</td>
+                <td>2/3/21</td>
+                <td>85</td>
+                </tr>
+
+                <tr>
+                <td>Q2</td>
+                <td>CSS</td>
+                <td>2/10/21</td>
+                <td>90</td>
+                </tr>
+
+                <tr>
+                <td>Q3</td>
+                <td>JavaScript</td>
+                <td>2/17/21</td>
+                <td>95</td>
+                </tr>
+
+                <tr>
+                <td>Q4</td>
+                <td>Routing</td>
+                <td>6/19/24</td>
+                <td>100</td>
+                </tr>
+
+                <tr>
+                <td>Q5</td>
+                <td>State & Redux</td>
+                <td>7/3/24</td>
+                <td>99</td>
+                </tr>
+
+                <tr>
+                <td>Q6</td>
+                <td>Nodes</td>
+                <td>7/17/24</td>
+                <td>98</td>
+                </tr>
+
+                <tr>
+                <td>Q7</td>
+                <td>MongoDB</td>
+                <td>7/19/24</td>
+                <td>97</td>
+                </tr>
+
+                <tr>
+                <td>Q8</td>
+                <td>Mongoose</td>
+                <td>7/31/24</td>
+                <td>96</td>
+                </tr>
+
+                <tr>
+                <td>Q9</td>
+                <td>Bootstrap</td>
+                <td>8/13/24</td>
+                <td>92</td>
+                </tr>
+
+                <tr>
+                <td>Q10</td>
+                <td>Sessions</td>
+                <td>8/17/24</td>
+                <td>91</td>
+                </tr>
+
+
+            </tbody>
+            <tfoot>
+                <tr>
+                <td colSpan={3}>Average</td>
+                <td>90</td>
+                </tr>
+            </tfoot>
+            </table>
+            </div>
 
         </div>
     );
