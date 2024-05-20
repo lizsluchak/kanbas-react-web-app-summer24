@@ -48,9 +48,34 @@ the right.
 This is the third paragraph. Wrap each paragraph with the paragraph
 tag to tell browsers to render the gaps.
         </p>
+            </div>
 
-            </div>
-            </div>
+        <div id="wd-lists">
+        <h4>List Tags</h4>
+        <h5>Ordered List Tag</h5>
+        How to make pancakes:
+        <ol id="wd-pancakes">
+    <li>Mix dry ingredients.</li>
+    <li>Add wet ingredients.</li>
+    <li>Stir to combine.</li>
+    <li>Heat a skillet or griddle.</li>
+    <li>Pour batter onto the skillet.</li>
+    <li>Cook until bubbly on top.</li>
+    <li>Flip and cook the other side.</li>
+    <li>Serve and enjoy!</li>
+  </ol>
+      
+        My Favorite Recipe: Banana Bread: https://sallysbakingaddiction.com/best-banana-bread-recipe/
+      <ol id="wd-your-favorite-recipe">
+    <li>Adjust the oven rack to the lower third position and preheat the oven to 350°F (177°C). Lowering the oven rack prevents the top of your bread from browning too much, too soon. Grease a metal 9×5-inch loaf pan with nonstick spray. Set aside.</li>
+    <li>Whisk the flour, baking soda, salt, and cinnamon together in a medium bowl. Set aside.</li>
+    <li>Using a handheld or stand mixer fitted with a paddle or whisk attachment, beat the butter and brown sugar together on high speed until smooth and creamy, about 2 minutes. With the mixer running on medium speed, add the eggs one at a time, beating well after each addition. Then beat in the yogurt, mashed bananas, and vanilla extract until combined.</li>
+    <li>With the mixer running on low speed, slowly beat the dry ingredients into the wet ingredients until no flour pockets remain. Do not over-mix. Fold in the nuts, if using.</li>
+    <li>Pour and spread the batter into the prepared baking pan. Bake for 60–65 minutes, making sure to loosely cover the bread with aluminum foil halfway through to prevent the top from getting too brown. The bread is done when a toothpick inserted in the center comes out clean with only a few small moist crumbs. This may be after 60–65 minutes depending on your oven, so begin checking every 5 minutes around the 60-minute mark.</li>
+    <li>Remove bread from the oven and allow the bread to cool in the pan set on a wire rack for 1 hour. Remove bread from the pan and cool bread directly on the wire rack until ready to slice and serve.</li>
+  </ol>
+  </div>
+        </div>
     );
 }
 
