@@ -9,11 +9,6 @@ import { HashRouter, Route, Routes, Navigate } from "react-router-dom";
 
 function App() {
   return (
-
-    <><div>
-      <h1>Welcome to Web Dev</h1>
-      <h2>Liz Sluchak</h2>
-    </div>
     
     
     <HashRouter>
@@ -27,7 +22,7 @@ function App() {
 
           </Routes>
         </div>
-      </HashRouter></>
+      </HashRouter>
   );
 }
 
