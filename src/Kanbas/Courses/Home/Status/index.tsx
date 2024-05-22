@@ -4,13 +4,14 @@ export default function CourseStatus() {
         <h2>Course Status</h2>
         <button>Unpublish</button> <button>Publish</button>
         <p></p>
-        <button>Import Existing Content</button>
-        <button>Import from Commons</button>
-        <button>Choose Home Page</button>
-        <button>View Course Stream</button>
-        <button>New Announcement</button>
-        <button>New Analytics</button>
-        <button>View Course Notifications</button>
+
+        <div><button>Import Existing Content</button></div>
+        <div><button>Import from Commons</button></div>
+        <div><button>Choose Home Page</button></div>
+        <div><button>View Course Stream</button></div>
+        <div><button>New Announcement</button></div>
+        <div><button>New Analytics</button></div>
+        <div><button>View Course Notifications</button></div>
       </div>
   );}
 
