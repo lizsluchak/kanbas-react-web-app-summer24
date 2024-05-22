@@ -20,8 +20,8 @@ export default function Labs() {
     return(
         <div id="wd-labs">
     
-        {/* <h1>Welcome to Web Dev</h1>
-        <h2>Liz Sluchak</h2> */}
+        <h1>Welcome to Web Dev</h1>
+        <h2>Elisabeth Sluchak</h2>
    
             <h1>Labs</h1>
             <TOC />
@@ -30,6 +30,8 @@ export default function Labs() {
         <Route path="Lab1" element={<Lab1 />} />
         <Route path="Lab2" element={<Lab2 />} />
         <Route path="Lab3" element={<Lab3 />} />
+       
+  
       </Routes>
 
 
