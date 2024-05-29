@@ -1,0 +1,99 @@
+/*a css "rule" that is imported and applied to Lab 2 index.tsx 
+
+this is a better way of doing a style attribute within HTML as we had previously used
+to create this type of functionality: <p style={{ backgroundColor: "blue", color: "white" }}>*/
+p{
+    background-color: blue;
+    color: white;
+}
+
+
+/*
+CSS: Cascasding Style Sheets
+
+- Declarative language: CSS declares the style of html
+- CSS and HTML work together to implement the static portion of the user interface
+- HTML says what is displayed, CSS says how it is displayed
+- CSS can be implemented or applied to HTML in several low-level ways:
+    (1) style attribute - applied to HTML documents: embed css inside html as a string and name value pairs - directly
+        edits HTML documents -- so we arent going to be using this since we will be editing
+        javascript/typescript documents
+        (i.e.) <p style="color: green">This paragraph is now has green text.</p>
+    (2) style tag - embedded in the html document: you can use expressions to refer to elements in DOM
+        (i.e.) <style> p { text-align center; ... + other key value pairs of CSS.. } </style>
+                this would make all p's, paragraphs, centered.
+    (3) css link - linked to external file: instead of specifiying the html inside the document, you link it outside
+        the document so it can be reused for multiple pages.
+        (i.e.) <link href="/some/external/style/file.css" rel="stylesheet"/>
+- We will be importing CSS via from within our javascript files.
+    - browser actually understands the key value pairs -> style="color: green", however, because we are importing our css
+        from within our javascript files, a layer of abstraction, our code inside the javascript files uses a modified version
+        of HTML which is much more powerful as it allows us to embed javascript inside html and html inside javascript
+        looks different
+            (1) style attribute's in javascript: inside javascript, style attributes still configure look and feel of specific
+                HTML elements, and is considered BAD PRACTICE... fine tho?
+                    - Technical differences:
+                        - style attribute is no longer a string, but an expression - we know this because of the inner 
+                            curly braces, i.e. <p style = {{backgroundColor: "yellow"}}>This paragraph is now
+                            highlighted yellow</p>. The outer curly braces tell us this ojbect is an expression. 
+                        - an expression must evaluate to a JSON object directly, or call a function that eventually evalutates to
+                            a JSON object
+                        - expressions are camelCase: backgroundColo, etc
+                        - note: experssions contain objects (i.e. backgroundColor is an object) unlike style attributes/tags 
+                            that contain strings
+            (2) style elements in javascript: inside javascript, declare CSS rules and then browser tries to run these rules
+                and see which elements in the DOM tree match these rules. One of the more common types of rules is class rule:
+                class rules are patternmatched to class-name attribute by beginning with a period and declare class rules
+                in conjuction with className attribute. i.e.: .background-yellow, .background-blue, etc.
+                style elements configure style in current web pages and is considered BAD practice... but a more common way you will 
+                see it.. 
+                - (ie) <style>  .background-yellow { background-color: yellow; }
+                                .background-blue {background-color: blue; }
+                                .background-red {background-color: red; }
+                                .color-white    {color: white; }
+                        </style>
+                        <p className="background-yellow">This paragraph is yellow</p>
+                        <p className="background-blue color-white">This paragraph has blue background and white text</p>
+                        <p className="background-red color-white">THis paragraph has red background and white text</p>j
+                - notice that this is different then declaring the style right on the element how we saw it used in HTML,
+                    another example of abstraction inherent in using javascript
+            (3) link element: apply same look and feel to mulitple web pages and is considered best practice
+                (i.e.) inside styles.css have rules, and then import "./styles.css"; as needed which will apply rules based
+                on className attribute
+    
+    Basic Styling in CSS:
+    - color property: configures the foreground color
+        (i.e.) 
+        color: "blue"; color is property and "blue" is value
+    - background property: configures the background color
+    - fontWeight property: "bold", **best way to create bold, underlined, italicized text even tho tags still exist; can use numbers
+    - fontFamily property: "courier", 
+    - fontSize property: "20px" **default is 16px**
+
+
+    Utility Style Classes: classes we can reuse in order to apply certain styles to elements
+    */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* p#wd-id-selector-1 {
+    background-color: red;
+    color: white;
+}
+
+p#wd-id-selector-2 {
+    background-color: yellow;
+    color: black;
+   } */
+

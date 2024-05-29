@@ -9,12 +9,13 @@
 //      which is replaced by HTML the function returns implemented in the
 //      Lab1 function
 
-import Lab1 from "./Lab1";
 import { Route, Routes, Navigate } from "react-router";
-import TOC from "./TOC";
+import Lab1 from "./Lab1";
 import Lab2 from "./Lab2";
 import Lab3 from "./Lab3";
+import TOC from "./TOC";
 import Kanbas from "../Kanbas";
+import "../index.css"
 
 
 export default function Labs() {
@@ -22,21 +23,21 @@ export default function Labs() {
         <div id="wd-labs">
     
         <h1>Welcome to Web Dev: Summer 2024 CS5610 </h1>
-
         <h2>Elisabeth Sluchak</h2>
-   
-            <h1>Labs</h1>
-            <TOC />
+        
+        
+        <h1>Labs</h1>
+        <TOC />
+        
+       {/*why are these routes here*/}
+
       <Routes>
         <Route path="/" element={<Navigate to="Lab1" />} />
         <Route path="Lab1" element={<Lab1 />} />
         <Route path="Lab2" element={<Lab2 />} />
         <Route path="Lab3" element={<Lab3 />} />
         <Route path="Kanbas" element={<Kanbas />} />
-       
-  
       </Routes>
-
 
         </div>
 
