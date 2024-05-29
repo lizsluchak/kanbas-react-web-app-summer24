@@ -3,10 +3,10 @@
 
 this is a better way of doing a style attribute within HTML as we had previously used
 to create this type of functionality: <p style={{ backgroundColor: "blue", color: "white" }}>*/
-p{
+/* p{
     background-color: blue;
     color: white;
-}
+} */
 
 /*3.1.3 Selecting content with ID selectors*/
 p#wd-id-selector-1 {
@@ -40,6 +40,13 @@ keep them unique, but can also be used to apply the same style to several elemen
     background-color: yellow;
     color: blue;
  }
+
+
+.wd-fg-color-black { color: black; }
+.wd-fg-color-white { color: white; }
+.wd-fg-color-blue { color: #7070ff; }
+.wd-fg-color-red { color: #ff7070; }
+.wd-fg-color-green { color: green; }
  
 
 /*
