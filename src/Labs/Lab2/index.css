@@ -1,4 +1,5 @@
 /*a css "rule" that is imported and applied to Lab 2 index.tsx 
+- it styles all elements that apply to it's rule at once, in this case paragraphs
 
 this is a better way of doing a style attribute within HTML as we had previously used
 to create this type of functionality: <p style={{ backgroundColor: "blue", color: "white" }}>*/
@@ -7,6 +8,26 @@ p{
     color: white;
 }
 
+/*3.1.3 Selecting content with ID selectors*/
+p#wd-id-selector-1 {
+    background-color: red;
+    color: white;
+   }
+p#wd-id-selector-2 {
+    background-color: yellow;
+    color: black;
+   }
+
+/*3.1.4 Selecting content with class selectors
+Instead of using IDs to refer to specific elements, you can use an element's class attribute 
+instead, or a combination of both. Class selectors can be used just like ID selectors if you 
+keep them unique, but can also be used to apply the same style to several elements, even if they are different types of elements. To practice using class selectors, copy the CSS rule below into index.css, and the HTML at the end of index.tsx. The ellipses below (...) means that there's code above and/or below that we are not replicating here for brevity. Do not include the ellipses in your code.
+*/
+.wd-class-selector {
+    background-color: yellow;
+    color: blue;
+}
+   
 
 /*
 CSS: Cascasding Style Sheets
@@ -73,27 +94,4 @@ CSS: Cascasding Style Sheets
 
     Utility Style Classes: classes we can reuse in order to apply certain styles to elements
     */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* p#wd-id-selector-1 {
-    background-color: red;
-    color: white;
-}
-
-p#wd-id-selector-2 {
-    background-color: yellow;
-    color: black;
-   } */
 
