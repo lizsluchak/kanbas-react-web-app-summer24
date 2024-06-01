@@ -1,4 +1,6 @@
+import ReactIconsSampler from "./ReactIconsSampler/index";
 import "./index.css";
+
 
 
 export default function Lab2() {
@@ -564,14 +566,15 @@ export default function Lab2() {
             Column 3
         </div>
     </div>
-
-
-
-
-
 </div>
 
+{/*--------------------------------------------------------------------------*/
+/*------------------------------3.2 React Icons------------------------------*/
+/*---------------------------------------------------------------------------*/}
 
+<div>
+    <ReactIconsSampler />
+</div>
 
 
 
