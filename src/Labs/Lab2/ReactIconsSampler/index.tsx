@@ -14,7 +14,6 @@ import { VscAccount } from "react-icons/vsc";
         and use as tags within your HTML code. 
 */}
 
-
 export default function ReactIconsSampler() {
   return (
     <div id="wd-react-icons-sampler" className="mb-4">
@@ -31,3 +30,5 @@ export default function ReactIconsSampler() {
     </div>
   );
 }
+
+

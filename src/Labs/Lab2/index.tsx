@@ -6,7 +6,7 @@ import "./index.css";
 export default function Lab2() {
     return(
         //main lab2 div
-        <div id = "wd-lab2">
+        <div id = "container-fluid">
             
             <div id = "wd-lab2-learningObjectives">
                 <h2>Lab 2 - Cascading Style Sheets</h2>
@@ -385,6 +385,9 @@ export default function Lab2() {
         wd-fg-color-white">
         Fixed position
     </div>
+    <br />
+    <br />
+
 </div>
 
 
@@ -459,6 +462,9 @@ export default function Lab2() {
         <div className="wd-float-done">
         </div>
     </div>
+    <br/>
+    <br/>
+
 </div>
 
 
@@ -525,7 +531,13 @@ export default function Lab2() {
             <p>This is the right sidebar</p>
         </div>
     </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
 </div>
+<br/>
+<br/>
 
 
 {/*--------------------------------------------------------------------------*/
@@ -566,6 +578,8 @@ export default function Lab2() {
             Column 3
         </div>
     </div>
+    <br/>
+    <br/>
 </div>
 
 {/*--------------------------------------------------------------------------*/
@@ -578,6 +592,30 @@ export default function Lab2() {
 
 
 
+{/*--------------------------------------------------------------------------*/
+/*------------------------3.3 Bootstrap CSS Library--------------------------*/
+/*---------------------------------------------------------------------------*/
+/*
+    -   Bootstrap is a CSS library containing a plethora of useful CSS rules 
+        that implement various widgets, layouts, and responsive design. 
+    -   This section presents exercises of how to use the Bootstrap CSS 
+        library to style and layout Web pages.
+    -   Bootstrap can be installed with npm from the root of you project as 
+        follows -> "nmp install bootstrap"
+    -   The bootstrap CSS library will be downloaded from npm and installed 
+        in you node_modules directory located at the root of your project. 
+    -   Once installed, import the library from src/index.tsx as shown below
+        in src/index.tsx: import "bootstrap/dist/css/bootstrap.min.css";
+    -   Bootstrap containers establish the root of your HTML document providing 
+        a basis of default styles such as the overall margins, paddings, and 
+        font of your document. There are two main classes that control 
+        container elements: 
+            (1).container
+            (2).container-fluid. 
+    -   The .container class centers the content with margins on either side 
+        and defines several responsive design thresholds. The .container-fluid 
+        class just defines a constant thin margin all around the document.
+*/}
 
 
 
