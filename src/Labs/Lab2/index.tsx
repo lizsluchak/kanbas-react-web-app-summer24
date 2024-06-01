@@ -623,9 +623,11 @@ export default function Lab2() {
 <div>
     <h2>Bootstrap</h2>
     <div id="wd-bs-grid-system">
-    
+        <br/>
         <h2>Grid system</h2>
 
+        {/*a row containing two columns applying class col with default width 
+            evenly spread over all columns*/}
         <div className="row">
             <div className="col bg-danger text-white">
                 <h3>Left half</h3>
@@ -635,7 +637,10 @@ export default function Lab2() {
                 <h3>Right half</h3>
             </div>
         </div>
-
+        
+        {/*another row with two columns applying classes col-4 and col-8
+        where 4 + 8 = 12, the total number of columns so 4/12 is ⅓ and 8/12 is ⅔ 
+        of the screen*/}
         <div className="row">
             <div className="col-4 bg-warning">
                 <h3>One thirds</h3>
@@ -660,11 +665,102 @@ export default function Lab2() {
             </div>
         </div>
     </div>
+    <br/>
+    <br/>
+</div>
+
+{/*--------------------------------------------------------------------------*/
+/*--------------------------3.3.4 Responsive Grids---------------------------*/
+/*---------------------------------------------------------------------------*/
+/*
+   -    Bootstrap grids can adapt to the size of the screen, that is, they 
+        can be responsive. We can achieve this by applying more than one .col 
+        class which only applies for a given window size. To practice with 
+        Bootstrap responsive grids, copy the HTML code below to the end of 
+        index.tsx, and save. 
+*/}
+
+<div id="wd-bs-responsive-grids">
+  
+  <h2>Responsive grid system</h2>
+    <div className="row">
+        <div className="col-12 col-md-6 col-xl-3 
+                        bg-warning">
+            <h3>Column A</h3>
+        </div>
+        
+        <div className="col-12 col-md-6 col-xl-3 
+                        bg-primary text-white">
+            <h3>Column B</h3>
+        </div>
+        
+        <div className="col-12 col-md-6 col-xl-3 
+                        bg-danger text-white">
+            <h3>Column C</h3>
+        </div>
+        
+        <div className="col-12 col-md-6 col-xl-3 
+                        bg-success text-white">
+            <h3>Column D</h3>
+        </div>
+  </div>
+  <br/>
 </div>
 
 
-
-
+<div id="wd-bs-responsive-dramatic">
+  <h2>Responsive grid system</h2>
+  <div className="row">
+    <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-1 
+                    bg-warning">
+      <h4>1</h4>
+    </div>
+    <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-1 
+                    bg-primary text-white">
+      <h4>2</h4>
+    </div>
+    <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-1 
+                    bg-danger text-white">
+      <h4>3</h4>
+    </div>
+    <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-1 
+                    bg-success text-white">
+      <h4>4</h4>
+    </div>
+    <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-1 
+                    bg-warning">
+      <h4>5</h4>
+    </div>
+    <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-1
+                    bg-primary text-white">
+      <h4>6</h4>
+    </div>
+    <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-1 
+                    bg-danger text-white">
+      <h4>7</h4>
+    </div>
+    <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-1 
+                    bg-success text-white">
+      <h4>8</h4>
+    </div>
+    <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-1 
+                    bg-warning">
+      <h4>9</h4>
+    </div>
+    <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-1 
+                    bg-primary text-white">
+      <h4>10</h4>
+    </div>
+    <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-1 
+                    bg-danger text-white">
+      <h4>11</h4>
+    </div>
+    <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-1 
+                    bg-success text-white">
+      <h4>12</h4>
+    </div>
+  </div>
+</div>
 
 
 
