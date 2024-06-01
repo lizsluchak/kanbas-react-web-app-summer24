@@ -11,12 +11,7 @@ YOUR FIRST CSS FILE:
                 to create this type of functionality: <p style={{ backgroundColor: "blue", color: "white" }}>
 */
 
-/*---------------------------------------------------------------------------*/
-/*----------------3.1.4 Selecting Content with Class Selectors---------------*/
-/*---------------------------------------------------------------------------*/
-/*
-    -    
-*/
+
 
 
 /*---------------------------------------------------------------------------*/
@@ -39,8 +34,6 @@ p#wd-id-selector-2 {
    }
 
 
-/*3.1.4 Selecting content with class selectors
-
 /*---------------------------------------------------------------------------*/
 /*----------------3.1.4 Selecting Content with Class Selectors---------------*/
 /*---------------------------------------------------------------------------*/
@@ -57,61 +50,125 @@ p#wd-id-selector-2 {
     color: blue;
 }
 
-/* refers to .wd-selector-3 as a descendant of .wd-selector-1   */
+
+/*---------------------------------------------------------------------------*/
+/*----------3.1.5 Selecting Content based on the Document Structure----------*/
+/*---------------------------------------------------------------------------*/
+/*
+    -   Selectors can be combined to refer to elements in particular places 
+        in the document. 
+    -   A set of selectors separated by a space can refer to elements in a 
+        hierarchy. For instance: .selector1 .selector2 { … } refers to an 
+        element whose class is .selector2 and is inside some descendant of 
+        another element whose class is .selector1. 
+    -   If we use ">" instead to separate the classes, then we can establish a 
+        direct parent/child relationship. 
+*/ 
+
+/* refers to .wd-selector-3 as a descendant of .wd-selector-1 */
 .wd-selector-1 .wd-selector-3 {
     background-color: red;
     color: white;
  }
 
-/* refers to .wd-selector-4 as a direct child of .wd-selector-3 */
-/* which is a direct child of .wd-selector-2                 */
+/* refers to .wd-selector-4 as a direct child of .wd-selector-3
+    which is a direct child of .wd-selector-2 */
  .wd-selector-2 > .wd-selector-3 > .wd-selector-4 {
     background-color: yellow;
     color: blue;
  }
 
 
+/*---------------------------------------------------------------------------*/
+/*--------------------3.1.7 Styling the Foreground Color---------------------*/
+/*---------------------------------------------------------------------------*/
+/*
+    -   Foreground colors can be configured using the CSS color property by 
+        selecting some DOM element and setting its color property
+        (ie) .some-css-selector {color: blue;}
+    -   Colors can be defined via strings, HEX values, or RGB values
+*/ 
 .wd-fg-color-black { color: black; }
 .wd-fg-color-white { color: white; }
 .wd-fg-color-blue { color: #7070ff; }
 .wd-fg-color-red { color: #ff7070; }
 .wd-fg-color-green { color: green; }
 
-/*3.1.7 styling the foreground color*/
-.wd-bg-color-yellow {
-    background-color: #ffff07;
- }
- .wd-bg-color-blue {
-    background-color: #7070ff;
- }
- .wd-bg-color-red {
-    background-color: #ff7070;
- }
- .wd-bg-color-green {
-    background-color: green;
-}
-.wd-bg-color-gray {
-   background-color: lightgray;
+
+
+/*---------------------------------------------------------------------------*/
+/*--------------------3.1.8 Styling the Background Color---------------------*/
+/*---------------------------------------------------------------------------*/
+
+.wd-bg-color-yellow {background-color: #ffff07;}
+.wd-bg-color-blue {background-color: #7070ff;}
+.wd-bg-color-red {background-color: #ff7070;}
+.wd-bg-color-green {background-color: green;}
+.wd-bg-color-gray {background-color: lightgray;}
+
+
+/*---------------------------------------------------------------------------*/
+/*--------------------------3.1.9 Styling Borders----------------------------*/
+/*---------------------------------------------------------------------------*/
+/*
+    -   Sample of boarder customizations
+*/
+
+.wd-border-fat {border-width: 20px 30px 20px 30px; }
+.wd-border-thin {border-width: 4px; }
+.wd-border-solid {border-style: solid; }
+.wd-border-dashed {border-style: dashed; }
+.wd-border-yellow {border-color: #ffff07; }
+.wd-border-red {border-color: #ff7070; }
+.wd-border-blue {border-color: #7070ff; }
+
+
+/*---------------------------------------------------------------------------*/
+/*----------------------3.1.10 Styling Margins/Padding-----------------------*/
+/*---------------------------------------------------------------------------*/
+
+.wd-padded-top-left {
+    padding-top: 50px;
+    padding-left: 50px;
+  }
+  
+.wd-padded-bottom-right {
+    padding-bottom: 50px;
+    padding-right: 50px;
 }
 
-/*3.1.8 Styling borders*/
-.wd-border-fat {
-    border-width: 20px 30px 20px 30px; }
- .wd-border-thin {
-    border-width: 4px; }
- .wd-border-solid {
-    border-style: solid; }
- .wd-border-dashed {
-    border-style: dashed; }
- .wd-border-yellow {
-    border-color: #ffff07; }
- .wd-border-red {
-    border-color: #ff7070; }
- .wd-border-blue {
-    border-color: #7070ff; }
+.wd-padding-fat {
+    padding: 50px;
+}
+
+.wd-margin-bottom {
+    margin-bottom: 50px;
+}
+  
+.wd-margin-right-left {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.wd-margin-all-around {
+    margin: 30px;
+}
+
+  
+
+
+
+
+
+
+
+
+
+
+
 
 /*
-CSS: Cascasding Style Sheets
+ADDITIONAL NOTES ON CSS: Cascasding Style Sheets
 
 - Declarative language: CSS declares the style of html
 - CSS and HTML work together to implement the static portion of the user interface
