@@ -526,6 +526,56 @@ export default function Lab2() {
 </div>
 
 
+{/*--------------------------------------------------------------------------*/
+/*--------------------------------3.1.19 Flex--------------------------------*/
+/*---------------------------------------------------------------------------*/}
+
+<div id="wd-css-flex">
+    <h2>Flex</h2>
+    
+    {/*Flex Elements without Growth*/}
+    <div className="wd-flex-row-container">
+        <div className="wd-bg-color-yellow">Column 1</div>
+            <div className="wd-bg-color-blue">Column 2</div>
+                <div className="wd-bg-color-red">Column 3</div>
+    </div>
+
+
+    {/*Flex Elements with Growth/Expansion*/} 
+    <div className="wd-flex-row-container">
+        <div className="wd-bg-color-yellow">Column 1</div>
+            <div className="wd-bg-color-blue">Column 2</div>
+                <div className="wd-bg-color-red
+                    wd-flex-grow-1">
+                    Column 3
+                </div>
+    </div>
+    
+
+    <div className="wd-flex-row-container">
+        <div className="wd-bg-color-yellow 
+            wd-width-75px">
+            Column 1
+        </div>
+        
+        <div className="wd-bg-color-blue">Column 2</div>
+        <div className="wd-bg-color-red
+            wd-flex-grow-1">
+            Column 3
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
 
 
 
@@ -561,5 +611,3 @@ export default function Lab2() {
     </div>
     );
 }
-
-

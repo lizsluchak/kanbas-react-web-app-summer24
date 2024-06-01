@@ -357,10 +357,43 @@ border-radius: 30px 0px 20px 50px;
     width: 20%;
     float: left;
 }
+
+/*---------------------------------------------------------------------------*/
+/*--------------------------------3.1.19 Flex--------------------------------*/
+/*---------------------------------------------------------------------------*/
+/*
+    -   Flexbox Layout (Flexible Box, or just Flex) provides a simpler way to 
+        layout and distribute content in an HTML document. 
+    -   It all starts with creating a container element that configures the 
+        layout and behavior of its child elements. To illustrate some of the 
+        features of flex, let's create create a container with display 
+        configured to flex as shown below. 
+    -   Note how DIV elements inside the container render horizontally as a 
+        row of element instead of stacking the elements vertically. 
+        Flex simplifies laying out content horizontally. 
+
+*/
+.wd-flex-row-container {
+    display: flex;
+    flex-direction: row;
+}
+
+/*  -   Flex child elements can also be configured to grow and expand to fill 
+        into empty spaces. The styling below illustrates how the last column 
+        can expand into the empty space to its right. 
+*/
+.wd-flex-grow-1 {
+    flex-grow: 1;
+}
+  
+/*  -   The rest of the flex child elements can be configured independently to
+        have specific widths to fit whatever content is needed as shown below. 
+*/
+
+.wd-width-75px {
+    width: 75px;
+}
  
-
-
-
 
 
 
