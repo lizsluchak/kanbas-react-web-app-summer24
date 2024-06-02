@@ -1,3 +1,4 @@
+import BootstrapSliders from "./BootstrapSliders";
 import ReactIconsSampler from "./ReactIconsSampler/index";
 import ScreenSizeLabel from "./ScreenSizeLabel";
 import StylingSwitches from "./StylingSwitches";
@@ -1014,7 +1015,12 @@ export default function Lab2() {
 <StylingSwitches />
 
 
+{/*--------------------------------------------------------------------------*/
+/*--------------------3.3.13 Styling Range and Sliders-----------------------*/
+/*---------------------------------------------------------------------------*/}
 
+<br/>
+<BootstrapSliders />
 
 
 
