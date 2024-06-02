@@ -1,5 +1,6 @@
 import ReactIconsSampler from "./ReactIconsSampler/index";
 import ScreenSizeLabel from "./ScreenSizeLabel";
+import StylingSwitches from "./StylingSwitches";
 import "./index.css";
 
 
@@ -1004,6 +1005,20 @@ export default function Lab2() {
     <br/>
     <br/>
 </div>
+
+
+{/*--------------------------------------------------------------------------*/
+/*------------------------3.3.12 Styling Switches----------------------------*/
+/*---------------------------------------------------------------------------*/}
+
+<StylingSwitches />
+
+
+
+
+
+
+
 
 {/* main div ending----------------------------------------------------------*/}
     </div>
