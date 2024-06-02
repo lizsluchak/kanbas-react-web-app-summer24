@@ -777,13 +777,20 @@ export default function Lab2() {
 {/*--------------------------------------------------------------------------*/
 /*-----------------3.3.5 Hiding and Showing Responsive Content---------------*/
 /*---------------------------------------------------------------------------*/}
+
 <ScreenSizeLabel />
 
 
 {/*--------------------------------------------------------------------------*/
 /*-----------------------------3.3.6 Styling Tables--------------------------*/
-/*---------------------------------------------------------------------------*/}
-
+/*---------------------------------------------------------------------------*/
+/*  
+    -   Bootstrap provides several classes that enhance the look and feel of 
+        common HTML widgets such as tables, lists, and form elements. 
+    -   Let's start with tables. To practice with styling HTML tables, copy 
+        the HTML code below to the end of index.tsx, and save. 
+    -   Refresh the browser and confirm it looks similar to image shown.
+*/}
 
 <div id="wd-css-styling-tables">
     <h2>Tables</h2>
@@ -804,7 +811,69 @@ export default function Lab2() {
 </div>
 
 
-
+{/*--------------------------------------------------------------------------*/
+/*-----------------------3.3.7 Making Tables Responsive----------------------*/
+/*---------------------------------------------------------------------------*/
+/*
+    -   In general it is a good practice to minimize the number of scrollbars 
+        shown at any one time in a browser screen. In browsers large amounts 
+        of content extends vertically beyond the height of the window, and 
+        then scrollbars allow you to access that extra content. 
+    -   Sometimes it is necessary to use additional scrollbars when 
+        appropriate such as tables that might be too wide to fit horizontally. 
+    -   Bootstrap provides tables that can show scrollbars when they don't 
+        fit in their parent window. To practice with Bootstrap responsive 
+        tables, copy the HTML code below to the end of index.tsx, and save. 
+    -   Refresh the browser and confirm it looks similar to image shown. 
+    -   Resize the window and confirm that the table shows a horizontal scroll
+        bar when the screen is too small to fit the table comfortably. 
+*/}
+<div id="wd-css-responsive-tables">
+    <h2>Responsive tables</h2>
+    
+    <div className="table-responsive">
+        <table className="table">
+        <thead>
+            <tr>
+                <th>Very</th>
+                <th>long</th>
+                <th>set</th>
+                <th>of</th>
+                <th>columns</th>
+                <th>Very</th>
+                <th>long</th>
+                <th>set</th>
+                <th>of</th>
+                <th>columns</th>
+                <th>Very</th>
+                <th>long</th>
+                <th>set</th>
+                <th>of</th>
+                <th>columns</th>
+            </tr>
+        </thead>
+            <tbody>
+                <tr>
+                <td>Very</td>
+                <td>long</td>
+                <td>set</td>
+                <td>of</td>
+                <td>columns</td>
+                <td>Very</td>
+                <td>long</td>
+                <td>set</td>
+                <td>of</td>
+                <td>columns</td>
+                <td>Very</td>
+                <td>long</td>
+                <td>set</td>
+                <td>of</td>
+                <td>columns</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 
 
