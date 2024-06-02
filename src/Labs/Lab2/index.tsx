@@ -946,7 +946,42 @@ export default function Lab2() {
     </div>
 </div>
 
+{/*--------------------------------------------------------------------------*/
+/*------------------------3.3.10 Basic Form Styling--------------------------*/
+/*---------------------------------------------------------------------------*/
+/*
+    -   Bootstrap has tons of classes to style form elements especially to 
+        make them friendly for mobile Web applications. 
+    -   To practice with Bootstrap form classes, copy the HTML code below to 
+        the end of index.tsx, and save.
+*/}
 
+<div id="wd-css-styling-forms">
+    <h2>Forms</h2>
+    
+    <div className="mb-3">
+        <label htmlFor="input1" 
+            className="form-label">
+            Email address
+        </label>
+        
+        <input type="email" 
+            className="form-control"
+            id="input1" 
+            placeholder="name@example.com"/>
+    </div>
+
+    <div className="mb-3">
+        <label htmlFor="textarea1" 
+            className="form-label">
+            Example textarea</label>
+        <textarea className="form-control" 
+            id="textarea1" 
+            rows={3}>
+        </textarea>
+    </div>
+    
+  </div>
 
 
 
