@@ -8,6 +8,7 @@ import TabNavigation from "./TabNavigation";
 import { useLocation } from "react-router";
 import "./index.css";
 import TOC2 from "./PillNavigation";
+import CardNavigation from "./CardNavigation";
 
 
 
@@ -1047,6 +1048,12 @@ export default function Lab2() {
 /*---------------------------------------------------------------------------*/}
 
 <TOC2 />
+
+{/*--------------------------------------------------------------------------*/
+/*-------------------------3.3.18 Card Navigation----------------------------*/
+/*---------------------------------------------------------------------------*/}
+
+<CardNavigation />
 
 
 
