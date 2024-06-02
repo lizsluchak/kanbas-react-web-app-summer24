@@ -2,7 +2,6 @@ import { AiOutlineDashboard } from "react-icons/ai";
 import { IoCalendarOutline } from "react-icons/io5";
 import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
 import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
-import { useLocation } from "react-router";
 
 
 /**
@@ -10,17 +9,15 @@ import { useLocation } from "react-router";
  * @returns 
  */
 export default function KanbasNavigation() {
-  const { pathname } = useLocation();
   return (
     <nav>
-    <div id="wd-kanbas-navigation" className="nav list-group rounded-0">
+    <div id="wd-kanbas-navigation" className="list-group rounded-0">
       
       {/**First Item: Northeastern Logo/Link */}
       <a id="wd-neu-link" 
         target="_blank" 
         href="https://www.northeastern.edu/"
-        className="nav-item
-                  list-group-item
+        className="list-group-item
                   list-group-item-active 
                   bg-black border-0">
           <br/>
@@ -72,10 +69,6 @@ export default function KanbasNavigation() {
       </a>
 
 
-      {/*--------------------------------------------------------------------*/ 
-      /*----------------complete styling the rest of the links---------------*/
-      /*---------------------------------------------------------------------*/}
-
       {/**Fifth Item: Calendar Icon/Link */}
       <a id="wd-course-link" 
         href="#/Kanbas/Calendar"
@@ -120,6 +113,7 @@ export default function KanbasNavigation() {
       
     </div>
     </nav>
+    
 
 );
 }
@@ -131,26 +125,3 @@ export default function KanbasNavigation() {
 
 
 
-
-
-
-
-
-//   return (
-//     <ul id="wd-kanbas-navigation">
-//       <li><a id="wd-neu-link" target="_blank" href="https://www.northeastern.edu/">Northeastern</a></li>
-//       <li><a id="wd-account-link" href="#/Kanbas/Account">Account</a></li>
-//       <li><a id="wd-dashboard-link" href="#/Kanbas/Dashboard">Dashboard</a></li>
-//       <li><a id="wd-course-link" href="#/Kanbas/Courses">Courses</a></li>
-//       <li><a id="wd-calendar-link" href="#/Kanbas/Calendar">Calendar</a></li>
-//       <li><a id="wd-inbox-link" href="#/Kanbas/Inbox">Inbox</a></li>
-//       <li><a id="wd-labs-link" href="#/Labs">Labs</a></li>
-//     </ul>
-// );}
-
-// //i had to add this export line.. why?
-// export {}
-  
-
-
-  

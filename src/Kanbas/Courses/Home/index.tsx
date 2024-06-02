@@ -1,4 +1,4 @@
-import ScreenSizeLabel from "../../../Labs/Lab2/ScreenSizeLabel";
+import ScreenSizeLabel from "../../../ScreenSizeLabel";
 import Modules from "../Modules";
 import CourseStatus from "./Status";
 

@@ -8,10 +8,11 @@ import "./styles.css"
 
 export default function Kanbas() {
     return (
-      <div className="container">
-      <div id="wd-kanbas" className="h-100">
+      
+      <div id="wd-kanbas">
         <div className="d-flex h-100"> 
-          <div className="list-item active d-none d-md-block bg-black">
+          
+          <div className="list-item d-none d-sm-block bg-black">
             <KanbasNavigation />
           </div>
 
@@ -27,7 +28,6 @@ export default function Kanbas() {
           </div>
       </div>
     </div>
-  </div>
 
 );}
 

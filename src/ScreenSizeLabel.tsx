@@ -23,7 +23,7 @@
 
 export default function ScreenSizeLabel() {
     return (
-      <div id="wd-screen-size-label">
+      <div id="wd-screen-size-label" className="position-fixed top-0 left-0 bg-black text-white">
         <div className="d-block d-sm-none">
           XS - Extra Small (&lt;576px)
         </div>

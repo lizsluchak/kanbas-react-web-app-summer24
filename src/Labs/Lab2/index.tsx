@@ -2,7 +2,7 @@ import BootstrapAddons from "./BootstrapAddons";
 import BootstrapSliders from "./BootstrapSliders";
 import ReactIconsSampler from "./ReactIconsSampler/index";
 import ResponsiveForms from "./ResponsiveForms";
-import ScreenSizeLabel from "./ScreenSizeLabel";
+import ScreenSizeLabel from "../../ScreenSizeLabel";
 import StylingSwitches from "./StylingSwitches";
 import TabNavigation from "./TabNavigation";
 import { useLocation } from "react-router";
@@ -18,7 +18,7 @@ export default function Lab2() {
     return(
         //main lab2 div
         //font changed by adding container but not margins
-        <div className="container">
+        <div className="container-fluid">
             
             <div id = "wd-lab2-learningObjectives">
                 <br/>
