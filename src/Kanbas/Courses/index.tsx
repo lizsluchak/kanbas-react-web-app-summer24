@@ -15,6 +15,16 @@ export default function Courses() {
         <hr />
 
         <div className="d-flex">
+          {/**
+           * 4.1 Responsive Design
+           * When the screen is too narrow, like when viewed on a phone screen, 
+           * we need to hide the KanbasNavigation sidebar. We can use Bootstrap 
+           * Display Property class d-none to hide the sidebar by default, and 
+           * then use d-md-block to show the sidebar when the window reaches 
+           * the medium width screen size. Add Bootstrap Display Property as 
+           * shown below and confirm the KanbasNavigation sidebar is hidden 
+           * when the screen is small and then appears as you widen the screen.
+           */}
           <div className="d-none d-md-block">
             <CoursesNavigation />
           </div>
@@ -31,6 +41,10 @@ export default function Courses() {
       </div>
 
   );}
+
+
+
+
 
   //i had to add this export line.. why?
 export {}
@@ -52,9 +66,9 @@ export {}
                 <Route path="/" element={<Navigate to="Home" />} />
                 <Route path="Home" element={<Home />} />
 
-          <Route path="Modules" element={<Modules />} />
-          <Route path="Assignments" element={<Assignments />} />
-          <Route path="Assignments/:id" element={<AssignmentEditor />} />
+                  <Route path="Modules" element={<Modules />} />
+                  <Route path="Assignments" element={<Assignments />} />
+                  <Route path="Assignments/:id" element={<AssignmentEditor />} />
 
               </Routes>
             </td>

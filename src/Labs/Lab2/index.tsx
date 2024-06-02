@@ -1056,6 +1056,38 @@ export default function Lab2() {
 <CardNavigation />
 
 
+{/*--------------------------------------------------------------------------*/
+/*---------------3.3.19 Bootstrap Positions/Margins/Paddings-----------------*/
+/*---------------------------------------------------------------------------*/
+/*
+    -   Instead of using CSS to style positions, margins and paddings, use 
+        Bootstrap utility classes as shown below. m stands for margin, p stands 
+        for padding, t for top, b for bottom, s for start, and e for end. 
+        Integers are sizes.
+    - Positions:
+        -   position-absolute, 
+        -   position-relative,
+        -   position-fixed
+        -   position-sticky
+        -   top, 
+        -   bottom, 
+            start, 
+            end,
+            top-0, 
+            top-50, 
+            top-100,
+            bottom-0, 
+            bottom-50, 
+            bottom-100,
+            start-0, 
+            start-50, 
+            start-100,
+            end-0, 
+            end-50, 
+            end-100,
+
+
+}
 
 
 
