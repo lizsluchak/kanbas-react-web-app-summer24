@@ -10,16 +10,12 @@ import { HashRouter, Route, Routes, Navigate } from "react-router-dom";
 function App() {
   return (
     
-    
     <HashRouter>
-        <div>
+        <div className="h-100">
           <Routes>
-
             <Route path="/" element={<Navigate to="Labs/index" />} />
             <Route path="/Labs/*" element={<Labs />} />
             <Route path="/Kanbas/*" element={<Kanbas />} />
-
-
           </Routes>
         </div>
       </HashRouter>
