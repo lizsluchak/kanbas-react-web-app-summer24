@@ -1,4 +1,5 @@
 import { AiOutlineDashboard } from "react-icons/ai";
+import { IoCalendar } from "react-icons/io5";
 import { IoCalendarOutline } from "react-icons/io5";
 import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
 import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
@@ -66,7 +67,7 @@ export default function KanbasNavigation() {
                   text-white
                   bg-black 
                   text-center border-0">
-        <LiaBookSolid className="fs-1 text-danger" />
+        <IoCalendarOutline className="fs-1 text-danger" />
         <br />
         Calendar 
       </a>
