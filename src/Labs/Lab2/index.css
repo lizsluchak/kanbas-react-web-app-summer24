@@ -394,7 +394,23 @@ border-radius: 30px 0px 20px 50px;
 }
  
 
+/*--------------------------------------------------------------------------*/
+/*-----------------3.3.5 Hiding and Showing Responsive Content---------------*/
+/*---------------------------------------------------------------------------*/
 
+#wd-screen-size-label {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    z-index: 1000;
+    width: 220px;
+    text-align: center;
+}
+  
 
 
 

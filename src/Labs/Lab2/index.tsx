@@ -1,4 +1,5 @@
 import ReactIconsSampler from "./ReactIconsSampler/index";
+import ScreenSizeLabel from "./ScreenSizeLabel";
 import "./index.css";
 
 
@@ -682,6 +683,7 @@ export default function Lab2() {
 
 <div id="wd-bs-responsive-grids">
   
+  {/*smaller example*/}
   <h2>Responsive grid system</h2>
     <div className="row">
         <div className="col-12 col-md-6 col-xl-3 
@@ -707,7 +709,7 @@ export default function Lab2() {
   <br/>
 </div>
 
-
+{/*larger example*/}
 <div id="wd-bs-responsive-dramatic">
   <h2>Responsive grid system</h2>
   <div className="row">
@@ -763,7 +765,10 @@ export default function Lab2() {
 </div>
 
 
-
+{/*--------------------------------------------------------------------------*/
+/*-----------------3.3.5 Hiding and Showing Responsive Content---------------*/
+/*---------------------------------------------------------------------------*/}
+<ScreenSizeLabel />
 
 
 
