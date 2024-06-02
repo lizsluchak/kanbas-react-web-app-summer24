@@ -683,30 +683,39 @@ export default function Lab2() {
 
 <div id="wd-bs-responsive-grids">
   
-  {/*smaller example*/}
-  <h2>Responsive grid system</h2>
+    {/*smaller example*/}
+    <h2>Responsive grid system</h2>
+    
     <div className="row">
-        <div className="col-12 col-md-6 col-xl-3 
-                        bg-warning">
+        <div className="col-12 
+            col-md-6 
+            col-xl-3 
+            bg-warning">
             <h3>Column A</h3>
         </div>
         
-        <div className="col-12 col-md-6 col-xl-3 
-                        bg-primary text-white">
+        <div className="col-12 
+            col-md-6 
+            col-xl-3 
+            bg-primary text-white">
             <h3>Column B</h3>
         </div>
         
-        <div className="col-12 col-md-6 col-xl-3 
-                        bg-danger text-white">
+        <div className="col-12 
+            col-md-6 
+            col-xl-3 
+            bg-danger text-white">
             <h3>Column C</h3>
         </div>
         
-        <div className="col-12 col-md-6 col-xl-3 
-                        bg-success text-white">
+        <div className="col-12 
+            col-md-6 
+            col-xl-3 
+            bg-success text-white">
             <h3>Column D</h3>
         </div>
-  </div>
-  <br/>
+    </div>
+    <br/>
 </div>
 
 {/*larger example*/}
@@ -771,6 +780,28 @@ export default function Lab2() {
 <ScreenSizeLabel />
 
 
+{/*--------------------------------------------------------------------------*/
+/*-----------------------------3.3.6 Styling Tables--------------------------*/
+/*---------------------------------------------------------------------------*/}
+
+
+<div id="wd-css-styling-tables">
+    <h2>Tables</h2>
+  
+    <table className="table">
+        <thead>
+            <tr className="table-dark"><th>Quiz</th><th>Topic</th><th>Date</th><th>Grade</th></tr>
+        </thead>
+        <tbody>
+            <tr className="table-warning"><td>Q1</td><td>HTML</td><td>2/3/21</td><td>85</td></tr>
+            <tr className="table-danger"><td>Q2</td><td>CSS</td><td>2/10/21</td><td>90</td></tr>
+            <tr className="table-primary"><td>Q3</td><td>JavaScript</td><td>2/17/21</td><td>90</td></tr>
+        </tbody>
+    <tfoot>
+      <tr className="table-success"><td colSpan={3}>Average</td><td>90</td></tr>
+    </tfoot>
+  </table>
+</div>
 
 
 
