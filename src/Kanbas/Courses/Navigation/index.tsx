@@ -1,5 +1,4 @@
 import { AiOutlineDashboard } from "react-icons/ai";
-import { IoCalendar } from "react-icons/io5";
 import { IoCalendarOutline } from "react-icons/io5";
 import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
 import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
@@ -60,9 +59,14 @@ export default function KanbasNavigation() {
         Courses 
       </a>
 
+
+      {/*--------------------------------------------------------------------*/ 
+      /*----------------complete styling the rest of the links---------------*/
+      /*---------------------------------------------------------------------*/}
+
       {/**Fifth Item: Calendar Icon/Link */}
       <a id="wd-course-link" 
-        href="#/Kanbas/Courses"
+        href="#/Kanbas/Calendar"
         className="list-group-item 
                   text-white
                   bg-black 
@@ -74,31 +78,31 @@ export default function KanbasNavigation() {
 
       {/**Sixth Item: Inbox Icon/Link */}
       <a id="wd-course-link" 
-        href="#/Kanbas/Courses"
+        href="#/Kanbas/Inbox"
         className="list-group-item 
                   text-white
                   bg-black 
                   text-center border-0">
-        <LiaBookSolid className="fs-1 text-danger" />
+        <FaInbox className="fs-1 text-danger" />
         <br />
         Inbox 
       </a>
 
       {/**Seventh Item: Labs Icon/Link */}
       <a id="wd-course-link" 
-        href="#/Kanbas/Courses"
+        href="#/Kanbas/Labs"
         className="list-group-item 
                   text-white
                   bg-black 
                   text-center border-0">
-        <LiaBookSolid className="fs-1 text-danger" />
+        <LiaCogSolid className="fs-1 text-danger" />
         <br />
         Labs 
       </a>
 
 
 
-      {/* complete styling the rest of the links */}
+      
     </div>
 
 );}
