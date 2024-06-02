@@ -980,10 +980,30 @@ export default function Lab2() {
             rows={3}>
         </textarea>
     </div>
-    
-  </div>
+</div>
 
 
+{/*--------------------------------------------------------------------------*/
+/*------------------------3.3.11 Styling Dropdowns---------------------------*/
+/*---------------------------------------------------------------------------*/
+/*
+    -   Dropdowns can also be styled professionally. To practice with 
+        Bootstrap dropdown styling, copy the HTML code below to the end of 
+        index.tsx, and save. Refresh the browser and confirm it looks similar 
+        to image shown.
+*/}
+
+<div id="wd-css-styling-dropdowns">
+    <h3>Dropdowns</h3>
+    <select className="form-select">
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+    <br/>
+    <br/>
+</div>
 
 {/* main div ending----------------------------------------------------------*/}
     </div>
