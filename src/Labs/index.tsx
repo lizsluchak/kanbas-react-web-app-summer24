@@ -15,6 +15,7 @@ import Lab2 from "./Lab2";
 import Lab3 from "./Lab3";
 import TOC from "./TOC";
 import Kanbas from "../Kanbas";
+import TOC2 from "./Lab2/PillNavigation";
 import "../index.css"
 
 
@@ -28,6 +29,8 @@ export default function Labs() {
         
         <h1>Labs</h1>
         <TOC />
+        <TOC2 />
+        
         
        {/*why are these routes here*/}
 
