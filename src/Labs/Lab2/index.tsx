@@ -876,10 +876,32 @@ export default function Lab2() {
 </div>
 
 
+{/*--------------------------------------------------------------------------*/
+/*----------------------------3.3.8 Styling Lists----------------------------*/
+/*---------------------------------------------------------------------------*/
+/*
+    -   Another set of Bootstrap classes can make simple HTML lists look more 
+        presentable. 
+    -   The .list-group and .list-group-item classes can be applied to ul and 
+        li tags correspondingly to make list stand out. 
+    -   The .active class can be applied to an li tag to highlight it. 
+    -   To practice with Bootstrap lists, copy the HTML code below to the 
+        end of index.tsx, and save. Refresh the browser and confirm it looks 
+        similar to image shown. 
+*/}
 
 
-
-
+<div id="wd-css-styling-lists">
+    <h2>Favorite movies</h2>
+    
+    <ul className="list-group">
+        <li className="list-group-item active">Aliens</li>
+        <li className="list-group-item">Terminator</li>
+        <li className="list-group-item">Blade Runner</li>
+        <li className="list-group-item">Lord of the Ring</li>
+        <li className="list-group-item disabled">Star Wars</li>
+    </ul>
+</div>
 
 
 
