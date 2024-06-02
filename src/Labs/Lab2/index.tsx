@@ -4,6 +4,7 @@ import ReactIconsSampler from "./ReactIconsSampler/index";
 import ResponsiveForms from "./ResponsiveForms";
 import ScreenSizeLabel from "./ScreenSizeLabel";
 import StylingSwitches from "./StylingSwitches";
+import TabNavigation from "./TabNavigation";
 import "./index.css";
 
 
@@ -1038,7 +1039,12 @@ export default function Lab2() {
 
 <ResponsiveForms />
 
+{/*--------------------------------------------------------------------------*/
+/*-----------------------3.3.16 Navigating with Tabs-------------------------*/
+/*---------------------------------------------------------------------------*/}
 
+<TabNavigation />
+<br/>
 
 {/* main div ending----------------------------------------------------------*/}
     </div>
