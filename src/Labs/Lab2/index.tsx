@@ -1,6 +1,7 @@
 import BootstrapAddons from "./BootstrapAddons";
 import BootstrapSliders from "./BootstrapSliders";
 import ReactIconsSampler from "./ReactIconsSampler/index";
+import ResponsiveForms from "./ResponsiveForms";
 import ScreenSizeLabel from "./ScreenSizeLabel";
 import StylingSwitches from "./StylingSwitches";
 import "./index.css";
@@ -1029,6 +1030,15 @@ export default function Lab2() {
 /*---------------------------------------------------------------------------*/}
 
 <BootstrapAddons />
+
+
+{/*--------------------------------------------------------------------------*/
+/*-----------------------3.3.15 Making Forms Responsive----------------------*/
+/*---------------------------------------------------------------------------*/}
+
+<ResponsiveForms />
+
+
 
 {/* main div ending----------------------------------------------------------*/}
     </div>
