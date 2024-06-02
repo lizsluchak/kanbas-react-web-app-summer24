@@ -1,3 +1,4 @@
+import BootstrapAddons from "./BootstrapAddons";
 import BootstrapSliders from "./BootstrapSliders";
 import ReactIconsSampler from "./ReactIconsSampler/index";
 import ScreenSizeLabel from "./ScreenSizeLabel";
@@ -1023,8 +1024,11 @@ export default function Lab2() {
 <BootstrapSliders />
 
 
+{/*--------------------------------------------------------------------------*/
+/*---------------------------3.3.14 Styling Addons---------------------------*/
+/*---------------------------------------------------------------------------*/}
 
-
+<BootstrapAddons />
 
 {/* main div ending----------------------------------------------------------*/}
     </div>
