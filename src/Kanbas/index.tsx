@@ -8,23 +8,26 @@ import "./styles.css"
 
 export default function Kanbas() {
     return (
-
+      <div className="container">
       <div id="wd-kanbas" className="h-100">
         <div className="d-flex h-100"> 
-          <div className="d-none d-md-block bg-black">
+          <div className="list-item active d-none d-md-block bg-black">
             <KanbasNavigation />
           </div>
 
+
+          {/*why does this go here?*/}
           <div className="flex-fill p-4">
             <Routes>
               <Route path="/" element={<Navigate to="Dashboard" />} />
               <Route path="Dashboard" element={<Dashboard />} />
               <Route path="Courses/:cid/*" element={<Courses />} />
-              {/* <Route path="Calendar/:cid/*" element={<Calendar />} /> */}
+              {/* <Route path="Calendar/:cid/*" element={<Calendar />} />*/}
             </Routes>
           </div>
       </div>
     </div>
+  </div>
 
 );}
 

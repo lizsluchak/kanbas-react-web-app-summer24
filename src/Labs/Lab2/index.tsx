@@ -9,6 +9,8 @@ import { useLocation } from "react-router";
 import "./index.css";
 import TOC2 from "./PillNavigation";
 import CardNavigation from "./CardNavigation";
+import StyleAttribute from "./StyleAttribute";
+import IDSelector from "./IDSelector";
 
 
 
@@ -16,9 +18,10 @@ export default function Lab2() {
     return(
         //main lab2 div
         //font changed by adding container but not margins
-        <div id = "container-fluid">
+        <div className="container">
             
             <div id = "wd-lab2-learningObjectives">
+                <br/>
                 <h2>Lab 2 - Cascading Style Sheets</h2>
                 <h4><b>Learning Objectives:</b></h4>
                 <ol id="wd-lab2-objectives">
@@ -30,61 +33,17 @@ export default function Lab2() {
 
 
 {/*--------------------------------------------------------------------------*/
-/*-----------------3.1.3 Selecting content with ID selectors-----------------*/
-/*---------------------------------------------------------------------------*/
-/*
-    -   An HTML element's style attribute can configure the look and feel of 
-        the element by changing the values of its style properties as shown 
-        below. 
-    -   The value of the style attribute is an object in JSON format 
-        (JavaScript Object Notation). Note, it should generally not be 
-        used... 
-        (ie - basic structure)
-            <element style={{property1: "value1", property2: "value2"}}>
-                element body
-            </element>
-        (ie - actual example)
-            <p style={{ backgroundColor: "blue", color: "white" }}> 
-
-    -   Examples of Property 1 & 2 = foreground color, background color, 
-        font size, etc. The value of the properties are strings or numbers. 
-    -   In the exercise above we styled the paragraph element with its style 
-        attribute. We changed the color of its background by setting the 
-        backgroundColor property to blue and also changing the foreground 
-        color to white by setting the color property to white. There are 
-        100s of style attributes of which we'll cover the most relevant.
-*/}
-
-    <div id = "wd-lab2-css-sytleAttribute">
-        <h3>Styling with the STYLE attribute</h3>
-
-        <p>
-        Style attribute allows configuring look and feel
-        right on the element. Although it's very convenient
-        it is considered bad practice and you should avoid
-        using the style attribute.
-        </p>
-    </div>
+/*--------------------------3.1.3 Style Attribute----------------------------*/
+/*---------------------------------------------------------------------------*/}
+<br/>
+<StyleAttribute />
 
 
 {/*--------------------------------------------------------------------------*/
 /*-----------------3.1.3 Selecting content with ID selectors-----------------*/
 /*---------------------------------------------------------------------------*/}
-    
-    <div id="wd-css-id-selectors">
-        <h3>ID selectors</h3>
-        
-            <p id="wd-id-selector-1">
-            Instead of changing the look and feel of all the 
-            elements of the same name, e.g., P, we can refer to a specific 
-            element by its ID
-            </p>
-            
-            <p id="wd-id-selector-2">
-            Here's another paragraph using a different ID and a different 
-            look and feel
-            </p>
-    </div>
+<IDSelector />
+
 
 
 {/*--------------------------------------------------------------------------*/

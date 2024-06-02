@@ -2,6 +2,7 @@ import { AiOutlineDashboard } from "react-icons/ai";
 import { IoCalendarOutline } from "react-icons/io5";
 import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
 import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
+import { useLocation } from "react-router";
 
 
 /**
@@ -9,15 +10,18 @@ import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
  * @returns 
  */
 export default function KanbasNavigation() {
+  const { pathname } = useLocation();
   return (
-
-    <div id="wd-kanbas-navigation" className="list-group rounded-0 h-100">
+    <nav>
+    <div id="wd-kanbas-navigation" className="nav list-group rounded-0">
       
       {/**First Item: Northeastern Logo/Link */}
       <a id="wd-neu-link" 
         target="_blank" 
         href="https://www.northeastern.edu/"
-        className="list-group-item 
+        className="nav-item
+                  list-group-item
+                  list-group-item-active 
                   bg-black border-0">
           <br/>
           <img src="/images/NEU.png" 
@@ -29,11 +33,11 @@ export default function KanbasNavigation() {
       {/**Second Item: Account Icon/Link */}
       <a id="wd-account-link" 
         href="#/Kanbas/Account"
-        className="list-group-item 
+        className="list-group-item
+                  list-group-item-active  
                   text-white
                   bg-black 
                   text-center border-0">
-        
         <FaRegCircleUser className="fs-1 text text-white" />
         <br />
         Account 
@@ -42,8 +46,10 @@ export default function KanbasNavigation() {
       {/**Third Item: Dashboard Icon/Link - Selected*/}
       <a id="wd-dashboard-link"
         href="#/Kanbas/Dashboard"
-        className="list-group-item 
-                  text-center border-0
+        className="list-group-item
+                  list-group-item-active  
+                  text-center 
+                  border-0
                   bg-white 
                   text-danger">
         <AiOutlineDashboard className="fs-1 
@@ -54,8 +60,9 @@ export default function KanbasNavigation() {
       
       {/**Fourth Item: Courses Icon/Link */}
       <a id="wd-course-link" 
-        href="#/Kanbas/Courses"
-        className="list-group-item 
+        href="#/Kanbas/Courses/Home"
+        className="list-group-item
+                  list-group-item-active  
                   text-white
                   bg-black 
                   text-center border-0">
@@ -72,7 +79,8 @@ export default function KanbasNavigation() {
       {/**Fifth Item: Calendar Icon/Link */}
       <a id="wd-course-link" 
         href="#/Kanbas/Calendar"
-        className="list-group-item 
+        className="list-group-item
+                  list-group-item-active  
                   text-white
                   bg-black 
                   text-center border-0">
@@ -85,6 +93,7 @@ export default function KanbasNavigation() {
       <a id="wd-course-link" 
         href="#/Kanbas/Inbox"
         className="list-group-item 
+                  list-group-item-active 
                   text-white
                   bg-black 
                   text-center border-0">
@@ -96,7 +105,8 @@ export default function KanbasNavigation() {
       {/**Seventh Item: Labs Icon/Link */}
       <a id="wd-course-link" 
         href="#/Labs"
-        className="list-group-item 
+        className="list-group-item
+                  list-group-item-active
                   text-white
                   bg-black 
                   text-center border-0">
@@ -109,6 +119,7 @@ export default function KanbasNavigation() {
 
       
     </div>
+    </nav>
 
 );
 }

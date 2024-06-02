@@ -26,13 +26,11 @@ export default function Labs() {
         <h1>Welcome to Web Dev: Summer 2024 CS5610 </h1>
         <h2>Elisabeth Sluchak</h2>
         
-        
-        <h1>Labs</h1>
-        <TOC />
+        {/* <TOC /> */}
         <TOC2 />
         
         
-       {/*why are these routes here*/}
+       {/*why are these routes here, where is github link*/}
 
       <Routes>
         <Route path="/" element={<Navigate to="Lab1" />} />
