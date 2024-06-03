@@ -23,7 +23,7 @@ export default function Kanbas() {
          * d-none: makes the block not show
          * d-sm-block: makes kanbasNavigation render when we get to small size
          * */}
-          <div className="bg-black d-none d-sm-block"> 
+          <div className="bg-black d-none d-sm-block" style={{height: "2000px"}}> 
             <KanbasNavigation />
           </div>
 

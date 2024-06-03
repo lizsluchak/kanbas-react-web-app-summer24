@@ -1,6 +1,7 @@
 export default function Dashboard() {
     return (
       <div id="wd-dashboard">
+        
         <h1 id="wd-dashboard-title">Dashboard</h1><hr />
         <h2 id="wd-dashboard-published">Published Courses (12)</h2><hr />
         
@@ -10,7 +11,7 @@ export default function Dashboard() {
             {/* course 1: */}
             <div className="wd-dashboard-course col" style={{ width: "300px"}} >
               <div className="card h-100">
-                <img src="/images/reactjs.jpg" className="card-image-top" />
+                <img src="/images/reactjs.jpg" />
 
                 <div className="card-body">
                   <a className="wd-dashboard-course-link"
@@ -37,7 +38,7 @@ export default function Dashboard() {
             {/* course 2: */}
             <div className="wd-dashboard-course col" style={{ width: "300px"}}> 
               <div className="card h-100">
-                <img src="/images/dashboard_5001.jpg" className="card-image-top" />
+                <img src="/images/dashboard_5001.jpg" />
 
                 <div className="card-body">
                   <a className="wd-dashboard-course-link"

@@ -2,6 +2,7 @@ import { AiOutlineDashboard } from "react-icons/ai";
 import { IoCalendarOutline } from "react-icons/io5";
 import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
 import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
+import "./index.css"
 
 
 /**
@@ -10,20 +11,22 @@ import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
  */
 export default function KanbasNavigation() {
   return (
-    <nav>
-      
+   
       <div>
         {/**list-group: Initializes list of hyperlinks
          *  rounded-0: removes rounding of corners for all list items
+         * className="list-group rounded-0"
+         * id="wd-kanbas-navigation"
          */}
-        <div id="wd-kanbas-navigation" className="list-group rounded-0">
+        <div>
           
 
           {/**First Item: Northeastern Logo/Link */}
           <a id="wd-neu-link" 
             target="_blank" 
             href="https://www.northeastern.edu/"
-            className="list-group-item
+            className="nav-link
+                      list-group-item
                       bg-black
                       border-0">
               <br/>
@@ -36,7 +39,8 @@ export default function KanbasNavigation() {
           {/**Second Item: Account Icon/Link */}
           <a id="wd-account-link" 
             href="#/Kanbas/Account"
-            className="list-group-item
+            className="nav-link
+                      list-group-item
                       bg-black 
                       text-white
                       text-center 
@@ -54,7 +58,8 @@ export default function KanbasNavigation() {
                       list-group-item-active  
                       text-center 
                       border-0
-                      text-danger">
+                      text-danger
+                      nav-link">
             <AiOutlineDashboard className="fs-1 
                                           text-danger" />
             <br />
@@ -120,7 +125,7 @@ export default function KanbasNavigation() {
 
       </div>
     </div>
-    </nav>
+
     
 
 );
