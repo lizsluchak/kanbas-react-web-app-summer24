@@ -1,5 +1,7 @@
 import { FaPlus } from "react-icons/fa6";
 import GreenCheckmark from "../GreenCheckmark";
+import GreyCancel from "../GreyCancel";
+import { BsSlashCircle, BsSlashCircleFill } from "react-icons/bs";
 
 export default function ModulesControls() {
   return (
@@ -20,16 +22,24 @@ export default function ModulesControls() {
         
         <div className="dropdown-menu">
           
-            <a id="wd-publish-all-modules-and-items-btn" className="dropdown-item" href="#">Publish all modules and items</a>
-              
-           
-           
-          
+            <a id="wd-publish-all-modules-and-items-btn" className="dropdown-item" href="#">
+                <GreenCheckmark />
+                Publish all modules and items</a>   
           
        
             <a id="wd-publish-modules-only-button" className="dropdown-item" href="#">
               <GreenCheckmark />
               Publish modules only
+            </a>
+
+            <a id="wd-unpublish-modules-and-items" className="dropdown-item" href="#">
+              <BsSlashCircle />
+              Unpublish all modules and items
+            </a>
+
+            <a id="wd-unpublish-modules-only" className="dropdown-item" href="#">
+              <BsSlashCircle />
+              Unpublish modules only
             </a>
 
    
