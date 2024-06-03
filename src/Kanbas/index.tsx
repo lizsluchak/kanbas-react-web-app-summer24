@@ -10,20 +10,33 @@ export default function Kanbas() {
     return (
       
       <div id="wd-kanbas">
-        <div className="d-flex h-100"> 
+
+        {/**--------------------------------------------------------------------------*
+         * the existance of the div below is to set up flex; it is the row in which 
+         * columns will be added; flex is activited by bootstrap class flex:
+         * d-flex aka display flex*/}
+        <div className="d-flex"> 
           
-          <div className="list-item d-none d-sm-block bg-black">
+         {/**--------------------------------------------------------------------------*
+         * this div defines a column within flex
+         * bg-black: makes column black
+         * d-none: makes the block not show
+         * d-sm-block: makes kanbasNavigation render when we get to small size
+         * */}
+          <div className="bg-black d-none d-sm-block"> 
             <KanbasNavigation />
           </div>
 
 
-          {/*why does this go here?*/}
-          <div className="flex-fill p-4">
+          {/*why do these routes go here?*/}
+          <div className="flex-fill p-4"> {/**this div defines a column within flex */}
             <Routes>
               <Route path="/" element={<Navigate to="Dashboard" />} />
-              <Route path="Dashboard" element={<Dashboard />} />
-              <Route path="Courses/:cid/*" element={<Courses />} />
-              {/* <Route path="Calendar/:cid/*" element={<Calendar />} />*/}
+              <Route path="/Account" element={<h2>Account</h2>} />
+              <Route path="/Dashboard" element={<Dashboard />} />
+              <Route path="/Courses/:id/*" element={<Courses />} />
+              <Route path="/Calendar" element={<h2>Calendar</h2>} />
+              <Route path="/Inbox" element={<h2>Inbox</h2>} />
             </Routes>
           </div>
       </div>

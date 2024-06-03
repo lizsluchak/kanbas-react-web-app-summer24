@@ -12,7 +12,13 @@ export default function Home() {
         <Modules />
       </div>
 
-      <div className="d-none d-xl-block">
+      {/**
+       * TODO: 
+       * so again; flex has been turned on and instantiated;
+       * issue that course status not appearing
+       * 
+       */}
+      <div className="d-none d-lg-block">
         <CourseStatus />
       </div>
 

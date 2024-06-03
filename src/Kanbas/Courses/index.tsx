@@ -10,6 +10,9 @@ import { FaAlignJustify } from "react-icons/fa";
 export default function Courses() {
     return (
       <div id="wd-courses">
+        {/**ClassName="text-danger" makes header red; then we add icon via
+         * FaAlignJustify + ClassName="padding classes"; some padding for 
+         * the icon*/}
         <h2 className="text-danger"><FaAlignJustify className="me-4 fs-4 mb-1" /> 
           Course 1234</h2>
         <hr />
@@ -25,22 +28,22 @@ export default function Courses() {
            * shown below and confirm the KanbasNavigation sidebar is hidden 
            * when the screen is small and then appears as you widen the screen.
            */}
-          <div className="d-none d-md-block">
-            <CoursesNavigation />
-          </div>
-    
-          <div className="flex-fill">
-            <Routes>
-              <Route path="Home" element={<Home />} />
-              <Route path="Modules" element={<Modules />} />
-              <Route path="Assignments" element={<Assignments />} />
-              <Route path="Assignments/:aid" element={<AssignmentEditor />} />
-            </Routes>
-          </div>
+            <div className="d-none d-md-block">
+              <CoursesNavigation />
+            </div>
+      
+            <div className="flex-fill p-4">
+              <Routes>
+                <Route path="Home" element={<Home />} />
+                <Route path="Modules" element={<Modules />} />
+                <Route path="Assignments" element={<Assignments />} />
+                <Route path="Assignments/:aid" element={<AssignmentEditor />} />
+              </Routes>
+            </div>
         </div>
       </div>
-
-  );}
+    );
+}
 
 
 

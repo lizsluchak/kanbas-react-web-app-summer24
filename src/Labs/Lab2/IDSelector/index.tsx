@@ -1,7 +1,7 @@
 export default function IDSelector() {
     return(
         <div id="wd-css-id-selectors">
-        <h3>ID selectors</h3>
+            <h3>ID selectors</h3>
         
             <p id="wd-id-selector-1">
             Instead of changing the look and feel of all the 
@@ -13,7 +13,7 @@ export default function IDSelector() {
             Here's another paragraph using a different ID and a different 
             look and feel
             </p>
-    </div>
+        </div>
 
    
 

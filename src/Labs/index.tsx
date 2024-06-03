@@ -22,7 +22,7 @@ import "../index.css"
 export default function Labs() {
     return(
         <div id="wd-labs">
-    
+        
         <h1>Welcome to Web Dev: Summer 2024 CS5610 </h1>
         <h2>Elisabeth Sluchak</h2>
         
