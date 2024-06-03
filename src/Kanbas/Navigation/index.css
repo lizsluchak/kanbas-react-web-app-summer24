@@ -1,4 +1,29 @@
-.nav-link {
-   padding-bottom: 20px;
-   padding-left: 10px;
-  }
+/**Custom CSS Document*/
+
+.kanbas-nav-bar-style{
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center
+    
+}
+
+.neu-icon {
+   background-color: black;
+}
+
+.account-icon {
+    background-color: black;
+    color: white
+}
+
+.kanbas-nav-icons {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: black;
+    color: white;
+    border: 0;
+}

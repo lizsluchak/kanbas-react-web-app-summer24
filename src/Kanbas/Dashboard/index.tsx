@@ -1,5 +1,8 @@
+import KanbasNavigation from "../Navigation";
+
 export default function Dashboard() {
     return (
+     
       <div id="wd-dashboard">
         
         <h1 id="wd-dashboard-title">Dashboard</h1><hr />
@@ -27,9 +30,11 @@ export default function Dashboard() {
                   <a href="#/Kanbas/Courses/1234/Home" className="btn btn-primary">
                     Go 
                   </a>
-                </div>
+                
               </div>
             </div>
+            </div>
+    
           
           
 
