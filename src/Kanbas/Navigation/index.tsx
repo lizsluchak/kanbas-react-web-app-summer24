@@ -18,7 +18,7 @@ import "./index.css"
 export default function KanbasNavigation() {
   const { pathname } = useLocation();
   const isActiveAccount = (path: string) => pathname.includes(path) ? 'text-danger bg-white' : 'bg-black text-white';
-  const isActive = (path: string) => pathname.includes(path) ? 'bg-white text-danger' : 'bg-black text-danger';
+  const isActive = (path: string) => pathname.includes(path) ? 'bg-white text-danger' : 'bg-black text-white';
   return (
    
       <div>
@@ -56,7 +56,7 @@ export default function KanbasNavigation() {
                       account-icon
                       ${isActiveAccount('/Kanbas/Account')}`} >
 
-            <FaRegCircleUser className="fs-1 text-white" />
+            <FaRegCircleUser className="fs-1" />
             <br />
             Account 
             </a>
@@ -64,10 +64,12 @@ export default function KanbasNavigation() {
           {/**Third Item: Dashboard Icon/Link - Selected*/}
           <a id="wd-dashboard-link"
             href="#/Kanbas/Dashboard"
-            className="list-group-item
-                      list-group-item-active 
-                      kanbas-nav-bar-style 
-                      kanbas-nav-icons">
+            className={`
+                      list-group-item
+                      list-group-item-active
+                      kanbas-nav-bar-style
+                      kanbas-nav-icons
+                      ${isActive('/Kanbas/Dashboard')}`} >
 
             <AiOutlineDashboard className="fs-1 
                                           text-danger" />
@@ -78,10 +80,12 @@ export default function KanbasNavigation() {
           {/**Fourth Item: Courses Icon/Link */}
           <a id="wd-course-link" 
             href="#/Kanbas/Courses/Home"
-            className="list-group-item
-                      list-group-item-active 
-                      kanbas-nav-bar-style 
-                      kanbas-nav-icons">
+            className={`
+                      list-group-item
+                      list-group-item-active
+                      kanbas-nav-bar-style
+                      kanbas-nav-icons
+                      ${isActive('/Kanbas/Courses')}`} >
             <LiaBookSolid className="fs-1 text-danger" />
             <br />
             Courses 
@@ -91,10 +95,12 @@ export default function KanbasNavigation() {
           {/**Fifth Item: Calendar Icon/Link */}
           <a id="wd-course-link" 
             href="#/Kanbas/Calendar"
-            className="list-group-item
-                      list-group-item-active 
-                      kanbas-nav-bar-style 
-                      kanbas-nav-icons">
+            className={`
+                      list-group-item
+                      list-group-item-active
+                      kanbas-nav-bar-style
+                      kanbas-nav-icons
+                      ${isActive('/Kanbas/Calendar')}`} >
             <IoCalendarOutline className="fs-1 text-danger" />
             <br />
             Calendar 
@@ -103,10 +109,12 @@ export default function KanbasNavigation() {
           {/**Sixth Item: Inbox Icon/Link */}
           <a id="wd-course-link" 
             href="#/Kanbas/Inbox"
-            className="list-group-item
-                      list-group-item-active 
-                      kanbas-nav-bar-style 
-                      kanbas-nav-icons">
+            className={`
+                      list-group-item
+                      list-group-item-active
+                      kanbas-nav-bar-style
+                      kanbas-nav-icons
+                      ${isActive('/Kanbas/Inbox')}`} >
             <FaInbox className="fs-1 text-danger" />
             <br />
             Inbox 
@@ -115,10 +123,12 @@ export default function KanbasNavigation() {
           {/**Seventh Item: Labs Icon/Link */}
           <a id="wd-course-link" 
             href="#/Labs"
-            className="list-group-item
-                      list-group-item-active 
-                      kanbas-nav-bar-style 
-                      kanbas-nav-icons">
+            className={`
+                      list-group-item
+                      list-group-item-active
+                      kanbas-nav-bar-style
+                      kanbas-nav-icons
+                      ${isActive('/Kanbas/Labs')}`} >
             <LiaCogSolid className="fs-1 text-danger" />
             <br />
             Labs 

@@ -14,7 +14,7 @@ export default function Dashboard() {
             {/* course 1: */}
             <div className="wd-dashboard-course col" style={{ width: "300px"}} >
               <div className="card h-100">
-                <img src="/images/reactjs.jpg" />
+                <img src="/images/reactjs.jpg" width={275} height={200} />
 
                 <div className="card-body">
                   <a className="wd-dashboard-course-link"
@@ -27,7 +27,7 @@ export default function Dashboard() {
                     Full Stack Software Development
                   </p>
 
-                  <a href="#/Kanbas/Courses/1234/Home" className="btn btn-primary">
+                  <a href="#/Kanbas/Courses/1234/Home" className="btn btn-primary bottom-50">
                     Go 
                   </a>
                 
@@ -43,7 +43,7 @@ export default function Dashboard() {
             {/* course 2: */}
             <div className="wd-dashboard-course col" style={{ width: "300px"}}> 
               <div className="card h-100">
-                <img src="/images/dashboard_5001.jpg" />
+                <img src="/images/dashboard_5001.jpg" width={275} height={200} />
 
                 <div className="card-body">
                   <a className="wd-dashboard-course-link"
@@ -56,7 +56,7 @@ export default function Dashboard() {
                     Intro to Programming
                   </p>
 
-                  <a href="#/Kanbas/Courses/CS5001/Home" className="btn btn-primary"> 
+                  <a href="#/Kanbas/Courses/CS5001/Home" className="btn btn-primary bottom-50"> 
                     Go 
                   </a>
                 </div>
@@ -68,7 +68,7 @@ export default function Dashboard() {
             {/* course 3: */}
             <div className="wd-dashboard-course col" style={{ width: "300px"}}>
               <div className="card h-100">
-                <img src="/images/dashboard_5002.jpg" />
+                <img src="/images/dashboard_5002.jpg" width={274} height={200}/>
                 
                 <div className="card-body">
                   <a className="wd-dashboard-course-link"
@@ -81,7 +81,7 @@ export default function Dashboard() {
                     Discrete Mathematics
                   </p>
 
-                  <a href="#/Kanbas/Courses/CS5002/Home" className="btn btn-primary"> Go </a>
+                  <a href="#/Kanbas/Courses/CS5002/Home" className="btn btn-primary bottom-50"> Go </a>
                 </div>
               </div>
             </div>
@@ -90,7 +90,7 @@ export default function Dashboard() {
             {/* course 4: */}
             <div className="wd-dashboard-course col" style={{ width: "300px"}}>
               <div className="card h-100">
-                <img src="/images/dashboard_5004.jpg" />
+                <img src="/images/dashboard_5004.jpg" width={275} height={200}/>
                 
                 <div className="card-body">
                   <a className="wd-dashboard-course-link"
@@ -103,7 +103,7 @@ export default function Dashboard() {
                     Object Oriented Programming
                   </p>
                   
-                  <a href="#/Kanbas/Courses/CS5004/Home" className="btn btn-primary"> 
+                  <a href="#/Kanbas/Courses/CS5004/Home" className="btn btn-primary bottom-50"> 
                     Go 
                   </a>
                 </div>
@@ -114,7 +114,7 @@ export default function Dashboard() {
            {/* course 5: */}
            <div className="wd-dashboard-course col" style={{ width: "300px"}}> 
             <div className="card h-100">
-            <img src="/images/dashboard_5008.jpg" />
+            <img src="/images/dashboard_5008.jpg" width={275} height={200}/>
             
               <div className="card-body">
                 <a className="wd-dashboard-course-link"
@@ -127,7 +127,7 @@ export default function Dashboard() {
                   Data Structures and Algorithms
                 </p>
                 
-                <a href="#/Kanbas/Courses/CS5008/Home" className="btn btn-primary"> Go </a>
+                <a href="#/Kanbas/Courses/CS5008/Home" className="btn btn-primary bottom"> Go </a>
                 </div>
               </div>
               </div>
@@ -135,7 +135,7 @@ export default function Dashboard() {
               {/* course 6: */}
               <div className="wd-dashboard-course col" style={{ width: "300px"}}>
               <div className="card h-100"> 
-                  <img src="/images/dashboard_5800.jpg" />
+                  <img src="/images/dashboard_5800.jpg" width={275} height={200} />
                     
                     <div className="card-body">
                       <a className="wd-dashboard-course-link"
@@ -146,7 +146,7 @@ export default function Dashboard() {
                       <p className="wd-dashboard-course-title card-text">
                         Algorithms
                       </p>
-                      <a href="#/Kanbas/Courses/CS5800/Home" className="btn btn-primary"> Go </a>
+                      <a href="#/Kanbas/Courses/CS5800/Home" className="btn btn-primary bottom"> Go </a>
                     </div>
                     </div>
                   </div>
@@ -155,7 +155,7 @@ export default function Dashboard() {
                     {/* course 7: */}
               <div className="wd-dashboard-course col"  style={{ width: "300px"}}>
                 <div className="card h-100"> 
-                  <img src="/images/dashboard_webdev.jpg" />
+                  <img src="/images/dashboard_webdev.jpg" width={275} height={200} />
                 
                   <div className="card-body">
                   <a className="wd-dashboard-course-link"
@@ -166,7 +166,7 @@ export default function Dashboard() {
                   <p className="wd-dashboard-course-title card-text">
                     Web Development
                   </p>
-                  <a href="#/Kanbas/Courses/CS5610/Home" className="btn btn-primary"> Go </a>
+                  <a href="#/Kanbas/Courses/CS5610/Home" className="btn btn-primary bottom"> Go </a>
                 </div>
                 </div>
               </div>
