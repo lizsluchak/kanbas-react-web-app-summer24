@@ -27,7 +27,7 @@ export default function KanbasNavigation() {
          * className="list-group rounded-0"
          * id="
          */}
-        <div id="wd-kanbas-navigation">
+        <div id="wd-kanbas-navigation" className="list-group">
           
 
           {/**First Item: Northeastern Logo/Link */}
