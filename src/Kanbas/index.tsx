@@ -4,12 +4,14 @@ import { Routes, Route, Navigate } from "react-router";
 import Courses from "./Courses";
 import TOC2 from "../Labs/Lab2/PillNavigation";
 import "./styles.css"
+import ScreenSizeLabel from "../ScreenSizeLabel";
 
 
 export default function Kanbas() {
     return (
       
       <div id="wd-kanbas">
+        <ScreenSizeLabel />
 
         {/**--------------------------------------------------------------------------*
          * the existance of the div below is to set up flex; it is the row in which 
@@ -23,7 +25,7 @@ export default function Kanbas() {
          * d-none: makes the block not show
          * d-sm-block: makes kanbasNavigation render when we get to small size
          * */}
-          <div className="bg-black d-none d-sm-block" style={{height: "2000px"}}> 
+          <div className="bg-black d-none d-md-block" style={{height: "2000px"}}> 
             <KanbasNavigation />
           </div>
 
