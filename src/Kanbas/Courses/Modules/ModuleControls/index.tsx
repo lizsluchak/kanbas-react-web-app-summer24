@@ -3,9 +3,13 @@ import GreenCheckmark from "../GreenCheckmark";
 import GreyCancel from "../GreyCancel";
 import { BsSlashCircle, BsSlashCircleFill } from "react-icons/bs";
 
+/**
+ * 
+ * @returns 
+ */
 export default function ModulesControls() {
   return (
-    <div id="wd-modules-controls" className="text-nowrap">
+    <div id="wd-modules-controls" className="text-nowrap bg-info">
 
 
       <button id="wd-add-module-btn" className="btn btn-md btn-danger float-end">
