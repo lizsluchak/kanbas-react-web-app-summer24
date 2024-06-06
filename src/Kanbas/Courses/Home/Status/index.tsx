@@ -2,6 +2,10 @@ import { MdDoNotDisturbAlt } from "react-icons/md";
 import { FaCheckCircle } from "react-icons/fa";
 import { BiImport } from "react-icons/bi";
 import { LiaFileImportSolid } from "react-icons/lia";
+import { FaHouse } from "react-icons/fa6";
+import { FaChartSimple } from "react-icons/fa6";
+import { FaBullhorn } from "react-icons/fa";
+import { FaBell } from "react-icons/fa";
 
 
 {/* Find more icons */}
@@ -37,7 +41,31 @@ export default function CourseStatus() {
         <LiaFileImportSolid className="me-2 fs-5" />
         Import from Commons
       </button>
-      {/* Complete the rest of the buttons */}
+
+      <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
+        <FaHouse className="me-2 fs-5" />
+        Choose Home Page
+      </button>
+
+      <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
+        <FaChartSimple className="me-2 fs-5" />
+        View Course Screen
+      </button>
+
+      <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
+        <FaBullhorn className="me-2 fs-5" />
+        New Announcement
+      </button>
+
+      <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
+        <FaChartSimple className="me-2 fs-5" />
+        New Analytics
+      </button>
+      <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
+        <FaBell className="me-2 fs-5" />
+        View Course Notifications
+      </button>
+
     </div>
 );}
 
