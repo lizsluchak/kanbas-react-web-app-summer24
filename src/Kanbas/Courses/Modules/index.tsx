@@ -21,7 +21,7 @@ export default function Modules() {
         <ModuleControlButtons />
       </div>
       <ul className="wd-lessons list-group rounded-0">
-        <li className="wd-lesson list-group-item p-3 ps-1">
+        <li className="wd-lesson list-group-item p-3 ps-1 d-flex flex-row">
         <BsGripVertical className="me-2 fs-3" />
           LEARNING OBJECTIVES
           <LessonControlButtons />
