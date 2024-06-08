@@ -3,8 +3,8 @@ import { BsPlus } from "react-icons/bs";
 
 export default function AssignmentControlButtons() {
   return (
-    <div className="float-end me-1">
-      <BsPlus className="me-2" style={{ fontSize: '30px' }}/> 
-      <IoEllipsisVertical className="fs-4" />
+    <div>
+      <BsPlus style={{ fontSize: '30px' }} className="float-end me-2"/> 
+      <IoEllipsisVertical className="fs-4 me-4" />
     </div>
 );}

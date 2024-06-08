@@ -28,8 +28,8 @@ export default function Assignments() {
             <ModuleControlButtons />
           </div>
 
-          <ul className="wd-lessons list-group rounded-0">
-            <li className="wd-lesson list-group-item list-group-item-active p-3 ps-1 d-flex flex-row" style={{ borderLeft: '10px solid green' }}>
+          <ul className="wd-lessons list-group rounded-0" style={{ borderLeft: '10px solid green' }}>
+            <li className="wd-lesson list-group-item list-group-item-active p-3 ps-1 d-flex flex-row" >
               <div className="d-flex flex-row justify-content-between align-items-center">
                 <BsGripVertical className="me-2 fs-3" />
                 <FaFilePen className="text-success me-4 fs-3" />
