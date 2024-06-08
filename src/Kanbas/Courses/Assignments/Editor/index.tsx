@@ -4,7 +4,7 @@ export default function AssignmentEditor() {
         
         
         {/** divB1-full width column------------------------------------------- */}
-        <div id="divB1-flex-column" className="d-flex ms-auto bg-black">
+        <div id="divB1-flex-column" className="d-flex ms-auto bg-black p-2">
           <div className="flex-column flex-fill">
           <div className="mb-3">
               <label htmlFor="assignment1"
@@ -39,11 +39,14 @@ export default function AssignmentEditor() {
 
           
             {/** divB2-row wiht 2 columns---------------------------------------- */}
+        
+
+          
             <div className="bg-secondary">
               <div className="bg-danger d-flex flex-row">
                 <div className="col-5">
                     <label htmlFor="points"
-                        className="col-form-label float-end me-5">
+                        className="col-form-label m-2 float-end me-5">
                         Points
                     </label>
                 </div>
@@ -61,21 +64,21 @@ export default function AssignmentEditor() {
             </div>
 
             <div className="bg-secondary">
-              <div className="bg-danger d-flex flex-row">
+              <div className="d-flex flex-row">
                 <div className="col-5">
                     <label htmlFor="points"
-                        className="row-form-label float-end me-5">
+                        className="row-form-label m-2 float-end me-5">
                         Assignment Group
                     </label>
                 </div>
       
 
                 <div className="col-7">
-                <input type="text" 
-                            className="form-control"
-                            id="points" 
-                            value="100" />
-                </div>
+                <select className="form-select form-control" id="assignmentGroups">
+                <option selected>ASSIGNMENTS</option>
+          
+                  </select>
+        </div>
 
             </div>
             </div>
@@ -86,7 +89,7 @@ export default function AssignmentEditor() {
               <div className="bg-danger d-flex flex-row">
                 <div className="col-5">
                     <label htmlFor="points"
-                        className="row-form-label float-end me-5">
+                        className="row-form-label m-2 float-end me-5">
                         Display Grade as
                     </label>
                 </div>
@@ -122,6 +125,7 @@ export default function AssignmentEditor() {
 
             </div>
             </div>
+            
 
 
 
