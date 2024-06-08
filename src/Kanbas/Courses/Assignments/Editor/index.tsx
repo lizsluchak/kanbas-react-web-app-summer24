@@ -1,5 +1,58 @@
 export default function AssignmentEditor() {
     return (
+      <div id="outmost div">
+        <div id="flex container" className="bg-black d-flex">
+          <div className="flex-column flex-fill bg-info">
+            <div>
+              Input Label
+            </div>
+
+            <div>
+              Assigment name input box
+            </div>
+
+            <div>
+              Assignment editor box
+            </div>
+
+            <div className="d-flex flex-column align-items-end">
+              <div>
+                points
+              </div>
+              <div>
+                assignment group
+              </div>
+              <div>
+                assignment group
+              </div>
+              <div>
+                assignment group
+              </div>
+              <div>
+                assignment group
+              </div>
+            </div>
+            
+
+            <div className="bg-secondary">
+              <div className="bg-danger d-flex flex-row">
+                <div className="col-5">
+                  column 1
+                </div>
+                <div className="col-7">
+                  column2
+                </div>
+            </div>
+          
+            </div>
+            </div>
+
+    
+        </div>
+
+      
+
+
       <div id="wd-assignments-editor">
         <label htmlFor="wd-name"><h4>Assignment Name</h4></label>
         <input id="wd-name" value="A1 - ENV + HTML" /><br /><br />
@@ -144,6 +197,11 @@ link to the landing page of your Web application running on Netlify. the The lan
         <button>Save</button>
         </div>
         </body>
+      </div>
+
+
+
+
       </div>
       
   );}
