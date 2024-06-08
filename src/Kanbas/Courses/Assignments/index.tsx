@@ -20,11 +20,11 @@ export default function Assignments() {
       <div id="wd-assignments-list" className="list-group rounded-0">
         <li className="list-group-item p-0 mb-5 fs-5 border-gray" >
           <div className="wd-title p-4 ps-2 list-group-item list-group-item-active" style={{ backgroundColor: "#ffe6e6", color: "#000" }}>
-            <button style={{ all: 'unset', cursor: 'pointer' }}> 
+            <a style={{ all: 'unset', cursor: 'pointer' }}> 
               <BsGripVertical className="me-2 fs-3" />
               <FaCaretDown />
               <strong> ASSIGNMENTS </strong>
-            </button>
+            </a>
             <ModuleControlButtons />
           </div>
 
@@ -36,7 +36,10 @@ export default function Assignments() {
               </div>
 
               <div className="ms-3 d-flex flex-column flex-fill">
-                <h4><strong>A1</strong></h4>
+                <a id="wd-assignment-title"
+                    href="#/Kanbas/Courses/1234/Assignments/051324"
+                    style={{ textDecoration: "none", color: "navy", fontWeight: "bold" }}>
+                     <h4><strong>A1</strong></h4> </a>
                 <div className="d-flex flex-row">
                   <p className="m-1 text-danger">Multiple Modules</p>
                   <p className="m-1">|</p>
