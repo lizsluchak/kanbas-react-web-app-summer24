@@ -7,7 +7,7 @@ export default function AssignmentHeaderButtons() {
     <h3 id="wd-assignments-title">
       
 
-    <BsPlus style={{ fontSize: '30px' }}/> 
+      <BsPlus style={{ fontSize: '30px' }}/> 
       <IoEllipsisVertical className="fs-4" />
   </h3>
 

@@ -4,6 +4,8 @@ import StudentSearch from "./GradeSearchBars";
 
 import GradeImportButton from "./GradeControlButtonsBar/GradeImportButton";
 import ImportButton from "./GradeControlButtonsBar/GradeImportButton";
+import GradeTable from "./GradeTableSection";
+import GradeTableSection from "./GradeTableSection";
 
 export default function Grades() {
     return (
@@ -12,6 +14,7 @@ export default function Grades() {
         <div id="mother-div">
            <GradesControlButtonsBar />
            <StudentSearch />
+           <GradeTableSection />
 
 
 

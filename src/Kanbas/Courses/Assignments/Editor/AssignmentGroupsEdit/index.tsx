@@ -1,4 +1,4 @@
-export default function AssignmentGroups() {
+export default function AssignmentGroupsEdit() {
     return (
         <div className="bg-secondary">
         <div className="d-flex flex-row">

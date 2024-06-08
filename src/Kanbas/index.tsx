@@ -27,6 +27,7 @@ export default function Kanbas() {
          * */}
           <div className="bg-black d-none d-md-block" style={{height: "2000px"}}> 
             <KanbasNavigation />
+        
           </div>
 
 
