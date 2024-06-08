@@ -52,7 +52,8 @@ export default function CoursesNavigation() {
           border
           border-0
           link-offset-1
-          ${isActive('/Zoom')}`} >  Zoom </a>
+          ${isActive('/Zoom')}`} >  
+          Zoom </a>
         
         <a id="wd-course-quizzes-link" href="#/Kanbas/Courses/1234/Assignments"
           className={`
@@ -62,7 +63,9 @@ export default function CoursesNavigation() {
           border
           border-0
           link-offset-1
-          ${isActive('/Assignments')}`} >  Assignments </a>
+          ${isActive('/Assignments')}`} >  
+          Assignments 
+          </a>
         
         <a id="wd-course-assignments-link" href="#/Kanbas/Courses/1234/Quizzes"
           className={`
@@ -72,7 +75,8 @@ export default function CoursesNavigation() {
           border
           border-0
           link-offset-1
-          ${isActive('/Quizzes')}`} >  Quizzes </a>
+          ${isActive('/Quizzes')}`} >  
+          Quizzes </a>
         
         <a id="wd-course-grades-link" href="#/Kanbas/Courses/1234/Grades"
           className={`
