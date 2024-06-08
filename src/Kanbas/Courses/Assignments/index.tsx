@@ -38,7 +38,8 @@ export default function Assignments() {
               <div className="ms-3 d-flex flex-column flex-fill">
                 <a id="wd-assignment-title"
                     href="#/Kanbas/Courses/1234/Assignments/051324"
-                    style={{ textDecoration: "none", color: "navy", fontWeight: "bold" }}>
+                    className="m-1"
+                    style={{ textDecoration: "none", color: "black", fontWeight: "bold" }}>
                      <h4><strong>A1</strong></h4> </a>
                 <div className="d-flex flex-row">
                   <p className="m-1 text-danger">Multiple Modules</p>
@@ -63,7 +64,11 @@ export default function Assignments() {
               </div>
 
               <div className="ms-3 d-flex flex-column flex-fill">
-                <h4><strong>A2</strong></h4>
+              <a id="wd-assignment-title"
+                    href="#/Kanbas/Courses/1234/Assignments/052024"
+                    className="m-1"
+                    style={{ textDecoration: "none", color: "black", fontWeight: "bold" }}>
+                     <h4><strong>A2</strong></h4> </a>
                 <div className="d-flex flex-row">
                   <p className="m-1 text-danger">Multiple Modules</p>
                   <p className="m-1">|</p>
@@ -87,7 +92,11 @@ export default function Assignments() {
               </div>
 
               <div className="ms-3 d-flex flex-column flex-fill">
-                <h4><strong>A3</strong></h4>
+              <a id="wd-assignment-title"
+                    href="#/Kanbas/Courses/1234/Assignments/052724"
+                    className="m-1"
+                    style={{ textDecoration: "none", color: "black", fontWeight: "bold" }}>
+                     <h4><strong>A3</strong></h4> </a>
                 <div className="d-flex flex-row">
                   <p className="m-1 text-danger">Multiple Modules</p>
                   <p className="m-1">|</p>
