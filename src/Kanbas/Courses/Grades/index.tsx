@@ -11,9 +11,12 @@ export default function Grades() {
 
 
         <div id="mother-div">
+           
             <GradesControlButtonsBar />
+         
 
-            
+            <div>
+
             <h1>Grades</h1>
             <div id="parent1-1row" className="d-flex flex-row border">
                 
@@ -28,6 +31,12 @@ export default function Grades() {
                 <div id="row1-column1" className="p-6 flex-fill">
                     aldkfj
                 </div>
+
+            </div>
+            
+
+            
+            
 
 
             {/**flex-containter-1 end */} 
