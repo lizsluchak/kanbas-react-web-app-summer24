@@ -18,8 +18,8 @@ export default function Assignments() {
       </div>
 
       <div id="wd-assignments-list" className="list-group rounded-0">
-        <li className="list-group-item p-0 mb-5 fs-5 border-gray">
-          <div className="wd-title p-3 ps-2 list-group-item list-group-item-active" style={{ backgroundColor: "#ffe6e6", color: "#000" }}>
+        <li className="list-group-item p-0 mb-5 fs-5 border-gray" >
+          <div className="wd-title p-4 ps-2 list-group-item list-group-item-active" style={{ backgroundColor: "#ffe6e6", color: "#000" }}>
             <button style={{ all: 'unset', cursor: 'pointer' }}> 
               <BsGripVertical className="me-2 fs-3" />
               <FaCaretDown />
@@ -29,7 +29,7 @@ export default function Assignments() {
           </div>
 
           <ul className="wd-lessons list-group rounded-0">
-            <li className="wd-lesson list-group-item list-group-item-active p-3 ps-1 d-flex flex-row">
+            <li className="wd-lesson list-group-item list-group-item-active p-3 ps-1 d-flex flex-row" style={{ borderLeft: '10px solid green' }}>
               <div className="d-flex flex-row justify-content-between align-items-center">
                 <BsGripVertical className="me-2 fs-3" />
                 <FaFilePen className="text-success me-4 fs-3" />
