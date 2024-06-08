@@ -23,9 +23,11 @@ export default function Assignments() {
             <a style={{ all: 'unset', cursor: 'pointer' }}> 
               <BsGripVertical className="me-2 fs-3" />
               <FaCaretDown />
+              
               <strong> ASSIGNMENTS </strong>
             </a>
-            <ModuleControlButtons />
+            <AssignmentControlButtons />
+    
           </div>
 
           <ul className="wd-lessons list-group rounded-0" style={{ borderLeft: '10px solid green' }}>
