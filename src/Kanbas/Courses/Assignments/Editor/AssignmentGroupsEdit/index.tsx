@@ -1,6 +1,6 @@
 export default function AssignmentGroupsEdit() {
     return (
-        <div className="bg-secondary">
+        <div>
         <div className="d-flex flex-row">
           <div className="col-5">
             <label htmlFor="points"

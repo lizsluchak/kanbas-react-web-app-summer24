@@ -8,7 +8,7 @@ export default function Home() {
     <div id="wd-home" className="d-flex">
       <ScreenSizeLabel/>
       
-      <div className="flex-fill me-5">
+      <div className="flex-fill me-5 m-3">
         <Modules />
       </div>
 
@@ -18,9 +18,8 @@ export default function Home() {
        * issue that course status not appearing
        * 
        */}
-      <div className="d-none d-lg-block">
-        <CourseStatus />
-      </div>
+
+
 
     </div>
 

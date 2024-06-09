@@ -5,7 +5,7 @@ import GradeImportButton from "./GradeImportButton";
 export default function GradesControlButtonsBar() {
     return (
         <div>
-            <div className="d-flex flex-row flex-fill justify-content-end bg-success">
+            <div className="d-flex flex-row flex-fill justify-content-end">
 
                 <div className="me-3">
                     <GradeImportButton />

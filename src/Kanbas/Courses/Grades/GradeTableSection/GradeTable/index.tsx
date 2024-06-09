@@ -3,7 +3,7 @@ export default function GradeTable() {
 
 
 
-        <div id="wd-css-responsive-tables">
+        <div id="wd-css-responsive-tables" className="mt-3">
 
 
 
@@ -51,7 +51,7 @@ export default function GradeTable() {
                         <td><input type="text"
                             className="form-control border-0 text-center"
                             id="assignmentTitle1"
-                            placeholder="88%"
+                            placeholder="A1"
                             style={{ backgroundColor: '#f8f9fa' }}>
 
                         </input>

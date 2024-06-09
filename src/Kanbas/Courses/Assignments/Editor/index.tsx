@@ -6,7 +6,7 @@ export default function AssignmentEditor() {
 
 
       {/** divB1-full width column------------------------------------------- */}
-      <div id="divB1-flex-column" className="d-flex ms-auto bg-black p-2">
+      <div id="divB1-flex-column" className="d-flex ms-auto p-2">
         <div className="flex-column flex-fill">
           <div className="mb-3">
             <label htmlFor="assignment1"
@@ -44,7 +44,7 @@ export default function AssignmentEditor() {
 
 
 
-          <div className="bg-secondary">
+          <div>
             
 
 
@@ -53,7 +53,7 @@ export default function AssignmentEditor() {
 
           </div>
 
-          <div className="bg-secondary">
+          <div>
             <div className="d-flex flex-row">
               <div className="col-5">
                 <label htmlFor="points"
@@ -75,8 +75,8 @@ export default function AssignmentEditor() {
 
 
 
-          <div className="bg-secondary">
-            <div className="bg-danger d-flex flex-row">
+          <div>
+            <div className="d-flex flex-row">
               <div className="col-5">
                 <label htmlFor="points"
                   className="row-form-label m-2 float-end me-5">
@@ -100,8 +100,8 @@ export default function AssignmentEditor() {
           </div>
 
 
-          <div className="bg-secondary">
-            <div className="bg-danger d-flex flex-row">
+          <div>
+            <div className="d-flex flex-row">
               <div className="col-5">
                 <label htmlFor="points"
                   className="row-form-label float-end me-5">
@@ -131,8 +131,8 @@ export default function AssignmentEditor() {
 
 
 
-          <div className="bg-secondary">
-            <div className="bg-danger d-flex flex-row">
+          <div>
+            <div className="d-flex flex-row">
               <div className="col-5">
                 <label htmlFor="points"
                   className="row-form-label float-end me-5">

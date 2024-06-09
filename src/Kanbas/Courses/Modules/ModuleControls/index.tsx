@@ -9,7 +9,7 @@ import { BsSlashCircle, BsSlashCircleFill } from "react-icons/bs";
  */
 export default function ModulesControls() {
   return (
-    <div id="wd-modules-controls" className="text-nowrap">
+    <div id="wd-modules-controls" className="text-nowrap p-2">
 
 
       <button id="wd-add-module-btn" className="btn btn-md btn-danger float-end">
