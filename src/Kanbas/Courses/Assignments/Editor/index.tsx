@@ -45,16 +45,33 @@ export default function AssignmentEditor() {
 
 
           <div>
-            
+            <div className="d-flex flex-row p-2">
+              <div className="col-5">
+                <label htmlFor="points"
+                  className="row-form-label m-2 float-end me-5">
+                  Points
+                </label>
+              </div>
 
 
-            
+              <div className="col-7">
+                <input type="text" className="form-control" id="assignmentGroups" placeholder="100" />
+
+
+
+              </div>
+
+            </div>
+
+
+
+
 
 
           </div>
 
           <div>
-            <div className="d-flex flex-row">
+            <div className="d-flex flex-row p-2">
               <div className="col-5">
                 <label htmlFor="points"
                   className="row-form-label m-2 float-end me-5">
@@ -76,7 +93,7 @@ export default function AssignmentEditor() {
 
 
           <div>
-            <div className="d-flex flex-row">
+            <div className="d-flex flex-row p-2">
               <div className="col-5">
                 <label htmlFor="points"
                   className="row-form-label m-2 float-end me-5">
@@ -86,14 +103,10 @@ export default function AssignmentEditor() {
 
 
               <div className="col-7">
-                <textarea
-                  className="form-control"
-                  id="assignmentTitle1"
-                  rows={10}
-                  placeholder="The assignment is available online Submit a 
-                      link to the landing page of your Web application running on Netlify. the The landing page should include the following: Your full name and section links to each of the lab assignments, link to the Kanbas application, Links to all relevant source code respositories. The kanbas application should include a link to navigate back to the landing page.
-                      ">
-                </textarea>
+                <select className="form-select form-control" id="assignmentGroups">
+                  <option selected>Percentage</option>
+
+                </select>
               </div>
 
             </div>
@@ -101,7 +114,7 @@ export default function AssignmentEditor() {
 
 
           <div>
-            <div className="d-flex flex-row">
+            <div className="d-flex flex-row p-2">
               <div className="col-5">
                 <label htmlFor="points"
                   className="row-form-label float-end me-5">
@@ -110,18 +123,40 @@ export default function AssignmentEditor() {
               </div>
 
 
-              <div className="col-7">
-                <textarea
-                  className="form-control"
-                  id="submission-type"
-                  rows={10}
-                >
-                  <select className="form-select form-control" id="submission-type">
-                    <option selected>ASSIGNMENTS</option>
+              <div className="container col-7 border p-2">
+                <div className="rounded-2">
 
+
+                  <select className="form-select form-control mb-4" id="submission-type">
+                    <option selected>Online</option>
                   </select>
 
-                </textarea>
+
+                  <h6 className="fw-bold">Online Entry Options:</h6>
+
+                  <div className="m-2">
+                    <td>
+                      <input type="checkbox" id="wd-text-entry" />
+                      <label htmlFor="wd-text-entry">Text Entry</label>
+                      <br />
+
+                      <input type="checkbox" id="wd-website-url" />
+                      <label htmlFor="wd-website-url">Website URL</label><br />
+
+                      <input type="checkbox" id="wd-media-recordings" />
+                      <label htmlFor="wd-media-recordings">Media Recordings</label><br />
+
+                      <input type="checkbox" id="wd-student-annotation" />
+                      <label htmlFor="wd-student-annotation">Student Annotations</label><br />
+
+                      <input type="checkbox" id="wd-file-upload" />
+                      <label htmlFor="wd-file-upload">File Uploads</label>
+
+
+                    </td>
+                  </div>
+
+                </div>
 
               </div>
             </div>
@@ -132,7 +167,7 @@ export default function AssignmentEditor() {
 
 
           <div>
-            <div className="d-flex flex-row">
+            <div className="d-flex flex-row p-2">
               <div className="col-5">
                 <label htmlFor="points"
                   className="row-form-label float-end me-5">
@@ -141,11 +176,66 @@ export default function AssignmentEditor() {
               </div>
 
 
-              <div className="col-7">
-                <input type="text"
-                  className="form-control"
-                  id="points"
-                  value="100" />
+              <div className="container col-7 border p-2">
+                <div className="rounded-2">
+
+
+
+                  <div className="mb-3">
+                    <label htmlFor="assignment1"
+                      className="row-form-label p-1">
+                      <h6 className="fw-bold">Assign to</h6>
+                    </label>
+
+                    <div>
+                      <input type="text"
+                        className="form-control"
+                        id="assignmentTitle1"
+                        placeholder="Everyone">
+                      </input>
+                    </div>
+                  </div>
+
+
+                </div>
+                <div>
+
+
+
+
+
+                  <br></br>
+                  <label htmlFor="wd-due-date">Due</label>
+                  <br></br>
+                  <input type="date" className="form-control"
+                    id="wd-due-date"
+                    value="2024-05-13" /><br />
+
+                  <div className="d-flex flex-row">
+                    <label htmlFor="wd-avialable-from" className="form-label">Available from</label>
+
+                    <label htmlFor="wd-avialable-until"> Until</label>
+                    <br></br>
+                    <input type="date" className="form-control"
+                      id="wd-available-from"
+                      value="2024-05-06" />
+
+                    <input type="date" className="form-control"
+                      id="wd-available-until"
+                      value="2024-05-20" />
+
+                  </div>
+
+
+
+
+
+
+
+
+
+                </div>
+
               </div>
 
             </div>
@@ -256,16 +346,7 @@ export default function AssignmentEditor() {
 
           <br></br>
 
-          <tr>
-            <td>
-              <label htmlFor="wd-assign-to">Assign to</label>
-            </td>
 
-            <td>
-
-              <input type="text" id="wd-text-entry" value="Everyone" />
-            </td>
-          </tr>
 
 
 
