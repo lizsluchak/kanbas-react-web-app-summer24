@@ -1,8 +1,8 @@
 export default function Lab3() {
     return(
-        <div>
-            <h2>Lab 3</h2>
-        </div>
+        <div id="wd-lab3" className="container-fluid">
+        <h3>Lab 3</h3>
+      </div>
     );
 }
 
