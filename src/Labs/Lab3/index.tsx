@@ -1,5 +1,6 @@
 import BooleanVariables from "./BooleanVariables";
 import IfElse from "./IfElse";
+import TernaryOperator from "./TernaryOperator";
 import VariableTypes from "./VariableTypes";
 import VariablesAndConstants from "./VariablesAndConstants";
 
@@ -12,6 +13,7 @@ export default function Lab3() {
         <VariableTypes />
         <BooleanVariables />
         <IfElse />
+        <TernaryOperator />
       </div>
     );
 }
