@@ -1,3 +1,4 @@
+import ArrowFunctions from "./ArrowFunctions";
 import BooleanVariables from "./BooleanVariables";
 import ConditionalOutputIfElse from "./ConditionalOutputIfElse";
 import ConditionalOutputInline from "./ConditionalOutputInLine";
@@ -20,6 +21,7 @@ export default function Lab3() {
         <ConditionalOutputIfElse />
         <ConditionalOutputInline />
         <LegacyFunctions />
+        <ArrowFunctions />
       </div>
     );
 }

@@ -1,7 +1,10 @@
 function add(a: number, b: number) {
     return a + b;
   }
-  
+  /**
+   * Function Syntax: function <functionName> (<parameterList>) { 
+   * <functionBody> }
+   */
   export default function LegacyFunctions() {
     const twoPlusFour = add(2, 4);
     console.log(twoPlusFour); //for debug
