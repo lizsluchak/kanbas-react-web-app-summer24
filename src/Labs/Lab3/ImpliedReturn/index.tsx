@@ -13,4 +13,9 @@ export default function ImpliedReturn() {
 
 }
 
+/**
+ * With Implied Return: 
+ * const multiply = (a: number, b: number) => {return a * b};
+ */
+
 
