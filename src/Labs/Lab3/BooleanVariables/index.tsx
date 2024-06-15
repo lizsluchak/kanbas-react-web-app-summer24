@@ -1,5 +1,6 @@
 export default function BooleanVariables() {
-   
+    
+   //You might need to cast the boolean values to string by concatenating an empty string to display the variables, e.g., false3 = {false3 + ""} <br/>.
     let numberVariable = 123, floatingPointNumber = 234.345;
     let true1 = true, false1 = false;
     let false2 = true1 && false1;
