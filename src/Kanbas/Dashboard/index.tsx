@@ -1,4 +1,4 @@
-import KanbasNavigation from "../Navigation";
+
 
 export default function Dashboard() {
     return (
@@ -177,4 +177,3 @@ export default function Dashboard() {
   
 
   //i had to add this export line.. why?
-  export {}

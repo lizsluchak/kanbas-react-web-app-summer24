@@ -50,7 +50,7 @@ export default function TOC2() {
             </li>
             
             <li className="nav-item">
-                <a id="wd-k" href="https://github.com/jannunzi" className="nav-link">
+                <a id="wd-k" href="https://github.com/lizsluchak/kanbas-react-web-app-summer24" className="nav-link">
                 My GitHub
                 </a>
             </li>
