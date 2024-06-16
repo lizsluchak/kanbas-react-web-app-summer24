@@ -1,3 +1,4 @@
+import React from "react";
 import ArrowFunctions from "./ArrowFunctions";
 import BooleanVariables from "./BooleanVariables";
 import ConditionalOutputIfElse from "./ConditionalOutputIfElse";
@@ -11,25 +12,27 @@ import TernaryOperator from "./TernaryOperator";
 import VariableTypes from ".";
 import VariablesAndConstants from "./VariablesAndConstants";
 
+
 export default function Lab3() {
-    return(
-        <div id="wd-lab3" className="container-fluid">
-        <h3>Lab 3</h3>
-        <hr/><hr/>
-        <VariablesAndConstants />
-        <VariableTypes />
-        <BooleanVariables />
-        <IfElse />
-        <TernaryOperator />
-        <ConditionalOutputIfElse />
-        <ConditionalOutputInline />
-        <LegacyFunctions />
-        <ArrowFunctions />
-        <ImpliedReturn />
-        <TemplateLiterals />
-        <SimpleArrays />
+  return (
+      <div id="wd-lab3" className="container-fluid">
+          <h3>Lab 3</h3>
+          <hr />
+          <hr />
+          <VariablesAndConstants />
+          <VariableTypes />
+          <BooleanVariables />
+          <IfElse />
+          <TernaryOperator />
+          <ConditionalOutputIfElse />
+          <ConditionalOutputInline />
+          <LegacyFunctions />
+          <ArrowFunctions />
+          <ImpliedReturn />
+          <TemplateLiterals />
+          <SimpleArrays />
       </div>
-    );
+  );
 }
 
 export {}

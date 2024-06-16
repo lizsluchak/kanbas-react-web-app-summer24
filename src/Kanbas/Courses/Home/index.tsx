@@ -1,3 +1,4 @@
+import React from "react";
 import ScreenSizeLabel from "../../../ScreenSizeLabel";
 import Modules from "../Modules";
 import CourseStatus from "./Status";

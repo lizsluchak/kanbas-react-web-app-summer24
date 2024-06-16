@@ -1,3 +1,4 @@
+import React from "react";
 // Webdev A1.2.3 Creating The Labs Component: Labs React.js Component - Combines all Labs
 
 // Notes:

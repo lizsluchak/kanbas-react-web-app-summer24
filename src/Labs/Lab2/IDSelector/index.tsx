@@ -1,3 +1,4 @@
+import React from "react";
 export default function IDSelector() {
     return(
         <div id="wd-css-id-selectors">

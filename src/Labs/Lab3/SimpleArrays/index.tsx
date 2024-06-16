@@ -1,3 +1,4 @@
+import React from "react";
 /**
  * -    Up to this point we have been discussing primitive datatypes such as 
  *      strings, numbers, and booleans. These can be combined into complex 

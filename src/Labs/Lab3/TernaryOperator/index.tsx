@@ -1,3 +1,4 @@
+import React from "react";
 export default function TernaryOperator(){
     /**
      * Ternary conditional operators are concise alternative to if/else 

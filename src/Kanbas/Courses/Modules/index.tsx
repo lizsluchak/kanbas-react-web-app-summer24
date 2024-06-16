@@ -1,3 +1,4 @@
+import React from "react";
 import ModulesControls from "./ModuleControls";
 import CourseStatus from "../Home/Status";
 import ModuleDataTable from "./Module Data Table";

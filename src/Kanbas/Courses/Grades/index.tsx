@@ -1,3 +1,4 @@
+import React from "react";
 import GradesControlButtonsBar from "./GradeControlButtonsBar";
 import GradeSettingsButton from "./GradeControlButtonsBar/GradeSettingsButton";
 import StudentSearch from "./GradeSearchBars";

@@ -1,3 +1,4 @@
+import React from "react";
 export default function BooleanVariables() {
     
    //You might need to cast the boolean values to string by concatenating an empty string to display the variables, e.g., false3 = {false3 + ""} <br/>.

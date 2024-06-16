@@ -1,3 +1,4 @@
+import React from "react";
 import AssignmentControlButtons from "./AssignmentControlButtons";
 import AssignmentControls from "./AssignmentControls";
 import { BsGripVertical } from "react-icons/bs";
@@ -5,7 +6,6 @@ import ModuleControlButtons from "../Modules/ModuleControlButtons";
 import LessonControlButtons from "../Modules/LessonControlButtons";
 import { FaCaretDown } from "react-icons/fa";
 import { FaFilePen } from "react-icons/fa6";
-import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Assignments() {

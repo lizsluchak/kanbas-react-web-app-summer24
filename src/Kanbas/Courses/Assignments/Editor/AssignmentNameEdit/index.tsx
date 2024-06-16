@@ -1,3 +1,4 @@
+import React from "react";
 export default function AssignmentNameEdit() {
     return (
       <div className="mb-3">

@@ -1,3 +1,4 @@
+import React from "react";
 import { IoFunnelOutline } from "react-icons/io5";
 import TableFilterButton from "./TableFilterButton";
 import GradeTable from "./GradeTable";

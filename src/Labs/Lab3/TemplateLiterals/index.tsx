@@ -1,3 +1,4 @@
+import React from "react";
 /**
  * Generating dynamic HTML consists of writing code that manipulates and 
  * concatenates strings to generate new HTML strings based on some program 

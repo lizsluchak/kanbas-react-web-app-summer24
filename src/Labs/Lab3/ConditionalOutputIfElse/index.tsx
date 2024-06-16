@@ -1,3 +1,4 @@
+import React from "react";
 // VERSION 1: OPTION A
 const ConditionalOutputIfElse = () => {
  const loggedIn = true;

@@ -1,3 +1,4 @@
+import React from "react";
 import BootstrapAddons from "./BootstrapAddons";
 import BootstrapSliders from "./BootstrapSliders";
 import ReactIconsSampler from "./ReactIconsSampler/index";

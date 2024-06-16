@@ -1,3 +1,4 @@
+import React from "react";
 import { BsGripVertical } from "react-icons/bs";
 import ModuleControlButtons from "../ModuleControlButtons";
 import LessonControlButtons from "../ModuleControlButtons";

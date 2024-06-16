@@ -1,6 +1,5 @@
-const subtract = (a: number, b: number) => {
-    return a - b;
-  };
+import React from "react";
+const subtract = (a: number, b: number) => {return a - b;};
 
   /**
    * A new version of JavaScript was introduced in 2015 and is officially 

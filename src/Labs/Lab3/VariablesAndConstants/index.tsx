@@ -1,3 +1,4 @@
+import React from "react";
 export default function VariablesAndConstants() {
     // variables can store state information about applications
     var functionScoped = 2;
