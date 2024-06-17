@@ -2,6 +2,7 @@ import AddingAndRemovingToFromArrays from "./AddingAndRemovingToFromArrays";
 import ArrayIndexAndLength from "./ArrayIndexAndLength";
 import ArrowFunctions from "./ArrowFunctions";
 import BooleanVariables from "./BooleanVariables";
+import Classes from "./Classes";
 import ConditionalOutputIfElse from "./ConditionalOutputIfElse";
 import ConditionalOutputInline from "./ConditionalOutputInLine";
 import Destructing from "./Destructing";
@@ -58,6 +59,7 @@ export default function Lab3() {
         <Destructing />
         <FunctionDestructing />
         {/* <DestructingImports /> */}
+        <Classes />
     
         
   
