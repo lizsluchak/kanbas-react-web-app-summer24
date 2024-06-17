@@ -1,3 +1,4 @@
+import ArrayIndexAndLength from "./ArrayIndexAndLength";
 import ArrowFunctions from "./ArrowFunctions";
 import BooleanVariables from "./BooleanVariables";
 import ConditionalOutputIfElse from "./ConditionalOutputIfElse";
@@ -28,6 +29,7 @@ export default function Lab3() {
         <ImpliedReturn />
         <TemplateLiterals />
         <SimpleArrays />
+        <ArrayIndexAndLength />
     
         
   

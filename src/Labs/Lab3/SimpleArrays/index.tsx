@@ -1,3 +1,8 @@
+/**
+ * Up to this point we have been discussing primitive datatypes such as strings, numbers, and booleans. These can be combined into complex datatypes such as arrays and objects. Arrays can group together several values into a single variable. Arrays can group together values of different datatypes, e.g., number arrays, string arrays, and even a mix and match of datatypes in the same array. Not that you would ever want to actually do that. 
+ */
+
+
 export default function SimpleArrays() {
     var functionScoped = 2;
     let blockScoped = 5;
