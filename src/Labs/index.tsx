@@ -13,7 +13,6 @@ import { Route, Routes, Navigate } from "react-router";
 import Lab1 from "./Lab1";
 import Lab2 from "./Lab2";
 import Lab3 from "./Lab3";
-import TOC from "./TOC";
 import Kanbas from "../Kanbas";
 import TOC2 from "./Lab2/PillNavigation";
 import "../index.css"
