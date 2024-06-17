@@ -5,6 +5,7 @@ import BooleanVariables from "./BooleanVariables";
 import ConditionalOutputIfElse from "./ConditionalOutputIfElse";
 import ConditionalOutputInline from "./ConditionalOutputInLine";
 import FindFunction from "./FindFunction";
+import FindIndex from "./FindIndex";
 import ForLoops from "./ForLoops";
 import IfElse from "./IfElse";
 import ImpliedReturn from "./ImpliedReturn";
@@ -38,6 +39,7 @@ export default function Lab3() {
         <ForLoops />
         <MapFunction/>
         <FindFunction />
+        <FindIndex />
     
         
   
