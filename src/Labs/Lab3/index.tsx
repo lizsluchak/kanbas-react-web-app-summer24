@@ -10,6 +10,7 @@ import FindIndex from "./FindIndex";
 import ForLoops from "./ForLoops";
 import IfElse from "./IfElse";
 import ImpliedReturn from "./ImpliedReturn";
+import JsonStringify from "./JsonStringify";
 import LegacyFunctions from "./LegacyFunctions"
 import MapFunction from "./MapFunction";
 import SimpleArrays from "./SimpleArrays";
@@ -42,6 +43,7 @@ export default function Lab3() {
         <FindFunction />
         <FindIndex />
         <FilterFunction />
+        <JsonStringify />
     
         
   
