@@ -4,6 +4,7 @@ import ArrowFunctions from "./ArrowFunctions";
 import BooleanVariables from "./BooleanVariables";
 import ConditionalOutputIfElse from "./ConditionalOutputIfElse";
 import ConditionalOutputInline from "./ConditionalOutputInLine";
+import FindFunction from "./FindFunction";
 import ForLoops from "./ForLoops";
 import IfElse from "./IfElse";
 import ImpliedReturn from "./ImpliedReturn";
@@ -36,7 +37,7 @@ export default function Lab3() {
         <AddingAndRemovingToFromArrays />
         <ForLoops />
         <MapFunction/>
-        
+        <FindFunction />
     
         
   
