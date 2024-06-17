@@ -8,6 +8,7 @@ import FilterFunction from "./FilterFunction";
 import FindFunction from "./FindFunction";
 import FindIndex from "./FindIndex";
 import ForLoops from "./ForLoops";
+import House from "./House";
 import IfElse from "./IfElse";
 import ImpliedReturn from "./ImpliedReturn";
 import JsonStringify from "./JsonStringify";
@@ -16,6 +17,8 @@ import MapFunction from "./MapFunction";
 import SimpleArrays from "./SimpleArrays";
 import TemplateLiterals from "./TemplateLiterals";
 import TernaryOperator from "./TernaryOperator";
+import TodoItem from "./Todos/TodoItem";
+import TodoList from "./Todos/TodoList";
 import VariableTypes from "./VariableTypes";
 import VariablesAndConstants from "./VariablesAndConstants";
 
@@ -44,6 +47,9 @@ export default function Lab3() {
         <FindIndex />
         <FilterFunction />
         <JsonStringify />
+        <House />
+        <TodoItem />
+        <TodoList />
     
         
   
