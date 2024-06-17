@@ -1,5 +1,4 @@
-const TodoItem = ( { 
-    todo = { done: true, title: 'Buy milk',
+const TodoItem = ( { todo = { done: true, title: 'Buy milk',
     status: 'COMPLETED' } }) => {
 return (
 <li className="list-group-item">

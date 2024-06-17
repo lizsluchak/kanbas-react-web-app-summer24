@@ -4,10 +4,12 @@ import ArrowFunctions from "./ArrowFunctions";
 import BooleanVariables from "./BooleanVariables";
 import ConditionalOutputIfElse from "./ConditionalOutputIfElse";
 import ConditionalOutputInline from "./ConditionalOutputInLine";
+import Destructing from "./Destructing";
 import FilterFunction from "./FilterFunction";
 import FindFunction from "./FindFunction";
 import FindIndex from "./FindIndex";
 import ForLoops from "./ForLoops";
+import FunctionDestructing from "./FunctionDestructing";
 import House from "./House";
 import IfElse from "./IfElse";
 import ImpliedReturn from "./ImpliedReturn";
@@ -15,6 +17,7 @@ import JsonStringify from "./JsonStringify";
 import LegacyFunctions from "./LegacyFunctions"
 import MapFunction from "./MapFunction";
 import SimpleArrays from "./SimpleArrays";
+import Spreading from "./Spreading";
 import TemplateLiterals from "./TemplateLiterals";
 import TernaryOperator from "./TernaryOperator";
 import TodoItem from "./Todos/TodoItem";
@@ -50,6 +53,9 @@ export default function Lab3() {
         <House />
         <TodoItem />
         <TodoList />
+        <Spreading />
+        <Destructing />
+        <FunctionDestructing />
     
         
   
