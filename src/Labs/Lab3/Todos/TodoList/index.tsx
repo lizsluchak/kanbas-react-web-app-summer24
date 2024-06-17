@@ -10,7 +10,7 @@ const TodoList = () => {
      <h3>Todo List</h3>
      <ul className="list-group">
        { todos.map((todos) => {
-           return(<TodoItem/>);
+           return(<TodoItem todo={todos}/>);
          })}
      </ul><hr/> 
    </>
