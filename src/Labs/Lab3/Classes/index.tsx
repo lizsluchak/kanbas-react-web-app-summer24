@@ -35,5 +35,6 @@ export default function Classes() {
                                       wd-fg-black wd-padding-10px`}>
         Dangerous background
         </div>
+        <hr/>
       </div>); 
       }
