@@ -5,6 +5,7 @@ import BooleanVariables from "./BooleanVariables";
 import ConditionalOutputIfElse from "./ConditionalOutputIfElse";
 import ConditionalOutputInline from "./ConditionalOutputInLine";
 import Destructing from "./Destructing";
+// import DestructingImports from "./DestructingImports";
 import FilterFunction from "./FilterFunction";
 import FindFunction from "./FindFunction";
 import FindIndex from "./FindIndex";
@@ -56,6 +57,7 @@ export default function Lab3() {
         <Spreading />
         <Destructing />
         <FunctionDestructing />
+        {/* <DestructingImports /> */}
     
         
   
