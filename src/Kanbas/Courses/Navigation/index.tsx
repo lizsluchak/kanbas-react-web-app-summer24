@@ -23,11 +23,11 @@ export default function CoursesNavigation() {
   return (
     <div id="wd-courses-navigation" className="list-group fs-5 rounded-0">
      {links.map((link) => (
-        <Link key={link.path} to={link.path} 
+        <Link to={`/Kanbas/Courses/${cid}/${link.label}`} 
               className={
-                    `text-decoration-underline
-                    list-group-item
+                    `list-group-item
                     list-group-item-active
+                    fw-bold
                     border
                     border-0
                     link-offset-1
@@ -69,7 +69,25 @@ export default function CoursesNavigation() {
 
 
 
-
+  // return (
+  //   <div id="wd-courses-navigation" className="list-group fs-5 rounded-0">
+  //    {links.map((link) => (
+  //       <Link key={link.path} to={link.path} 
+  //             className={
+  //                   `text-decoration-underline
+  //                   list-group-item
+  //                   list-group-item-active
+  //                   border
+  //                   border-0
+  //                   link-offset-1
+  //                   ${pathname.includes(link.label) ? "bg-white text-black active" : "bg-white text-danger" }
+  //                   `}>
+  //              <br />
+  //             {link.label}
+  //       </Link>
+  //    ))}
+  //       </div>
+  // );}
 
 
 
