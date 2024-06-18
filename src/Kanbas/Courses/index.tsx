@@ -20,8 +20,8 @@ export default function Courses() {
     <div id="wd-courses">
       <h2 className="text-danger">
         <FaAlignJustify className="me-4 fs-4 mb-1"/>
-        {/* <Link to="/src/Kan/Lab3/add/1/2">1 + 2</Link> */}
-        {course && course._id}
+
+        {course && course.name}
       </h2>
       <div className="d-flex">
           {/**
