@@ -41,8 +41,8 @@ export default function Courses() {
       
             <div className="flex-fill p-4">
               <Routes>
-                <Route path=":cid/Home" element={<Home />} />
-                <Route path="Modules/:cid" element={<Modules />} />
+                <Route path="Home" element={<Home />} />
+                <Route path="Modules" element={<Modules />} />
                 <Route path="Assignments" element={<Assignments />} />
                 <Route path="Assignments/:cid" element={<AssignmentEditor />} />
                 <Route path="Quizzes" element={<Quizzes />} />

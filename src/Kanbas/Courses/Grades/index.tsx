@@ -18,23 +18,6 @@ export default function Grades() {
 
 
 
-            
-         
-            
-            
-
-            
-            
-
-
-
-
-
-
-
-
-
-
 
 
 
