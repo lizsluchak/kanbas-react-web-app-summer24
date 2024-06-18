@@ -11,7 +11,8 @@ import "./index.css"
  * Instead of hardcoding a list of anchor tags, the Kanabs Sidebar Main 
  * Navigation system uses a JSON object, a data structure, that configures the 
  * labels, paths, and icons as an array. The linkes are then generated 
- * dynamically via a map function. they are iterrated over. 
+ * dynamically via a map function. they are iterrated over. we can map over the data structure 
+ * creating the links dynamically.list in HTML, we can create a data structure that configures the labels, paths, and icons as an array and then we can map over the data structure creating the links dynamically.
  */
 export default function KanbasNavigation() {
   const { pathname } = useLocation();
