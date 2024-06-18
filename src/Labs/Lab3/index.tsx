@@ -7,12 +7,14 @@ import Classes from "./Classes";
 import ConditionalOutputIfElse from "./ConditionalOutputIfElse";
 import ConditionalOutputInline from "./ConditionalOutputInLine";
 import Destructing from "./Destructing";
+import AddPathParameters from "./AddPathParameters";
 // import DestructingImports from "./DestructingImports";
 import FilterFunction from "./FilterFunction";
 import FindFunction from "./FindFunction";
 import FindIndex from "./FindIndex";
 import ForLoops from "./ForLoops";
 import FunctionDestructing from "./FunctionDestructing";
+import Highlight from "./Highlight";
 import House from "./House";
 import IfElse from "./IfElse";
 import ImpliedReturn from "./ImpliedReturn";
@@ -28,7 +30,8 @@ import TernaryOperator from "./TernaryOperator";
 import TodoItem from "./Todos/TodoItem";
 import TodoList from "./Todos/TodoList";
 import VariableTypes from "./VariableTypes";
-import VariablesAndConstants from "./VariablesAndConstants";
+import VariablesAndConstants from "./VariablesAndConstants"
+import PathParameters from "./PathParameters";
 
 export default function Lab3() {
     return(
@@ -68,6 +71,13 @@ export default function Lab3() {
         <h4>Square of 4</h4>
         <Square>4</Square>
         <hr />
+        <Highlight>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipitratione eaque illo minus cum, saepe totam
+        vel nihil repellat nemo explicabo excepturi consectetur. Modi omnis minus sequi maiores, provident voluptates.
+      </Highlight>
+      <hr/>
+      <PathParameters />
+
 
     
         
