@@ -7,7 +7,6 @@ import Classes from "./Classes";
 import ConditionalOutputIfElse from "./ConditionalOutputIfElse";
 import ConditionalOutputInline from "./ConditionalOutputInLine";
 import Destructing from "./Destructing";
-import AddPathParameters from "./AddPathParameters";
 // import DestructingImports from "./DestructingImports";
 import FilterFunction from "./FilterFunction";
 import FindFunction from "./FindFunction";
@@ -34,6 +33,7 @@ import VariablesAndConstants from "./VariablesAndConstants"
 import PathParameters from "./PathParameters";
 
 export default function Lab3() {
+    console.log('Hello World!');
     return(
         <div id="wd-lab3" className="container-fluid">
         <h3>Lab 3</h3>
