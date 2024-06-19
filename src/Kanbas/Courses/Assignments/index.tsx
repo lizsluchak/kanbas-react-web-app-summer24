@@ -8,17 +8,22 @@ import { FaFilePen } from "react-icons/fa6";
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as db from "../../Database";
+import { assignments } from "../../Database";
 import { Route, Routes, useParams, useLocation } from "react-router";
+import { Link } from "react-router-dom";
 
 export default function Assignments() {
-  const { cid } = useParams();
-  const assignments = db.assignments;
+  const { cid } = useParams(); //retrieve courseID
+  console.log(cid);
+  const aid = assignments.find((assignment) => assignment.course === cid);
+  // const assignments = db.assignments; //load in assignment database
   const { pathname } = useLocation();
+
+
 
   return (
     <div id="wd-assignments">
-    
-        <AssignmentControls />
+      <AssignmentControls />
 
       <div id="wd-assignments-list" className="list-group rounded-0">
         <li className="list-group-item p-0 mb-5 fs-5 border-gray" >
@@ -26,31 +31,43 @@ export default function Assignments() {
             <a style={{ all: 'unset', cursor: 'pointer' }}>
               <BsGripVertical className="me-2 fs-3" />
               <FaCaretDown />
-
               <strong> ASSIGNMENTS </strong>
             </a>
             <AssignmentControlButtons />
-
           </div>
 
-          <ul className="wd-lessons list-group rounded-0" style={{ borderLeft: '10px solid green' }}>
 
+          <ul className="wd-lessons list-group rounded-0" style={{ borderLeft: '10px solid green' }}>
             {db.assignments
               .filter((assignment: any) => assignment.course === cid)
-              .map((assignment: any) => (
+              .map((assignment: any) => 
+          
+                (
+
                 <li className="wd-module list-group-item p-0 mb-5 fs-5 border-gray">
+
+                  <div className="wd-title p-3 ps-2">
+                    
+                    
                   
-                  <div className="wd-title p-3 ps-2 bg-secondary">
                     <BsGripVertical className="me-2 fs-3" />
-                    {assignment.title}
+                    <FaFilePen className="text-success me-4 fs-3" />
+                    
+                    <Link to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}>
+                    
+
+                    {assignment._id}: {assignment.title}
+                    </Link>
+
                     <ModuleControlButtons />
+                   
                   </div>
                   {assignment.lessons && (
                     <ul className="wd-lessons list-group rounded-0">
-                      {assignment.course.map((lesson: any) => (
+                      {assignment.map((lesson: any) => (
                         <li className="wd-lesson list-group-item p-3 ps-1">
                           <BsGripVertical className="me-2 fs-3" />
-                          {lesson.name}
+                            {lesson.name}
                           <LessonControlButtons />
                         </li>
                       ))}
@@ -60,13 +77,13 @@ export default function Assignments() {
 
 
               ))}
-              
+
           </ul>
-          </li>
+        </li>
       </div>
-      </div>
-      );
-    
+    </div>
+  );
+
 }
 
 
@@ -79,7 +96,7 @@ export default function Assignments() {
 
 
 
-      {/* <li className="wd-lesson list-group-item list-group-item-active p-3 ps-1 d-flex flex-row" >
+{/* <li className="wd-lesson list-group-item list-group-item-active p-3 ps-1 d-flex flex-row" >
             <div className="d-flex flex-row justify-content-between align-items-center">
               <BsGripVertical className="me-2 fs-3" />
               <FaFilePen className="text-success me-4 fs-3" />

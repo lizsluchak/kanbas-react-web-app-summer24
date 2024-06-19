@@ -44,9 +44,9 @@ export default function Courses() {
                 <Route path="Home" element={<Home />} />
                 <Route path="Modules" element={<Modules />} />
                 <Route path="Assignments" element={<Assignments />} />
-                <Route path="Assignments/:cid" element={<AssignmentEditor />} />
+                <Route path="Assignments/:aid" element={<AssignmentEditor />} />
                 <Route path="Quizzes" element={<Quizzes />} />
-                <Route path="Grades" element={<Grades />} />
+                <Route path="Grades" element={<AssignmentEditor />} />
               </Routes>
             </div>
         </div>
