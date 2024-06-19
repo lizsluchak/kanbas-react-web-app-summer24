@@ -7,7 +7,5 @@ export default function AssignmentControlButtons() {
       <button className="btn btn-md rounded-5 me-4" style={{ borderColor: '#adb5bd' }}>40% of Total</button>
       <BsPlus className="me-3"/> 
       <IoEllipsisVertical />
-      
-  
     </div>
 );}

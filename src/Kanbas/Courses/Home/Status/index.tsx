@@ -8,9 +8,6 @@ import { FaBullhorn } from "react-icons/fa";
 import { FaBell } from "react-icons/fa";
 
 
-{/* Find more icons */}
-
-
 export default function CourseStatus() {
   return (
     <div id="wd-course-status" style={{ width: "300px" }}>

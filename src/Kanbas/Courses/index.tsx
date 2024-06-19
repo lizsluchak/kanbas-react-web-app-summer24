@@ -41,12 +41,12 @@ export default function Courses() {
       
             <div className="flex-fill p-4">
               <Routes>
-                <Route path="Home" element={<Home />} />
-                <Route path="Modules" element={<Modules />} />
+                <Route path="/Home" element={<Home />} />
+                <Route path="/Modules" element={<Modules />} />
                 <Route path="Assignments" element={<Assignments />} />
                 <Route path="Assignments/:aid" element={<AssignmentEditor />} />
                 <Route path="Quizzes" element={<Quizzes />} />
-                <Route path="Grades" element={<AssignmentEditor />} />
+                <Route path="Grades" element={<Grades />} />
               </Routes>
             </div>
         </div>
