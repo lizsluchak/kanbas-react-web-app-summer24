@@ -1,6 +1,3 @@
-
-
-
 import { Link } from "react-router-dom";
 import * as db from "../Database";
 export default function Dashboard() {
@@ -27,8 +24,8 @@ export default function Dashboard() {
 
                   <img src={course.image_url} height="{160}" />
                   <div className="card-body">
-                    
-                    
+
+
                     <span className="wd-dashboard-course-link"
                       style={{ textDecoration: "none", color: "navy", fontWeight: "bold" }} >
                       {course.name}

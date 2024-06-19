@@ -1,14 +1,28 @@
+import { useParams } from "react-router";
+// import * as db from "../../Database";
+import { assignments } from "../../../Database";
 
 
 export default function AssignmentEditor() {
+const { aid } = useParams();
+
+const assignment = assignments.find((assignment) => assignment._id === aid);
+ if (!assignment) {
+    return <h2>Assignment Not Found</h2>;
+  }
+
+
+console.log(aid, assignment);
   return (
     <div id="divA-mother">
 
 
       {/** divB1-full width column------------------------------------------- */}
       <div id="divB1-flex-column" className="d-flex ms-auto p-2">
+        
         <div className="flex-column flex-fill">
           <div className="mb-3">
+          
             <label htmlFor="assignment1"
               className="row-sm-2 row-form-label p-1">
               <h5>Assignment Name</h5>
@@ -18,7 +32,7 @@ export default function AssignmentEditor() {
               <input type="text"
                 className="form-control"
                 id="assignmentTitle1"
-                placeholder="A1">
+                placeholder={`${assignment.title}`} >
 
               </input>
             </div>
@@ -32,11 +46,10 @@ export default function AssignmentEditor() {
                 className="form-control"
                 id="assignmentTitle1"
                 rows={10}
-                placeholder="The assignment is available online Submit a 
-                      link to the landing page of your Web application running on Netlify. the The landing page should include the following: Your full name and section links to each of the lab assignments, link to the Kanbas application, Links to all relevant source code respositories. The kanbas application should include a link to navigate back to the landing page.
-                      ">
+                placeholder={`${assignment.description}`}>
               </textarea>
             </div>
+    
           </div>
 
 
@@ -55,7 +68,7 @@ export default function AssignmentEditor() {
 
 
               <div className="col-7">
-                <input type="text" className="form-control" id="assignmentGroups" placeholder="100" />
+                <input type="text" className="form-control" id="assignmentGroups" placeholder={`${assignment.points}`} />
 
 
 
@@ -224,7 +237,7 @@ export default function AssignmentEditor() {
 
                         <input type="date" className="form-control"
                           id="wd-available-from"
-                          value="2024-05-06" />
+                          value={`${assignment.availableDate}`} />
                       </div>
                     </div>
 
@@ -234,7 +247,7 @@ export default function AssignmentEditor() {
 
                       <input type="date" className="form-control"
                         id="wd-available-until"
-                        value="2024-05-20" />
+                        value={`${assignment.dueDate}`} />
                     </div>
 
 

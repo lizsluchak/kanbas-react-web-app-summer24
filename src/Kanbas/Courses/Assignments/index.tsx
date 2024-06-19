@@ -14,10 +14,10 @@ import { Link } from "react-router-dom";
 
 export default function Assignments() {
   const { cid } = useParams(); //retrieve courseID
-  console.log(cid);
-  const aid = assignments.find((assignment) => assignment.course === cid);
+  // console.log(cid);
+  // const assignment = assignments.find((assignment) => assignment.course === cid);
   // const assignments = db.assignments; //load in assignment database
-  const { pathname } = useLocation();
+  // const { pathname } = useLocation();
 
 
 
