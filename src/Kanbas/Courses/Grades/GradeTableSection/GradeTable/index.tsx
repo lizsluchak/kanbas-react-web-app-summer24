@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import { assignments, enrollments, users, grades } from "../../../../Database";
-
+export interface UserRecord { _id: string; username: string; password: string; firstName: string, lastName: string, email: string, dob: string, role: string }
 
 /**
  * When you navigate to the Grades section for the selected course:
@@ -18,9 +18,13 @@ export default function GradeTable() {
     
     const courseAssignments = assignments.filter((assignment) => assignment.course === cid); //filter assignments for only this course
 
-    const getGrade = (userId: string, grade: number) => {
+    const getGrade = (userId: string, assignmentId: string) => {
+        const grade = grades.find((g) => g.student === userId && g.assignment === assignmentId);
+        return grade ? grade.grade : "N/A";
+    };
+    const getGrade2 = (userId: string, ass: number) => {
     const gradez = grades.find((g) => g.student === userId);}
-    export interface UserRecord { _id: string; username: string; password: string; firstName: string, lastName: string, email: string, dob: string, role: string }
+   
 
     // "_id": "123",
     // "username": "capt_america",
@@ -31,54 +35,71 @@ export default function GradeTable() {
     // "dob": "1918-07-04",
     // "role": "STUDENT"
 
-
+    // for (const user of users) {
+    //     const name = users.find(i => i._id === )
+    // }
     return (
-
+        
         <div id="wd-css-responsive-tables" className="mt-3">
 
             <table className="table table-striped table-bordered table-hover table-responsive">
-                <thead className="thead-dark text-center m-2">
-                    <tr>
-                        <th>Student Name<p></p></th>
-                        
-                        {assignments
-                            .filter((assignment: any) => assignment.course === cid)
-                            .map((assignment: any) => (
-                                
-                            
-                                <th>{assignment.title} 
-                                <p>Out of {assignment.points}</p></th>))}
-                        
+                <thead className="thead-dark text-center-vertically m-2">
+                <tr>
+                        <th>Student Name</th>
+                        {courseAssignments.map((assignment) => (
+                            <th key={assignment._id}>
+                                {assignment.title}
+                                <p>Out of {assignment.points}</p>
+                            </th>
+                        ))}
                     </tr>
                 </thead>
 
                 <tbody>
-                    {enrolledUsers.map((enrolledUser) => (
+                    {enrolledUsers.map((enrollment) => {
+                        const user = users.find((u) => u._id === enrollment.user);
+                        return (
+                            <tr key={enrollment._id}>
+                                <td>{user ? `${user.firstName} ${user.lastName}` : "Unknown"}</td>
+                                {courseAssignments.map((assignment) => (
+                                    <td key={assignment._id}>{getGrade(enrollment.user, assignment._id)}</td>
+                                ))}
+                            </tr>
+                        );
+                    })}
+                </tbody>
 
-                        // UserRecord temp = users.find((user) => (
+      
+                    {/* {enrolledUsers
+                        .map(({enrolledUser}) => 
+                            {users.find((user) => (
+
+                            ) */}
+
+                        {/* // UserRecord temp = users.find((user) => (
                         //     user._id === enrolledUser.user
                         // ));
-                        // ))}
+                        // ))} */}
 
 
 
-                    <tr>
+    
                     
 
-                        <th>{enrolledUser.user} </th>
+                        {/* <th>{enrolledUser.user} </th>
                         <th>{}</th>
                         </tr>
 
 
                     
-                    ))}
+                    ))} */}
                               
                                 
                                 
 
     
                  
-                 </tbody>
+             
                  </table>
                  </div>
     );
