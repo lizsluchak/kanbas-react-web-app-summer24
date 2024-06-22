@@ -11,6 +11,7 @@ import * as db from "../../Database";
 import { assignments } from "../../Database";
 import { Route, Routes, useParams, useLocation } from "react-router";
 import { Link } from "react-router-dom";
+import AssignmentDataTable from "./AssignmentTable";
 
 export default function Assignments() {
   const { cid } = useParams(); //retrieve courseID
@@ -24,63 +25,7 @@ export default function Assignments() {
   return (
     <div id="wd-assignments">
       <AssignmentControls />
-
-      <div id="wd-assignments-list" className="list-group rounded-0">
-        <li className="list-group-item p-0 mb-5 fs-5 border-gray" >
-          <div className="wd-title p-4 ps-2 list-group-item list-group-item-active" style={{ backgroundColor: "#ffe6e6", color: "#000" }}>
-            <a style={{ all: 'unset', cursor: 'pointer' }}>
-              <BsGripVertical className="me-2 fs-3" />
-              <FaCaretDown />
-              <strong> ASSIGNMENTS </strong>
-            </a>
-            <AssignmentControlButtons />
-          </div>
-
-
-          <ul className="wd-lessons list-group rounded-0" style={{ borderLeft: '10px solid green' }}>
-            {db.assignments
-              .filter((assignment: any) => assignment.course === cid)
-              .map((assignment: any) => 
-          
-                (
-
-                <li className="wd-module list-group-item p-0 mb-5 fs-5 border-gray">
-
-                  <div className="wd-title p-3 ps-2">
-                    
-                    
-                  
-                    <BsGripVertical className="me-2 fs-3" />
-                    <FaFilePen className="text-success me-4 fs-3" />
-                    
-                    <Link to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}>
-                    
-
-                    {assignment._id}: {assignment.title}
-                    </Link>
-
-                    <ModuleControlButtons />
-                   
-                  </div>
-                  {assignment.lessons && (
-                    <ul className="wd-lessons list-group rounded-0">
-                      {assignment.map((lesson: any) => (
-                        <li className="wd-lesson list-group-item p-3 ps-1">
-                          <BsGripVertical className="me-2 fs-3" />
-                            {lesson.name}
-                          <LessonControlButtons />
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-
-
-              ))}
-
-          </ul>
-        </li>
-      </div>
+      <AssignmentDataTable />
     </div>
   );
 

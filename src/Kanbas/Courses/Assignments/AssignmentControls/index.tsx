@@ -24,9 +24,9 @@ export default function AssignmentControls() {
                 Assignment
             </button>
 
-            <button id="wd-add-assignment-btn" 
+            <button id="wd-add-assignment-btn border-light-grey" 
                 className="btn btn-md btn-secondary float-end rounded-1 me-1"
-                style={{ backgroundColor: "#ffe6e6", color: "#000" }}>
+                style={{ backgroundColor: "#F5F5F5", color: "#000" }}>
                 <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
                 Group
             </button>
