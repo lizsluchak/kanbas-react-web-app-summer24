@@ -26,7 +26,7 @@ export default function Labs() {
         <h1>Welcome to Web Dev: Summer 2024 CS5610 </h1>
         <h2>Elisabeth Sluchak</h2>
         
-        {/* <TOC /> */}
+ 
         <TOC />
         
         
