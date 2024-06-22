@@ -11,7 +11,7 @@ export default function Modules() {
   const { pathname } = useLocation();
 
   return (
-    <ul id="wd-modules" className="d-flex list-group rounded-0">
+    <ul id="wd-modules" className="d-flex list-group rounded-0" >
       {modules
         .filter((module: any) => module.course === cid)
         .map((module: any) => (
@@ -23,7 +23,8 @@ export default function Modules() {
             {module.name}
             <ModuleControlButtons />
           </div>
-
+          
+          <div style={{ borderLeft: '10px solid green' }}>
           {module.lessons && (
 
             <ul className="wd-lessons list-group rounded-0">
@@ -36,6 +37,7 @@ export default function Modules() {
               ))}
             </ul>
           )}
+          </div>
 
         </li>
 

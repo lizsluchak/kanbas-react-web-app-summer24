@@ -30,7 +30,7 @@ export default function Dashboard() {
                       style={{ textDecoration: "none", color: "navy", fontWeight: "bold" }} >
                       {course._id}: {course.name}
                     </span>
-                    <p className="wd-dashboard-course-title card-text" style={{ maxHeight: 53, overflow: "hidden" }}>
+                    <p className="wd-dashboard-course-title card-text" style={{ maxHeight: 50, overflow: "hidden" }}>
                       {course.description}
                     </p>
 
