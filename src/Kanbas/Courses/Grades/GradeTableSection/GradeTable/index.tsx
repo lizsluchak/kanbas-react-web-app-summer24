@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import { assignments, enrollments, users, grades } from "../../../../Database";
-export interface UserRecord { _id: string; username: string; password: string; firstName: string, lastName: string, email: string, dob: string, role: string }
+
 
 /**
  * When you navigate to the Grades section for the selected course:
@@ -13,203 +13,56 @@ export interface UserRecord { _id: string; username: string; password: string; f
  */
 
 export default function GradeTable() {
-    const { cid } = useParams(); //capture parameters
-    const enrolledUsers = enrollments.filter((student) => student.course === cid); //filter enrollments for only this course
-    
-    const courseAssignments = assignments.filter((assignment) => assignment.course === cid); //filter assignments for only this course
+    const { cid } = useParams(); //capture parameter -> courseId
+    const enrolledUsers = enrollments.filter((student) => student.course === cid); //filter enrollments based on course id
+    const courseAssignments = assignments.filter((assignment) => assignment.course === cid); //filter assignments by passed course id
 
-    const getGrade = (userId: string, assignmentId: string) => {
-        const grade = grades.find((g) => g.student === userId && g.assignment === assignmentId);
-        return grade ? grade.grade : "N/A";
+    const getGrades = (userId: string, assignmentId: string) => { //pass in user id, assignment id via arrow function
+        const grade = grades.find((g) => g.student === userId && g.assignment === assignmentId); //search grades database to find student via userID
+                                                                                                 //and assignment via assignmentID
+        return grade ? grade.grade : "N/A"; //if grade is found return grade, else return "N/A"
     };
-    const getGrade2 = (userId: string, ass: number) => {
-    const gradez = grades.find((g) => g.student === userId);}
    
 
-    // "_id": "123",
-    // "username": "capt_america",
-    // "password": "rogers123",
-    // "firstName": "Steve",
-    // "lastName": "Rogers",
-    // "email": "steve@avengers.com",
-    // "dob": "1918-07-04",
-    // "role": "STUDENT"
-
-    // for (const user of users) {
-    //     const name = users.find(i => i._id === )
-    // }
     return (
         
         <div id="wd-css-responsive-tables" className="mt-3">
-
             <table className="table table-striped table-bordered table-hover table-responsive">
-                <thead className="thead-dark text-center-vertically m-2">
+                <thead className="thead-dark text-center m-2">
                 <tr>
-                        <th>Student Name</th>
+                        <th className = "text-center align-middle">Student Name</th>
                         {courseAssignments.map((assignment) => (
-                            <th key={assignment._id}>
+                            <th key={assignment._id} className = "text-center align-middle">
                                 {assignment.title}
-                                <p>Out of {assignment.points}</p>
+                                <br/>
+                                <small>Out of {assignment.points}</small>
                             </th>
                         ))}
                     </tr>
                 </thead>
 
                 <tbody>
-                    {enrolledUsers.map((enrollment) => {
-                        const user = users.find((u) => u._id === enrollment.user);
+                    {enrolledUsers.map((enrollment) => { //for each enrolledUser in the filtered enrolledUser array
+                        const user = users.find((u) => u._id === enrollment.user);  //find the id of each user
                         return (
                             <tr key={enrollment._id}>
                                 <td>{user ? `${user.firstName} ${user.lastName}` : "Unknown"}</td>
                                 {courseAssignments.map((assignment) => (
-                                    <td key={assignment._id}>{getGrade(enrollment.user, assignment._id)}</td>
+                                    <td key={assignment._id}>{getGrades(enrollment.user, assignment._id)}</td>
                                 ))}
                             </tr>
                         );
                     })}
                 </tbody>
+                </table>
+                 </div>
+    );
+}
 
-      
-                    {/* {enrolledUsers
-                        .map(({enrolledUser}) => 
-                            {users.find((user) => (
-
-                            ) */}
-
-                        {/* // UserRecord temp = users.find((user) => (
-                        //     user._id === enrolledUser.user
-                        // ));
-                        // ))} */}
-
-
-
-    
-                    
-
-                        {/* <th>{enrolledUser.user} </th>
-                        <th>{}</th>
-                        </tr>
-
-
-                    
-                    ))} */}
                               
                                 
                                 
 
     
                  
-             
-                 </table>
-                 </div>
-    );
-}
-                                
-                           
-//                         <td className="text-danger fw-bold">{}</td>
-
-//                         <td>
-//                             <div>
-//                                 <input type="text"
-//                                     className="form-control border-0 text-center"
-
-//                                     placeholder="100%"
-//                                     style={{ backgroundColor: '#f8f9fa' }}>
-
-//                                 </input>
-//                             </div>
-
-
-//                         </td>
-//                         <td>
-//                             <input type="text"
-//                                 className="form-control border-0 text-center"
-//                                 id="assignmentTitle1"
-//                                 placeholder="88.03"
-//                                 style={{ backgroundColor: '#f8f9fa' }}>
-
-//                             </input>
-
-//                         </td>
-//                         <td><input type="text"
-//                             className="form-control border-0 text-center"
-//                             id="assignmentTitle1"
-//                             placeholder="A1"
-//                             style={{ backgroundColor: '#f8f9fa' }}>
-
-//                         </input>
-//                         </td>
-
-//                         <td>
-//                             <input type="text"
-//                                 className="form-control border-0 text-center"
-//                                 id="assignmentTitle1"
-//                                 placeholder="99%"
-//                                 style={{ backgroundColor: '#f8f9fa' }}>
-
-//                             </input>
-//                         </td>
-//                     </tr>
-
-            
-
-//                     <tr>
-//                         <td className="text-danger fw-bold">Christina Allen</td>
-//                         <td className="text-center">
-//                             100%
-//                         </td>
-//                         <td className="text-center">100%</td>
-//                         <td className="text-center">100%</td>
-//                         <td className="text-center">100%</td>
-
-//                     </tr>
-
-//                     <tr>
-//                         <td className="text-danger fw-bold">Samreen Ansari</td>
-//                         <td className="text-center">100%</td>
-//                         <td className="text-center">100%</td>
-//                         <td className="text-center">100%</td>
-//                         <td className="text-center">100%</td>
-
-//                     </tr>
-
-//                     <tr>
-//                         <td className="text-danger fw-bold">Han Bao</td>
-//                         <td className="text-center">
-//                             100%
-//                         </td>
-//                         <td className="text-center">100%</td>
-//                         <td className="text-center">88.03%</td>
-//                         <td className="text-center">98.99%</td>
-
-//                     </tr>
-
-//                     <tr>
-//                         <td className="text-danger fw-bold">Mahi Sai Srinivas Bobbili</td>
-//                         <td className="text-center">
-//                             100%
-//                         </td>
-//                         <td className="text-center">96.67%</td>
-//                         <td className="text-center">98.37%</td>
-//                         <td className="text-center">98.99%</td>
-
-//                     </tr>
-
-//                     <tr>
-//                         <td className="text-danger fw-bold">Siran Cao</td>
-//                         <td className="text-center">
-//                             100%
-//                         </td>
-//                         <td className="text-center">100%</td>
-//                         <td className="text-center">100%</td>
-//                         <td className="text-center">100%</td>
-
-//                     </tr>
-//                 </tbody>
-//             </table>
-//         </div>
-
-
-
-//     );
-// }
+ 
