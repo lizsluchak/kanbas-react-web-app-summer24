@@ -1,10 +1,13 @@
 import { useParams } from "react-router";
 // import * as db from "../../Database";
 import { assignments } from "../../../Database";
+import { Link } from "react-router-dom";
+import "../AssignmentTable/styles.css"
+
 
 
 export default function AssignmentEditor() {
-const { aid } = useParams();
+const { aid, cid } = useParams();
 
 const assignment = assignments.find((assignment) => assignment._id === aid);
  if (!assignment) {
@@ -270,8 +273,9 @@ console.log(aid, assignment);
             <hr></hr>
     
           <div className="d-flex flex-row flex-fill justify-content-end">
-            <button className="btn btn-lg border-secondary m-2" style={{ backgroundColor: '#f8f9fb' }}>Cancel</button>
-            <button className="btn btn-lg bg-danger text-white m-2">Save</button>
+            <div><button className="btn btn-lg border-secondary m-2" style={{ backgroundColor: '#f8f9fb', textDecoration: "none" }}> <Link to={`/Kanbas/Courses/${cid}/Assignments/`} className="custom-link"> Cancel </Link></button></div>
+
+           <div> <button className="btn btn-lg bg-danger text-white m-2" style={{ backgroundColor: '#f8f9fb' }}><Link to={`/Kanbas/Courses/${cid}/Assignments/`} className="custom-link"> Save </Link></button></div>
           </div>
    
           </div>
@@ -284,9 +288,6 @@ console.log(aid, assignment);
       </div>
 
 
-
-
-      
 
   );
 }
