@@ -22,13 +22,13 @@ export default function Dashboard() {
                 className="text-decoration-none" >
                 <div className="card rounded-3 overflow-hidden">
 
-                  <img src={course.image_url} height="{160}" />
+                  <img src={course.image_url} style={{ height: "200px" }} />
                   <div className="card-body">
 
 
                     <span className="wd-dashboard-course-link"
                       style={{ textDecoration: "none", color: "navy", fontWeight: "bold" }} >
-                      {course.name}
+                      {course._id}: {course.name}
                     </span>
                     <p className="wd-dashboard-course-title card-text" style={{ maxHeight: 53, overflow: "hidden" }}>
                       {course.description}
