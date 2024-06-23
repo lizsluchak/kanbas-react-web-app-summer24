@@ -14,22 +14,15 @@ export default function PassingDataOnEvent() {
                 <li>If you do not wrap the function call inside a closure, you risk creating an infinite loop.</li>
             </ul>
 
-
+            
+            {/** Use arrow syntax */}
             <button onClick={() => add(2, 3)}
-                // onClick={add(2, 3)}
+                // Not this syntax: onClick={add(2, 3)} -- otherwise you risk an infinite loop  
                 className="btn btn-primary"
                 id="wd-pass-data-click">
                 Pass 2 and 3 to add()
             </button>
             <hr />
         </div>
-
-
-
-
-
-
-
-
     );
 }
