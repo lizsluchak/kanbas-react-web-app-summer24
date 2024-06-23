@@ -1,0 +1,10 @@
+.table-heaading { 
+    margin: 'unset';
+    padding: '8px'; 
+    border: '1px solid #ddd'; 
+    color: 'unset';
+}
+
+.wd-margin-bottom {
+    margin-bottom: 50px;
+}

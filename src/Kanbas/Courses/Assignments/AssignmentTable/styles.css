@@ -1,0 +1,10 @@
+.custom-link {
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+  }
+  
+  .custom-link:hover {
+    color: black; /* Ensure the color stays black when hovered */
+    text-decoration: none; /* Ensure underline does not appear on hover */
+  }
