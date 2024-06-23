@@ -6,7 +6,7 @@ export default function Counter() {
     let count = 7; // create and initialize a reg variable
     const [count2, setCount] = useState(7); //create and initialize state variable
     console.log(count); // print changes of the variable to the console
-
+    console.log(count2); // print changes of the variable to the console
 
 
     return (
@@ -27,33 +27,35 @@ export default function Counter() {
 
 
             </ul>
-            <br/>
+            <br />
 
             {/** Version 1: Virtual / Real DOM not affected */}
             <div id="wd-counter-use-state">
                 <h2>Counter1: {count}</h2>  {/** render variable */}
                 <div>
-                <button
-                    onClick={() => { count++; console.log(count); }} 
-                    id="wd-counter-up-click">
-                    Up
-                </button>
-                <button
-                    onClick={() => { count--; console.log(count); }}
-                    id="wd-counter-down-click">
-                    Down
-                </button>
+                    <button
+                        onClick={() => { count++; console.log(count); }}
+                        id="wd-counter-up-click">
+                        Up
+                    </button>
+                    <button
+                        onClick={() => { count--; console.log(count); }}
+                        id="wd-counter-down-click">
+                        Down
+                    </button>
                 </div>
 
-                <br/>
-
+                <br />
+                {/** Version 2: Virtual / Real DOM affected */}
                 <div>
-                    <h2>Counter2: {count2}</h2>
-                    <button onClick={() => setCount(count2 + 1)}
+                    <h2>Counter2: {count2}</h2> {/** Render state variable */}
+                    <button onClick={() => setCount(count2 + 1)} 
+
+
                         id="wd-counter-up-click">Up</button>
                     <button onClick={() => setCount(count2 - 1)}
                         id="wd-counter-down-click">Down</button>
-                    <hr />
+
                 </div>
 
             </div>

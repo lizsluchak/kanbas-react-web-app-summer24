@@ -1,4 +1,6 @@
-import UseStateHook from "./UseStateHook";
+import UseStateHook from "./UseStateHook"; // import useState
+
+import BooleanStateVariables from "./BooleanStateVariables";
 import Counter from "./Counter";
 
 
@@ -29,6 +31,7 @@ export default function ManagingComponentState() {
             <ul>
                 <UseStateHook />
                 <Counter />
+                <BooleanStateVariables />
             </ul>
             
             
