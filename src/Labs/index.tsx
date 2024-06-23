@@ -18,6 +18,7 @@ import Kanbas from "../Kanbas";
 // import TOC2 from "./Lab2/PillNavigation";
 import TOC from "./TOC";
 import "../index.css"
+import Lab4 from "./Lab4";
 
 
 export default function Labs() {
@@ -39,6 +40,7 @@ export default function Labs() {
         <Route path="Lab2" element={<Lab2 />} />
         {/* <Route path="Lab3" element={<Lab3 />} /> */}
         <Route path="Lab3/*" element={<Lab3 />} />
+        <Route path="Lab4/*" element={<Lab4 />} />
         <Route path="Kanbas/*" element={<Kanbas />} />
        
       </Routes>
