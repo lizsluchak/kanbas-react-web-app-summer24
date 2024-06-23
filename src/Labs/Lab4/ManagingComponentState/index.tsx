@@ -2,6 +2,7 @@ import UseStateHook from "./UseStateHook"; // import useState
 
 import BooleanStateVariables from "./BooleanStateVariables";
 import Counter from "./Counter";
+import StringStateVariables from "./StringStateVariable";
 
 
 
@@ -32,6 +33,7 @@ export default function ManagingComponentState() {
                 <UseStateHook />
                 <Counter />
                 <BooleanStateVariables />
+                <StringStateVariables />
             </ul>
             
             
