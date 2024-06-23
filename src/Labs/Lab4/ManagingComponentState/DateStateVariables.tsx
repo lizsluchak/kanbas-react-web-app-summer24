@@ -17,7 +17,7 @@ export default function DateStateVariables() {
 
         <div id="wd-date-state-variables">
 
-            <h5 className="lab4-section-definition">2.3.4: Date State Variables</h5>
+            <h5 className="lab4-section-definition">2.3.5: Date State Variables</h5>
 
             <ul>
                 <li>The DateStateVariable component illustrates how to work with date state variables.</li>
