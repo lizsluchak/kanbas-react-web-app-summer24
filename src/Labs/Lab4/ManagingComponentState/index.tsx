@@ -5,6 +5,7 @@ import Counter from "./Counter";
 import StringStateVariables from "./StringStateVariables";
 import DateStateVariables from "./DateStateVariables";
 import ObjectStateVariables from "./ObjectStateVariables";
+import ArrayStateVariables from "./ArrayStateVariables";
 
 
 
@@ -38,6 +39,7 @@ export default function ManagingComponentState() {
                 <StringStateVariables />
                 <DateStateVariables />
                 <ObjectStateVariables />
+                <ArrayStateVariables />
             </ul>
             
             
