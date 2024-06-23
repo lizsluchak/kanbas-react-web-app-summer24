@@ -1,4 +1,5 @@
-import Lab4Introduction from "./lab4Introduction";
+import ClickEvent from "./ClickEvent";
+import Lab4Introduction from "./Lab4Introduction";
 import "./styles.css"
 
 export default function Lab4() {
@@ -11,6 +12,7 @@ export default function Lab4() {
 
             
             <Lab4Introduction />
+            <ClickEvent />
             
 
 

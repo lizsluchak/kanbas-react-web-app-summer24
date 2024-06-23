@@ -1,4 +1,3 @@
-
 export default function Lab4Introduction() {
     return (
 
@@ -22,6 +21,7 @@ export default function Lab4Introduction() {
                     </ul>
                 </ul>
             </ul>
+            <hr />
         </div>
 
 
