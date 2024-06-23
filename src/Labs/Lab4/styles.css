@@ -1,6 +1,13 @@
-.definition {
+.lab4-intro-definition {
     text-decoration-line: underline;
     text-decoration-color: blueviolet;
     font-weight: 550;
     color: blueviolet
+}
+
+.lab4-section-definition {
+    text-decoration-line: underline;
+    text-decoration-color: green;
+    font-weight: 550;
+    color: green;
 }
