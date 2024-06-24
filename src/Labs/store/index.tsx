@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import helloReducer from "../Lab4/ManagingApplicationState/ReduxExamples/HelloRedux/helloReducer";
 import counterReducer from "../Lab4/ManagingApplicationState/ReduxExamples/CounterRedux/CounterReducer";
+import addReducer from "../Lab4/ManagingApplicationState/ReduxExamples/AddRedux/addReducer";
 
 
 // Application state can maintain data from various components or screens across an entire application. 
@@ -11,7 +12,8 @@ import counterReducer from "../Lab4/ManagingApplicationState/ReduxExamples/Count
 const store = configureStore({
   reducer: {
     helloReducer,
-    counterReducer,
+    counterReducer, // makse the counter's state available to all components within the body of the Provider.
+    addReducer,
     
   },
 });

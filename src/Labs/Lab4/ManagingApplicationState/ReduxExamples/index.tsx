@@ -1,8 +1,8 @@
-import React from "react";
-import InstallingRedux from "./InstallingRedux";
+
 
 import HelloRedux from "./HelloRedux";
 import CounterRedux from "./CounterRedux";
+import AddRedux from "./AddRedux";
 
 export default function ReduxExamples() {
   return (
@@ -14,6 +14,7 @@ export default function ReduxExamples() {
         <br />
         <HelloRedux />
         <CounterRedux />
+        <AddRedux />
       </div>
       </div>
       );
