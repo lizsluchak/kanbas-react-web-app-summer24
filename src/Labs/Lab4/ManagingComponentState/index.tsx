@@ -6,6 +6,7 @@ import StringStateVariables from "./StringStateVariables";
 import DateStateVariables from "./DateStateVariables";
 import ObjectStateVariables from "./ObjectStateVariables";
 import ArrayStateVariables from "./ArrayStateVariables";
+import ParentStateComponent from "./ParentStateComponent";
 
 
 
@@ -40,6 +41,7 @@ export default function ManagingComponentState() {
                 <DateStateVariables />
                 <ObjectStateVariables />
                 <ArrayStateVariables />
+                <ParentStateComponent />
             </ul>
             
             
