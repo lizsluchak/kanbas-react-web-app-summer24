@@ -19,11 +19,22 @@ import Kanbas from "../Kanbas";
 import TOC from "./TOC";
 import "../index.css"
 import Lab4 from "./Lab4";
+import store from "./store";
+import { Provider } from "react-redux";
 
 
 export default function Labs() {
     return(
-        <div id="wd-labs">
+      // The application state can then be shared with the entire Web 
+      // application by wrapping it with a Provider component that makes the 
+      // state data in the store available to all components within the 
+      // Provider's body.
+      // Components within the body of the Provider can then select the state 
+      // data they want using the useSelector hook as shown below. 
+      // Add the HelloRedux component to ReduxExamples and confirm it renders as shown below.
+      <Provider store={store}>
+
+        <div id="wd-labs" className="container-fluid">
         
         <h1>Welcome to Web Dev: Summer 2024 CS5610 </h1>
         <h2>Elisabeth Sluchak</h2>
@@ -46,6 +57,8 @@ export default function Labs() {
       </Routes>
 
         </div>
+
+        </Provider>
 
     );
 

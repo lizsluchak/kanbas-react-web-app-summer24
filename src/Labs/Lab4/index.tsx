@@ -1,5 +1,6 @@
 import HandlingUserEvents from "./HandlingUserEvents";
 import Lab4Introduction from "./Lab4Introduction";
+import ManagingApplicationState from "./ManagingApplicationState";
 import ManagingComponentState from "./ManagingComponentState";
 import "./styles.css"
 
@@ -15,6 +16,7 @@ export default function Lab4() {
             <Lab4Introduction />
             <HandlingUserEvents />
             <ManagingComponentState />
+            <ManagingApplicationState />
             
 
 
