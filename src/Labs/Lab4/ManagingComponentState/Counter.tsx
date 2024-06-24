@@ -26,7 +26,7 @@ export default function Counter() {
 
 
 
-            </ul>
+         
             <br />
 
             {/** Version 1: Virtual / Real DOM not affected */}
@@ -59,7 +59,7 @@ export default function Counter() {
                 </div>
 
             </div>
-
+            </ul>
 
             <hr />
         </div>

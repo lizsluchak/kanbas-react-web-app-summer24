@@ -19,7 +19,7 @@ export default function StringStateVariables() {
                 <li>The e.target.value contains the value of the input field and is used to update the current value of the state variable.</li>
 
 
-            </ul>
+            
             <br />
 
             <div>
@@ -33,6 +33,7 @@ export default function StringStateVariables() {
                     onChange={(e) => setFirstName(e.target.value)} />
                 <hr />
             </div>
+            </ul>
 
 
 

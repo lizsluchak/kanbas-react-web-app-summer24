@@ -18,7 +18,7 @@ export default function BooleanStateVariables() {
                 <li>The exercise below illustrates using the useState hook with boolean state variables: the variable is used to hide or show a DIV as well as render a checkbox as checked or not. </li>
                 <li>Also note the use of onChange in the checkbox to set the value of state variable.</li>
 
-            </ul>
+            
             <br />
 
             <div id="wd-boolean-state-variables">
@@ -34,6 +34,7 @@ export default function BooleanStateVariables() {
                     {done && <div className="alert alert-success">
                     Yay! you are done</div>}
             </div>
+            </ul>
 
 
 

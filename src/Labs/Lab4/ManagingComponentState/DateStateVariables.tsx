@@ -25,7 +25,7 @@ export default function DateStateVariables() {
                 <li>The dateObjectToHtmlDateString function can convert a Date object into the YYYY-MM-DD format expected by the HTML date input field. </li>
                 <li>The function is used to initialize and set the date field's value attribute so it matches the expected format. Changes in date field are handled by the onChange attribute which updates the new date using the setStartDate mutator function.</li>
 
-            </ul>
+            
             <br />
 
             <div>
@@ -49,6 +49,7 @@ export default function DateStateVariables() {
 
                 <hr />
             </div>
+            </ul>
             <hr />
         </div>
 

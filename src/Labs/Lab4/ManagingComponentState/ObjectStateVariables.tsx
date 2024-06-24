@@ -17,7 +17,7 @@ export default function ObjectStateVariables() {
                 <li>We declare person object state variable with initial property values name and age. The object is rendered on the screen using JSON.stringify to see the changes in real time.</li> 
                 <li>Two value of two input fields are initialized to the object's person.name string property and the object's person.age number property. As the user types in the input fields, the onChange attribute passes the events to update the object's property using the setPerson mutator functions. The object is updated by creating new objects copied from the previous object value using the spreader operator (...person), and then overriding the name or age property with the target.value.</li>
                 
-            </ul>
+            
             <br />
 
 
@@ -41,6 +41,7 @@ export default function ObjectStateVariables() {
                 />
                 <hr />
             </div>
+            </ul>
 
 
 

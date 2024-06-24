@@ -12,6 +12,7 @@ export default function ParentStateComponent() {
                 <h5 className="lab4-section-definition">2.3.8: Sharing State Between Components</h5>
                 <ul>
                     <li>State can be shared between components by passing references to state variables and/or functions that update them. The example below demonstrates a ParentStateComponent sharing counter state variable and setCounter mutator function with ChildStateComponent by passing it references to counter and setCounter as attributes.</li>
+                    <li>The ChildStateComponent can use references to counter and setCounter to render the state variable and manipulate it through the mutator function.</li>
                
                 <br />
                 <div>
