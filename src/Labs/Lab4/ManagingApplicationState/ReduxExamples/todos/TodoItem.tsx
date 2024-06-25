@@ -10,14 +10,20 @@ import { deleteTodo, setTodo } from "./todosReducer"; // import reducer function
  * @returns 
  */
 
-
-
-export default function TodoItem( { todo} ) {
-    // todo: { title: string };
-    //   deleteTodo, setTodo
-
-  const dispatch = useDispatch(); // create dispatch instance to invoke reducer functions
+export default function TodoItem({ todo }: {
+  todo: { id: string; title: string };
+}) {
+  const dispatch = useDispatch();
   return (
+
+
+
+// export default function TodoItem( { todo: any} ) {
+//     // todo: { title: string };
+//     //   deleteTodo, setTodo
+
+//   const dispatch = useDispatch(); // create dispatch instance to invoke reducer functions
+//   return (
     <li key={todo.id} className="list-group-item">
       <button onClick={() => dispatch(deleteTodo(todo.id))} // wrap reducer functions with dispatch
               id="wd-delete-todo-click"> Delete </button>
