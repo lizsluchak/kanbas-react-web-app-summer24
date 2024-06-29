@@ -43,32 +43,45 @@ export default function Dashboard() {
     setCourses(courses.filter((course) => course._id !== courseId));
   };
 
+  // updateCourse: 
+  const updateCourse = () => {
+    setCourses(
+      courses.map((c) => {
+        if (c._id === course._id) {
+          return course;
+        } else {
+          return c;
+        }
+      })
+    );
+  };
+
+
 
   return (
-
-    //root div
     <div id="wd-dashboard" className="p-4" >
-
-      {/** Static Header */}
       <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
       <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2><hr />
-
       <h5>New Course
         <button className="btn btn-primary float-end"
           id="wd-add-new-course-click"
           onClick={addNewCourse} > Add </button>
+        <button className="btn btn-warning float-end me-2"
+          onClick={updateCourse} id="wd-update-course-click">
+          Update
+        </button>
       </h5><br />
 
-      {/* input element for each of fields in course state variable */}
+
+      {/* New Course Input Form Elements:
+          onChange attribute used to update field via setCourse mutator function */}
       <input value={course.name} className="form-control mb-2"
-        // onChange attributes to each of the input fields to update each of the fields using the setCourse mutator function, as shown below
         onChange={(e) => setCourse({ ...course, name: e.target.value })} />
 
       <input value={course.number} className="form-control mb-2"
         onChange={(e) => setCourse({ ...course, number: e.target.value })} />
 
       <label htmlFor="wd-new-course-start-date" className="p-2">New Start Date</label>
-
       <input type="date" className="form-control" id="wd-new-course-start-date" value={course.startDate}
         onChange={(e) => setCourse({ ...course, startDate: e.target.value })} />
 
@@ -76,17 +89,14 @@ export default function Dashboard() {
       <input type="date" className="form-control" id="wd-due-date" value={course.endDate}
         onChange={(e) => setCourse({ ...course, endDate: e.target.value })} />
 
-
       <textarea value={course.description} className="form-control mb-2"
         onChange={(e) => setCourse({ ...course, description: e.target.value })} />
-
       <hr />
 
 
       {/** Dyanmically Rendered Course Offerings */}
       <div id="wd-dashboard-courses" className="row">
         <div className="row row-cols-1 row-cols-md-5 g-4">
-
           {courses.map((course) => (
 
             <div key={course._id} id="wd-dashboard-course" className="col" style={{ width: "300px" }}>
@@ -94,19 +104,13 @@ export default function Dashboard() {
 
                 <Link to={`/Kanbas/Courses/${course._id}/Home`} className="text-decoration-none" >
                   <div className="card rounded-3 overflow-hidden">
-
                     <img src={course.image_url} style={{ height: "200px" }} />
                     <div className="card-body">
-
                       <span className="wd-dashboard-course-link"
                         style={{ textDecoration: "none", color: "navy", fontWeight: "bold" }} >
-                        {course.number}: {course.name}
-                      </span>
-
+                        {course.number}: {course.name}</span>
                       <p className="wd-dashboard-course-title card-text" style={{ maxHeight: 50, overflow: "hidden" }}>
-                        {course.description}
-                      </p>
-
+                        {course.description} </p>
                       <Link to={`/Kanbas/Courses/${course._id}/Home`} className="btn btn-primary">Go</Link>
                       <button onClick={(event) => {
                         event.preventDefault();
@@ -115,9 +119,19 @@ export default function Dashboard() {
                         id="wd-delete-course-click">
                         Delete
                       </button>
+                      <button id="wd-edit-course-click"
+                        onClick={(event) => {
+                          event.preventDefault(); // prevent default navigates to course screen
+                          setCourse(course);
+                        }}
+                        className="btn btn-warning me-2 float-end" >
+                        Edit
+                      </button>
+
 
                     </div>
                   </div>
+
                 </Link>
               </div>
             </div>
