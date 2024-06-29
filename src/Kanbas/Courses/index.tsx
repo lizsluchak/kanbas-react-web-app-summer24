@@ -7,15 +7,15 @@ import { Route, Routes, useParams, useLocation} from "react-router"; //took off 
 import { FaAlignJustify } from "react-icons/fa6";
 import Quizzes from "./Quizzes";
 import Grades from "./Grades";
-import { courses } from "../Database";
+// import { courses } from "../Database";
 // import { Link } from "react-router-dom";
 
 
-export default function Courses() {
+export default function Courses({ courses }: { courses: any[]; }) {
   const { cid } = useParams();
+  const course = courses.find((course) => course._id === cid);
   console.log("Course ID:", cid);
   console.log("hello")
-  const course = courses.find((course) => course._id === cid);
   const { pathname } = useLocation();
   return (
     <div id="wd-courses">

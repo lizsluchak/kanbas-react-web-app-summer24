@@ -5,9 +5,56 @@ import Courses from "./Courses";
 import TOC2 from "../Labs/Lab2/PillNavigation";
 import "./styles.css"
 import ScreenSizeLabel from "../ScreenSizeLabel";
+import * as db from "./Database";
+import { useState } from "react";
 
 
 export default function Kanbas() {
+  //create courses state variable and initalize with database's courses
+  const [courses, setCourses] = useState(db.courses);
+
+  // convert course into a state variable so we can change it and force a redraw of UI
+  const [course, setCourse] = useState<any>({
+
+    // create a course object with default values
+    _id: "0", name: "New Course", number: "New Number",
+    startDate: "2023-09-10", endDate: "2023-12-15",
+    image_url: "/images/reactjs.jpg", description: "New Description"
+
+  });
+
+  // create addNewCourse event handler that sets courses as copy of current
+  // courses state array add course at the end of the array overriding _id
+  // to current time stamp
+  const addNewCourse = () => {
+    const newCourse = {
+      ...course,    //... is object spread operator, it creates a shallow copy of the course object, spreading its properties into a new object
+      _id: new Date().getTime().toString()
+    }; // override id with current date and adds new course to array
+    setCourses([...courses, { ...course, ...newCourse }]); //updates courses state variable by calling setCourses with new array just created
+  };
+
+  // add deleteCourse event handler accepting
+  // ID of course to remove by filtering out
+  // the course by its ID
+  const deleteCourse = (courseId: string) => {
+    setCourses(courses.filter((course) => course._id !== courseId));
+  };
+
+  // updateCourse: 
+  const updateCourse = () => {
+    setCourses(
+      courses.map((c) => {
+        if (c._id === course._id) {
+          return course;
+        } else {
+          return c;
+        }
+      })
+    );
+  };
+
+
     return (
       
       <div id="wd-kanbas">
@@ -36,8 +83,17 @@ export default function Kanbas() {
             <Routes>
               <Route path="/" element={<Navigate to="Dashboard" />} />
               <Route path="/Account" element={<h2>Account</h2>} />
-              <Route path="/Dashboard" element={<Dashboard />} />
-              <Route path="/Courses/:cid/*" element={<Courses />} />
+              <Route path="/Dashboard" element={<Dashboard 
+              courses={courses}
+              course={course}
+              setCourse={setCourse}
+              addNewCourse={addNewCourse}
+              deleteCourse={deleteCourse}
+              updateCourse={updateCourse}/>
+              
+              } />
+              <Route path="/Courses/:cid/*" element={
+                <Courses  courses={courses} />} />
               <Route path="/Calendar" element={<h2>Calendar</h2>} />
               <Route path="/Inbox" element={<h2>Inbox</h2>} />
             </Routes>

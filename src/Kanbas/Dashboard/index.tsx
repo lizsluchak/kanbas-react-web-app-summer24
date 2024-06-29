@@ -10,55 +10,18 @@ import * as db from "../Database";
  * 
  */
 {/** TODO: new courses are not saved on refresh - need to link them to DB*/ }
-export default function Dashboard() {
-
-  //create courses state variable and initalize with database's courses
-  const [courses, setCourses] = useState(db.courses);
-
-  // convert course into a state variable so we can change it and force a redraw of UI
-  const [course, setCourse] = useState<any>({
-
-    // create a course object with default values
-    _id: "0", name: "New Course", number: "New Number",
-    startDate: "2023-09-10", endDate: "2023-12-15",
-    image_url: "/images/reactjs.jpg", description: "New Description"
-
-  });
-
-  // create addNewCourse event handler that sets courses as copy of current
-  // courses state array add course at the end of the array overriding _id
-  // to current time stamp
-  const addNewCourse = () => {
-    const newCourse = {
-      ...course,    //... is object spread operator, it creates a shallow copy of the course object, spreading its properties into a new object
-      _id: new Date().getTime().toString()
-    }; // override id with current date and adds new course to array
-    setCourses([...courses, { ...course, ...newCourse }]); //updates courses state variable by calling setCourses with new array just created
-  };
-
-  // add deleteCourse event handler accepting
-  // ID of course to remove by filtering out
-  // the course by its ID
-  const deleteCourse = (courseId: string) => {
-    setCourses(courses.filter((course) => course._id !== courseId));
-  };
-
-  // updateCourse: 
-  const updateCourse = () => {
-    setCourses(
-      courses.map((c) => {
-        if (c._id === course._id) {
-          return course;
-        } else {
-          return c;
-        }
-      })
-    );
-  };
+export default function Dashboard( 
+  { courses, course, setCourse, addNewCourse, deleteCourse, updateCourse }: {
+    courses: any[], 
+    course: any, 
+    setCourse: (course: any) => void; 
+    addNewCourse: () => void;
+    deleteCourse: (course: any) => void; 
+    updateCourse: () => void; })
+    {
+      return(
 
 
-
-  return (
     <div id="wd-dashboard" className="p-4" >
       <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
       <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2><hr />
