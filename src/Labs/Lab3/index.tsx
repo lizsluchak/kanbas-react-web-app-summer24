@@ -47,9 +47,7 @@ export default function Lab3() {
           </li>
         ))}
       </ul>
-      <hr />
-
-      <hr/><hr/>
+      <hr /> 
         <VariablesAndConstants />
         <VariableTypes />
         <BooleanVariables />
