@@ -5,13 +5,16 @@ export default function Dashboard() {
 
   //create courses state variable and initalize with database's courses
   const [courses, setCourses] = useState(db.courses); 
+
+  // convert course into a state variable so we can change it and force a redraw of UI
+  const [course, setCourse] = useState<any>({
   
   // create a course object with default values
-  const course: any = {
     _id: "0", name: "New Course", number: "New Number",
     startDate: "2023-09-10", endDate: "2023-12-15",
     image_url: "/images/reactjs.jpg", description: "New Description"
-  };
+  
+  });
 
   // create addNewCourse event handler that sets courses as copy of current
   // courses state array add course at the end of the array overriding _id
@@ -35,7 +38,30 @@ export default function Dashboard() {
           <button className="btn btn-primary float-end"
                   id="wd-add-new-course-click"
                   onClick={addNewCourse} > Add </button>
-      </h5><hr />
+      </h5><br />
+
+      {/* input element for each of fields in course state variable */}
+      <input value={course.name} className="form-control mb-2"
+              // onChange attributes to each of the input fields to update each of the fields using the setCourse mutator function, as shown below
+              onChange={(e) => setCourse({ ...course, name: e.target.value }) } />
+
+      <input value={course.number} className="form-control mb-2"
+              onChange={(e) => setCourse({ ...course, number: e.target.value }) } /> 
+
+      <label htmlFor="wd-new-course-start-date" className="p-2">New Start Date</label>
+
+      <input type="date" className="form-control" id="wd-new-course-start-date" value={course.startDate}
+              onChange={(e) => setCourse({ ...course, startDate: e.target.value }) } />
+
+      <label htmlFor="wd-new-course-end-date" className="p-2">New End Date</label> 
+      <input type="date" className="form-control" id="wd-due-date" value={course.endDate}
+              onChange={(e) => setCourse({ ...course, endDate: e.target.value }) } /> 
+
+      
+      <textarea value={course.description} className="form-control mb-2"
+            onChange={(e) => setCourse({ ...course, description: e.target.value }) } />  
+     
+      <hr />
 
 
       {/** Dyanmically Rendered Course Offerings */}
@@ -55,7 +81,7 @@ export default function Dashboard() {
 
                     <span className="wd-dashboard-course-link"
                       style={{ textDecoration: "none", color: "navy", fontWeight: "bold" }} >
-                      {course._id}: {course.name}
+                      {course.number}: {course.name}
                     </span>
 
                     <p className="wd-dashboard-course-title card-text" style={{ maxHeight: 50, overflow: "hidden" }}>
