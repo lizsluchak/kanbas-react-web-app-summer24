@@ -2,14 +2,17 @@ import Dashboard from "./Dashboard";
 import KanbasNavigation from "./Navigation";
 import { Routes, Route, Navigate } from "react-router";
 import Courses from "./Courses";
-import TOC2 from "../Labs/Lab2/PillNavigation";
 import "./styles.css"
 import ScreenSizeLabel from "../ScreenSizeLabel";
-import * as db from "./Database";
-import { useState } from "react";
+import * as db from "./Database"; //kanbas needs a database now
+import { useState } from "react"; //needs use state
 
 
 export default function Kanbas() {
+  /**
+   * moved state variables and event handlers from the dashboard to the
+   * kanbas component as it is parent to both the dashboard/courses component
+   */
   //create courses state variable and initalize with database's courses
   const [courses, setCourses] = useState(db.courses);
 
@@ -84,15 +87,18 @@ export default function Kanbas() {
               <Route path="/" element={<Navigate to="Dashboard" />} />
               <Route path="/Account" element={<h2>Account</h2>} />
               <Route path="/Dashboard" element={<Dashboard 
-              courses={courses}
-              course={course}
-              setCourse={setCourse}
-              addNewCourse={addNewCourse}
-              deleteCourse={deleteCourse}
-              updateCourse={updateCourse}/>
+
+                      //pass reference to state variables & event handlers to dashboard
+                      courses={courses}
+                      course={course}
+                      setCourse={setCourse}
+                      addNewCourse={addNewCourse}
+                      deleteCourse={deleteCourse}
+                      updateCourse={updateCourse}/>
               
               } />
               <Route path="/Courses/:cid/*" element={
+                // pass all courses to the dashboard, since it might get ones not just from db
                 <Courses  courses={courses} />} />
               <Route path="/Calendar" element={<h2>Calendar</h2>} />
               <Route path="/Inbox" element={<h2>Inbox</h2>} />
@@ -104,62 +110,3 @@ export default function Kanbas() {
 );}
 
 
-
-
-{/* Previous Iterations:
-
-  (1) I dont remember why we stopped using this one:
-      <table>
-        <tr>
-          <td valign="top">
-            <KanbasNavigation />
-          </td>
-          <td valign="top">
-            <Routes>
-              <Route path="/" element={<Navigate to="Dashboard" />} />
-              <Route path="Account" element={<h1>Account</h1>} />
-              <Route path="Dashboard" element={<Dashboard />} />
-              <Route path="Courses/:id/*" element={<Courses />} />
-              <Route path="Calendar" element={<h1>Calendar</h1>} />
-              <Route path="Inbox" element={<h1>Inbox</h1>} />
-            </Routes>
-          </td>
-        </tr>
-      </table>
-  (2) We stopped using the below version because it uses table elements
-      to layout screens horizontally ~ generally considered a bad practice.
-      Instead we switch to implementing it with DIVs and CSS flex instead
-      of tables:
-            <div id="wd-kanbas">
-            <table>
-              <tr>
-                <td valign="top">
-                  <KanbasNavigation />
-                </td>
-
-                <td valign="top">
-                  <Routes>
-                    <Route path="/" element={<Navigate to="Dashboard" />} />
-                    <Route path="Account" element={<h1>Account</h1>} />
-                    <Route path="Dashboard" element={<Dashboard />} />
-                    <Route path="Courses/:id/*" element={<Courses />} />
-                    <Route path="Calendar" element={<h1>Calendar</h1>} />
-                    <Route path="Inbox" element={<h1>Inbox</h1>} />
-                  </Routes>
-                </td>
-              </tr>
-      </table>
-    </div>
-    
-    
-    
-    
-    
-*/}
-
-      
-  
-
-//   //i had to add this export line.. why?
-// export {}
-  

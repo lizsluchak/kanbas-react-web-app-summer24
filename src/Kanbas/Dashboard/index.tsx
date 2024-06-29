@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import * as db from "../Database";
+// import * as db from "../Database";
 
 
 /**
  * 
  * @returns
  * 
- * 
+ * TODO: new courses are not saved on refresh - need to link them to DB
  */
-{/** TODO: new courses are not saved on refresh - need to link them to DB*/ }
 export default function Dashboard( 
   { courses, course, setCourse, addNewCourse, deleteCourse, updateCourse }: {
     courses: any[], 
@@ -67,7 +66,7 @@ export default function Dashboard(
 
                 <Link to={`/Kanbas/Courses/${course._id}/Home`} className="text-decoration-none" >
                   <div className="card rounded-3 overflow-hidden">
-                    <img src={course.image_url} style={{ height: "200px" }} />
+                    <img src={course.image_url} alt="reflects name of course" style={{ height: "200px" }} />
                     <div className="card-body">
                       <span className="wd-dashboard-course-link"
                         style={{ textDecoration: "none", color: "navy", fontWeight: "bold" }} >
