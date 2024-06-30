@@ -7,50 +7,55 @@ import * as db from "../../Database";
 import { BsGripVertical } from "react-icons/bs";
 import ModuleControlButtons from "./ModuleControlButtons";
 import LessonControlButtons from "./LessonControlButtons";
+import { addModule, editModule, updateModule, deleteModule }
+  from "./reducer";
+import { useSelector, useDispatch } from "react-redux";
 
 
 export default function Modules() {
   const { cid } = useParams();
-  const [modules, setModules] = useState<any[]>(db.modules);
   const [moduleName, setModuleName] = useState("");
+  const { modules } = useSelector((state: any) => state.modulesReducer); // retrieve modules state variables
+  const dispatch = useDispatch(); // get dispatch to call reducer functions
 
-  /**
-   * Add Module Function
-   */
-  const addModule = () => {
-    setModules([...modules, {
-      _id: new Date().getTime().toString(),
-      name: moduleName, course: cid, lessons: []
-    }]);
-    setModuleName("");
-  };
 
-  /**
-   * Delete Module Function  
-   * @param moduleId 
-   */
-  const deleteModule = (moduleId: string) => {
-    setModules(modules.filter((m) => m._id !== moduleId));
-  };
+  // /**
+  //  * Add Module Function
+  //  */
+  // const addModule = () => {
+  //   setModules([...modules, {
+  //     _id: new Date().getTime().toString(),
+  //     name: moduleName, course: cid, lessons: []
+  //   }]);
+  //   setModuleName("");
+  // };
 
-  /**
-   * Edit Module Function
-   * Set module's editing flag to true so that we can display the input field
-   * to edit's name
-   * @param moduleId 
-   */
-  const editModule = (moduleId: string) => {
-    setModules(modules.map((m) => (m._id === moduleId ? { ...m, editing: true } : m)));
-  };
+  // /**
+  //  * Delete Module Function  
+  //  * @param moduleId 
+  //  */
+  // const deleteModule = (moduleId: string) => {
+  //   setModules(modules.filter((m) => m._id !== moduleId));
+  // };
 
-  /**
-   * Update Module Function
-   * Update any fields of a module
-   * @param module 
-   */
-  const updateModule = (module: any) => {
-    setModules(modules.map((m) => (m._id === module._id ? module : m)));
-  };
+  // /**
+  //  * Edit Module Function
+  //  * Set module's editing flag to true so that we can display the input field
+  //  * to edit's name
+  //  * @param moduleId 
+  //  */
+  // const editModule = (moduleId: string) => {
+  //   setModules(modules.map((m) => (m._id === moduleId ? { ...m, editing: true } : m)));
+  // };
+
+  // /**
+  //  * Update Module Function
+  //  * Update any fields of a module
+  //  * @param module 
+  //  */
+  // const updateModule = (module: any) => {
+  //   setModules(modules.map((m) => (m._id === module._id ? module : m)));
+  // };
 
 
 
@@ -58,7 +63,13 @@ export default function Modules() {
     <div id="wd-modules" className="d-flex">
 
       <div className="d-flex flex-column flex-fill">
-        <ModulesControls setModuleName={setModuleName} moduleName={moduleName} addModule={addModule} />
+        <ModulesControls setModuleName={setModuleName} moduleName={moduleName}
+          addModule={() => {
+            dispatch(addModule({ name: moduleName, course: cid }));
+            setModuleName("");
+          }}
+
+        />
 
 
         <div className="flex-fill">
@@ -71,24 +82,38 @@ export default function Modules() {
 
                   <div className="wd-title p-3 ps-3 bg-secondary">
                     <BsGripVertical className="me-2 fs-3" />
+
+                    {/** instead of showing name all the time, use conditional logic to regulate:
+                     * if editing module name == false -> render module name
+                     * if editing module name == true bc clicked edit pencil -> show module name in textbox
+                     */}
                     {!module.editing && module.name}
                     {module.editing && (
                       <input className="form-control w-50 d-inline-block"
-                        onChange={(e) => updateModule({ ...module, name: e.target.value })}
-                        onKeyDown={(e) => {
+
+                        onChange={(e) => // on change in textbox, update module
+                          dispatch(updateModule({ ...module, name: e.target.value }))}
+
+                        onKeyDown={(e) => { // on enter key, eiting field is set to false to hide input field
                           if (e.key === "Enter") {
-                            updateModule({ ...module, editing: false });
+                            dispatch(updateModule({ ...module, editing: false }));
                           }
                         }}
+
                         value={module.name} />
                     )}
 
-                    
 
-                    <ModuleControlButtons
+
+                    <ModuleControlButtons 
                       moduleId={module._id}
-                      deleteModule={deleteModule}
-                      editModule={editModule} />
+                      deleteModule={(moduleId) => {
+                        // wrap reducer functions with dispatch
+                        dispatch(deleteModule(moduleId));
+                      }}
+                      // wrap reducer functions with dispatch
+                      editModule={(moduleId) => dispatch(editModule(moduleId))}
+                    />
 
                   </div>
 
