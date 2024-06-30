@@ -12,10 +12,11 @@ import * as db from "../../../Database"
  * @returns 
  */
 
-export default function ModuleDataTable() {
+export default function ModuleDataTable( { modules }: {
+  modules: any[]}) {
   const { cid } = useParams(); //capture parameter -> courseId
+  // const [modules, setModules] = useState<any[]>(db.modules) //modules set to be a state variable
   
-  const [modules, setModules] = useState<any[]>(db.modules) //modules set to be a state variable
   return (
     
     <div className="flex-fill">

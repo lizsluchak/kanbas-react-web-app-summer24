@@ -2,20 +2,25 @@ import { FaPlus } from "react-icons/fa6";
 import GreenCheckmark from "../GreenCheckmark";
 import GreyCancel from "../GreyCancel";
 import { BsSlashCircle, BsSlashCircleFill } from "react-icons/bs";
+import ModuleEditor from "../ModuleEditor";
+
 
 /**
  * 
  * @returns 
  */
-export default function ModulesControls() {
+export default function ModulesControls(
+  { moduleName, setModuleName, addModule }:
+{ moduleName: string; setModuleName: (title: string) => void; addModule: () => void; }) {
   return (
-    <div id="wd-modules-controls" className="text-nowrap p-3">
+    <div id="wd-modules-controls" className="text-nowrap">
+    <button className="btn btn-lg btn-danger me-1 float-end mb-3"
+      data-bs-toggle="modal" data-bs-target="#wd-add-module-dialog" >
+      <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
+      Module
+    </button>
+    
 
-
-      <button id="wd-add-module-btn" className="btn btn-md btn-danger float-end">
-        <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
-        Module
-      </button>
 
 
       <div className="dropdown show d-inline me-2 float-end">
@@ -67,8 +72,9 @@ export default function ModulesControls() {
               Collapse All
             </button>
         </div>
-   
-    
+        <ModuleEditor dialogTitle="Add Module" moduleName={moduleName}
+
+                    setModuleName={setModuleName} addModule={addModule} />
     </div>
   );
 }
