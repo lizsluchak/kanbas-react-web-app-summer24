@@ -7,7 +7,7 @@ import { Route, Routes, useParams, useLocation} from "react-router"; //took off 
 import { FaAlignJustify } from "react-icons/fa6";
 import Quizzes from "./Quizzes";
 import Grades from "./Grades";
-// import { courses } from "../Database";
+// import { courses } from "../Database"; we no longer want only courses to be imported to courses screen
 // import { Link } from "react-router-dom";
 
 

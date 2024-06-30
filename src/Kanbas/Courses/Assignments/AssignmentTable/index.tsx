@@ -62,9 +62,12 @@ export default function AssignmentDataTable() {
                                                     
                                                     
                                                 </div>
-                                                <div className="d-flex align-items-center">
-                                                    <ModuleControlButtons />
-                                                </div>
+                                                {/* <div className="d-flex align-items-center">
+                                                    <ModuleControlButtons
+                                                    moduleId={module._id}
+                                                    deleteModule={deleteModule}/>
+                                            
+                                                </div> */}
                                               
                                             </div>
                                             </li>
