@@ -11,11 +11,12 @@ import LessonControlButtons from "./LessonControlButtons";
 
 export default function Modules() {
   const { cid } = useParams();
-  const [moduleName, setModuleName] = useState("");
   const [modules, setModules] = useState<any[]>(db.modules);
+  const [moduleName, setModuleName] = useState("");
 
-
-  //add module function
+  /**
+   * Add Module Function
+   */
   const addModule = () => {
     setModules([...modules, {
       _id: new Date().getTime().toString(),
@@ -24,10 +25,33 @@ export default function Modules() {
     setModuleName("");
   };
 
-  //delete modules function
+  /**
+   * Delete Module Function  
+   * @param moduleId 
+   */
   const deleteModule = (moduleId: string) => {
     setModules(modules.filter((m) => m._id !== moduleId));
   };
+
+  /**
+   * Edit Module Function
+   * Set module's editing flag to true so that we can display the input field
+   * to edit's name
+   * @param moduleId 
+   */
+  const editModule = (moduleId: string) => {
+    setModules(modules.map((m) => (m._id === moduleId ? { ...m, editing: true } : m)));
+  };
+
+  /**
+   * Update Module Function
+   * Update any fields of a module
+   * @param module 
+   */
+  const updateModule = (module: any) => {
+    setModules(modules.map((m) => (m._id === module._id ? module : m)));
+  };
+
 
 
   return (
@@ -47,11 +71,24 @@ export default function Modules() {
 
                   <div className="wd-title p-3 ps-3 bg-secondary">
                     <BsGripVertical className="me-2 fs-3" />
-                    {module.name}
+                    {!module.editing && module.name}
+                    {module.editing && (
+                      <input className="form-control w-50 d-inline-block"
+                        onChange={(e) => updateModule({ ...module, name: e.target.value })}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            updateModule({ ...module, editing: false });
+                          }
+                        }}
+                        value={module.name} />
+                    )}
+
+                    
 
                     <ModuleControlButtons
                       moduleId={module._id}
-                      deleteModule={deleteModule} />
+                      deleteModule={deleteModule}
+                      editModule={editModule} />
 
                   </div>
 
