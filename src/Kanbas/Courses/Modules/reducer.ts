@@ -13,6 +13,16 @@ import { modules } from "../../Database";
  * To start, create the reducer.tsx shown below containing the modules state 
  * variables as well as the addModule, deleteModule, updateModule, and 
  * editModule functions reimplemented in the reducers property.
+ * 
+ * 1. add redux
+ * 2. create slice
+ * 3. add reducer functions
+ * 4. create store and add reducer or update approriate store 
+ * 5. "provide store" to whole kanbas application by wrapping it
+ * 6. remove previous state variables since using redux now and replace with selectors, 
+ *      dispatchers, and reducer functions
+ * 7. get dispatch to call reducers fucntions and then wrap each reducer function in a dispatch
+ * 2. 
  */
 const initialState = {
     // set module reducer's intial state to modules loaded in from database
