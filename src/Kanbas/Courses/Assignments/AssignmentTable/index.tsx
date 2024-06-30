@@ -1,15 +1,13 @@
 import { BsGripVertical } from "react-icons/bs";
 
-import { useParams, useLocation } from "react-router";
-import { modules } from "../../../Database";
+import { useParams } from "react-router";
+
 import AssignmentControlButtons from "../AssignmentControlButtons";
 import { FaCaretDown } from "react-icons/fa";
-import AssignmentControls from "../AssignmentControls";
+
 import * as db from "../../../Database";
 import { FaFilePen } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import ModuleControlButtons from "../../Modules/ModuleControlButtons";
-import LessonControlButtons from "../../Modules/LessonControlButtons";
 import "./styles.css"
 
 
@@ -21,11 +19,11 @@ export default function AssignmentDataTable() {
                     <li className="list-group-item p-0 mb-5 fs-5 border-light-grey">
                         {/** Table Header */}
                         <div className="wd-title p-4 ps-2 list-group-item list-group-item-active" style={{ backgroundColor: "#F5F5F5", color: "#000" }}>
-                            <a className="p-2" style={{ all: 'unset', cursor: 'pointer' }}>
+                            <button className="p-2" style={{ all: 'unset', cursor: 'pointer' }}>
                                 <BsGripVertical className="me-2 fs-3" />
                                 <FaCaretDown />
                                 <strong> ASSIGNMENTS </strong>
-                            </a>
+                            </button>
                             <AssignmentControlButtons />
                         </div>
 

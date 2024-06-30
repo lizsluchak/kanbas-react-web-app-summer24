@@ -1,7 +1,7 @@
 import { FaPlus } from "react-icons/fa6";
 import GreenCheckmark from "../GreenCheckmark";
-import GreyCancel from "../GreyCancel";
-import { BsSlashCircle, BsSlashCircleFill } from "react-icons/bs";
+
+import { BsSlashCircle } from "react-icons/bs";
 import ModuleEditor from "../ModuleEditor";
 
 

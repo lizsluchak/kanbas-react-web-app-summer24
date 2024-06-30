@@ -6,9 +6,12 @@ import "./styles.css"
 import ScreenSizeLabel from "../ScreenSizeLabel";
 import * as db from "./Database"; //kanbas needs a database now
 import { useState } from "react"; //needs use state
+import store from "./store";
+import { Provider } from "react-redux";
 
 
 export default function Kanbas() {
+  
   /**
    * moved state variables and event handlers from the dashboard to the
    * kanbas component as it is parent to both the dashboard/courses component
@@ -59,7 +62,7 @@ export default function Kanbas() {
 
 
     return (
-      
+      <Provider store={store}>
       <div id="wd-kanbas">
         <ScreenSizeLabel />
 
@@ -106,7 +109,7 @@ export default function Kanbas() {
           </div>
       </div>
     </div>
-
+</Provider>
 );}
 
 
