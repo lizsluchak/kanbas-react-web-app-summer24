@@ -1,16 +1,24 @@
+import React, {useState} from "react"; 
 import { BsGripVertical } from "react-icons/bs";
 import ModuleControlButtons from "../ModuleControlButtons";
 import LessonControlButtons from "../ModuleControlButtons";
 import { useParams, useLocation } from "react-router";
-import { modules } from "../../../Database";
+import * as db from "../../../Database"
 
+/**
+ * Refactoring Modules to Include State Data: 
+ * (1) as use state variable to table
+ * (2) convert modules array into a state variable
+ * @returns 
+ */
 
 export default function ModuleDataTable() {
   const { cid } = useParams(); //capture parameter -> courseId
+  
+  const [modules, setModules] = useState<any[]>(db.modules) //modules set to be a state variable
   return (
     
     <div className="flex-fill">
-
       <ul id="wd-modules" className="d-flex list-group rounded-0" >
         {modules
           .filter((module: any) => module.course === cid)
