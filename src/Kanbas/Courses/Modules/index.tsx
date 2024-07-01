@@ -18,47 +18,6 @@ export default function Modules() {
   const { modules } = useSelector((state: any) => state.modulesReducer); // retrieve modules state variables
   const dispatch = useDispatch(); // get dispatch to call reducer functions
 
-
-  // /**
-  //  * Add Module Function
-  //  */
-  // const addModule = () => {
-  //   setModules([...modules, {
-  //     _id: new Date().getTime().toString(),
-  //     name: moduleName, course: cid, lessons: []
-  //   }]);
-  //   setModuleName("");
-  // };
-
-  // /**
-  //  * Delete Module Function  
-  //  * @param moduleId 
-  //  */
-  // const deleteModule = (moduleId: string) => {
-  //   setModules(modules.filter((m) => m._id !== moduleId));
-  // };
-
-  // /**
-  //  * Edit Module Function
-  //  * Set module's editing flag to true so that we can display the input field
-  //  * to edit's name
-  //  * @param moduleId 
-  //  */
-  // const editModule = (moduleId: string) => {
-  //   setModules(modules.map((m) => (m._id === moduleId ? { ...m, editing: true } : m)));
-  // };
-
-  // /**
-  //  * Update Module Function
-  //  * Update any fields of a module
-  //  * @param module 
-  //  */
-  // const updateModule = (module: any) => {
-  //   setModules(modules.map((m) => (m._id === module._id ? module : m)));
-  // };
-
-
-
   return (
     <div id="wd-modules" className="d-flex">
 

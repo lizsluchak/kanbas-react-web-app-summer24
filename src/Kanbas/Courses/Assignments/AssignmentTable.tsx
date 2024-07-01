@@ -1,11 +1,8 @@
 import { BsGripVertical } from "react-icons/bs";
-
 import { useParams } from "react-router";
-
-import AssignmentControlButtons from "../AssignmentControlButtons";
+import AssignmentControlButtons from "./AssignmentControlButtons";
 import { FaCaretDown } from "react-icons/fa";
-
-import * as db from "../../../Database";
+import * as db from "../../Database";
 import { FaFilePen } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import "./styles.css"

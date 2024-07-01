@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 // import * as db from "../../Database";
 import { assignments } from "../../../Database";
 import { Link } from "react-router-dom";
-import "../AssignmentTable/styles.css"
+import "../styles.css"
 
 
 
