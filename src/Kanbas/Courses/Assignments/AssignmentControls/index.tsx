@@ -3,10 +3,14 @@ import { FaPlus } from "react-icons/fa6";
 // import GreyCancel from "../GreyCancel";
 // import { BsSlashCircle, BsSlashCircleFill } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+
 
 
 export default function AssignmentControls() {
-  return (
+    const { cid } = useParams();
+    return (
 
     <div id="wd-assignment-controls" className="d-flex flex-row p-2">
         <div className="justify-content-start" style={{ width: "350px" }}>
@@ -19,10 +23,15 @@ export default function AssignmentControls() {
 
 
         <div className="ms-auto">
-            <button id="wd-add-assignment-btn" className="btn btn-md btn-danger float-end rounded-1">
+        <Link to={`/Kanbas/Courses/${cid}/Assignments/AssignmentEditor/New`} id="wd-add-assignment-btn" className="btn btn-md btn-danger float-end rounded-1">
+            <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
+            Assignment
+        </Link>
+
+            {/* <button id="wd-add-assignment-btn" className="btn btn-md btn-danger float-end rounded-1">
                 <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
                 Assignment
-            </button>
+            </button> */}
 
             <button id="wd-add-assignment-btn border-light-grey" 
                 className="btn btn-md btn-secondary float-end rounded-1 me-1"
@@ -35,9 +44,9 @@ export default function AssignmentControls() {
         <br/>
         <br/>
 
-    </div>
+    </div >
       
     );
 
-    }
+}
 

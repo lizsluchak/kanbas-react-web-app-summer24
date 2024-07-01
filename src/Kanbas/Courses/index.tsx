@@ -3,7 +3,7 @@ import Modules from "./Modules";
 import Home from "./Home";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
-import { Route, Routes, useParams, useLocation} from "react-router"; //took off Navigate
+import { Route, Routes, useParams, useLocation, Navigate} from "react-router"; //took off Navigate
 import { FaAlignJustify } from "react-icons/fa6";
 import Quizzes from "./Quizzes";
 import Grades from "./Grades";
@@ -41,10 +41,11 @@ export default function Courses({ courses }: { courses: any[]; }) {
       
             <div className="flex-fill p-4">
               <Routes>
+                <Route path ="/" element={<Home />} />
                 <Route path="/Home" element={<Home />} />
                 <Route path="/Modules" element={<Modules />} />
                 <Route path="Assignments" element={<Assignments />} />
-                <Route path="Assignments/:aid" element={<AssignmentEditor />} />
+                <Route path="Assignments/:aid/" element={<AssignmentEditor />} />
                 <Route path="Quizzes" element={<Quizzes />} />
                 <Route path="Grades" element={<Grades />} />
               </Routes>

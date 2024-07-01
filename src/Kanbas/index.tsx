@@ -103,6 +103,7 @@ export default function Kanbas() {
               <Route path="/Courses/:cid/*" element={
                 // pass all courses to the dashboard, since it might get ones not just from db
                 <Courses  courses={courses} />} />
+                
               <Route path="/Calendar" element={<h2>Calendar</h2>} />
               <Route path="/Inbox" element={<h2>Inbox</h2>} />
             </Routes>

@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 // import * as db from "../../Database";
 import { assignments } from "../../../Database";
 import { Link } from "react-router-dom";
-import "../AssignmentTable/styles.css"
+import "../styles.css"
 
 
 
@@ -12,6 +12,12 @@ const { aid, cid } = useParams();
 const assignment = assignments.find((assignment) => assignment._id === aid);
  if (!assignment) {
     return <h2>Assignment Not Found</h2>;
+  } else {
+    if (assignment._id === "NewAssignment"){
+      return assignment.title = "", 
+            assignment.availableDate = "", 
+            assignment.availableTime = ""
+    }
   }
 
 
