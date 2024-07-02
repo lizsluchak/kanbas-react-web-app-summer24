@@ -2,6 +2,7 @@
 import React from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 //internal files/components
@@ -11,12 +12,13 @@ import * as db from "../../Database";
 import "./styles.css"
 
 //icons
-import { FaCaretDown } from "react-icons/fa";
+import { FaCaretDown, FaTrash } from "react-icons/fa";
 import { FaFilePen } from "react-icons/fa6";
 import { BsGripVertical, BsPlus } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { IoEllipsisVertical } from "react-icons/io5";
 import GreenCheckmark from "../Modules/GreenCheckmark";
+import { deleteAssignment } from "./reducer";
 
 
 
@@ -28,14 +30,15 @@ import GreenCheckmark from "../Modules/GreenCheckmark";
  */
 export default function Assignments() {
   const { cid } = useParams(); //retrieve courseID
-  const {assignments} = useSelector((state: any) => state.assignmentsReducer)
+  const {assignments} = useSelector((state: any) => state.assignmentsReducer);
+  const dispatch = useDispatch;
 
 
 
 
   return (
     <div id="wd-assignments">
-      <AssignmentListControls />
+      <AssignmentListControls dialogTitle="Hello"  />
 
 
       <div id="wd-assignments">
@@ -88,6 +91,10 @@ export default function Assignments() {
 
                         </div>
                         {/** End Row Buttons for each Assignment */}
+                        <button data-bs-toggle="modal" data-bs-target="#wd-delete-assignment-dialog" >
+                        <FaTrash className="text-danger me-3 mb-1" />
+                        </button>
+
                         <GreenCheckmark/>
                         <IoEllipsisVertical className="fs-4" />
 

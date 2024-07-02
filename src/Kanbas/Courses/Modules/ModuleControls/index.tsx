@@ -73,7 +73,6 @@ export default function ModulesControls(
             </button>
         </div>
         <ModuleEditor dialogTitle="Add Module" moduleName={moduleName}
-
                     setModuleName={setModuleName} addModule={addModule} />
     </div>
   );

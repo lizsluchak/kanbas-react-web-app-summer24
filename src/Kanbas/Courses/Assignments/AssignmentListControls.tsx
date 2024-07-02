@@ -7,9 +7,18 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import { useDispatch } from 'react-redux';
 import { addAssignment } from './reducer'; 
+import ModalDeleteAssignmentPopUp from "./ModalDeleteAssignmentPopUp";
 
 
-export default function AssignmentListControls() {
+export default function AssignmentListControls(
+    { dialogTitle, 
+        // assignmentName, setDeleteAssignment 
+    }:
+    { dialogTitle: string; 
+        // assignmentName: string; 
+        // setDeleteAssignment: (assignmentName: string) => void; 
+        }) 
+ {
     const { cid } = useParams();
     const dispatch = useDispatch(); 
     
@@ -50,7 +59,11 @@ export default function AssignmentListControls() {
         <br/>
         <br/>
         <br/>
-
+        <ModalDeleteAssignmentPopUp dialogTitle="Add Module" 
+                    // assignmentName={assignmentName}
+                    // setModuleName={setModuleName} 
+                    // addModule={addModule} 
+                    />
     </div>
       
     );
