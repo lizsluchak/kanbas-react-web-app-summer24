@@ -1,28 +1,28 @@
-import AssignmentControlButtons from "./AssignmentControlButtons";
-import AssignmentControls from "./AssignmentControls";
-import { BsGripVertical } from "react-icons/bs";
-import * as db from "../../Database";
+//external
+import React from "react";
 import { useParams } from "react-router";
-import "./styles.css"
-
-import { FaCaretDown } from "react-icons/fa";
-
-
-import { FaFilePen } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+//internal files/components
+import AssignmentControlButtons from "./AssignmentControlButtons";
+import AssignmentControls from "./AssignmentControls";
+import * as db from "../../Database";
+import "./styles.css"
+
+//icons
+import { FaCaretDown } from "react-icons/fa";
+import { FaFilePen } from "react-icons/fa6";
+import { BsGripVertical } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
 
 
 
 export default function Assignments() {
   const { cid } = useParams(); //retrieve courseID
-  // console.log(cid);
-  // const assignment = assignments.find((assignment) => assignment.course === cid);
-  // const assignments = db.assignments; //load in assignment database
-  // const { pathname } = useLocation();
+  const {assignments} = useSelector((state: any) => state.assignmentsReducer)
+
 
 
 
@@ -35,7 +35,7 @@ export default function Assignments() {
       <div id="wd-assignments">
         <ul id="wd-assignments-list" className="list-group rounded-0">
           <li className="list-group-item p-0 mb-5 fs-5 border-light-grey">
-            {/** Table Header */}
+            {/** Assignment List Header -------------------------------------*/}
             <div className="wd-title p-4 ps-2 list-group-item list-group-item-active" style={{ backgroundColor: "#F5F5F5", color: "#000" }}>
               <button className="p-2" style={{ all: 'unset', cursor: 'pointer' }}>
                 <BsGripVertical className="me-2 fs-3" />
@@ -45,9 +45,10 @@ export default function Assignments() {
               <AssignmentControlButtons />
             </div>
 
+            {/** Dyamically Rendered Assignment List ------------------------*/}
             <div>
               <ul id="wd-modules" className="list-group rounded-0 p-0 m-0" style={{ borderLeft: '10px solid green' }}>
-                {db.assignments
+                {assignments
                   .filter((assignment: any) => assignment.course === cid)
                   .map((assignment: any) => (
                     <li key={assignment._id} className="wd-module list-group-item border-light-gray">
@@ -60,10 +61,12 @@ export default function Assignments() {
 
                         <div className="flex-grow-1">
                           <div className="flex-column">
+
                             <Link to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
                               className="custom-link">
                               <h4 className="fw-bold">{assignment._id}: {assignment.title}</h4>
                             </Link>
+
                             <p></p>
                             <p><span style={{ fontWeight: 550, color: 'darkred' }}>Multiple Modules</span> |
                               <span style={{ fontWeight: 550 }}> Not avaiable until </span>

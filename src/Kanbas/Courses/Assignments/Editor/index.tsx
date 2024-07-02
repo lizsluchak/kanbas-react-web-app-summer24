@@ -1,29 +1,55 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 // import * as db from "../../Database";
 import { assignments } from "../../../Database";
 import { Link } from "react-router-dom";
-import "../styles.css"
+import "../styles.css";
+import { useSelector, useDispatch } from "react-redux";
+import { addAssignment, updateAssignment } from "../reducer";
+import {useEffect, useState} from "react"
 
 
 
 export default function AssignmentEditor() {
 const { aid, cid } = useParams();
+console.log("hi", aid); 
+const dispatch = useDispatch();
+ // Use useSelector to get assignments from the Redux store
+ const {assignments} = useSelector((state: any) => state.assignmentsReducer);
+ const [assignment, setAssignment] = useState<any>({
+  title: 'New Assignment',
+  points: 100
+ });
+ const navigate = useNavigate();
+// let assignment = assignments.find((assignment: any) => assignment._id === aid);
+  // if (!assignment) {
+  //   <
+  // }
 
-const assignment = assignments.find((assignment) => assignment._id === aid);
- if (!assignment) {
-    return <h2>Assignment Not Found</h2>;
+  const saveAssignment = () => {
+    if(aid !== 'New'){
+      dispatch(updateAssignment(assignment));
+    } else {
+      dispatch(addAssignment({...assignment, course: cid}))
+    }
+    navigate(`/Kanbas/Courses/${cid}/Assignments`);
   }
 
+  useEffect(() => {
+    if(aid !== 'New') {
+      const a = assignments.find((assignment: any) => assignment._id === aid);
+      setAssignment(a)
+    }
+  }, [aid])
 
-console.log(aid, assignment);
   return (
     <div id="divA-mother">
 
 
       {/** divB1-full width column------------------------------------------- */}
       <div id="divB1-flex-column" className="d-flex ms-auto p-2">
-        
-        <div className="flex-column flex-fill">
+
+        {assignment &&
+          <div className="flex-column flex-fill">
           <div className="mb-3">
           
             <label htmlFor="assignment1"
@@ -35,7 +61,9 @@ console.log(aid, assignment);
               <input type="text"
                 className="form-control"
                 id="assignmentTitle1"
-                placeholder={`${assignment.title}`} >
+                onChange={(e) => setAssignment({...assignment, title: e.target.value})}
+                value = {`${assignment.title}`}
+                placeholder="New Assignment">
 
               </input>
             </div>
@@ -275,11 +303,14 @@ console.log(aid, assignment);
           <div className="d-flex flex-row flex-fill justify-content-end">
             <div><button className="btn btn-lg border-secondary m-2" style={{ backgroundColor: '#f8f9fb', textDecoration: "none" }}> <Link to={`/Kanbas/Courses/${cid}/Assignments/`} className="custom-link"> Cancel </Link></button></div>
 
-           <div> <button className="btn btn-lg bg-danger text-white m-2" style={{ backgroundColor: '#f8f9fb' }}><Link to={`/Kanbas/Courses/${cid}/Assignments/`} className="custom-link"> Save </Link></button></div>
+           <div> <button onClick={saveAssignment} className="btn btn-lg bg-danger text-white m-2" style={{ backgroundColor: '#f8f9fb' }}>
+             {/* <Link to={`/Kanbas/Courses/${cid}/Assignments/`} className="custom-link">  </Link> */}
+             Save
+             </button></div>
           </div>
    
           </div>
-
+        }
 
 
 
