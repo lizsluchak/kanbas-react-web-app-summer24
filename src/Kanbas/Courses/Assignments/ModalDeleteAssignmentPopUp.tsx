@@ -12,10 +12,10 @@ import { deleteAssignment } from "./reducer";
  * @returns 
  */
 export default function ModalDeleteAssignmentPopUp(
-    { dialogTitle}:
+    { dialogTitle, assignmentName, assignmentId}:
     { dialogTitle: string; 
-        // assignmentName: string; 
-        // assignmentId: string; 
+        assignmentName: string; 
+        assignmentId: string; 
         // setDeleteAssignment: (assignment: string) => void;
     }) 
     {
@@ -24,15 +24,15 @@ export default function ModalDeleteAssignmentPopUp(
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
-                <h1 className="modal-title fs-5" id="staticBackdropLabel">
-                {dialogTitle} </h1>
+                <h1 className="modal-title fs-5 text-center" id="staticBackdropLabel"><strong>{dialogTitle} </strong></h1>
             <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
           </div>
 
-          {/* <div className="modal-body">
-            <input className="form-control" value={assignmentName} placeholder="Module Name"
-                   onChange={(e) => setDeleteAssignment(e.target.value)}/>
-          </div> */}
+          <div className="modal-body">
+            <strong>{assignmentId} : {assignmentName}</strong>
+            {/* <input className="form-control" value={assignmentName} placeholder="Module Name"
+                   onChange={(e) => setDeleteAssignment(e.target.value)}/> */}
+          </div>
 
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">

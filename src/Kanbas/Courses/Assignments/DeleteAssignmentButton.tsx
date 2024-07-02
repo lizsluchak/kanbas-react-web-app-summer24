@@ -1,7 +1,6 @@
 import { FaTrash } from "react-icons/fa";
 
-export default function DeleteAssignmentButton(){
-
+export default function DeleteAssignmentButton() {
     return(
 
         <button data-bs-toggle="modal" data-bs-target="#wd-delete-assignment-dialog" >

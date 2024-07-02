@@ -60,11 +60,7 @@ export default function AssignmentListControls(
         <br/>
         <br/>
         <br/>
-        <ModalDeleteAssignmentPopUp dialogTitle="Confirm Deletion of the Following Assignment:" 
-                    // assignmentName={assignmentName}
-                    // setModuleName={setModuleName} 
-                    // addModule={addModule} 
-                    />
+
     </div>
       
     );
