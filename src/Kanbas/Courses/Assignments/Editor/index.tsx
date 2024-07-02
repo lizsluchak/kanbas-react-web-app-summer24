@@ -1,6 +1,4 @@
 import { useNavigate, useParams } from "react-router";
-// import * as db from "../../Database";
-import { assignments } from "../../../Database";
 import { Link } from "react-router-dom";
 import "../styles.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,17 +6,20 @@ import { addAssignment, updateAssignment } from "../reducer";
 import {useEffect, useState} from "react"
 
 
-
 export default function AssignmentEditor() {
-const { aid, cid } = useParams();
-console.log("hi", aid); 
-const dispatch = useDispatch();
- // Use useSelector to get assignments from the Redux store
- const {assignments} = useSelector((state: any) => state.assignmentsReducer);
- const [assignment, setAssignment] = useState<any>({
-  title: 'New Assignment',
-  points: 100
+  const { aid, cid } = useParams();   //capture course id and assignment id, if there is one
+  const dispatch = useDispatch();
+  const {assignments} = useSelector((state: any) => state.assignmentsReducer);
+  const [assignment, setAssignment] = useState<any>({
+    title: 'New Assignment',
+    description: "New Description", 
+    points: 100, 
+    dueDate: "", 
+    availableDate: "",
+  
+
  });
+
  const navigate = useNavigate();
 // let assignment = assignments.find((assignment: any) => assignment._id === aid);
   // if (!assignment) {
@@ -52,7 +53,7 @@ const dispatch = useDispatch();
           <div className="flex-column flex-fill">
           <div className="mb-3">
           
-            <label htmlFor="assignment1"
+            <label htmlFor="assignmentTitle1"
               className="row-sm-2 row-form-label p-1">
               <h5>Assignment Name</h5>
             </label>
@@ -61,23 +62,22 @@ const dispatch = useDispatch();
               <input type="text"
                 className="form-control"
                 id="assignmentTitle1"
-                onChange={(e) => setAssignment({...assignment, title: e.target.value})}
                 value = {`${assignment.title}`}
-                placeholder="New Assignment">
-
+                onChange={(e) => setAssignment({...assignment, title: e.target.value})}>
               </input>
             </div>
 
             <label htmlFor="assignmentDescription1"
-              className="row-sm-2 row-form-label p-1">
+              className="row-sm-2 row-form-label p-2">
+               <h5>Assignment Description</h5> 
             </label>
 
             <div>
               <textarea
                 className="form-control"
-                id="assignmentTitle1"
+                id="assignmentDescription1"
                 rows={10}
-                placeholder={`${assignment.description}`}>
+                placeholder={assignment.description}>
               </textarea>
             </div>
     
@@ -180,20 +180,20 @@ const dispatch = useDispatch();
 
                   <div className="m-2">
                     <td>
-                      <input type="checkbox" id="wd-text-entry" />
+                      <input type="checkbox" id="wd-text-entry" className="m-2" />
                       <label htmlFor="wd-text-entry">Text Entry</label>
                       <br />
 
-                      <input type="checkbox" id="wd-website-url" />
+                      <input type="checkbox" id="wd-website-url" className="m-2"/>
                       <label htmlFor="wd-website-url">Website URL</label><br />
 
-                      <input type="checkbox" id="wd-media-recordings" />
+                      <input type="checkbox" id="wd-media-recordings" className="m-2"/>
                       <label htmlFor="wd-media-recordings">Media Recordings</label><br />
 
-                      <input type="checkbox" id="wd-student-annotation" />
+                      <input type="checkbox" id="wd-student-annotation" className="m-2" />
                       <label htmlFor="wd-student-annotation">Student Annotations</label><br />
 
-                      <input type="checkbox" id="wd-file-upload" />
+                      <input type="checkbox" id="wd-file-upload"  className="m-2"/>
                       <label htmlFor="wd-file-upload">File Uploads</label>
 
 

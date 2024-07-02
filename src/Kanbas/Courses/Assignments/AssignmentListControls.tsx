@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { addAssignment } from './reducer'; 
 
 
-export default function AssignmentControls() {
+export default function AssignmentListControls() {
     const { cid } = useParams();
     const dispatch = useDispatch(); 
     

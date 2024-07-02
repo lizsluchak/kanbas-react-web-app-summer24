@@ -1,9 +1,7 @@
 import ModulesControls from "./ModuleControls";
 import CourseStatus from "../Home/Status";
-
 import React, { useState } from "react";
 import { useParams } from "react-router";
-import * as db from "../../Database";
 import { BsGripVertical } from "react-icons/bs";
 import ModuleControlButtons from "./ModuleControlButtons";
 import LessonControlButtons from "./LessonControlButtons";

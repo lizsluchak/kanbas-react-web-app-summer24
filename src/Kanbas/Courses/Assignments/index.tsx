@@ -5,20 +5,27 @@ import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 //internal files/components
-import AssignmentControlButtons from "./AssignmentControlButtons";
-import AssignmentControls from "./AssignmentControls";
+import AssignmentListHeaderButtons from "./AssignmenListHeaderButtons";
+import AssignmentListControls from "./AssignmentListControls";
 import * as db from "../../Database";
 import "./styles.css"
 
 //icons
 import { FaCaretDown } from "react-icons/fa";
 import { FaFilePen } from "react-icons/fa6";
-import { BsGripVertical } from "react-icons/bs";
+import { BsGripVertical, BsPlus } from "react-icons/bs";
 import { useSelector } from "react-redux";
+import { IoEllipsisVertical } from "react-icons/io5";
+import GreenCheckmark from "../Modules/GreenCheckmark";
 
 
 
-
+/**
+ * Root Assignment Screen Component:
+ * 
+ * 
+ * @returns Assignment list for selected course
+ */
 export default function Assignments() {
   const { cid } = useParams(); //retrieve courseID
   const {assignments} = useSelector((state: any) => state.assignmentsReducer)
@@ -28,13 +35,13 @@ export default function Assignments() {
 
   return (
     <div id="wd-assignments">
-      <AssignmentControls />
-
+      <AssignmentListControls />
 
 
       <div id="wd-assignments">
         <ul id="wd-assignments-list" className="list-group rounded-0">
           <li className="list-group-item p-0 mb-5 fs-5 border-light-grey">
+
             {/** Assignment List Header -------------------------------------*/}
             <div className="wd-title p-4 ps-2 list-group-item list-group-item-active" style={{ backgroundColor: "#F5F5F5", color: "#000" }}>
               <button className="p-2" style={{ all: 'unset', cursor: 'pointer' }}>
@@ -42,12 +49,13 @@ export default function Assignments() {
                 <FaCaretDown />
                 <strong> ASSIGNMENTS </strong>
               </button>
-              <AssignmentControlButtons />
+              <AssignmentListHeaderButtons />
             </div>
 
             {/** Dyamically Rendered Assignment List ------------------------*/}
             <div>
               <ul id="wd-modules" className="list-group rounded-0 p-0 m-0" style={{ borderLeft: '10px solid green' }}>
+                {/* pull assignments from redux state managment*/}
                 {assignments
                   .filter((assignment: any) => assignment.course === cid)
                   .map((assignment: any) => (
@@ -62,12 +70,11 @@ export default function Assignments() {
                         <div className="flex-grow-1">
                           <div className="flex-column">
 
-                            <Link to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
+                            <Link to={`/Kanbas/Courses/${cid}/Assignments/AssignmentEditor/${assignment._id}`}
                               className="custom-link">
-                              <h4 className="fw-bold">{assignment._id}: {assignment.title}</h4>
+                              <h4 className="fw-bold">{assignment.title}</h4>
                             </Link>
 
-                            <p></p>
                             <p><span style={{ fontWeight: 550, color: 'darkred' }}>Multiple Modules</span> |
                               <span style={{ fontWeight: 550 }}> Not avaiable until </span>
                               {assignment.availableDate ? assignment.availableDate : " n/a "}
@@ -76,17 +83,14 @@ export default function Assignments() {
                               {assignment.dueDate ? assignment.dueDate : " n/a "}
                               at {assignment.dueTime ? assignment.dueTime : " -- "} | {assignment.points ? assignment.points + " pts" : " n/a "}
                             </p>
-
                           </div>
 
 
                         </div>
-                        {/* <div className="d-flex align-items-center">
-                                                    <ModuleControlButtons
-                                                    moduleId={module._id}
-                                                    deleteModule={deleteModule}/>
-                                            
-                                                </div> */}
+                        {/** End Row Buttons for each Assignment */}
+                        <GreenCheckmark/>
+                        <IoEllipsisVertical className="fs-4" />
+
 
                       </div>
                     </li>
