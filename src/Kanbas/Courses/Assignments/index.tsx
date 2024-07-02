@@ -19,6 +19,7 @@ import { useSelector } from "react-redux";
 import { IoEllipsisVertical } from "react-icons/io5";
 import GreenCheckmark from "../Modules/GreenCheckmark";
 import { deleteAssignment } from "./reducer";
+import DeleteAssignmentButton from "./DeleteAssignmentButton";
 
 
 
@@ -34,11 +35,9 @@ export default function Assignments() {
   const dispatch = useDispatch;
 
 
-
-
   return (
     <div id="wd-assignments">
-      <AssignmentListControls dialogTitle="Hello"  />
+      <AssignmentListControls assignmentName="A101" assignmentId="24" />
 
 
       <div id="wd-assignments">
@@ -91,9 +90,9 @@ export default function Assignments() {
 
                         </div>
                         {/** End Row Buttons for each Assignment */}
-                        <button data-bs-toggle="modal" data-bs-target="#wd-delete-assignment-dialog" >
-                        <FaTrash className="text-danger me-3 mb-1" />
-                        </button>
+                        <DeleteAssignmentButton />
+                        
+                        
 
                         <GreenCheckmark/>
                         <IoEllipsisVertical className="fs-4" />

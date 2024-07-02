@@ -11,11 +11,12 @@ import ModalDeleteAssignmentPopUp from "./ModalDeleteAssignmentPopUp";
 
 
 export default function AssignmentListControls(
-    { dialogTitle, 
+    { assignmentName, assignmentId
         // assignmentName, setDeleteAssignment 
     }:
-    { dialogTitle: string; 
-        // assignmentName: string; 
+    { 
+        assignmentName: string; 
+        assignmentId: string; 
         // setDeleteAssignment: (assignmentName: string) => void; 
         }) 
  {
@@ -59,7 +60,7 @@ export default function AssignmentListControls(
         <br/>
         <br/>
         <br/>
-        <ModalDeleteAssignmentPopUp dialogTitle="Add Module" 
+        <ModalDeleteAssignmentPopUp dialogTitle="Confirm Deletion of the Following Assignment:" 
                     // assignmentName={assignmentName}
                     // setModuleName={setModuleName} 
                     // addModule={addModule} 
