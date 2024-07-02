@@ -8,23 +8,19 @@ import {useEffect, useState} from "react"
 
 export default function AssignmentEditor() {
   const { aid, cid } = useParams();   //capture course id and assignment id, if there is one
-  const dispatch = useDispatch();
-  const {assignments} = useSelector((state: any) => state.assignmentsReducer);
+  const {assignments} = useSelector((state: any) => state.assignmentsReducer); //call in data from redux
+  const dispatch = useDispatch();     //instantiate dispatch for redux to call reducer functions
+  const navigate = useNavigate();     //instantiate navigate 
+  
+  
   const [assignment, setAssignment] = useState<any>({
     title: 'New Assignment',
     description: "New Description", 
     points: 100, 
-    dueDate: "", 
-    availableDate: "",
-  
-
+    dueDate: new Date().toISOString().split("T")[0], 
+    availableDate: new Date().toISOString().split("T")[0],
  });
-
- const navigate = useNavigate();
-// let assignment = assignments.find((assignment: any) => assignment._id === aid);
-  // if (!assignment) {
-  //   <
-  // }
+ 
 
   const saveAssignment = () => {
     if(aid !== 'New'){
@@ -35,30 +31,36 @@ export default function AssignmentEditor() {
     navigate(`/Kanbas/Courses/${cid}/Assignments`);
   }
 
+  /**
+   * Use effect is a hook in React that lets you prefor side effects in
+   * functional components; it takes 2 arguments:
+   * (1) Function - what should run after component renders
+   * (2) Array of Dependencies - Lists the variables that the effect depends on
+   */
   useEffect(() => {
-    if(aid !== 'New') {
-      const a = assignments.find((assignment: any) => assignment._id === aid);
-      setAssignment(a)
+    if(aid !== 'New') { //check if aid != Nuew
+      const a = assignments.find((assignment: any) => assignment._id === aid); //find correct assignment
+      setAssignment(a) //set state of assignment 
     }
-  }, [aid])
+  }, [aid]) //dependencies array - effect will run when aid changes
 
   return (
     <div id="divA-mother">
 
-
       {/** divB1-full width column------------------------------------------- */}
       <div id="divB1-flex-column" className="d-flex ms-auto p-2">
 
+
+        {/** conditionaly render editor page only if assignment is found */}
         {assignment &&
           <div className="flex-column flex-fill">
           <div className="mb-3">
-          
+
+          <div id="assignment-name">
             <label htmlFor="assignmentTitle1"
               className="row-sm-2 row-form-label p-1">
               <h5>Assignment Name</h5>
             </label>
-
-            <div>
               <input type="text"
                 className="form-control"
                 id="assignmentTitle1"
@@ -67,17 +69,17 @@ export default function AssignmentEditor() {
               </input>
             </div>
 
+            <div id="assignment-description">
             <label htmlFor="assignmentDescription1"
               className="row-sm-2 row-form-label p-2">
                <h5>Assignment Description</h5> 
             </label>
-
-            <div>
               <textarea
                 className="form-control"
                 id="assignmentDescription1"
                 rows={10}
-                placeholder={assignment.description}>
+                value={assignment.description}
+                onChange={(e) => setAssignment({...assignment, description: e.target.value})}>
               </textarea>
             </div>
     
@@ -90,10 +92,11 @@ export default function AssignmentEditor() {
 
           <div>
             <div className="d-flex flex-row p-2">
+
               <div className="col-5">
                 <label htmlFor="points"
                   className="row-form-label m-2 float-end me-5">
-                  Points
+                 <h5><strong>Points</strong></h5>
                 </label>
               </div>
 
@@ -119,7 +122,7 @@ export default function AssignmentEditor() {
               <div className="col-5">
                 <label htmlFor="points"
                   className="row-form-label m-2 float-end me-5">
-                  Assignment Group
+                <h5><strong>Assignent Group</strong></h5> 
                 </label>
               </div>
 
@@ -141,7 +144,7 @@ export default function AssignmentEditor() {
               <div className="col-5">
                 <label htmlFor="points"
                   className="row-form-label m-2 float-end me-5">
-                  Display Grade as
+                  <h5><strong>Display Grade As</strong></h5> 
                 </label>
               </div>
 
@@ -160,16 +163,15 @@ export default function AssignmentEditor() {
           <div>
             <div className="d-flex flex-row p-2">
               <div className="col-5">
-                <label htmlFor="points"
+                <label htmlFor="submission-type"
                   className="row-form-label float-end me-5">
-                  Submission Type
+                  <h5><strong>Submission Type</strong></h5>
                 </label>
               </div>
 
 
               <div className="container col-7 border p-2">
                 <div className="rounded-2">
-
 
                   <select className="form-select form-control mb-4" id="submission-type">
                     <option selected>Online</option>
@@ -215,7 +217,7 @@ export default function AssignmentEditor() {
               <div className="col-5">
                 <label htmlFor="points"
                   className="row-form-label float-end me-5">
-                  Assign
+                  <h5><strong>Assign</strong></h5>
                 </label>
               </div>
 
@@ -253,7 +255,8 @@ export default function AssignmentEditor() {
                   <br></br>
                   <input type="date" className="form-control"
                     id="wd-due-date"
-                    value="2024-05-13" /><br />
+                    value={assignment.dueDate} 
+                    onChange={(e) => setAssignment({...assignment, dueDate: e.target.value})}/><br />
                     </div>
 
 
@@ -261,14 +264,18 @@ export default function AssignmentEditor() {
 
                   <div className="d-flex flex-row">
                     <div className="flex-fill">
-                      <label htmlFor="wd-avialable-from" className="column-form-label fw-bold">Available from</label>
+                      <label htmlFor="wd-avialable-date" className="column-form-label fw-bold">Available from</label>
 
 
                       <div>
 
                         <input type="date" className="form-control"
-                          id="wd-available-from"
-                          value={`${assignment.availableDate}`} />
+                          id="wd-available-date"
+                          value={`${assignment.availableDate}`} 
+                          onChange={(e) => setAssignment({...assignment, availableDate: e.target.value})}
+                          
+                          
+                          />
                       </div>
                     </div>
 
@@ -278,7 +285,10 @@ export default function AssignmentEditor() {
 
                       <input type="date" className="form-control"
                         id="wd-available-until"
-                        value={`${assignment.dueDate}`} />
+                        value={`${assignment.dueDate}`} 
+                        onChange={(e) => setAssignment({...assignment, dueDate: e.target.value})}
+                      
+                        />
                     </div>
 
 
