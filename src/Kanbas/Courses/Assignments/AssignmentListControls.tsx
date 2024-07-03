@@ -6,20 +6,11 @@ import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import { useDispatch } from 'react-redux';
-import { addAssignment } from './reducer'; 
+import { addAssignment, deleteAssignment } from './reducer'; 
 import ModalDeleteAssignmentPopUp from "./ModalDeleteAssignmentPopUp";
 
 
-export default function AssignmentListControls(
-    { assignmentName, assignmentId
-        // assignmentName, setDeleteAssignment 
-    }:
-    { 
-        assignmentName: string; 
-        assignmentId: string; 
-        // setDeleteAssignment: (assignmentName: string) => void; 
-        }) 
- {
+export default function AssignmentListControls() {
     const { cid } = useParams();
     const dispatch = useDispatch(); 
     
@@ -60,6 +51,8 @@ export default function AssignmentListControls(
         <br/>
         <br/>
         <br/>
+
+        
 
     </div>
       

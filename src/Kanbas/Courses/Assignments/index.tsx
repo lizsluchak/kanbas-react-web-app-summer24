@@ -1,26 +1,29 @@
 //external
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 //internal files/components
 import AssignmentListHeaderButtons from "./AssignmenListHeaderButtons";
 import AssignmentListControls from "./AssignmentListControls";
+import { addAssignment, editAssignment, updateAssignment, deleteAssignment }
+  from "./reducer";
 import * as db from "../../Database";
 import "./styles.css"
+import ModalDeleteAssignmentPopUp from "./ModalDeleteAssignmentPopUp";
+import GreenCheckmark from "../Modules/GreenCheckmark";
 
 //icons
 import { FaCaretDown, FaTrash } from "react-icons/fa";
 import { FaFilePen } from "react-icons/fa6";
 import { BsGripVertical, BsPlus } from "react-icons/bs";
-import { useSelector } from "react-redux";
 import { IoEllipsisVertical } from "react-icons/io5";
-import GreenCheckmark from "../Modules/GreenCheckmark";
-import { deleteAssignment } from "./reducer";
-import DeleteAssignmentButton from "./DeleteAssignmentButton";
-import ModalDeleteAssignmentPopUp from "./ModalDeleteAssignmentPopUp";
+import LessonControlButtons from "./LessonControlButtons";
+
+
+
 
 
 
@@ -32,13 +35,14 @@ import ModalDeleteAssignmentPopUp from "./ModalDeleteAssignmentPopUp";
  */
 export default function Assignments() {
   const { cid } = useParams(); //retrieve courseID
-  const {assignments} = useSelector((state: any) => state.assignmentsReducer);
+  const { assignments } = useSelector((state: any) => state.assignmentsReducer);
   const dispatch = useDispatch;
+
 
 
   return (
     <div id="wd-assignments">
-      <AssignmentListControls assignmentName="A101" assignmentId="24" />
+      <AssignmentListControls />
 
 
       <div id="wd-assignments">
@@ -87,17 +91,23 @@ export default function Assignments() {
                               at {assignment.dueTime ? assignment.dueTime : " -- "} | {assignment.points ? assignment.points + " pts" : " n/a "}
                             </p>
                           </div>
-                          <ModalDeleteAssignmentPopUp 
-                              dialogTitle="Confirm Deletion of Below Assignment:"
-                              assignmentName={assignment.title}
-                              assignmentId={assignment._id} />
+
+
+
 
 
                         </div>
-                        {/** End Row Buttons for each Assignment */}
-                        <DeleteAssignmentButton  />
-                        <GreenCheckmark/>
-                        <IoEllipsisVertical className="fs-4" />
+                        <LessonControlButtons
+                          assignmentName={assignment.title}
+                          assignmentId={assignment._id}
+                          deleteAssignment={(assignmentId) => {
+                            dispatch(deleteAssignment(assignmentId));
+                          }}
+        
+                     
+                  
+                          />
+
 
 
                       </div>

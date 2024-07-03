@@ -1,4 +1,6 @@
+import React from "react";
 import { deleteAssignment } from "./reducer";
+import { useSelector, useDispatch } from "react-redux";
 
 /**
  * Let's create a modal dialog where users can edit the name of a new module 
@@ -12,13 +14,13 @@ import { deleteAssignment } from "./reducer";
  * @returns 
  */
 export default function ModalDeleteAssignmentPopUp(
-    { dialogTitle, assignmentName, assignmentId}:
-    { dialogTitle: string; 
+    { dialogTitle, assignmentName, assignmentId, deleteAssignment}:{
+        dialogTitle: string; 
         assignmentName: string; 
-        assignmentId: string; 
-        // setDeleteAssignment: (assignment: string) => void;
-    }) 
-    {
+        assignmentId: string;
+        deleteAssignment: (assignmentId: string) => void; }) {
+
+          const dispatch = useDispatch();
       return (
         <div id="wd-delete-assignment-dialog" className="modal fade" data-bs-backdrop="static" data-bs-keyboard="false">
           <div className="modal-dialog">
@@ -37,11 +39,14 @@ export default function ModalDeleteAssignmentPopUp(
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
               Cancel </button>
-            <button type="button" data-bs-dismiss="modal" className="btn btn-danger">
-              Delete Assignment </button>
+
+              <button type="button" data-bs-dismiss="modal" className="btn btn-danger" onClick={() => dispatch(deleteAssignment(assignmentId))}>
+              Delete </button> 
+
           </div>
         </div>
       </div>
     </div>
   );
 }
+

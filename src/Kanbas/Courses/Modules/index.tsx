@@ -16,6 +16,8 @@ export default function Modules() {
   const { modules } = useSelector((state: any) => state.modulesReducer); // retrieve modules state variables
   const dispatch = useDispatch(); // get dispatch to call reducer functions
 
+  
+
   return (
     <div id="wd-modules" className="d-flex">
 
