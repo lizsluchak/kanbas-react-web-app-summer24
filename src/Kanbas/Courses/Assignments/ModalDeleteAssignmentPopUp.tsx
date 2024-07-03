@@ -1,4 +1,5 @@
 import { deleteAssignment } from "./reducer";
+
 import { useSelector, useDispatch } from "react-redux";
 
 /**
@@ -13,16 +14,18 @@ import { useSelector, useDispatch } from "react-redux";
  * @returns 
  */
 export default function ModalDeleteAssignmentPopUp(
-    { dialogTitle, assignmentName, assignmentId}:
+    { dialogTitle, assignmentName, assignmentId, modalId}:
     { dialogTitle: string; 
         assignmentName: string; 
         assignmentId: string; 
+        modalId: string; 
         // setDeleteAssignment: (assignment: string) => void;
     }) 
     {
     const { assignments } = useSelector((state: any) => state.assignmentsReducer); // retrieve modules state variables
     const dispatch = useDispatch(); // get dispatch to call reducer functions
     const handleDelete = () => {
+      console.log('Deleting assignment with ID:', assignmentId); // Add this line for debugging
         dispatch(deleteAssignment(assignmentId));
     };
       return (

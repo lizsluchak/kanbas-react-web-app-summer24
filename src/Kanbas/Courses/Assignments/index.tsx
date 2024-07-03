@@ -87,15 +87,12 @@ export default function Assignments() {
                               at {assignment.dueTime ? assignment.dueTime : " -- "} | {assignment.points ? assignment.points + " pts" : " n/a "}
                             </p>
                           </div>
-                          <ModalDeleteAssignmentPopUp 
-                              dialogTitle="Confirm Deletion of Below Assignment:"
-                              assignmentName={assignment.title}
-                              assignmentId={assignment._id} />
+                          
 
 
                         </div>
                         {/** End Row Buttons for each Assignment */}
-                        <DeleteAssignmentButton assignmentId={assignment._id}  />
+                        <DeleteAssignmentButton assignmentId={assignment._id} assignmentTitle={assignment.title} />
                         <GreenCheckmark/>
                         <IoEllipsisVertical className="fs-4" />
 

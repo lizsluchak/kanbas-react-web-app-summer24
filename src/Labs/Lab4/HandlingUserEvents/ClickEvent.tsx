@@ -1,4 +1,15 @@
-
+/**
+ * Both of these functions are created to handle user events, they are implemented with best practice arrow function
+ * syntax.. but they dont have to be.. both of them can be event handlers
+ * 
+ * if functions are shared between other components, put outside main function, 
+ * 
+ * remembering commmon syntax: 
+ * function hello(){
+ * alert 
+ * }
+ * 
+ */
 const hello = () => { // declare a function to handle the event
     alert("Hello World!");
 };
@@ -15,7 +26,10 @@ export default function ClickEvent() {
             </ul>
 
             <div id="wd-click-event">
-                {/** Configure the function call */}
+                {/** Configure the function call 
+                 * using onClick event handler within button, that calls the name of a function to be executed on clicking the button
+                */}
+                
                 <button onClick={hello} id="wd-hello-world-click">  
                     Hello World!</button>
 
