@@ -95,7 +95,7 @@ export default function Assignments() {
 
                         </div>
                         {/** End Row Buttons for each Assignment */}
-                        <DeleteAssignmentButton  />
+                        <DeleteAssignmentButton assignmentId={assignment._id}  />
                         <GreenCheckmark/>
                         <IoEllipsisVertical className="fs-4" />
 
