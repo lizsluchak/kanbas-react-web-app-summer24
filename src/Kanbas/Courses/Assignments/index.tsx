@@ -6,9 +6,7 @@ import { useDispatch } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 //internal files/components
-import AssignmentListHeaderButtons from "./AssignmenListHeaderButtons";
 import AssignmentListControls from "./AssignmentListControls";
-import * as db from "../../Database";
 import "./styles.css"
 
 //icons
@@ -20,7 +18,6 @@ import { IoEllipsisVertical } from "react-icons/io5";
 import GreenCheckmark from "../Modules/GreenCheckmark";
 import { deleteAssignment } from "./reducer";
 import DeleteAssignmentButton from "./DeleteAssignmentButton";
-import ModalDeleteAssignmentPopUp from "./ModalDeleteAssignmentPopUp";
 
 
 
@@ -32,12 +29,13 @@ import ModalDeleteAssignmentPopUp from "./ModalDeleteAssignmentPopUp";
  */
 export default function Assignments() {
   const { cid } = useParams(); //retrieve courseID
-  const {assignments} = useSelector((state: any) => state.assignmentsReducer);
+  const { assignments } = useSelector((state: any) => state.assignmentsReducer);
+
   const dispatch = useDispatch();
 
   const handleDeleteAssignment = (assignment: any) => {
     const remove = window.confirm(`Delete assignment ${assignment.title}?`)
-    if(remove) {
+    if (remove) {
       dispatch(deleteAssignment(assignment._id));
     }
   }
@@ -58,7 +56,11 @@ export default function Assignments() {
                 <FaCaretDown />
                 <strong> ASSIGNMENTS </strong>
               </button>
-              <AssignmentListHeaderButtons />
+              <div className="float-end">
+                <button className="btn btn-md rounded-5 me-4" style={{ borderColor: '#adb5bd' }}>40% of Total</button>
+                <BsPlus className="me-3" />
+                <IoEllipsisVertical />
+              </div>
             </div>
 
             {/** Dyamically Rendered Assignment List ------------------------*/}
@@ -93,14 +95,14 @@ export default function Assignments() {
                               at {assignment.dueTime ? assignment.dueTime : " -- "} | {assignment.points ? assignment.points + " pts" : " n/a "}
                             </p>
                           </div>
-                          
+
 
 
                         </div>
                         {/** End Row Buttons for each Assignment */}
                         <DeleteAssignmentButton assignmentId={assignment._id} assignmentTitle={assignment.title} removeAssignment={() => handleDeleteAssignment(assignment)} />
                         <button onClick={() => handleDeleteAssignment(assignment)}>Delete</button>
-                        <GreenCheckmark/>
+                        <GreenCheckmark />
                         <IoEllipsisVertical className="fs-4" />
 
 

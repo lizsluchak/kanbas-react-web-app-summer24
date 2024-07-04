@@ -5,13 +5,10 @@ import { useEffect, useState } from "react";
 
 
 
-export default function DeleteAssignmentButton( { assignmentId, assignmentTitle, removeAssignment }: 
-    {
-        assignmentId: string; 
-        
+export default function DeleteAssignmentButton( { assignmentId, assignmentTitle, removeAssignment } : 
+    { assignmentId: string; 
         assignmentTitle: string; 
         removeAssignment: () => void;
-
     }) {
 
         const [aid, setAid] = useState(assignmentId);
@@ -34,11 +31,7 @@ export default function DeleteAssignmentButton( { assignmentId, assignmentTitle,
                         <FaTrash  className="text-danger me-3 mb-1" onClick={removeAssignment} />
                         </button>
 
-                        <ModalDeleteAssignmentPopUp 
-                              dialogTitle="Confirm Deletion of Below Assignment:"
-                              assignmentName={title}
-                              assignmentId={aid}
-                              modalId={modalId} />
+
 
                         </div>
 
