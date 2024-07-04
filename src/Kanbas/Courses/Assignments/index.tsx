@@ -33,8 +33,14 @@ import ModalDeleteAssignmentPopUp from "./ModalDeleteAssignmentPopUp";
 export default function Assignments() {
   const { cid } = useParams(); //retrieve courseID
   const {assignments} = useSelector((state: any) => state.assignmentsReducer);
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
 
+  const handleDeleteAssignment = (assignment: any) => {
+    const remove = window.confirm(`Delete assignment ${assignment.title}?`)
+    if(remove) {
+      dispatch(deleteAssignment(assignment._id));
+    }
+  }
 
   return (
     <div id="wd-assignments">
@@ -92,7 +98,8 @@ export default function Assignments() {
 
                         </div>
                         {/** End Row Buttons for each Assignment */}
-                        <DeleteAssignmentButton assignmentId={assignment._id} assignmentTitle={assignment.title} />
+                        <DeleteAssignmentButton assignmentId={assignment._id} assignmentTitle={assignment.title} removeAssignment={() => handleDeleteAssignment(assignment)} />
+                        <button onClick={() => handleDeleteAssignment(assignment)}>Delete</button>
                         <GreenCheckmark/>
                         <IoEllipsisVertical className="fs-4" />
 

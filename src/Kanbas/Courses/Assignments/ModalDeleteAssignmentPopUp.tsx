@@ -24,7 +24,7 @@ export default function ModalDeleteAssignmentPopUp(
     {
     const { assignments } = useSelector((state: any) => state.assignmentsReducer); // retrieve modules state variables
     const dispatch = useDispatch(); // get dispatch to call reducer functions
-    const handleDelete = () => {
+    const handleDelete = (assignmentId: any) => {
       console.log('Deleting assignment with ID:', assignmentId); // Add this line for debugging
         dispatch(deleteAssignment(assignmentId));
     };
@@ -46,7 +46,7 @@ export default function ModalDeleteAssignmentPopUp(
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
               Cancel </button>
-            <button type="button" onClick={handleDelete} data-bs-dismiss="modal" className="btn btn-danger">
+            <button type="button" onClick={() => handleDelete(assignmentId)} data-bs-dismiss="modal" className="btn btn-danger">
               Delete Assignment </button>
           </div>
         </div>

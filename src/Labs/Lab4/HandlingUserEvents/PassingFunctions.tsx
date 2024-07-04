@@ -12,7 +12,7 @@ export default function PassingFunctions(
             </ul>
             
             {/* invoking function with no arguments */}
-            <button onClick={theFunction} className="btn btn-primary">
+            <button onClick={() => theFunction()} className="btn btn-primary">
                 Invoke the Function
             </button>
             <hr />
