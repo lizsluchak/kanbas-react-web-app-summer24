@@ -100,8 +100,8 @@ export default function Assignments() {
 
                         </div>
                         {/** End Row Buttons for each Assignment */}
-                        <DeleteAssignmentButton assignmentId={assignment._id} assignmentTitle={assignment.title} removeAssignment={() => handleDeleteAssignment(assignment)} />
-                        <button onClick={() => handleDeleteAssignment(assignment)}>Delete</button>
+                        <FaTrash className="text-danger me-3 mb-1" onClick={() => handleDeleteAssignment(assignment)} />
+                   
                         <GreenCheckmark />
                         <IoEllipsisVertical className="fs-4" />
 
