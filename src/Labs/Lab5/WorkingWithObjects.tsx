@@ -57,6 +57,25 @@ export default function WorkingWithObjects() {
         Get Module
       </a><hr/>
 
+      <h4>Retrieving Properties On My Own</h4>
+      <a id="wd-retrieve-module-name" className="btn btn-primary"
+         href={`${REMOTE_SERVER}/lab5/module/name`}>
+        Get Name
+      </a><hr/>
+
+      <h4>Modifying Properties On My Own</h4>
+      <a id="wd-update-module-name"
+         className="btn btn-primary float-end"
+         //encode name in url that updates the name
+         href={`${MODULE_API_URL}/name/${module.name}`}>
+        Update Name
+      </a>
+      <input className="form-control w-75" id="wd-module-name"
+        value={module.name} onChange={(e) =>
+            //updates remote object
+          setModule({ ...module, name: e.target.value })}/>
+      <hr />
+
 
     </div>
 );}
