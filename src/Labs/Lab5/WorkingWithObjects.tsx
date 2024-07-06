@@ -27,18 +27,21 @@ export default function WorkingWithObjects() {
     <div id="wd-working-with-objects">
       <h3>Working With Objects</h3>
       <h4>Retrieving Objects</h4>
+      {/**get assignment button */}
       <a id="wd-retrieve-assignments" className="btn btn-primary"
          href={`${REMOTE_SERVER}/lab5/assignment`}>
         Get Assignment
       </a><hr/>
 
       <h4>Retrieving Properties</h4>
+      {/**get assignment property - name button */}
       <a id="wd-retrieve-assignment-title" className="btn btn-primary"
          href={`${REMOTE_SERVER}/lab5/assignment/title`}>
         Get Title
       </a><hr/>
 
       <h4>Modifying Properties</h4>
+      {/**modify name propery - string */}
       <a id="wd-update-assignment-title"
          className="btn btn-primary float-end"
          //encode title in url that updates the title
@@ -50,6 +53,22 @@ export default function WorkingWithObjects() {
             //updates remote object
           setAssignment({ ...assignment, title: e.target.value })}/>
       <hr />
+        
+        {/**modify score propery - number  */}
+      <a id="wd-update-assignment-score"
+         className="btn btn-primary float-end"
+         //encode title in url that updates the title
+         href={`${ASSIGNMENT_API_URL}/score/${assignment.score}`}>
+        Update Score
+      </a>
+      <input className="form-control w-75" id="wd-assignment-score"
+        type="number" value={assignment.score} onChange={(e) =>
+            //updates remote object
+          setAssignment({ ...assignment, score: parseInt(e.target.value) })}/>
+      <hr />
+
+
+
 
       <h4>Retrieving Objects On My Own</h4>
       <a id="wd-retrieve-modules" className="btn btn-primary"
@@ -70,6 +89,7 @@ export default function WorkingWithObjects() {
          href={`${MODULE_API_URL}/name/${module.name}`}>
         Update Name
       </a>
+      
       <input className="form-control w-75" id="wd-module-name"
         value={module.name} onChange={(e) =>
             //updates remote object
