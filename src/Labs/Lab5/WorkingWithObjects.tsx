@@ -117,29 +117,42 @@ export default function WorkingWithObjects() {
             <a
                 id="wd-update-assignment-completed"
                 className="btn btn-primary float-end"
-                href={`${ASSIGNMENT_API_URL}/completed/${assignment.completed}`}
-            >
+                href={`${ASSIGNMENT_API_URL}/completed/${assignment.completed}`}>
                 Update Completed
             </a>
-            <label htmlFor="wd-assignment-completed" className="row-sm-2 row-form-label p-1">
-                <h5>
-                    <strong>Update Assignment Completion</strong>
-                </h5>
-            </label>
-            <div className="form-check">
-                <input
-                    className="form-check-input"
-                    type="checkbox"
-                    id="wd-assignment-completed"
-                    checked={assignment.completed}
-                    onChange={handleCompletedChange}
-                />
-                <label className="form-check-label" htmlFor="wd-assignment-completed">
-                    Assignment Completed
-                </label>
-                </div>
+            <h5>
+                <strong>Update Assignment Completion</strong>
+            </h5>
 
-   
+            <input
+                type="checkbox"
+                id="wd-assignment-completed"
+                checked={assignment.completed}
+                onChange={handleCompletedChange} />
+            <label className="form-check-label ms-2" htmlFor="wd-assignment-completed">
+                Assignment Completed
+            </label>
+            <hr/>
+            <br/>
+
+            {/**modify module property - description  */}
+            <label htmlFor="wd-module-description"
+                className="row-sm-2 row-form-label p-1">
+                <h5><strong>Update Module Description</strong></h5>
+            </label>
+            <a id="wd-update-module-description"
+                className="btn btn-primary float-end"
+                href={`${MODULE_API_URL}/description/${module.description}`}>
+                Update Description
+            </a>
+
+            <textarea className="form-control w-75" id="wd-module-description"
+                value={module.description} onChange={(e) =>
+                    setModule({ ...module, description: e.target.value })} />
+            <hr />
+
+
+
 
 
 
