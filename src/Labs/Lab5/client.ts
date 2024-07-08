@@ -59,6 +59,12 @@ export const removeTodo = async (todo: any) => {
     return response.data;
   };
   
+//request create new todo item 
+  export const createTodo = async () => {
+    const response = await axios.get(`${TODOS_API}/create`);
+    return response.data;
+  };
+  
 
 
 
