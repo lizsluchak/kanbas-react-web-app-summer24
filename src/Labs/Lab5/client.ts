@@ -40,5 +40,20 @@ export const updateTitle = async (title: string) => {
 };
 
 
+/**
+ *  Let's use axios so that we can manipulate remote arrays on the server from 
+ * the user interface and update a user interface to reflect the changes in the 
+ * remote array. We'll implement several client functions in client.ts that use 
+ * axios to communicate with the server and we'll use them from a new component 
+ * that will render the remote array in the use interface.
+ */
+const TODOS_API = `${REMOTE_SERVER}/lab5/todos`;
+export const fetchTodos = async () => {
+  const response = await axios.get(TODOS_API);
+  return response.data;
+};
+
+
+
 
 
