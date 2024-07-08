@@ -53,6 +53,13 @@ export const fetchTodos = async () => {
   return response.data;
 };
 
+//sends delete request and server responds with surviving todos
+export const removeTodo = async (todo: any) => {
+    const response = await axios.get(`${TODOS_API}/${todo.id}/delete`);
+    return response.data;
+  };
+  
+
 
 
 

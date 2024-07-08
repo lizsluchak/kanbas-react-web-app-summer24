@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as client from "./client";
+import { FaTrash } from "react-icons/fa";
 
 export default function WorkingWithArraysAsynchronously() {
   const [todos, setTodos] = useState<any[]>([]); //init state variable
@@ -14,11 +15,17 @@ export default function WorkingWithArraysAsynchronously() {
   useEffect(() => {
     fetchTodos();
   }, []);
+
+  const removeTodo = async (todo: any) => {
+    const updatedTodos = await client.removeTodo(todo);
+    setTodos(updatedTodos);
+  };
+
   return (
     <div id="wd-asynchronous-arrays">
       <h3>Working with Arrays Asynchronously</h3>
       <h4>Todos</h4>
-      <ul className="list-group">
+      <ul className="list-group w-25">
         {todos.map((todo) => (
           <li key={todo.id} className="list-group-item">
             <input type="checkbox" className="form-check-input me-2"
@@ -26,6 +33,10 @@ export default function WorkingWithArraysAsynchronously() {
             <span style={{ textDecoration: todo.completed ? "line-through" : "none" }}>
               {todo.title}
             </span>
+            <FaTrash onClick={() => removeTodo(todo)}
+                     className="text-danger float-end mt-1" id="wd-remove-todo"/>
+            ...
+
           </li>
         ))}
       </ul> <hr />
