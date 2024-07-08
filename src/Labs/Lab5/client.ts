@@ -40,6 +40,9 @@ export const updateTitle = async (title: string) => {
 };
 
 
+  
+
+
 /**
  *  Let's use axios so that we can manipulate remote arrays on the server from 
  * the user interface and update a user interface to reflect the changes in the 
@@ -76,6 +79,12 @@ export const removeTodo = async (todo: any) => {
   //delete todo client function usinga axios.delete to match app.delete
   export const deleteTodo = async (todo: any) => {
     const response = await axios.delete(`${TODOS_API}/${todo.id}`);
+    return response.data;
+  };
+
+//update todo using axios.put
+  export const updateTodo = async (todo: any) => {
+    const response = await axios.put(`${TODOS_API}/${todo.id}`, todo);
     return response.data;
   };
   
