@@ -22,10 +22,18 @@ export default function WorkingWithArraysAsynchronously() {
     setTodos(updatedTodos);
   };
 
+  //using axios.get
   const createTodo = async () => {
     const todos = await client.createTodo();
     setTodos(todos);
   };
+
+  //using axios.post
+  const postTodo = async () => {
+    const newTodo = await client.postTodo({ title: "New Posted Todo", completed: false, });
+    setTodos([...todos, newTodo]);
+  };
+
 
 
   return (
@@ -36,7 +44,9 @@ export default function WorkingWithArraysAsynchronously() {
 
       <ul className="list-group w-25">
       <h4>Todos <FaPlusCircle onClick={createTodo} className="text-success float-end fs-3"
-                         id="wd-create-todo" />  </h4>
+                         id="wd-create-todo" /> 
+                <FaPlusCircle onClick={postTodo}   className="text-primary float-end fs-3 me-3" id="wd-post-todo"   />
+                </h4>
         {todos.map((todo) => (
           <li key={todo.id} className="list-group-item">
             <input type="checkbox" className="form-check-input me-2"

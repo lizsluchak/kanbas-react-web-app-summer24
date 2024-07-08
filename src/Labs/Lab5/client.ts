@@ -65,7 +65,13 @@ export const removeTodo = async (todo: any) => {
     return response.data;
   };
   
-
+  //postTodo client function that posts new todo objects
+  export const postTodo = async (todo: any) => {
+    //note second argument is just todo object instead of whole array
+    const response = await axios.post(`${TODOS_API}`, todo);
+    return response.data;
+  };
+  
 
 
 
