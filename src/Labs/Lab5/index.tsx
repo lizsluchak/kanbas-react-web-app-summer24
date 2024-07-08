@@ -3,6 +3,9 @@
  * Lab5 Entry Point: 
  * 
  * (1) Test out server creation, link to server redendered Lab5 page via href
+ * 
+ * 
+ * Learned: Reusable Client Libraries
  * @returns
  */
 
