@@ -71,6 +71,14 @@ export const removeTodo = async (todo: any) => {
     const response = await axios.post(`${TODOS_API}`, todo);
     return response.data;
   };
+
+
+  //delete todo client function usinga axios.delete to match app.delete
+  export const deleteTodo = async (todo: any) => {
+    const response = await axios.delete(`${TODOS_API}/${todo.id}`);
+    return response.data;
+  };
+  
   
 
 

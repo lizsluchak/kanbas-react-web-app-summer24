@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as client from "./client";
+
+
 export default function WorkingWithObjectsAsynchronously() {
   const [assignment, setAssignment] = useState<any>({});
   const fetchAssignment = async () => {
@@ -14,6 +16,9 @@ export default function WorkingWithObjectsAsynchronously() {
     const updatedAssignment = await client.updateTitle(title);
     setAssignment(updatedAssignment);
   };
+
+
+
 
 
   return (
