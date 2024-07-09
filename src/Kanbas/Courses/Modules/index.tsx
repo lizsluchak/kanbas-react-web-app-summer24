@@ -30,6 +30,21 @@ export default function Modules() {
     dispatch(addModule(newModule));
   };
 
+  /**
+   * Remove Module Event Handler; 
+   * invokes deleteModule Client Function, passing it id of module to remove,
+   * on response from server, dispatch module ID to reducers deleteModule
+   * function to remove the object from the modules state variable and update 
+   * the user interface.
+
+   * @param moduleId 
+   */
+  const removeModule = async (moduleId: string) => {
+    await client.deleteModule(moduleId);
+    dispatch(deleteModule(moduleId));
+  };
+
+
 
 
   return (
@@ -82,7 +97,7 @@ export default function Modules() {
                       moduleId={module._id}
                       deleteModule={(moduleId) => {
                         // wrap reducer functions with dispatch
-                        dispatch(deleteModule(moduleId));
+                        removeModule(moduleId);
                       }}
                       // wrap reducer functions with dispatch
                       editModule={(moduleId) => dispatch(editModule(moduleId))}
