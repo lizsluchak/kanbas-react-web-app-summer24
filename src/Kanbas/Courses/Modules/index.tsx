@@ -45,6 +45,23 @@ export default function Modules() {
   };
 
 
+/**
+ * In the Modules component, implement an async function saveModule invoked 
+ * when the user clicks the Update or Save button as shown below. 
+ * The function should invoke the service function updateModule passing the 
+ * module updates as a parameter. When the response is done, dispatch the 
+ * new module to the updateModule reducer function which will replace the 
+ * module in the modules reducer state variable. Confirm you can update the 
+ * module and that the changes persist if you refresh the user interface.
+ * @param module 
+ */
+  const saveModule = async (module: any) => {
+    const status = await client.updateModule(module);
+    dispatch(updateModule(module));
+  };
+
+
+
 
 
   return (
@@ -80,11 +97,11 @@ export default function Modules() {
                       <input className="form-control w-50 d-inline-block"
 
                         onChange={(e) => // on change in textbox, update module
-                          dispatch(updateModule({ ...module, name: e.target.value }))}
+                          saveModule({ ...module, name: e.target.value })}
 
                         onKeyDown={(e) => { // on enter key, eiting field is set to false to hide input field
                           if (e.key === "Enter") {
-                            dispatch(updateModule({ ...module, editing: false }));
+                            saveModule({ ...module, editing: false });
                           }
                         }}
 
