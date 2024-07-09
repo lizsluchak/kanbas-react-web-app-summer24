@@ -31,3 +31,14 @@ export const createCourse = async (course: any) => {
   return response.data;
 };
 
+/**
+ * Delete Course Client Function:
+ * @param id 
+ * @returns 
+ */
+export const deleteCourse = async (id: string) => {
+  const response = await axios.delete(`${COURSES_API}/${id}`);
+  return response.data;
+};
+
+

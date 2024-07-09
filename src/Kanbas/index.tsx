@@ -51,12 +51,16 @@ export default function Kanbas() {
     setCourses([...courses, newCourse ]); 
   };
 
-  // add deleteCourse event handler accepting
-  // ID of course to remove by filtering out
-  // the course by its ID
-  const deleteCourse = (courseId: string) => {
-    setCourses(courses.filter((course) => course._id !== courseId));
+  /**
+   * Updated Delete Course:
+   * @param courseId 
+   */
+  const deleteCourse = async (courseId: string) => {
+    await client.deleteCourse(courseId);
+    setCourses(courses.filter(
+      (c) => c._id !== courseId));
   };
+
 
   // updateCourse: 
   const updateCourse = () => {
