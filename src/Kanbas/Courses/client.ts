@@ -19,3 +19,15 @@ export const fetchAllCourses = async () => {
   const { data } = await axios.get(COURSES_API);
   return data;
 };
+
+/**
+ * Create Course Client Function:
+ * Posts a new course to the server and returns the response's data. 
+ * @param course 
+ * @returns new course
+ */
+export const createCourse = async (course: any) => {
+  const response = await axios.post(COURSES_API, course);
+  return response.data;
+};
+

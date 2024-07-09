@@ -41,15 +41,14 @@ export default function Kanbas() {
   });
 
 
-  // create addNewCourse event handler that sets courses as copy of current
-  // courses state array add course at the end of the array overriding _id
-  // to current time stamp
-  const addNewCourse = () => {
-    const newCourse = {
-      ...course,    //... is object spread operator, it creates a shallow copy of the course object, spreading its properties into a new object
-      _id: new Date().getTime().toString()
-    }; // override id with current date and adds new course to array
-    setCourses([...courses, { ...course, ...newCourse }]); //updates courses state variable by calling setCourses with new array just created
+  /**
+   * Add New Course:
+   * Posts new course to server, and new course, via response, is appended to
+   * the end of the courses state variable. 
+   */
+  const addNewCourse = async () => {
+    const newCourse = await client.createCourse(course); 
+    setCourses([...courses, newCourse ]); 
   };
 
   // add deleteCourse event handler accepting
