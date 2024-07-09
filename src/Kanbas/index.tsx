@@ -4,20 +4,31 @@ import { Routes, Route, Navigate } from "react-router";
 import Courses from "./Courses";
 import "./styles.css"
 import ScreenSizeLabel from "../ScreenSizeLabel";
-import * as db from "./Database"; //kanbas needs a database now
-import { useState } from "react"; //needs use state
+// import * as db from "./Database"; //kanbas needs a database now
+import { useEffect, useState } from "react"; //needs use state
 import store from "./store";
 import { Provider } from "react-redux";
+import * as client from "./Courses/client";
 
 
 export default function Kanbas() {
   
+  //we no longer need db reference since course are now temporarily in server
+  //courses state is initialized as empty since we dont have database anymore
+  const [courses, setCourses] = useState<any[]>([]);
+
   /**
-   * moved state variables and event handlers from the dashboard to the
-   * kanbas component as it is parent to both the dashboard/courses component
+   * we use useEffect to fetach all courses from the server on component load
+   * and update the courses state variable that populates the Dashboard. 
    */
-  //create courses state variable and initalize with database's courses
-  const [courses, setCourses] = useState(db.courses);
+  const fetchCourses = async () => {
+    const courses = await client.fetchAllCourses();
+    setCourses(courses);
+  };
+  useEffect(() => {
+    fetchCourses();
+  }, []);
+
 
   // convert course into a state variable so we can change it and force a redraw of UI
   const [course, setCourse] = useState<any>({
@@ -28,6 +39,7 @@ export default function Kanbas() {
     image_url: "/images/reactjs.jpg", description: "New Description"
 
   });
+
 
   // create addNewCourse event handler that sets courses as copy of current
   // courses state array add course at the end of the array overriding _id
