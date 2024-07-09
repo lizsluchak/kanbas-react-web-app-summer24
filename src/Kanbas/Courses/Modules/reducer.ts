@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"; //import create slice to access reduxjs
-import { modules } from "../../Database";
+
 
 /**
  * The Modules component seems to be working fine. We can create new modules, 
@@ -25,8 +25,8 @@ import { modules } from "../../Database";
  * 2. 
  */
 const initialState = {
-    // set module reducer's intial state to modules loaded in from database
-  modules: modules,
+    //dont need to set default state since we are handling that via useEffect
+  modules: [],
 };
 
 /**
@@ -38,6 +38,12 @@ const modulesSlice = createSlice({
     name: "modules", //name the slice
   initialState, // pass in initial state we created of modules from db
   reducers: { //declare reducer functions
+    
+    //add set modules reducer function to populate modules state variable
+    setModules: (state, action) => {
+      state.modules = action.payload;
+    },
+
     
    /**
     * 
@@ -82,6 +88,6 @@ const modulesSlice = createSlice({
     },
   },
 });
-export const { addModule, deleteModule, updateModule, editModule } =
+export const { addModule, deleteModule, updateModule, editModule, setModules } =
   modulesSlice.actions; // export all reducer functions
 export default modulesSlice.reducer; //export reducer

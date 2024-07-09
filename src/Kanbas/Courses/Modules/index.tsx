@@ -1,13 +1,14 @@
 import ModulesControls from "./ModuleControls";
 import CourseStatus from "../Home/Status";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { BsGripVertical } from "react-icons/bs";
 import ModuleControlButtons from "./ModuleControlButtons";
 import LessonControlButtons from "./LessonControlButtons";
-import { addModule, editModule, updateModule, deleteModule }
+import { addModule, editModule, updateModule, deleteModule, setModules }
   from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
+import * as client from "./client";
 
 
 export default function Modules() {
@@ -15,6 +16,15 @@ export default function Modules() {
   const [moduleName, setModuleName] = useState("");
   const { modules } = useSelector((state: any) => state.modulesReducer); // retrieve modules state variables
   const dispatch = useDispatch(); // get dispatch to call reducer functions
+  
+  const fetchModules = async () => {
+    const modules = await client.findModulesForCourse(cid as string);
+    dispatch(setModules(modules));
+  };
+  useEffect(() => {
+    fetchModules();
+  }, []);
+
 
   return (
     <div id="wd-modules" className="d-flex">
