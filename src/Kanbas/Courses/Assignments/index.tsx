@@ -49,9 +49,10 @@ export default function Assignments() {
 
 
 
-  const handleDeleteAssignment = (assignment: any) => {
+  const handleDeleteAssignment = async (assignment: any) => {
     const remove = window.confirm(`Delete assignment ${assignment.title}?`)
     if (remove) {
+      await client.deleteAssignments(assignment._id);
       dispatch(deleteAssignment(assignment._id));
     }
   }

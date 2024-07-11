@@ -22,7 +22,7 @@ import axios from "axios";
 const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
 const COURSES_API = `${REMOTE_SERVER}/api/courses`;
 const MODULES_API = `${REMOTE_SERVER}/api/modules`;
-const ASSIGNMENTS_API = `${REMOTE_SERVER}/api/assignments`;
+const ASSIGNMENTS_API = `${REMOTE_SERVER}/assignments`;
 
 /* ============================ */
 /*    3. Function Definitions   */
@@ -70,14 +70,14 @@ export const findAssignmentsForCourse = async (courseId: string) => {
 //   return response.data;
 // };
 
-// /**
-//  * Delete Module Client Function 
-//  * Deletes a module from the server.
-//  * 
-//  * @param {string} moduleId - The ID of the module to be deleted
-//  * @returns {Promise<any>} - A promise that resolves to the deleted module data
-//  */
-// export const deleteModule = async (moduleId: string) => {
-//   const response = await axios.delete(`${MODULES_API}/${moduleId}`);
-//   return response.data;
-// };
+/**
+ * Delete Module Client Function 
+ * Deletes a module from the server.
+ * 
+ * @param {string} assignmentId - The ID of the module to be deleted
+ * @returns {Promise<any>} - A promise that resolves to the deleted module data
+ */
+export const deleteAssignments = async (assignmentId: string) => {
+  const response = await axios.delete(`${COURSES_API}/assignments/${assignmentId}`);
+  return response.data;
+};
