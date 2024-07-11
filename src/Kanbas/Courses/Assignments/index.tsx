@@ -1,5 +1,6 @@
 //external
 import React from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -8,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //internal files/components
 import AssignmentListControls from "./AssignmentListControls";
 import "./styles.css"
+import * as client from "./client"; 
 
 //icons
 import { FaCaretDown, FaTrash } from "react-icons/fa";
@@ -16,7 +18,7 @@ import { BsGripVertical, BsPlus } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { IoEllipsisVertical } from "react-icons/io5";
 import GreenCheckmark from "../Modules/GreenCheckmark";
-import { deleteAssignment } from "./reducer";
+import { deleteAssignment, setAssignments } from "./reducer";
 import DeleteAssignmentButton from "./DeleteAssignmentButton";
 
 
@@ -29,9 +31,23 @@ import DeleteAssignmentButton from "./DeleteAssignmentButton";
  */
 export default function Assignments() {
   const { cid } = useParams(); //retrieve courseID
+  console.log("HI", cid);
   const { assignments } = useSelector((state: any) => state.assignmentsReducer);
-
   const dispatch = useDispatch();
+
+
+  
+  const fetchAssignments = async () => {
+    const assignments = await client.findAssignmentsForCourse(cid as string);
+    dispatch(setAssignments(assignments));
+  };
+  useEffect(() => {
+    fetchAssignments();
+  }, []);
+
+
+
+
 
   const handleDeleteAssignment = (assignment: any) => {
     const remove = window.confirm(`Delete assignment ${assignment.title}?`)

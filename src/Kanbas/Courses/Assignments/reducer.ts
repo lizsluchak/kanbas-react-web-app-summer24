@@ -1,15 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit"; //import create slice to access reduxjs
-import { assignments } from "../../Database";
+
 
 const initialState = {
-    // set assignment reducer's intial state to assignments loaded in from database
-  assignments: assignments,
+  assignments: [],
 };
 
 const assignmentsSlice = createSlice({
     name: "assignments", //name the slice
   initialState, // pass in initial state we created of assignments from db
   reducers: { //declare reducer functions
+
+    setAssignments: (state, action ) => {
+      state.assignments = action.payload;
+
+    },
     
 
     addAssignment: (state, { payload: assignment }) => { //new module is in action payload
@@ -60,6 +64,6 @@ const assignmentsSlice = createSlice({
     },
   },
 });
-export const { addAssignment, deleteAssignment, updateAssignment, editAssignment } =
+export const { addAssignment, deleteAssignment, updateAssignment, editAssignment, setAssignments } =
   assignmentsSlice.actions; // export all reducer functions
 export default assignmentsSlice.reducer; //export reducer
