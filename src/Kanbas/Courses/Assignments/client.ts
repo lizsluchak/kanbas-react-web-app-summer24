@@ -47,20 +47,20 @@ export const findAssignmentsForCourse = async (courseId: string) => {
 
 
 
-// /**
-//  * Update Module Client Function 
-//  * Updates an existing module on the server.
-//  * 
-//  * @param {any} module - The module object with updated data
-//  * @returns {Promise<any>} - A promise that resolves to the updated module
-//  */
-// export const updateModule = async (module: any) => {
-//   const response = await axios.put(`${MODULES_API}/${module._id}`, module);
-//   return response.data;
-// };
+/**
+ * Update Assignment Client Function 
+ * Updates an existing module on the server.
+ * 
+ * @param {any} assigment - The assignment object with updated data
+ * @returns {Promise<any>} - A promise that resolves to the updated module
+ */
+export const updateAssignment = async (assignment: any) => {
+  const response = await axios.put(`${COURSES_API}/assignments/${assignment._id}`, assignment);
+  return response.data;
+};
 
 /**
- * Delete Module Client Function 
+ * Delete Assignmnet Client Function 
  * Deletes a module from the server.
  * 
  * @param {string} assignmentId - The ID of the module to be deleted

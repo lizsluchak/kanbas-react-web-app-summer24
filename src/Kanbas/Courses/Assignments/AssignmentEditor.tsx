@@ -32,7 +32,8 @@ export default function AssignmentEditor() {
    */
   const handleSaveAssignment = async (assignment: any) => {
     if (aid !== 'New') {
-      dispatch(updateAssignment(assignment));
+      const status = await client.updateAssignment(assignment);
+      dispatch(updateAssignment(status));
     } else {
       const newAssignment = await client.createAssignment(cid as string, assignment)
       dispatch(addAssignment(newAssignment))                  
@@ -40,15 +41,6 @@ export default function AssignmentEditor() {
     navigate(`/Kanbas/Courses/${cid}/Assignments`);
   }
 
-
-  /**
-   * 
-   * @param assignment 
-   */
-  const handleCreateAssignment = async (assignment: any) => {
-    const newAssignment = await client.createAssignment(cid as string, assignment);
-    dispatch(addAssignment(newAssignment));
-  };
 
   
 
