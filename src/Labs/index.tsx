@@ -15,7 +15,6 @@ import Lab1 from "./Lab1";
 import Lab2 from "./Lab2";
 import Lab3 from "./Lab3";
 import Kanbas from "../Kanbas";
-// import TOC2 from "./Lab2/PillNavigation";
 import TOC from "./TOC";
 import "../index.css"
 import Lab4 from "./Lab4";
