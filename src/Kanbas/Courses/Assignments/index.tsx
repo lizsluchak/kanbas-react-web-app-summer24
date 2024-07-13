@@ -18,7 +18,7 @@ import { BsGripVertical, BsPlus } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { IoEllipsisVertical } from "react-icons/io5";
 import GreenCheckmark from "../Modules/GreenCheckmark";
-import { deleteAssignment, setAssignments } from "./reducer";
+import { addAssignment, deleteAssignment, setAssignments } from "./reducer";
 import DeleteAssignmentButton from "./DeleteAssignmentButton";
 
 
@@ -30,13 +30,11 @@ import DeleteAssignmentButton from "./DeleteAssignmentButton";
  * @returns Assignment list for selected course
  */
 export default function Assignments() {
-  const { cid } = useParams(); //retrieve courseID
-  console.log("HI", cid);
+  const { cid, aid } = useParams(); //retrieve courseID
   const { assignments } = useSelector((state: any) => state.assignmentsReducer);
   const dispatch = useDispatch();
 
 
-  
   const fetchAssignments = async () => {
     const assignments = await client.findAssignmentsForCourse(cid as string);
     dispatch(setAssignments(assignments));
@@ -56,6 +54,9 @@ export default function Assignments() {
       dispatch(deleteAssignment(assignment._id));
     }
   }
+
+
+
 
   return (
     <div id="wd-assignments">

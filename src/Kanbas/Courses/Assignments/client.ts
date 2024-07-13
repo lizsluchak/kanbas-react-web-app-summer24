@@ -19,10 +19,10 @@ import axios from "axios";
 /* ============================ */
 /*         2. Constants         */
 /* ============================ */
-const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
+const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER; //http://localhost:4000
 const COURSES_API = `${REMOTE_SERVER}/api/courses`;
 const MODULES_API = `${REMOTE_SERVER}/api/modules`;
-const ASSIGNMENTS_API = `${REMOTE_SERVER}/assignments`;
+const ASSIGNMENTS_API = `${REMOTE_SERVER}/api/assignments`;
 
 /* ============================ */
 /*    3. Function Definitions   */
@@ -45,18 +45,7 @@ export const findAssignmentsForCourse = async (courseId: string) => {
   }
 };
 
-// /**
-//  * Create Module Client Function 
-//  * Posts a new module object to the server for a given course.
-//  * 
-//  * @param {string} courseId - The ID of the course
-//  * @param {any} module - The module object to be created
-//  * @returns {Promise<any>} - A promise that resolves to the newly created module
-//  */
-// export const createModule = async (courseId: string, module: any) => {
-//   const response = await axios.post(`${COURSES_API}/${courseId}/modules`, module);
-//   return response.data;
-// };
+
 
 // /**
 //  * Update Module Client Function 
@@ -81,3 +70,16 @@ export const deleteAssignments = async (assignmentId: string) => {
   const response = await axios.delete(`${COURSES_API}/assignments/${assignmentId}`);
   return response.data;
 };
+
+  /**
+ * Create Assignment Client Function 
+ * Posts a new assignment object to the server for a given course.
+ * 
+ * @param {string} courseId - The ID of the course
+ * @param {any} module - The module object to be created
+ * @returns {Promise<any>} - A promise that resolves to the newly created module
+ */
+  export const createAssignment = async (courseId: string, assignment: any) => {
+    const response = await axios.post(`${COURSES_API}/${courseId}/assignments`, assignment);
+    return response.data;
+  };

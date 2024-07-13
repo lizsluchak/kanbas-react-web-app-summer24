@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addAssignment, updateAssignment } from "./reducer";
 import { useEffect, useState } from "react"
 import "./styles.css";
+import * as client from "./client"; 
 
 
 
@@ -29,14 +30,29 @@ export default function AssignmentEditor() {
    * function, else -> dispatch addAssignment reducer function and then navigate 
    * back to assignments page.
    */
-  const handleSaveAssignment = () => {
+  const handleSaveAssignment = async (assignment: any) => {
     if (aid !== 'New') {
       dispatch(updateAssignment(assignment));
     } else {
-      dispatch(addAssignment({ ...assignment, course: cid }))                   
+      const newAssignment = await client.createAssignment(cid as string, assignment)
+      dispatch(addAssignment(newAssignment))                  
     }                                                                           //TODO: can i add course id to default values in reducer?
     navigate(`/Kanbas/Courses/${cid}/Assignments`);
   }
+
+
+  /**
+   * 
+   * @param assignment 
+   */
+  const handleCreateAssignment = async (assignment: any) => {
+    const newAssignment = await client.createAssignment(cid as string, assignment);
+    dispatch(addAssignment(newAssignment));
+  };
+
+  
+
+
 
   //useEffect Hook: fetch assignment if editing
   useEffect(() => {
@@ -273,9 +289,11 @@ export default function AssignmentEditor() {
               </div>
 
               <div> 
-                <button onClick={handleSaveAssignment} 
-                        className="btn btn-lg bg-danger text-white m-2" 
-                        style={{ backgroundColor: '#f8f9fb' }}>
+                <button onClick={ () => {
+                  handleSaveAssignment(assignment);
+                }}
+                className="btn btn-lg bg-danger text-white m-2" 
+                style={{ backgroundColor: '#f8f9fb' }}>
                   Save
                 </button>
               </div>

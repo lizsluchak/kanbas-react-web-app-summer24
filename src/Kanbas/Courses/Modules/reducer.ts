@@ -58,7 +58,7 @@ const modulesSlice = createSlice({
          * @param _id: unqiue identifier for new module, generated using timestamp
          * @param lessons: empty array to hold lessons for the module
          * @param name: name of the module, name from the action payload
-         * @param course: course to which module belons, taken from action payload
+         * @param course: course to which module belongs, taken from action payload
          */
       const newModule: any = {
         _id: new Date().getTime().toString(),
