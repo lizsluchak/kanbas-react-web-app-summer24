@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import * as client from "./client"
-import PeopleDetails from "./details";
+import PeopleDetails from "./PeopleDetails";
 import { BsPersonFillCheck } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
 import "./styles.css"
+import { Link, useParams } from "react-router-dom";
 
 export default function PeopleTable() {
-
+  const { cid, id } = useParams(); //retrieve courseID
   const [users, setUsers] = useState<any[]>([]);
   const fetchUsers = async () => {
     const users = await client.findAllUsers();
@@ -51,12 +52,12 @@ export default function PeopleTable() {
   return (
     <div id="wd-people-table">
       {/** search bar */}
-       <input onChange={(e) => filterUsersByName(e.target.value)} placeholder="Search people"
-             className="form-control float-start w-25 me-2 wd-filter-by-name" />
+      <input onChange={(e) => filterUsersByName(e.target.value)} placeholder="Search people"
+        className="form-control float-start w-25 me-2 wd-filter-by-name" />
 
       {/** drop down to filter table */}
-      <select value={role} onChange={(e) =>filterUsersByRole(e.target.value)}
-              className="form-select float-start w-25 wd-select-role" >
+      <select value={role} onChange={(e) => filterUsersByRole(e.target.value)}
+        className="form-select float-start w-25 wd-select-role" >
         <option value="">All Roles</option>        <option value="STUDENT">Students</option>
         <option value="TA">Assistants</option>     <option value="FACULTY">Faculty</option>
       </select>
@@ -69,26 +70,35 @@ export default function PeopleTable() {
           </tr>
         </thead>
         <tbody>
+
           {users.map((user: any) => (
+
             <tr key={user._id}>
-              
-            <td className="wd-full-name text-nowrap">
-              <div> 
-              <FaUserCircle className="m-2 icon-large" /> 
-              <span className="wd-first-name">{user.firstName + " "}</span>
-              <span className="wd-last-name">{user.lastName}</span>
-              </div>
-            </td>
-            <td className="wd-login-id">{user.loginId}</td>
-            <td className="wd-section">{user.section}</td>
-            <td className="wd-role">{user.role}</td>
-            <td className="wd-last-activity">{user.lastActivity}</td>
-            <td className="wd-total-activity">{user.totalActivity}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-);
+
+              <td className="wd-full-name text-nowrap">
+
+                <Link to={`/Kanbas/Courses/${cid}/People/${user._id}`} className="custom-people-link">
+                  <FaUserCircle className="m-2 icon-large grey-text" />
+                  <span className="wd-first-name">{user.firstName + " "}</span>
+                  <span className="wd-last-name">{user.lastName}</span>
+                </Link>
+
+              </td>
+
+              <td className="wd-login-id">{user.loginId}</td>
+              <td className="wd-section">{user.section}</td>
+              <td className="wd-role">{user.role}</td>
+              <td className="wd-last-activity">{user.lastActivity}</td>
+              <td className="wd-total-activity">{user.totalActivity}</td>
+            </tr>
+
+          ))}
+
+        </tbody>
+
+      </table>
+      <PeopleDetails />
+    </div>
+  );
 }
 

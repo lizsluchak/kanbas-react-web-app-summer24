@@ -1,3 +1,16 @@
 .icon-large {
     font-size: 2em; /* Adjust the size as needed */
   }
+
+  .red-text {
+    color: red;
+  }
+
+  .grey-text {
+    color: grey;
+  }
+
+  .custom-people-link {
+    color: red;
+    text-decoration: none;
+  }
