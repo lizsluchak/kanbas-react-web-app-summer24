@@ -12,8 +12,7 @@ export default function PeopleTable() {
     fetchUsers();
   }, []);
 
-  /**
-   * filterUsersByRole:
+  /** Filter Users By Role Handler Function:
    * handler function - updates a role state variable and requests from the
    * server the list of users filtered by their role. 
    */
@@ -28,8 +27,28 @@ export default function PeopleTable() {
     }
   };
 
+  /**
+   * Filter Users By Partial Name Handler Function: 
+   */
+  const [name, setName] = useState("");
+  const filterUsersByName = async (name: string) => {
+    setName(name);
+    if (name) {
+      const users = await client.findUsersByPartialName(name);
+      setUsers(users);
+    } else {
+      fetchUsers();
+    }
+  };
+
+
+
   return (
     <div id="wd-people-table">
+      {/** search bar */}
+       <input onChange={(e) => filterUsersByName(e.target.value)} placeholder="Search people"
+             className="form-control float-start w-25 me-2 wd-filter-by-name" />
+
       {/** drop down to filter table */}
       <select value={role} onChange={(e) =>filterUsersByRole(e.target.value)}
               className="form-select float-start w-25 wd-select-role" >

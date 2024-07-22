@@ -34,3 +34,16 @@ export const findUsersByRole = async (role: string) => {
   return response.data;
 };
 
+/**
+ * Find Users By Partial Name Client Function:
+ * Encodes a name inthe query string the server can use to filter users by
+ * their first and last name. 
+ * @param name 
+ * @returns 
+ */
+export const findUsersByPartialName = async (name: string) => {
+  const response = await axios.get(`${USERS_API}?name=${name}`);
+  return response.data;
+};
+
+
