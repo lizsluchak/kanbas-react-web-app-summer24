@@ -51,5 +51,17 @@ export const findUserById = async (id: string) => {
   return response.data;
 };
 
+/** Delete User Client Function
+ * Integrates with deleteUser route in the server
+ * 
+ * @param userId 
+ * @returns 
+ */
+export const deleteUser = async (userId: string) => {
+  const response = await axios.delete( `${USERS_API}/${userId}` );
+  return response.data;
+};
+
+
 
 
