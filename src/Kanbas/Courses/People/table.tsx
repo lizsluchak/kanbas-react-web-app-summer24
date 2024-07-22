@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import * as client from "./client"
+import PeopleDetails from "./details";
+import { BsPersonFillCheck } from "react-icons/bs";
+import { FaUserCircle } from "react-icons/fa";
+import "./styles.css"
 
 export default function PeopleTable() {
+
   const [users, setUsers] = useState<any[]>([]);
   const fetchUsers = async () => {
     const users = await client.findAllUsers();
@@ -66,9 +71,13 @@ export default function PeopleTable() {
         <tbody>
           {users.map((user: any) => (
             <tr key={user._id}>
+              
             <td className="wd-full-name text-nowrap">
+              <div> 
+              <FaUserCircle className="m-2 icon-large" /> 
               <span className="wd-first-name">{user.firstName + " "}</span>
               <span className="wd-last-name">{user.lastName}</span>
+              </div>
             </td>
             <td className="wd-login-id">{user.loginId}</td>
             <td className="wd-section">{user.section}</td>
