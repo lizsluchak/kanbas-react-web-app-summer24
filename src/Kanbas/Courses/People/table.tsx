@@ -11,8 +11,33 @@ export default function PeopleTable() {
   useEffect(() => {
     fetchUsers();
   }, []);
+
+  /**
+   * filterUsersByRole:
+   * handler function - updates a role state variable and requests from the
+   * server the list of users filtered by their role. 
+   */
+  const [role, setRole] = useState("");
+  const filterUsersByRole = async (role: string) => {
+    setRole(role);
+    if (role) {
+      const users = await client.findUsersByRole(role);
+      setUsers(users);
+    } else {
+      fetchUsers();
+    }
+  };
+
   return (
     <div id="wd-people-table">
+      {/** drop down to filter table */}
+      <select value={role} onChange={(e) =>filterUsersByRole(e.target.value)}
+              className="form-select float-start w-25 wd-select-role" >
+        <option value="">All Roles</option>        <option value="STUDENT">Students</option>
+        <option value="TA">Assistants</option>     <option value="FACULTY">Faculty</option>
+      </select>
+
+      {/** table */}
       <table className="table table-striped">
         <thead>
           <tr>
@@ -23,7 +48,7 @@ export default function PeopleTable() {
           {users.map((user: any) => (
             <tr key={user._id}>
             <td className="wd-full-name text-nowrap">
-              <span className="wd-first-name">{user.firstName}</span>
+              <span className="wd-first-name">{user.firstName + " "}</span>
               <span className="wd-last-name">{user.lastName}</span>
             </td>
             <td className="wd-login-id">{user.loginId}</td>

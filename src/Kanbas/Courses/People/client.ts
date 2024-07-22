@@ -21,3 +21,16 @@ export const findAllUsers = async () => {
     throw error; // Optional: re-throw the error if you want to handle it elsewhere
   }
 };
+
+/**
+ * findUsersByRole client function: 
+ * encodes role in theq query string of the url
+ * @param role 
+ * @returns 
+ */
+export const findUsersByRole = async (role: string) => {
+  const response = await
+    axios.get(`${USERS_API}?role=${role}`);
+  return response.data;
+};
+
