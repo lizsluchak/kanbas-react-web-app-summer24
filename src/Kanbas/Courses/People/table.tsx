@@ -79,7 +79,7 @@ export default function PeopleTable() {
 
                 <Link to={`/Kanbas/Courses/${cid}/People/${user._id}`} className="custom-people-link">
                   <FaUserCircle className="m-2 icon-large grey-text" />
-                  <span className="wd-first-name">{user.firstName + " "}</span>
+                  <span className="wd-first-name me-1">{user.firstName}</span>
                   <span className="wd-last-name">{user.lastName}</span>
                 </Link>
 
