@@ -2,8 +2,8 @@ import axios from "axios";
 
 const LOCAL_SERVER = process.env.REACT_APP_LOCAL_SERVER; 
 const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
-// const USERS_API = `${LOCAL_SERVER}/api/users`; WHY DOESNT THIS WORK
-const USERS_API = `http://localhost:4000/api/users`;
+const USERS_API = `https://kanbas-server-a6.onrender.com/api/users`;
+// const USERS_API = `http://localhost:4000/api/users`;
 
 /**
  * findAllUsers Client Function:
