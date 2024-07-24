@@ -8,15 +8,12 @@ import { FaAlignJustify } from "react-icons/fa6";
 import Quizzes from "./Quizzes";
 import Grades from "./Grades";
 import PeopleTable from "./People/table";
-// import { courses } from "../Database"; we no longer want only courses to be imported to courses screen
-// import { Link } from "react-router-dom";
+
 
 
 export default function Courses({ courses }: { courses: any[]; }) {
   const { cid } = useParams();
-  const course = courses.find((course) => course.cid === cid);
-  console.log("Course ID:", cid);
-  console.log("hello")
+  const course = courses.find((course) => course.number === cid);
   const { pathname } = useLocation();
   return (
     <div id="wd-courses">

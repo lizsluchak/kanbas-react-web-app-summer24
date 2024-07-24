@@ -12,9 +12,6 @@ import * as client from "./Courses/client";
 
 
 export default function Kanbas() {
-  
-  //we no longer need db reference since course are now temporarily in server
-  //courses state is initialized as empty since we dont have database anymore
   const [courses, setCourses] = useState<any[]>([]);
 
   /**
@@ -22,8 +19,9 @@ export default function Kanbas() {
    * and update the courses state variable that populates the Dashboard. 
    */
   const fetchCourses = async () => {
-    const courses = await client.fetchAllCourses();
+    const courses = await client.findAllCourses();
     setCourses(courses);
+    console.log(courses);
   };
   useEffect(() => {
     fetchCourses();
@@ -35,8 +33,7 @@ export default function Kanbas() {
 
     // create a course object with default values
     _id: "0", name: "New Course", number: "New Number",
-    startDate: "2023-09-10", endDate: "2023-12-15",
-    image_url: "/images/reactjs.jpg", description: "New Description"
+    startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description"
 
   });
 
@@ -47,9 +44,16 @@ export default function Kanbas() {
    * the end of the courses state variable. 
    */
   const addNewCourse = async () => {
-    const newCourse = await client.createCourse(course); 
+    const newCourse = await client.createCourse({
+      name: course.name,
+      number: course.number,
+      startDate: course.startDate,
+      endDate: course.endDate,
+      description: course.description,
+  }); 
     setCourses([...courses, newCourse ]); 
   };
+
 
   /**
    * Updated Delete Course:

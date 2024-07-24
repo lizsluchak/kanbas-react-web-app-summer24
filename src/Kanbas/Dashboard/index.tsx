@@ -64,19 +64,20 @@ export default function Dashboard(
             <div key={course._id} id="wd-dashboard-course" className="col" style={{ width: "300px" }}>
               <div className="card">
 
-                <Link to={`/Kanbas/Courses/${course._id}/Home`} className="text-decoration-none" >
+                <Link to={`/Kanbas/Courses/${course.number}/Home`} className="text-decoration-none" >
                   <div className="card rounded-3 overflow-hidden">
                     <img src={course.image_url} alt="reflects name of course" style={{ height: "200px" }} />
+                  
                     <div className="card-body">
                       <span className="wd-dashboard-course-link"
                         style={{ textDecoration: "none", color: "navy", fontWeight: "bold" }} >
                         {course.number}: {course.name}</span>
                       <p className="wd-dashboard-course-title card-text" style={{ maxHeight: 50, overflow: "hidden" }}>
                         {course.description} </p>
-                      <Link to={`/Kanbas/Courses/${course._id}/Home`} className="btn btn-primary">Go</Link>
+                      <Link to={`/Kanbas/Courses/${course.number}/Home`} className="btn btn-primary">Go</Link>
                       <button onClick={(event) => {
                         event.preventDefault();
-                        deleteCourse(course._id);
+                        deleteCourse(course.number);
                       }} className="btn btn-danger float-end"
                         id="wd-delete-course-click">
                         Delete

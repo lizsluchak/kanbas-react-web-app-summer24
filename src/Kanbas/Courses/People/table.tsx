@@ -9,6 +9,7 @@ import { Link, useParams } from "react-router-dom";
 export default function PeopleTable() {
   const { cid, id } = useParams(); //retrieve courseID
   const [users, setUsers] = useState<any[]>([]);
+  
   const fetchUsers = async () => {
     const users = await client.findAllUsers();
     setUsers(users);

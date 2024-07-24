@@ -20,7 +20,7 @@ console.log(COURSES_API);
  * 
  * @returns 
  */
-export const fetchAllCourses = async () => {
+export const findAllCourses = async () => {
   const { data } = await axios.get(COURSES_API);
   return data;
 };
@@ -32,7 +32,7 @@ export const fetchAllCourses = async () => {
  * @returns new course
  */
 export const createCourse = async (course: any) => {
-  const response = await axios.post(COURSES_API, course);
+  const response = await axios.post(`${COURSES_API}`, course);
   return response.data;
 };
 
