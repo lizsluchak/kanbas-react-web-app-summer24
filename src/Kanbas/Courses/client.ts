@@ -3,11 +3,16 @@ import axios from "axios";
 
 
 // routes- -------------------------------------------------------------------//
-const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
-const COURSES_API = `${REMOTE_SERVER}/api/courses`;
+const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER
+console.log(REMOTE_SERVER);
+const COURSES_API = `${REMOTE_SERVER}/api/courses`
+console.log(COURSES_API);
 
+
+
+// const COURSES_API = `http://localhost:4000/api/courses`;
 /**
- * IMPLEMENTS ALL COURSE RELATED COMMUNICATION BETWEEN USER INTERFACE & SERVER
+ * IMPLEMENTS ALL COURSE RELATED COMMUNICATION BE TWEEN USER INTERFACE & SERVER
  */
 
 
