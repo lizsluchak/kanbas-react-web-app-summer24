@@ -1,5 +1,6 @@
 // import React, { useState } from "react";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
 // import * as db from "../Database";
 
 
@@ -15,10 +16,13 @@ export default function Dashboard(
     course: any, 
     setCourse: (course: any) => void; 
     addNewCourse: () => void;
-    deleteCourse: (course: any) => void; 
+    deleteCourse: (courseId: string) => void; 
     updateCourse: () => void; })
+
+    
     {
       return(
+       
 
 
     <div id="wd-dashboard" className="p-4" >
@@ -77,7 +81,9 @@ export default function Dashboard(
                       <Link to={`/Kanbas/Courses/${course.number}/Home`} className="btn btn-primary">Go</Link>
                       <button onClick={(event) => {
                         event.preventDefault();
-                        deleteCourse(course.number);
+                        deleteCourse(course);
+                    
+                        
                       }} className="btn btn-danger float-end"
                         id="wd-delete-course-click">
                         Delete

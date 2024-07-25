@@ -9,8 +9,8 @@ import { current } from "@reduxjs/toolkit";
 
 
 export default function PeopleDetails(
-  { fetchUsers }:
-    { fetchUsers: () => void; }) {
+  { fetchUsers }: { fetchUsers: () => void; }
+  ) {
   const navigate = useNavigate();
   const { uid, cid } = useParams();
   const [user, setUser] = useState<any>({});

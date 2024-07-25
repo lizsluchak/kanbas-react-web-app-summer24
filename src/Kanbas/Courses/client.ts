@@ -41,8 +41,8 @@ export const createCourse = async (course: any) => {
  * @param id 
  * @returns 
  */
-export const deleteCourse = async (id: string) => {
-  const response = await axios.delete(`${COURSES_API}/${id}`);
+export const deleteCourse = async (course: any) => { 
+  const response = await axios.delete(`${COURSES_API}/${course._id}`);
   return response.data;
 };
 
@@ -53,3 +53,7 @@ export const updateCourse = async (course: any) => {
 };
 
 
+export const findCourseById = async (courseId: string) => {
+  const response = await axios.get(`${COURSES_API}/${courseId}`);
+  return response.data;
+};
