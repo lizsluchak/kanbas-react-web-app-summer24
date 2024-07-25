@@ -50,7 +50,9 @@ export default function Kanbas() {
       startDate: course.startDate,
       endDate: course.endDate,
       description: course.description,
+      image_url: "/images/reactjs.jpg", 
   }); 
+  console.log("setting new course", newCourse.image_url)
     setCourses([...courses, newCourse ]); 
   };
 
