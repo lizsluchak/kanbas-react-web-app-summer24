@@ -1,6 +1,6 @@
 import Dashboard from "./Dashboard";
 import KanbasNavigation from "./Navigation";
-import { Routes, Route, Navigate } from "react-router";
+import { Routes, Route, Navigate, useNavigate } from "react-router";
 import Courses from "./Courses";
 import "./styles.css"
 import ScreenSizeLabel from "../ScreenSizeLabel";
@@ -12,6 +12,7 @@ import * as client from "./Courses/client";
 
 
 export default function Kanbas() {
+  const navigate = useNavigate();
   const [courses, setCourses] = useState<any[]>([]);
 
   /**
@@ -62,9 +63,19 @@ export default function Kanbas() {
    */
   const deleteCourse = async (courseId: string) => {
     await client.deleteCourse(courseId);
-    setCourses(courses.filter(
-      (c) => c._id !== courseId));
+    setCourses([...courses ]); 
+    // setCourses(
+    //   courses.map((c) => {
+    //     if (c._id !== courseId) {
+    //       return course;
+    //     } 
+    //   })
+    // );
+    // setCourses(courses.filter(
+    //   (c) => c._id !== courseId));
+    // setCourses((prevCourses) => prevCourses.filter((c) => c._id !== courseId));
   };
+
 
   //TODO: does not persist
   //updateCourse: 

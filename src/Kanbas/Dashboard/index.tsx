@@ -78,16 +78,16 @@ export default function Dashboard(
                         {course.number}: {course.name}</span>
                       <p className="wd-dashboard-course-title card-text" style={{ maxHeight: 50, overflow: "hidden" }}>
                         {course.description} </p>
+                        
                       <Link to={`/Kanbas/Courses/${course.number}/Home`} className="btn btn-primary">Go</Link>
+
                       <button onClick={(event) => {
                         event.preventDefault();
                         deleteCourse(course);
-                    
-                        
                       }} className="btn btn-danger float-end"
                         id="wd-delete-course-click">
-                        Delete
-                      </button>
+                        Delete </button>
+
                       <button id="wd-edit-course-click"
                         onClick={(event) => {
                           event.preventDefault(); // prevent default navigates to course screen
