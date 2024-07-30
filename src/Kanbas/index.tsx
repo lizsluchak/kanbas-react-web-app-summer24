@@ -12,7 +12,6 @@ import * as client from "./Courses/client";
 
 
 export default function Kanbas() {
-  const navigate = useNavigate();
   const [courses, setCourses] = useState<any[]>([]);
 
   /**
@@ -65,21 +64,6 @@ export default function Kanbas() {
     await client.deleteCourse(courseId);
     setCourses(courses.filter(
       (c) => c._id !== courseId));
-
-    // trial 2: 
-    // setCourses(
-    //   courses.map((c) => {
-    //     if (c._id !== courseId) {
-    //       return course;
-    //     } 
-    //   })
-    // );
-
-    // trial 3: 
-    // setCourses([...courses ]); 
-    
-    // trial 4: 
-    // setCourses((prevCourses) => prevCourses.filter((c) => c._id !== courseId));
   };
 
 
