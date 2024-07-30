@@ -63,7 +63,10 @@ export default function Kanbas() {
    */
   const deleteCourse = async (courseId: string) => {
     await client.deleteCourse(courseId);
-    setCourses([...courses ]); 
+    setCourses(courses.filter(
+      (c) => c._id !== courseId));
+
+    // trial 2: 
     // setCourses(
     //   courses.map((c) => {
     //     if (c._id !== courseId) {
@@ -71,8 +74,11 @@ export default function Kanbas() {
     //     } 
     //   })
     // );
-    // setCourses(courses.filter(
-    //   (c) => c._id !== courseId));
+
+    // trial 3: 
+    // setCourses([...courses ]); 
+    
+    // trial 4: 
     // setCourses((prevCourses) => prevCourses.filter((c) => c._id !== courseId));
   };
 

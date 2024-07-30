@@ -41,8 +41,8 @@ export const createCourse = async (course: any) => {
  * @param id 
  * @returns 
  */
-export const deleteCourse = async (course: any) => { 
-  const response = await axios.delete(`${COURSES_API}/${course._id}`);
+export const deleteCourse = async (courseId: any) => { 
+  const response = await axios.delete(`${COURSES_API}/${courseId}`);
   return response.data;
 };
 
