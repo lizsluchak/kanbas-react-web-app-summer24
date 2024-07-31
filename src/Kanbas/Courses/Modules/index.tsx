@@ -27,7 +27,9 @@ export default function Modules() {
   }, []);
 
   const createModule = async (module: any) => {
+    console.log("module param passed", module);
     const newModule = await client.createModule(cid as string, module);
+    console.log("new module created", newModule); 
     dispatch(addModule(newModule));
   };
 
