@@ -14,7 +14,6 @@ const USERS_API = `http://localhost:4000/api/users`;
 export const findAllUsers = async () => {
   try {
     const response = await axios.get(USERS_API);
-    console.log(response);
     return response.data;
   } catch (error) {
     console.error("Error fetching users:", error);

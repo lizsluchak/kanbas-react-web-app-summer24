@@ -27,7 +27,9 @@ import { createSlice } from "@reduxjs/toolkit"; //import create slice to access 
 const initialState = {
     //dont need to set default state since we are handling that via useEffect
   modules: [],
+  
 };
+console.log("initital module state passed to reducer", initialState);
 
 /**
  * Create Module Slice:

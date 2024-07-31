@@ -36,7 +36,7 @@ const MODULES_API = `http://localhost:4000/api/modules`;
  * @returns {Promise<any>} - A promise that resolves to the list of modules
  */
 export const findModulesForCourse = async (courseId: string) => {
-  const response = await axios.get(MODULES_API);
+  const response = await axios.get(`${MODULES_API}/${courseId}`);
   return response.data;
 };
 
