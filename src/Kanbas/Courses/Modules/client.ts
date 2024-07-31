@@ -21,7 +21,8 @@ import axios from "axios";
 /* ============================ */
 const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
 const COURSES_API = `${REMOTE_SERVER}/api/courses`;
-const MODULES_API = `${REMOTE_SERVER}/api/modules`;
+// const MODULES_API = `${REMOTE_SERVER}/api/modules`;
+const MODULES_API = `http://localhost:4000/api/modules`;
 
 /* ============================ */
 /*    3. Function Definitions   */
@@ -35,7 +36,7 @@ const MODULES_API = `${REMOTE_SERVER}/api/modules`;
  * @returns {Promise<any>} - A promise that resolves to the list of modules
  */
 export const findModulesForCourse = async (courseId: string) => {
-  const response = await axios.get(`${COURSES_API}/${courseId}/modules`);
+  const response = await axios.get(MODULES_API);
   return response.data;
 };
 

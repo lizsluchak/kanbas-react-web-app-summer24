@@ -67,7 +67,7 @@ export default function Kanbas() {
   };
 
 
-  //TODO: does not persist
+
   //updateCourse: 
   const updateCourse = async () => {
     await client.updateCourse(course);

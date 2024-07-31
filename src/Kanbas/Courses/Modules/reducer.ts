@@ -35,7 +35,7 @@ const initialState = {
  * create module. 
  */
 const modulesSlice = createSlice({
-    name: "modules", //name the slice
+  name: "modules", //name the slice
   initialState, // pass in initial state we created of modules from db
   reducers: { //declare reducer functions
     
