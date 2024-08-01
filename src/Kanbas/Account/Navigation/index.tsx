@@ -1,4 +1,7 @@
 import { Link, useLocation, useParams } from "react-router-dom";
+import "./styles.css";
+
+
 export default function AccountNavigation() {
   const links = ["Signin", "Signup", "Profile"];
   const { pathname } = useLocation();
