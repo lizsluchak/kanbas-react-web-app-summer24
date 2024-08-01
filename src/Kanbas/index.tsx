@@ -9,6 +9,7 @@ import { useEffect, useState } from "react"; //needs use state
 import store from "./store";
 import { Provider } from "react-redux";
 import * as client from "./Courses/client";
+import Account from "./Account";
 
 
 export default function Kanbas() {
@@ -110,7 +111,7 @@ export default function Kanbas() {
           <div className="flex-fill p-4"> {/**this div defines a column within flex */}
             <Routes>
               <Route path="/" element={<Navigate to="Dashboard" />} />
-              <Route path="/Account" element={<h2>Account</h2>} />
+              <Route path="/Account/*" element={<Account />} />
               <Route path="/Dashboard" element={<Dashboard 
 
                       //pass reference to state variables & event handlers to dashboard
