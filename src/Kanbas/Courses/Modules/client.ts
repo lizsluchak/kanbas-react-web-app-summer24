@@ -61,7 +61,9 @@ export const createModule = async (courseId: string, module: any) => {
  * @returns {Promise<any>} - A promise that resolves to the updated module
  */
 export const updateModule = async (module: any) => {
+  console.log("update moduel called", module); 
   const response = await axios.put(`${MODULES_API}/${module._id}`, module);
+  console.log("response is", response);
   return response.data;
 };
 
@@ -72,7 +74,14 @@ export const updateModule = async (module: any) => {
  * @param {string} moduleId - The ID of the module to be deleted
  * @returns {Promise<any>} - A promise that resolves to the deleted module data
  */
-export const deleteModule = async (moduleId: string) => {
-  const response = await axios.delete(`${MODULES_API}/${moduleId}`);
-  return response.data;
+export const deleteModuleClientRoute = async (moduleId: string) => {
+  try {
+    const response = await axios.delete(`${MODULES_API}/${moduleId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting module:', error);
+    throw error;
+  }
 };
+
+

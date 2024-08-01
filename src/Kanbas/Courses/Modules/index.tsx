@@ -27,9 +27,7 @@ export default function Modules() {
   }, []);
 
   const createModule = async (module: any) => {
-    console.log("module param passed", module);
     const newModule = await client.createModule(cid as string, module);
-    console.log("new module created", newModule); 
     dispatch(addModule(newModule));
   };
 
@@ -43,7 +41,7 @@ export default function Modules() {
    * @param moduleId 
    */
   const removeModule = async (moduleId: string) => {
-    await client.deleteModule(moduleId);
+    await client.deleteModuleClientRoute(moduleId);
     dispatch(deleteModule(moduleId));
   };
 
@@ -117,6 +115,7 @@ export default function Modules() {
                       moduleId={module._id}
                       deleteModule={(moduleId) => {
                         // wrap reducer functions with dispatch
+                        console.log(moduleId);
                         removeModule(moduleId);
                       }}
                       // wrap reducer functions with dispatch

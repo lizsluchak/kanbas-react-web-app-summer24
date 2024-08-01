@@ -162,8 +162,7 @@ export default function PeopleDetails(
         setUser(user);
         setEditing(false);
         navigate(`/Kanbas/Courses/${cid}/People`);
-      }
-      }
+      }}
         className="btn btn-secondary float-start float-end me-2 wd-cancel" > Cancel </button>
     </div>);
 }
