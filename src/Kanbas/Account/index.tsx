@@ -5,6 +5,7 @@ import Signin from "./Signin";
 import { useSelector } from "react-redux";
 import AccountNavigation from "./Navigation";
 import Profile from "./Profile";
+import Signup from "./Signup";
 
 
 
@@ -19,7 +20,7 @@ export default function Account() {
           <Routes>
             <Route path="/" element={ <Navigate to="/Kanbas/Account/Signin" /> } />
             <Route path="/Signin" element={<Signin />} />
-            <Route path="/Signup" element={<h1>Sign Up</h1>} />
+            <Route path="/Signup" element={<Signup />} />
             <Route path="/Profile" element={<Profile />} />
           </Routes>
         </div>
