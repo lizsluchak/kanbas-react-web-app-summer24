@@ -10,6 +10,7 @@ import store from "./store";
 import { Provider } from "react-redux";
 import * as client from "./Courses/client";
 import Account from "./Account";
+import ProtectedRoute from "./ProtectedRoute";
 
 
 export default function Kanbas() {
@@ -112,7 +113,7 @@ export default function Kanbas() {
             <Routes>
               <Route path="/" element={<Navigate to="Dashboard" />} />
               <Route path="/Account/*" element={<Account />} />
-              <Route path="/Dashboard" element={<Dashboard 
+              <Route path="Dashboard"      element={<ProtectedRoute><Dashboard 
 
                       //pass reference to state variables & event handlers to dashboard
                       courses={courses}
@@ -121,11 +122,9 @@ export default function Kanbas() {
                       addNewCourse={addNewCourse}
                       deleteCourse={deleteCourse}
                       updateCourse={updateCourse}/>
-              
+              </ProtectedRoute>
               } />
-              <Route path="/Courses/:cid/*" element={
-                // pass all courses to the dashboard, since it might get ones not just from db
-                <Courses  courses={courses} />} />
+              <Route path="Courses/:cid/*" element={<ProtectedRoute><Courses courses={courses} /></ProtectedRoute> } />
               <Route path="/Calendar" element={<h2>Calendar</h2>} />
               <Route path="/Inbox" element={<h2>Inbox</h2>} />
             </Routes>
