@@ -5,10 +5,21 @@ export default function Profile() {
   const [profile, setProfile] = useState<any>({});
   const navigate = useNavigate();
   const fetchProfile = async () => {
-    const account = await client.profile();
-    setProfile(account);
+    try {
+      const account = await client.profile();
+      setProfile(account);
+    } catch (err: any) {
+      navigate("/Kanbas/Account/Signin");
+    }
   };
+
   useEffect(() => { fetchProfile(); }, []);
+
+  const signout = async () => {
+    await client.signout();
+    navigate("/Kanbas/Account/Signin");
+  };
+
   return (
     <div className="wd-profile-screen">
       <h1>Profile</h1>
@@ -32,6 +43,9 @@ export default function Profile() {
           </select>
         </div>
       )}
+        <button onClick={signout} className="wd-signout-btn btn btn-danger w-100">
+    Sign out
+  </button>
     </div>
   );
 }
