@@ -9,6 +9,7 @@ export default function ProtectedRoute({ children }: { children: any }) {
   // ---------------------------------------------------------------------------
   // Destructure the children parameter to reference the protected component
   // Get the currentUser from the Redux store using a selector
+  console.log(children); 
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   
   // Check if a user is signed in
