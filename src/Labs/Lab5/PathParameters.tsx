@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
+console.log(REMOTE_SERVER);
 
 /**
  * Meanwhile, in the React.js Web application, let's create a React.js 
