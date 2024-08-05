@@ -13,8 +13,24 @@ console.log("RUNNING ON!!!!!", REMOTE_SERVER);
 export const USERS_API = `${REMOTE_SERVER}/api/users`;
 
 export const signin = async (credentials: any) => {
+  try {
+    console.log('Sending signin request with credentials:', credentials);
   const response = await axiosWithCredentials.post(`${USERS_API}/signin`, credentials);
+  console.log('Signin request headers:', response.config.headers);
+  console.log('Signin response status:', response.status);
+  console.log('Signin response headers:', response.headers);
+  console.log('Signin response data:', response.data);
   return response.data;
+} catch (error: any) {
+  if (error.response) {
+    console.error('Signin error status:', error.response.status);
+    console.error('Signin error headers:', error.response.headers);
+    console.error('Signin error data:', error.response.data);
+  } else {
+    console.error('Signin error:', error.message);
+  }
+  throw error;
+}
 };
 export const profile = async () => {
   const response = await axiosWithCredentials.post(`${USERS_API}/profile`);
