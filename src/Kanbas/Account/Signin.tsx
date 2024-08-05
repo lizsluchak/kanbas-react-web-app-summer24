@@ -16,10 +16,14 @@ export default function Signin() {
       dispatch(setCurrentUser(currentUser));
       navigate("/Kanbas/Account/Profile");
     } catch (err: any) {
-      setError(err.response.data.message);
-    }
-
-  };
+        if (err.response && err.response.data && err.response.data.message) {
+          setError(err.response.data.message);
+        } else {
+          setError("An unexpected error occurred");
+          console.error("Error details:", err); // Log additional error details for debugging
+        }
+      }
+    };
   return (
     <div id="wd-signin-screen">
       <h1>Sign in</h1>
