@@ -8,7 +8,7 @@ import axios from "axios";
  * axiosWithCredentials.
  */
 const axiosWithCredentials = axios.create({ withCredentials: true });
-export const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
+export const REMOTE_SERVER = `https://kanbas-server-a5part2.onrender.com`;
 console.log("RUNNING ON!!!!!", REMOTE_SERVER); 
 export const USERS_API = `${REMOTE_SERVER}/api/users`;
 
