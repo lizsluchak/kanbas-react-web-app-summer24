@@ -115,7 +115,7 @@ export default function Modules() {
                       moduleId={module._id}
                       deleteModule={(moduleId) => {
                         // wrap reducer functions with dispatch
-                        console.log(moduleId);
+                        console.log("module id", moduleId);
                         removeModule(moduleId);
                       }}
                       // wrap reducer functions with dispatch

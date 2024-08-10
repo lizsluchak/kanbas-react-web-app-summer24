@@ -16,73 +16,73 @@ import ProtectedRoute from "./ProtectedRoute";
 export default function Kanbas() {
   const [courses, setCourses] = useState<any[]>([]);
 
-  /**
-   * we use useEffect to fetach all courses from the server on component load
-   * and update the courses state variable that populates the Dashboard. 
-   */
-  const fetchCourses = async () => {
-    const courses = await client.findAllCourses();
-    setCourses(courses);
-    // console.log(courses);
-  };
-  useEffect(() => {
-    fetchCourses();
-  }, []);
+  // /**
+  //  * we use useEffect to fetach all courses from the server on component load
+  //  * and update the courses state variable that populates the Dashboard. 
+  //  */
+  // const fetchCourses = async () => {
+  //   const courses = await client.findAllCourses();
+  //   setCourses(courses);
+  //   // console.log(courses);
+  // };
+  // useEffect(() => {
+  //   fetchCourses();
+  // }, []);
 
 
-  // convert course into a state variable so we can change it and force a redraw of UI
-  const [course, setCourse] = useState<any>({
+  // // convert course into a state variable so we can change it and force a redraw of UI
+  // const [course, setCourse] = useState<any>({
 
-    // create a course object with default values
-    _id: "0", name: "New Course", number: "New Number",
-    startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description"
+  //   // create a course object with default values
+  //   _id: "0", name: "New Course", number: "New Number",
+  //   startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description"
 
-  });
-
-
-  /**
-   * Add New Course:
-   * Posts new course to server, and new course, via response, is appended to
-   * the end of the courses state variable. 
-   */
-  const addNewCourse = async () => {
-    const newCourse = await client.createCourse({
-      name: course.name,
-      number: course.number,
-      startDate: course.startDate,
-      endDate: course.endDate,
-      description: course.description,
-      image_url: "images/reactjs.jpg", 
-  }); 
-    setCourses([...courses, newCourse ]); 
-  };
+  // });
 
 
-  /**
-   * Updated Delete Course:
-   * @param courseId 
-   */
-  const deleteCourse = async (courseId: string) => {
-    await client.deleteCourse(courseId);
-    setCourses(courses.filter(
-      (c) => c._id !== courseId));
-  };
+  // /**
+  //  * Add New Course:
+  //  * Posts new course to server, and new course, via response, is appended to
+  //  * the end of the courses state variable. 
+  //  */
+  // const addNewCourse = async () => {
+  //   const newCourse = await client.createCourse({
+  //     name: course.name,
+  //     number: course.number,
+  //     startDate: course.startDate,
+  //     endDate: course.endDate,
+  //     description: course.description,
+  //     image_url: "images/reactjs.jpg", 
+  // }); 
+  //   setCourses([...courses, newCourse ]); 
+  // };
+
+
+  // /**
+  //  * Updated Delete Course:
+  //  * @param courseId 
+  //  */
+  // const deleteCourse = async (courseId: string) => {
+  //   await client.deleteCourse(courseId);
+  //   setCourses(courses.filter(
+  //     (c) => c._id !== courseId));
+  // };
 
 
 
-  //updateCourse: 
-  const updateCourse = async () => {
-    await client.updateCourse(course);
-    setCourses(
-      courses.map((c) => {
-        if (c._id === course._id) {
-          return course;
-        } else {
-          return c;
-        }
-      })
-    );
-  };
+  // //updateCourse: 
+  // const updateCourse = async () => {
+  //   await client.updateCourse(course);
+  //   setCourses(
+  //     courses.map((c) => {
+  //       if (c._id === course._id) {
+  //         return course;
+  //       } else {
+  //         return c;
+  //       }
+  //     })
+  //   );
+  // };
 
 
     return (
@@ -113,17 +113,8 @@ export default function Kanbas() {
             <Routes>
               <Route path="/" element={<Navigate to="Dashboard" />} />
               <Route path="/Account/*" element={<Account />} />
-              <Route path="Dashboard"      element={<ProtectedRoute><Dashboard 
-
-                      //pass reference to state variables & event handlers to dashboard
-                      courses={courses}
-                      course={course}
-                      setCourse={setCourse}
-                      addNewCourse={addNewCourse}
-                      deleteCourse={deleteCourse}
-                      updateCourse={updateCourse}/>
-              </ProtectedRoute>
-              } />
+              <Route path="Dashboard"  
+                     element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
               <Route path="Courses/:cid/*" element={<ProtectedRoute><Courses courses={courses} /></ProtectedRoute> } />
               <Route path="/Calendar" element={<h2>Calendar</h2>} />
               <Route path="/Inbox" element={<h2>Inbox</h2>} />
