@@ -9,6 +9,7 @@ import Quizzes from "./Quizzes";
 import Grades from "./Grades";
 import PeopleTable from "./People/table";
 import { useSelector } from "react-redux";
+import QuizEditor from "./Quizzes/QuizEditor";
 
 
 
@@ -47,6 +48,7 @@ export default function Courses() {
                 <Route path="Assignments" element={<Assignments />} />
                 <Route path="Assignments/AssignmentEditor/:aid/*" element={<AssignmentEditor />} />
                 <Route path="Quizzes" element={<Quizzes />} />
+                <Route path="Quizzes/QuizEditor/:qid/*" element={<QuizEditor />} />
                 <Route path="Grades" element={<Grades />} />
                 <Route path="People" element={<PeopleTable />} />
                 <Route path="People/:uid" element={<PeopleTable />} />
