@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"; //import create slice to access 
 
 const initialState = {
     //dont need to set default state since we are handling that via useEffect
-  users: [],
+  people: [],
   
 };
 
@@ -14,12 +14,12 @@ const initialState = {
  * create module. 
  */
 const peopleSlice = createSlice({
-  name: "users", //name the slice
+  name: "people", //name the slice
   initialState, // pass in initial state we created of modules from db
   reducers: { //declare reducer functions
     
     setUsers: (state, action) => {
-      state.users = action.payload;
+      state.people = action.payload;
     },
   },
 });

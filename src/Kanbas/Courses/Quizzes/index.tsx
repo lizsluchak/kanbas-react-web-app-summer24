@@ -9,6 +9,7 @@ import { IoEllipsisVertical } from "react-icons/io5";
 import { FaFilePen } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import GreenCheckmark from "../Modules/GreenCheckmark";
+import { FaRocket } from "react-icons/fa";
 
 
 export default function Quizzes() {
@@ -16,6 +17,8 @@ export default function Quizzes() {
     const { quizzes } = useSelector((state: any) => state.quizzesReducer);
     const dispatch = useDispatch();
     const { currentUser } = useSelector((state: any) => state.accountReducer);
+    const currentDate = new Date(); 
+
 
 
 
@@ -26,6 +29,17 @@ export default function Quizzes() {
       useEffect(() => {
         fetchQuizzes_eHANDLER();
       }, []);
+
+
+      const getAvailabilityStatus_eHANDLER = (availableDate: Date, availableUntilDate: Date) => {
+        if (currentDate < availableDate) {
+          return `Not available until ${availableDate}`;
+        } else if (currentDate > availableUntilDate) {
+          return 'Closed';
+        } else {
+          return 'Available';
+        }
+      };
 
     return (
         <div>
@@ -40,21 +54,16 @@ export default function Quizzes() {
 
             {/** Quiz List Header -------------------------------------*/}
             <div className="wd-title p-4 ps-2 list-group-item list-group-item-active" style={{ backgroundColor: "#F5F5F5", color: "#000" }}>
+              
               <button className="p-2" style={{ all: 'unset', cursor: 'pointer' }}>
-                <BsGripVertical className="me-2 fs-3" />
                 <FaCaretDown />
-                <strong> QUIZZES </strong>
+                <strong> Assignment Quizzes </strong>
               </button>
-              <div className="float-end">
-                <button className="btn btn-md rounded-5 me-4" style={{ borderColor: '#adb5bd' }}>40% of Total</button>
-                <BsPlus className="me-3" />
-                <IoEllipsisVertical />
-              </div>
             </div>
 
             {/** Dyamically Rendered Quiz List ------------------------*/}
             <div>
-              <ul id="wd-modules" className="list-group rounded-0 p-0 m-0" style={{ borderLeft: '10px solid green' }}>
+              <ul id="wd-quizzes" className="list-group rounded-0 p-0 m-0" style={{ borderLeft: '10px solid green' }}>
                 {/* pull assignments from redux state managment*/}
                 {quizzes
                   .filter((quiz: any) => quiz.course === cid)
@@ -63,8 +72,7 @@ export default function Quizzes() {
                       <div className="wd-title p-3 ps-2 d-flex align-items-center">
 
                         <div className="d-flex align-items-center me-3">
-                          <BsGripVertical className="me-2 fs-3" />
-                          <FaFilePen className="text-success me-2 fs-3" />
+                          <FaRocket className="text-success me-2 fs-3" />
                         </div>
 
                         <div className="flex-grow-1">
@@ -75,13 +83,12 @@ export default function Quizzes() {
                               <h4 className="fw-bold">{quiz.title}</h4>
                             </Link>
 
-                            <p><span style={{ fontWeight: 550, color: 'darkred' }}>Multiple Modules</span> |
-                              <span style={{ fontWeight: 550 }}> Not avaiable until </span>
-                              {quiz.availableDate ? quiz.availableDate : " n/a "}
-                              at {quiz.availableTime ? quiz.availableTime : " -- "} |
+                            <p><span style={{ fontWeight: 550, color: 'darkred' }}>
+                                { getAvailabilityStatus_eHANDLER(quiz.availableDate, quiz.availableUntilDate)} </span> |
                               <span style={{ fontWeight: 550 }}> Due </span>
                               {quiz.dueDate ? quiz.dueDate : " n/a "}
-                              at {quiz.dueTime ? quiz.dueTime : " -- "} | {quiz.points ? quiz.points + " pts" : " n/a "}
+                              at {quiz.dueTime ? quiz.dueTime : " -- "} | {quiz.points ? quiz.points + " pts" : " n/a "} |
+                
                             </p>
                           </div>
 
@@ -89,7 +96,6 @@ export default function Quizzes() {
 
                         </div>
                         {/** End Row Buttons for each Assignment------a word*/}
-                        <FaTrash />
                    
                         <GreenCheckmark />
                         <IoEllipsisVertical className="fs-4" />

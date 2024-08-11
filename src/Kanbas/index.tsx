@@ -14,7 +14,7 @@ import ProtectedRoute from "./ProtectedRoute";
 
 
 export default function Kanbas() {
-  const [courses, setCourses] = useState<any[]>([]);
+
 
   // /**
   //  * we use useEffect to fetach all courses from the server on component load
@@ -115,7 +115,7 @@ export default function Kanbas() {
               <Route path="/Account/*" element={<Account />} />
               <Route path="Dashboard"  
                      element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-              <Route path="Courses/:cid/*" element={<ProtectedRoute><Courses courses={courses} /></ProtectedRoute> } />
+              <Route path="Courses/:cid/*" element={<ProtectedRoute><Courses /></ProtectedRoute> } />
               <Route path="/Calendar" element={<h2>Calendar</h2>} />
               <Route path="/Inbox" element={<h2>Inbox</h2>} />
             </Routes>

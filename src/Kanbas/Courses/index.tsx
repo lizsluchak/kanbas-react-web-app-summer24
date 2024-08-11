@@ -8,19 +8,22 @@ import { FaAlignJustify } from "react-icons/fa6";
 import Quizzes from "./Quizzes";
 import Grades from "./Grades";
 import PeopleTable from "./People/table";
+import { useSelector } from "react-redux";
 
 
 
-export default function Courses({ courses }: { courses: any[]; }) {
+export default function Courses() {
+  const { courses } = useSelector((state: any) => state.coursesReducer);
   const { cid } = useParams();
-  const course = courses.find((course) => course.number === cid);
+  const course = courses.find((course : any) => course.number === cid);
+  console.log(course);
   const { pathname } = useLocation();
   return (
     <div id="wd-courses">
       <h2 className="text-danger">
         <FaAlignJustify className="me-4 fs-4 mb-1"/>
         {/**name of course disapears */}
-        {course && course.name} &gt; {pathname.split("/")[4]}
+        {course && course.number} &gt; {pathname.split("/")[4]}
       </h2>
       <div className="d-flex">
           {/**

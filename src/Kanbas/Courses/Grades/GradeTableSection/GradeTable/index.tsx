@@ -1,5 +1,6 @@
 import { useParams } from "react-router";
-import { assignments, enrollments, users, grades } from "../../../../Database";
+import { assignments, enrollments, grades } from "../../../../Database";
+import { useSelector } from "react-redux";
 
 
 /**
@@ -14,6 +15,7 @@ import { assignments, enrollments, users, grades } from "../../../../Database";
 
 export default function GradeTable() {
     const { cid } = useParams(); //capture parameter -> courseId
+    const { people } = useSelector((state: any) => state.peopleReducer);
     const enrolledUsers = enrollments.filter((student) => student.course === cid); //filter enrollments based on course id
     const courseAssignments = assignments.filter((assignment) => assignment.course === cid); //filter assignments by passed course id
 
@@ -43,7 +45,7 @@ export default function GradeTable() {
 
                 <tbody>
                     {enrolledUsers.map((enrollment) => { //for each enrolledUser in the filtered enrolledUser array
-                        const user = users.find((u) => u._id === enrollment.user);  //find the id of each user
+                        const user = people.find((u: any) => u._id === enrollment.user);  //find the id of each user
                         return (
                             <tr key={enrollment._id}>
                                 <td>{user ? `${user.firstName} ${user.lastName}` : "Unknown"}</td>

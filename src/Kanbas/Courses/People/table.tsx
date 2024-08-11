@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 export default function PeopleTable() {
   const { cid, id } = useParams(); //retrieve courseID
   const [users, setUsers] = useState<any[]>([]);
-  const { modules } = useSelector((state: any) => state.usersReducer);
+
   
   const fetchUsers = async () => {
     const users = await client.findAllUsers();
