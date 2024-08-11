@@ -28,3 +28,32 @@
   .tab-page.active {
     display: block;
   }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    margin-left: auto;
+    flex-grow: 1;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.fixed-width-label {
+    min-width: 185px; /* Consistent label width for all input groups */
+}
+
+.input-group-text {
+    background-color: #f8f9fa;
+    color: #212529;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-group {
+    margin-bottom: 16px;
+}
