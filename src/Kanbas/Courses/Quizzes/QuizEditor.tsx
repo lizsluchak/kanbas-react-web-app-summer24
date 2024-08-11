@@ -42,22 +42,28 @@ export default function QuizEditor() {
         untilDate: new Date().toISOString().split("T")[0]
     });
 
-      /**
-       * Save Assignment Function:
-       * If assignment has url id of "New" -> dispatch updateAssignment reducer
-       * function, else -> dispatch addAssignment reducer function and then navigate 
-       * back to assignments page.
-       */
-      const updateQuiz_quizEditor_eHANDLER = async (quiz: any) => {
+    /**
+     * Save Assignment Function:
+     * If assignment has url id of "New" -> dispatch updateAssignment reducer
+     * function, else -> dispatch addAssignment reducer function and then navigate 
+     * back to assignments page.
+     */
+    const updateQuiz_quizEditor_eHANDLER = async (quiz: any) => {
         if (qid !== 'New') {
-          const status = await client.updateQuiz_cROUTE(quiz);
-          dispatch(updateQuiz(status));
+            const status = await client.updateQuiz_cROUTE(quiz);
+            dispatch(updateQuiz(status));
         } else {
-          const newQuiz = await client.createQuiz_cROUTE(quiz)
-          dispatch(addQuiz(newQuiz))                  
+            const newQuiz = await client.createQuiz_cROUTE(quiz)
+            dispatch(addQuiz(newQuiz))
         }                                                                           //TODO: can i add course id to default values in reducer?
         navigate(`/Kanbas/Courses/${cid}/Quizzes`);
-      }
+    }
+
+    const [active, setActive] = useState('tab-1');
+
+  const handleClick = (event: any) => {
+    setActive(event.target.id);
+  };
 
 
 
@@ -76,6 +82,45 @@ export default function QuizEditor() {
 
     return (                                                                      //return edit assignment form 
         <div id="divA-mother">
+
+<div>
+      <div className="container">
+        <div className="tabs">
+          <button
+            className={`tab-button ${active === 'tab-1' ? 'active' : ''}`}
+            id="tab-1"
+            onClick={handleClick}
+          >
+            Tab 1
+          </button>
+          <button
+            className={`tab-button ${active === 'tab-2' ? 'active' : ''}`}
+            id="tab-2"
+            onClick={handleClick}
+          >
+            Tab 2
+          </button>
+          <button
+            className={`tab-button ${active === 'tab-3' ? 'active' : ''}`}
+            id="tab-3"
+            onClick={handleClick}
+          >
+            Tab 3
+          </button>
+        </div>
+        <div className="tabs-content">
+          <div className={`tab-page ${active === 'tab-1' ? 'active' : ''}`}>
+            <p>This is page 1</p>
+          </div>
+          <div className={`tab-page ${active === 'tab-2' ? 'active' : ''}`}>
+            <p>This is page 2</p>
+          </div>
+          <div className={`tab-page ${active === 'tab-3' ? 'active' : ''}`}>
+            <p>This is page 3</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
             {/** full width column------------------------------------------------ */}
             {quiz &&                                                          //conditionaly render editor page only if assignment is found

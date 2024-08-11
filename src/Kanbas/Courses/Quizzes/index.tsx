@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { useParams} from "react-router";
+import { useParams } from "react-router";
 import * as client from "./client";
 import { setQuizzes } from "./reducer";
 import { BsGripVertical, BsPlus } from "react-icons/bs";
@@ -9,6 +9,7 @@ import { IoEllipsisVertical } from "react-icons/io5";
 import { FaFilePen } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import GreenCheckmark from "../Modules/GreenCheckmark";
+import "./QuizEditorTabs.css";
 
 export default function Quizzes() {
     const { cid } = useParams(); // Retrieve courseID
