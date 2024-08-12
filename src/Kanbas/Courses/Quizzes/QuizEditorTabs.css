@@ -42,7 +42,7 @@
 }
 
 .fixed-width-label {
-    min-width: 185px; /* Consistent label width for all input groups */
+    min-width: 200px; /* Consistent label width for all input groups */
 }
 
 .input-group-text {

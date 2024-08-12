@@ -42,6 +42,7 @@ export const findQuizzesBySearch_cROUTE = async (search: string) => {
 
 export const findQuizById_cROUTE = async (quizId: string) => {
     const response = await axios.get(`${QUIZZES_API}/${quizId}`);
+    console.log("client route =", quizId )
     return response.data;
 };
 
