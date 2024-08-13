@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import AccountNavigation from "./Navigation";
 import Profile from "./Profile";
 import Signup from "./Signup";
+import Enroll from "./Enroll";
 
 
 
@@ -23,6 +24,7 @@ export default function Account() {
             <Route path="/Signin" element={<Signin />} />
             <Route path="/Signup" element={<Signup />} />
             <Route path="/Profile" element={<Profile />} />
+            <Route path="/Enroll" element={<Enroll />} />
           </Routes>
         </div>
       </div>

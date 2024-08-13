@@ -11,7 +11,7 @@ import { Provider } from "react-redux";
 import * as client from "./Courses/client";
 import Account from "./Account";
 import ProtectedRoute from "./ProtectedRoute";
-import Enroll from "./Dashboard/Enroll";
+
 
 
 export default function Kanbas() {
