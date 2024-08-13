@@ -11,6 +11,7 @@ import { Provider } from "react-redux";
 import * as client from "./Courses/client";
 import Account from "./Account";
 import ProtectedRoute from "./ProtectedRoute";
+import Enroll from "./Dashboard/Enroll";
 
 
 export default function Kanbas() {
@@ -113,12 +114,16 @@ export default function Kanbas() {
             <Routes>
               <Route path="/" element={<Navigate to="Dashboard" />} />
               <Route path="/Account/*" element={<Account />} />
-              <Route path="Dashboard"  
+              <Route path="Dashboard/*"  
                      element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
               <Route path="Courses/:cid/*" element={<ProtectedRoute><Courses /></ProtectedRoute> } />
               <Route path="/Calendar" element={<h2>Calendar</h2>} />
               <Route path="/Inbox" element={<h2>Inbox</h2>} />
             </Routes>
+          </div>
+
+          <div>
+           
           </div>
       </div>
     </div>

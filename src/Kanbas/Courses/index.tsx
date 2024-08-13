@@ -10,6 +10,7 @@ import Grades from "./Grades";
 import PeopleTable from "./People/table";
 import { useSelector } from "react-redux";
 import QuizEditor from "./Quizzes/QuizEditor/QuizEditor";
+import Dashboard from "../Dashboard";
 
 
 
