@@ -67,6 +67,8 @@ const quizSlice = createSlice({
         q._id === quizId ? { ...q, editing: true } : q
       ) as any;
     },
+
+    
   },
 });
 export const { addQuiz, deleteQuiz, updateQuiz, editQuiz, setQuizzes } =

@@ -21,8 +21,11 @@ export default function Dashboard() {
 
   //component state
   const [course, setCourse] = useState<any>({});
+  const [userEnrolledCourses, setUserEnrolledCourses] = useState<any>([]);
+  console.log("user enrolled courses, dash index=", userEnrolledCourses); 
 
   //application state
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
   const { courses } = useSelector((state: any) => state.coursesReducer); // retrieve modules state variables
 
   //event handlers
@@ -33,6 +36,25 @@ export default function Dashboard() {
   useEffect(() => {
     fetchCoursesEventHandler();
   }, []);
+
+  const fetchUserEnrolledCoursesEventHandler = () => {
+    const userEnrolledCourses = courses.filter((course: any) =>
+      currentUser.enrolledCourses.includes(course._id)
+    );
+  
+    // Perform any additional actions with the enrolledCourses, like storing them in state or dispatching an action
+    console.log(userEnrolledCourses); // Example: logging the enrolled courses
+    setUserEnrolledCourses(userEnrolledCourses); 
+  };
+  useEffect(() => {
+    fetchUserEnrolledCoursesEventHandler();
+  }, []);
+  
+  useEffect(() => {
+    if (currentUser && currentUser.enrolledCourses && courses.length > 0) {
+      fetchUserEnrolledCoursesEventHandler();
+    }
+  }, [currentUser, courses]); // Dependencies to ensure the handler runs when currentUser or courses change
 
 
   const addNewCourseEventHandler = async () => {
@@ -64,7 +86,7 @@ export default function Dashboard() {
 
     <div id="wd-dashboard" className="p-4" >
       <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
-      <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2><hr />
+      <h2 id="wd-dashboard-published">Published Courses ({userEnrolledCourses.length})</h2><hr />
       <h5>New Course
         <button className="btn btn-primary float-end"
           id="wd-add-new-course-click"
@@ -101,7 +123,7 @@ export default function Dashboard() {
       {/** Dyanmically Rendered Course Offerings */}
       <div id="wd-dashboard-courses" className="row">
         <div className="row row-cols-1 row-cols-md-5 g-4">
-          {courses.map((course: any) => (
+          {userEnrolledCourses.map((course: any) => (
 
             <div key={course._id} id="wd-dashboard-course" className="col" style={{ width: "300px" }}>
               <div className="card">

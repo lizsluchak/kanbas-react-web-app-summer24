@@ -9,14 +9,18 @@ import { IoEllipsisVertical } from "react-icons/io5";
 import { FaFilePen } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import GreenCheckmark from "../Modules/GreenCheckmark";
-import "./QuizEditorTabs.css";
+import "../Quizzes/QuizEditor/QuizEditorTabs.css";
 
 export default function Quizzes() {
     const { cid } = useParams(); // Retrieve courseID
     const { quizzes } = useSelector((state: any) => state.quizzesReducer);
     const dispatch = useDispatch();
     const { currentUser } = useSelector((state: any) => state.accountReducer);
+    console.log("quizzes, current user=", currentUser);
     const currentDate = new Date();
+
+    const userCourses = currentUser.enrolledCourses; 
+    console.log("quizzes, current user enrolled courses=", currentUser.enrolledCourses);
 
 
     // State for managing which quiz's context menu is open

@@ -2,9 +2,9 @@ import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import "./styles.css";
-import * as client from "./client";
-import { addQuiz, updateQuiz } from "./reducer";
+import "../styles.css";
+import * as client from "../client";
+import { addQuiz, updateQuiz } from "../reducer";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // Import Quill's CSS
 
