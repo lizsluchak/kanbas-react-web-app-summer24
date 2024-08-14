@@ -30,6 +30,7 @@ export const findAllCourses = async () => {
  * @returns new course
  */
 export const createCourse = async (course: any) => {
+  
   const response = await axios.post(`${COURSES_API}`, course);
   return response.data;
 };

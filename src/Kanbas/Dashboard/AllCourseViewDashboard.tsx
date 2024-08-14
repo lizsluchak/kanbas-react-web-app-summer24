@@ -1,11 +1,12 @@
 // import React, { useState } from "react";
-
+import * as userClient from "../Account/client"
 import * as client from "../Courses/client";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { addCourse, editCourse, updateCourse, deleteCourse, setCourses }
     from "../Courses/reducer";
+import { setCurrentUser } from "../Account/reducer";
 
 export default function AllCourseViewDashboard() {
     const { cid } = useParams();
@@ -14,7 +15,7 @@ export default function AllCourseViewDashboard() {
     //component state
     const [course, setCourse] = useState<any>({});
     const [userEnrolledCourses, setUserEnrolledCourses] = useState<any>([]);
-    console.log("user enrolled courses", userEnrolledCourses);
+
 
     //application state
     const { currentUser } = useSelector((state: any) => state.accountReducer);
@@ -66,7 +67,14 @@ export default function AllCourseViewDashboard() {
     };
 
     const enrollInCourseEventHandler = async (courseId : string) => {
-        
+      const updatedUser = {
+        ...currentUser,
+        enrolledCourses: [...currentUser.enrolledCourses, courseId]
+      };
+      await userClient.updateUser(updatedUser);
+      dispatch(setCurrentUser(currentUser));
+      console.log("new enrollment", updatedUser);
+      fetchCoursesEventHandler();
     }
 
 
@@ -116,6 +124,7 @@ export default function AllCourseViewDashboard() {
 
                       <button onClick={(event) => {
                         event.preventDefault();
+                        enrollInCourseEventHandler(course._id); 
     
                       }} className="btn btn-danger float-end"
                         id="wd-delete-course-click">

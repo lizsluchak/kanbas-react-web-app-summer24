@@ -24,7 +24,7 @@ export default function Modules() {
   };
   useEffect(() => {
     fetchModules();
-  }, []);
+  }, [cid]);
 
   const createModule = async (module: any) => {
     const newModule = await client.createModule(cid as string, module);
