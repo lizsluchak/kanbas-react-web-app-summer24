@@ -175,19 +175,53 @@ export default function QuizEditor() {
                             id="wd-update-course-click" onClick={handleEditClick}>
                             <FaPencil className="me-2" />
                             Edit Quiz
-                        </button></h4>
+                        </button></h4><hr/>
 
                     {/* Render the quiz details here when not in edit mode */}
-                    <h3>{quiz.title}</h3>
-                    <p>{quiz.description}</p>
-                    <p><strong>Points:</strong> {quiz.points}</p>
-                    <p><strong>Due Date:</strong> {quiz.dueDate}</p>
-                    {/* Add more fields as needed */}
-                    <button className="btn btn-warning" onClick={handleEditClick}>
-                        <FaPencil className="me-2" />
-                        Edit Quiz
-                    </button>
-                </div>
+                    <div>
+      <h3><strong>{quiz.title}</strong></h3>
+      <div className="container mt-4">
+  <div className="row">
+    <div className="col-md-6 text-end">
+      <p><strong>Quiz Type</strong></p>
+      <p><strong>Points</strong></p>
+      <p><strong>Assignment Group</strong></p>
+      <p><strong>Shuffle Answers</strong></p>
+      <p><strong>Time Limit</strong></p>
+      <p><strong>Multiple Attempts</strong></p>
+      <p><strong>View Responses</strong></p>
+      <p><strong>Show Correct Answers</strong></p>
+      <p><strong>Access Code</strong></p>
+      <p><strong>One Question At A Time</strong></p>
+      <p><strong>Webcam Required</strong></p>
+      <p><strong>Lock Questions After Answering</strong></p>
+      <p><strong>Due Date</strong></p>
+      <p><strong>Available Date</strong></p>
+      <p><strong>Until Date</strong></p>
+    </div>
+    <div className="col-md-6 text-start">
+      <p>{quiz.quizType || "N/A"}</p>
+      <p>{quiz.points || "N/A"}</p>
+      <p>{quiz.assignmentGroup || "N/A"}</p>
+      <p>{quiz.shuffleAnswers ? "Yes" : "No"}</p>
+      <p>{quiz.timeLimit || "N/A"}</p>
+      <p>{quiz.multipleAttempts ? "Yes" : "No"}</p>
+      <p>Always</p>
+      <p>{quiz.showCorrectAnswers ? "Yes" : "No"}</p>
+      <p>{quiz.accessCode || "None"}</p>
+      <p>{quiz.oneQuestionAtATime ? "Yes" : "No"}</p>
+      <p>{quiz.webcamRequired ? "Yes" : "No"}</p>
+      <p>{quiz.lockQuestionsAfterAnswering ? "Yes" : "No"}</p>
+      <p>{quiz.dueDate || "N/A"}</p>
+      <p>{quiz.availableDate || "N/A"}</p>
+      <p>{quiz.untilDate || "N/A"}</p>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+               
+           
 
 
 
@@ -216,16 +250,6 @@ export default function QuizEditor() {
                         <div className={`tab-page ${active === 'Details' ? 'active' : ''}`}>
                             <p>Details page</p>
 
-
-                            <h4 className="text-center">
-                                <button className="btn btn-primary m-2"
-                                    id="wd-add-new-course-click"
-                                > Preview Quiz </button>
-                                <button className="btn btn-warning"
-                                    id="wd-update-course-click">
-                                    <FaPencil className="me-2" />
-                                    Edit Quiz
-                                </button></h4>
 
                             <div id="king-column" className="form-container">
                                 <div className="form-group">
