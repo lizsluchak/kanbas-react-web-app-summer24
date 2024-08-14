@@ -147,7 +147,7 @@ export default function Dashboard() {
             onChange={(e) => setCourse({ ...course, description: e.target.value })} />
           <hr />
 
-          <h4><strong>Your Published Courses ({currentUser.enrolledCourses.length})</strong>
+          <h4><strong>Your Created Courses ({currentUser.enrolledCourses.length})</strong>
             </h4>
           <br />
 
