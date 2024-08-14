@@ -4,9 +4,9 @@ import { useNavigate, useParams } from "react-router";
 import * as client from "./client";
 import { addQuiz, setQuizzes, updateQuiz } from "./reducer";
 import { BsGripVertical, BsPlus, BsSlashCircle } from "react-icons/bs";
-import { FaCaretDown, FaTrash, FaRocket } from "react-icons/fa";
+import { FaCaretDown, FaTrash, FaRocket, FaSlash, FaStopCircle, FaBan } from "react-icons/fa";
 import { IoEllipsisVertical } from "react-icons/io5";
-import { FaFilePen, FaPencil } from "react-icons/fa6";
+import { FaCircleHalfStroke, FaFilePen, FaPencil, FaRegCircleStop } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import GreenCheckmark from "../Modules/GreenCheckmark";
 import "../Quizzes/QuizEditor/QuizEditorTabs.css";
@@ -75,12 +75,7 @@ export default function Quizzes() {
         setShowModal(true);
     };
 
-    // const handlePublish = (quizId: string) => {
-    //     setPublishedStatus((prevStatus) => ({
-    //         ...prevStatus,
-    //         [quizId]: !prevStatus[quizId],
-    //     }));
-    // };
+
 
     const handleCopy = (quizId: string) => {
         // Implement copying logic here
@@ -97,6 +92,28 @@ export default function Quizzes() {
         fetchQuizzesHandler();
         return response.data;
     };
+
+    const handlePublishStatus = async (quiz: any) => {
+        // Create a shallow copy of the quiz object
+        const updatedQuiz = { ...quiz };
+    
+        // Toggle the published status
+        if (updatedQuiz.published === "No") {
+            updatedQuiz.published = "Yes";
+        } else if (updatedQuiz.published === "Yes") {
+            updatedQuiz.published = "No";
+        }
+    
+        // Send the updated quiz object to the server
+        const response = await client.updateQuiz_cROUTE(updatedQuiz);
+        
+        // Refresh the list of quizzes
+        fetchQuizzesHandler();
+        
+        return response.data;
+    };
+
+
 
 
     return (
@@ -159,7 +176,14 @@ export default function Quizzes() {
                                                         </div>
                                                     </div>
                                                     {/** End Row Buttons for each Assignment */}
-                                                    <GreenCheckmark />
+                                                    {quiz.published === "No" && (
+                                                        <FaBan className="me-3 text-danger" />
+                                                    )}{
+                                                        quiz.published === "Yes" && (
+                                                            <GreenCheckmark />
+                                                        )
+                                                    }
+
 
 
 
@@ -178,6 +202,7 @@ export default function Quizzes() {
 
                                                             <Link to={`/Kanbas/Courses/${cid}/Quizzes/QuizEditor/${quiz._id}`} className="dropdown-item m-2" >
                                                                 <FaPencil className="me-3" />
+
                                                                 <strong>EDIT: {quiz.title}</strong></Link>
 
 
@@ -190,9 +215,26 @@ export default function Quizzes() {
               wd-unpublish-modules-only with labels Unpublish all modules and items
               and Unpublish modules only */}
 
-                                                            <a id="wd-unpublish-modules-and-items" className="dropdown-item" href="#">
-                                                                <GreenCheckmark />
-                                                                <strong>PUBLISH: {quiz.title}</strong>
+                                                            <a id="wd-unpublish-modules-and-items" className="dropdown-item" onClick={() => handlePublishStatus(quiz)}>
+
+                                                                {quiz.published === "No" && (
+                                                                    <div>
+                                                                        <GreenCheckmark />
+                                                                        <strong>PUBLISH: {quiz.title}</strong>
+
+                                                                    </div>
+
+                                                                )} {quiz.published == "Yes" && (
+
+                                                                    <div>
+
+                                                                        <FaBan className="me-3 text-danger" />
+                                                                        <strong>UNPUBLISH: {quiz.title}</strong>
+
+                                                                    </div>
+                                                                )}
+
+
                                                             </a>
 
 

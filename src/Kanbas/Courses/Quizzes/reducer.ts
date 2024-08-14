@@ -44,6 +44,7 @@ const quizSlice = createSlice({
         availableTime: quiz.availableTime, 
         dueTime: quiz.dueTime, 
         untilDate: quiz.untilDate, 
+        published: quiz.published,
       };
 
       // updates the modules array in state: current module state is spread

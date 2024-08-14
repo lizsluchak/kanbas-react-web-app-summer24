@@ -40,7 +40,8 @@ export default function QuizEditor() {
         availableDate: new Date().toISOString().split("T")[0],
         availableTime: "12:00am",
         dueTime: "11:59pm",
-        untilDate: new Date().toISOString().split("T")[0]
+        untilDate: new Date().toISOString().split("T")[0],
+        published: "No",
     });
 
     const [isLoading, setIsLoading] = useState(true); // Track loading state
@@ -127,6 +128,7 @@ export default function QuizEditor() {
         availableTime: string;
         dueTime: string;
         untilDate: Date;
+        published: string; 
     }
 
     const fields: Field[] = [
