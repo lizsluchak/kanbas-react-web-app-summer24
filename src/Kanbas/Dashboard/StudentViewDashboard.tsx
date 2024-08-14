@@ -6,6 +6,7 @@ import { addCourse, editCourse, updateCourse, deleteCourse, setCourses } from ".
 
 export default function StudentViewDashboard() {
     const { cid } = useParams();
+    
     const dispatch = useDispatch(); // get dispatch to call reducer functions 
     const navigate = useNavigate();
 
@@ -47,6 +48,8 @@ export default function StudentViewDashboard() {
         }
     }, [currentUser, courses]); // Dependencies to ensure the handler runs when currentUser or courses change
 
+
+
     const addNewCourseEventHandler = async () => {
         const newCourse = await client.createCourse({
             name: course.name,
@@ -65,74 +68,7 @@ export default function StudentViewDashboard() {
             <hr />
             <h2 id="wd-dashboard-published">My Enrolled Courses ({userEnrolledCourses.length})</h2>
             <hr />
-            {showModal && (
-    <div className="modal show" style={{ display: "block", backgroundColor: "rgba(0,0,0,0.5)" }}>
-        <div className="modal-dialog">
-            <div className="modal-content">
-                <div className="modal-header">
-                    <h5 className="modal-title">You are not enrolled in any courses. Please enroll</h5>
-                    <button type="button" className="btn-close" onClick={() => setShowModal(false)}></button>
-                </div>
-                <div className="modal-body">
-                    <p>Please Enroll in a Course.</p>
-
-                    {/** Dynamically Rendered Course Offerings */}
-                    <div id="wd-dashboard-courses" className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        {courses.map((course: any) => (
-                            <div key={course._id} id="wd-dashboard-course" className="col">
-                                <div className="card">
-                                    <Link to={`/Kanbas/Courses/${course.number}/Home`} className="text-decoration-none">
-                                        <div className="card rounded-3 overflow-hidden">
-                                            <img src={course.image_url} alt="reflects name of course" style={{ height: "200px" }} />
-                                            <div className="card-body">
-                                                <span
-                                                    className="wd-dashboard-course-link"
-                                                    style={{ textDecoration: "none", color: "navy", fontWeight: "bold" }}
-                                                >
-                                                    {course.number}: {course.name}
-                                                </span>
-                                                <p className="wd-dashboard-course-title card-text" style={{ maxHeight: 50, overflow: "hidden" }}>
-                                                    {course.description}
-                                                </p>
-                                                <Link to={`/Kanbas/Courses/${course.number}/Home`} className="btn btn-primary">
-                                                    Go
-                                                </Link>
-                                                <button
-                                                    onClick={(event) => {
-                                                        event.preventDefault();
-                                                        deleteCourse(course._id);
-                                                    }}
-                                                    className="btn btn-danger float-end"
-                                                    id="wd-delete-course-click"
-                                                >
-                                                    Delete
-                                                </button>
-                                                <button
-                                                    id="wd-edit-course-click"
-                                                    onClick={(event) => {
-                                                        event.preventDefault();
-                                                        setCourses(course);
-                                                    }}
-                                                    className="btn btn-warning me-2 float-end"
-                                                >
-                                                    Edit
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </Link>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div className="modal-footer">
-                    <button type="button" className="btn-large" onClick={() => navigate('Kanbas/Dashboard/Courses')}>Browse Courses</button>
-                </div>
-            </div>
-        </div>
-    </div>
-)}
-
+            
 
           
             {showModal && (
@@ -204,7 +140,7 @@ export default function StudentViewDashboard() {
 
                             </div>
                             <div className="modal-footer">
-                            <button type="button" className="btn-large" onClick={() => navigate('Kanbas/Dashboard/Courses')}>Browse Courses</button>
+                            <button type="button" className="btn-large" onClick={() => navigate('/Kanbas/Account/Enroll')}>Browse Courses</button>
                             </div>
                            
                         </div>

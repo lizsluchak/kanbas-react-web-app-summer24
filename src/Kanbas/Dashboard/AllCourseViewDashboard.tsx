@@ -65,6 +65,10 @@ export default function AllCourseViewDashboard() {
         dispatch(setCourses([...courses, newCourse]));
     };
 
+    const enrollInCourseEventHandler = async (courseId : string) => {
+        
+    }
+
 
 
 
@@ -79,17 +83,13 @@ export default function AllCourseViewDashboard() {
     return (
 
         <div id="wd-dashboard" className="p-4" >
-            <h2 id="wd-dashboard-published">Available Published Courses ({userEnrolledCourses.length})</h2><hr />
-            <h5>New Course
-                <button className="btn btn-primary float-end"
-                    id="wd-add-new-course-click"
-                    onClick={addNewCourseEventHandler}
-                > Add </button>
-                <button className="btn btn-warning float-end me-2"
-                    onClick={updateCourse} id="wd-update-course-click">
-                    Update
-                </button>
-            </h5><br />
+            <br/>
+            <h2 id="wd-dashboard-published">Currently Enrolled Courses ({userEnrolledCourses.length})</h2>
+            <hr />
+            <br />
+            <br />
+            <h2 id="wd-dashboard-published">Available Published Courses ({courses.length})</h2><hr />
+         <br />
        
 
 
@@ -112,23 +112,17 @@ export default function AllCourseViewDashboard() {
                       <p className="wd-dashboard-course-title card-text" style={{ maxHeight: 50, overflow: "hidden" }}>
                         {course.description} </p>
 
-                      <Link to={`/Kanbas/Courses/${course.number}/Home`} className="btn btn-primary">Go</Link>
+                      <Link to={`/Kanbas/Courses/${course.number}/Home`} className="btn btn-primary">Explore</Link>
 
                       <button onClick={(event) => {
                         event.preventDefault();
-                        deleteCourse(course._id);
+    
                       }} className="btn btn-danger float-end"
                         id="wd-delete-course-click">
-                        Delete </button>
-
-                      <button id="wd-edit-course-click"
-                        onClick={(event) => {
-                          event.preventDefault(); // prevent default navigates to course screen
-                          setCourses(course);
-                        }}
-                        className="btn btn-warning me-2 float-end" >
-                        Edit
-                      </button>
+                          <Link to={`/Kanbas/Dashboard/${course.number}`}>Enroll</Link>
+                        
+                        
+                        </button>
 
 
                     </div>

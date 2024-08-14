@@ -1,6 +1,7 @@
 // import React, { useState } from "react";
 
 import * as client from "../Courses/client";
+import * as userClient from "../Account/client";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
@@ -14,7 +15,7 @@ export default function FacultyViewDashboard() {
     //component state
     const [course, setCourse] = useState<any>({});
     const [userEnrolledCourses, setUserEnrolledCourses] = useState<any>([]);
-    console.log("user enrolled courses", userEnrolledCourses);
+  
 
     //application state
     const { currentUser } = useSelector((state: any) => state.accountReducer);
@@ -54,16 +55,45 @@ export default function FacultyViewDashboard() {
 
 
     const addNewCourseEventHandler = async () => {
-        const newCourse = await client.createCourse({
-            name: course.name,
-            number: course.number,
-            startDate: course.startDate,
-            endDate: course.endDate,
-            description: course.description,
-            image_url: "images/reactjs.jpg",
-        });
-        dispatch(setCourses([...courses, newCourse]));
-    };
+      try {
+          // Create the new course
+          const newCourse = await client.createCourse({
+              name: course.name,
+              number: course.number,
+              startDate: course.startDate,
+              endDate: course.endDate,
+              description: course.description,
+              image_url: "images/reactjs.jpg",
+          });
+  
+          // Update the courses state
+          dispatch(setCourses([...courses, newCourse]));
+  
+          // Add the new course ID to the faculty member's enrolled courses
+          const updatedUser = {
+              ...currentUser,
+              enrolledCourses: [...currentUser.enrolledCourses, newCourse._id]
+          };
+          console.log('Updated user:', updatedUser.enrolledCourses);
+
+          
+
+  
+          // Update the user in the backend
+          await userClient.updateUser(updatedUser);
+          setUserEnrolledCourses(updatedUser.enrolledCourses); 
+  
+          // Optionally update the local state (if currentUser is managed locally)
+          // You might already be handling user updates globally via Redux, so this might not be necessary
+
+  
+          // Refresh enrolled courses for UI
+          fetchUserEnrolledCoursesEventHandler();
+  
+      } catch (error) {
+          console.error("Error adding course: ", error);
+      }
+  };
 
 
 

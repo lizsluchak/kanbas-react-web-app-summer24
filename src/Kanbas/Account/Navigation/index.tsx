@@ -13,7 +13,7 @@ export default function AccountNavigation() {
         <Link to={`/Kanbas/Account/${link}`} className={`
           wd-link border border-0 list-group-item list-group-item-active
                     fw-bold
-           ${ pathname.includes(link) ? "bg-white text-black active" : "bg-white text-danger" }`}> {link} </Link>
+           ${ pathname.includes(link) ? "bg-white text-danger active" : "bg-white text-black" }`}> {link} </Link>
       ))}
     </div>
   );

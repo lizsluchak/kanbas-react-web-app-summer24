@@ -27,5 +27,18 @@ export const signout = async () => {
   return response.data;
 };
 
+export const addUserEnrolledCourses = async (courseId: string) => {
+  const response = await axiosWithCredentials.post(`${USERS_API}/${courseId}`);
+  return response.data;
+};
+
+export const updateUser = async (user: any) => {
+  console.log("update user called", user); 
+  const response = await axios.put(`${USERS_API}/${user._id}`, user);
+  console.log("response is", response);
+  return response.data;
+};
+
+
 
 

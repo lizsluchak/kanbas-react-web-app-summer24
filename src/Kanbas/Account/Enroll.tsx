@@ -34,6 +34,7 @@ export default function Enroll() {
   return (
     <div className="wd-profile-screen">
       <h1>Enroll in Kanbas Courses:</h1>
+      
       <AllCourseViewDashboard />
       
 
