@@ -25,7 +25,7 @@ export default function Courses() {
       <h2 className="text-danger">
         <FaAlignJustify className="me-4 fs-4 mb-1"/>
         {/**name of course disapears */}
-        {course && course.number} &gt; {pathname.split("/")[4]}
+        {course && course.number + " : " + course.name} &gt; {pathname.split("/")[4]}
       </h2>
       <div className="d-flex">
           {/**
