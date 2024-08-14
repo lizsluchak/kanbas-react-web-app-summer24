@@ -26,10 +26,8 @@ export default function Quizzes() {
     //quiz variables
     const currentDate = new Date();
 
-
     // local state variables 
     const [openMenu, setOpenMenu] = useState<string | null>(null); //for managing which quiz's context menu is open
-    const [publishedStatus, setPublishedStatus] = useState<{ [key: string]: boolean }>({}); // State for managing published status of quizzes
     const [showModal, setShowModal] = useState<boolean>(false);     // State for managing modal visibility and selected quiz for deletion
     const [selectedQuizId, setSelectedQuizId] = useState<string | null>(null);
 
@@ -37,16 +35,6 @@ export default function Quizzes() {
         const quizzes = await client.findQuizzesByCourse_cROUTE(cid as string);
         dispatch(setQuizzes(quizzes));
 
-
-        // Initialize published status for each quiz
-        const status = quizzes.reduce((acc: any, quiz: any) => {
-            acc[quiz._id] = quiz.isPublished || false; // Assuming quizzes have an isPublished property
-            return acc;
-        }, {});
-        setPublishedStatus(status);
-        // if (quizzes.length === 0) {
-        //     alert("No Quizzes established for this course. Click \"+ Quiz \" Button to create a quiz"); 
-        // }
     };
 
     useEffect(() => {
@@ -87,12 +75,12 @@ export default function Quizzes() {
         setShowModal(true);
     };
 
-    const handlePublish = (quizId: string) => {
-        setPublishedStatus((prevStatus) => ({
-            ...prevStatus,
-            [quizId]: !prevStatus[quizId],
-        }));
-    };
+    // const handlePublish = (quizId: string) => {
+    //     setPublishedStatus((prevStatus) => ({
+    //         ...prevStatus,
+    //         [quizId]: !prevStatus[quizId],
+    //     }));
+    // };
 
     const handleCopy = (quizId: string) => {
         // Implement copying logic here
@@ -102,6 +90,12 @@ export default function Quizzes() {
     const handleSort = (criteria: string) => {
         // Implement sorting logic here
         console.log(`Sort quizzes by ${criteria}`);
+    };
+
+    const handleDeleteQuiz = async (quizId: string) => {
+        const response = await client.deleteQuiz_cROUTE(quizId);
+        fetchQuizzesHandler();
+        return response.data;
     };
 
 
@@ -169,25 +163,25 @@ export default function Quizzes() {
 
 
 
-                                                    <div className="dropdown show d-inline me-2 float-end">
+                                                    <div className="dropdown show d-inline float-end">
                                                         <a id="wd-publish-all-btn" className="dropdown btn"
                                                             type="button" data-bs-toggle="dropdown">
                                                             <IoEllipsisVertical
-                                                        className="fs-3"
-                                                        // onClick={() => toggleMenu(quiz._id)}
-                                                        // style={{ cursor: "pointer" }}
-                                                    />
-            
+                                                                className="fs-3"
+                                                            // onClick={() => toggleMenu(quiz._id)}
+                                                            // style={{ cursor: "pointer" }}
+                                                            />
+
                                                         </a>
 
                                                         <div className="dropdown-menu">
 
-                                                            <a id="wd-publish-all-modules-and-items-btn" className="dropdown-item m-2" href="#">
-                                                                <FaPencil className="me-3"/>
-                                                                <strong>EDIT: {quiz.title}</strong></a>
+                                                            <Link to={`/Kanbas/Courses/${cid}/Quizzes/QuizEditor/${quiz._id}`} className="dropdown-item m-2" >
+                                                                <FaPencil className="me-3" />
+                                                                <strong>EDIT: {quiz.title}</strong></Link>
 
 
-                                                            <a id="wd-publish-modules-only-button" className="dropdown-item m-2" href="#">
+                                                            <a id="wd-publish-modules-only-button" className="dropdown-item m-2" onClick={() => handleDeleteQuiz(quiz._id)}>
                                                                 <FaTrash className="me-3" />
                                                                 <strong>DELETE: {quiz.title}</strong>
                                                             </a>
@@ -201,7 +195,7 @@ export default function Quizzes() {
                                                                 <strong>PUBLISH: {quiz.title}</strong>
                                                             </a>
 
-                                                          
+
 
 
 
@@ -221,24 +215,8 @@ export default function Quizzes() {
 
 
 
-                                                  
-                                                    {openMenu === quiz._id && (
-                                                        <div className="context-menu" style={{ position: "relative" }}>
-                                                            <ul style={{ position: "absolute", right: 0 }}>
-                                                                {/* <li onClick={() => handleEdit(quiz._id)}>Edit</li> */}
-                                                                <li onClick={() => confirmDelete(quiz._id)}>Delete</li>
-                                                                <li onClick={() => handlePublish(quiz._id)}>
-                                                                    {publishedStatus[quiz._id] ? "Unpublish" : "Publish"}
-                                                                </li>
-                                                                <li onClick={() => handleCopy(quiz._id)}>Copy</li>
-                                                                <li onClick={() => handleSort("name")}>Sort by Name</li>
-                                                                <li onClick={() => handleSort("dueDate")}>Sort by Due Date</li>
-                                                                <li onClick={() => handleSort("availableDate")}>
-                                                                    Sort by Available Date
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    )}
+
+
                                                 </div>
                                             </li>
                                         ))}
@@ -246,19 +224,7 @@ export default function Quizzes() {
                             </div>
                         </li>
                     </ul>
-                    {/* Modal for confirming deletion */}
-                    {showModal && (
-                        <div className="modal">
-                            <div className="modal-content">
-                                <span className="close" onClick={() => setShowModal(false)} style={{ cursor: "pointer" }}>
-                                    &times;
-                                </span>
-                                <p>Are you sure you want to delete this quiz?</p>
-                                <button onClick={handleDelete}>Yes, Delete</button>
-                                <button onClick={() => setShowModal(false)}>Cancel</button>
-                            </div>
-                        </div>
-                    )}
+
                 </div>
             )} {currentUser.role === "STUDENT" && (
                 <div>
@@ -322,23 +288,7 @@ export default function Quizzes() {
                                                             onClick={() => toggleMenu(quiz._id)}
                                                             style={{ cursor: "pointer" }}
                                                         />
-                                                        {openMenu === quiz._id && (
-                                                            <div className="context-menu" style={{ position: "relative" }}>
-                                                                <ul style={{ position: "absolute", right: 0 }}>
-                                                                    {/* <li onClick={() => handleEdit(quiz._id)}>Edit</li> */}
-                                                                    <li onClick={() => confirmDelete(quiz._id)}>Delete</li>
-                                                                    <li onClick={() => handlePublish(quiz._id)}>
-                                                                        {publishedStatus[quiz._id] ? "Unpublish" : "Publish"}
-                                                                    </li>
-                                                                    <li onClick={() => handleCopy(quiz._id)}>Copy</li>
-                                                                    <li onClick={() => handleSort("name")}>Sort by Name</li>
-                                                                    <li onClick={() => handleSort("dueDate")}>Sort by Due Date</li>
-                                                                    <li onClick={() => handleSort("availableDate")}>
-                                                                        Sort by Available Date
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        )}
+
                                                     </div>
                                                 </li>
                                             ))}
