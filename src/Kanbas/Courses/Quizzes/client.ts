@@ -9,7 +9,7 @@ const QUIZZES_API = `http://localhost:4000/api/quizzes`;
 // ====================================================
 // CREATE QUIZ CLIENT ROUTES
 // ====================================================
-export const createQuiz_cROUTE = async (quiz: any) => {
+export const createQuiz_cROUTE = async (quizId: string, quiz: any) => {
     const response = await axios.post(`${QUIZZES_API}`, quiz);
     return response.data;
 };

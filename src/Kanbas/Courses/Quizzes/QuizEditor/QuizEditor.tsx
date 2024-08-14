@@ -9,16 +9,19 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // Import Quill's CSS
 
 export default function QuizEditor() {
+    //fetch params
     const { qid, cid } = useParams();
-    console.log(qid, cid);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    // Initialize state with a default quiz object
-    const defaultQuiz = {
+    //fetch quizzes from redux
+    const { quizzes } = useSelector((state: any) => state.quizzesReducer);
+
+    //create quiz useState Hook: add state to functional component
+    const [quiz, setQuiz] = useState<any>({                           //initalize object state variable, assignment, with type `any`
         qid: `${qid}`,
         title: `New Quiz for Course ${cid}`,
-        course: { cid },
+        course: `${cid}`,
         description: "New Description",
         points: "",
         assignTo: "Everyone",
@@ -38,57 +41,59 @@ export default function QuizEditor() {
         availableTime: "12:00am",
         dueTime: "11:59pm",
         untilDate: new Date().toISOString().split("T")[0]
-    };
+    });
 
-    const [quiz, setQuiz] = useState<any>(defaultQuiz);
     const [isLoading, setIsLoading] = useState(true); // Track loading state
 
     const fetchCurrentQuiz = async () => {
         if (qid !== 'New') {
             try {
                 const current = await client.findQuizById_cROUTE(qid as string);
-                console.log("current quiz:", current); 
+                console.log("current quiz:", current);
                 if (current) {
                     setQuiz(current);
                 } else {
                     console.warn(`Quiz with qid ${qid} not found.`);
-                    setQuiz(defaultQuiz); // Reset to default if not found
+                 
                 }
             } catch (error) {
                 console.error("Error fetching quiz:", error);
-                setQuiz(defaultQuiz); // Reset to default on error
+             
             } finally {
                 setIsLoading(false); // Set loading to false
             }
         } else {
-            setQuiz(defaultQuiz); // Use default quiz if creating a new one
+          
             setIsLoading(false);
         }
     };
-
     useEffect(() => {
         fetchCurrentQuiz();
     }, [qid]);
 
-    const updateQuiz_quizEditor_eHANDLER = async (quiz: any) => {
+
+
+    const [active, setActive] = useState('Details');
+
+    const handleClick = (event: any) => {
+        setActive(event.target.id);
+    };
+
+    const handleSaveQuiz = async (quiz: any) => {
         try {
             if (qid !== 'New') {
+                console.log("save quiz called and not a new quiz"); 
                 const status = await client.updateQuiz_cROUTE(quiz);
                 dispatch(updateQuiz(status));
             } else {
-                const newQuiz = await client.createQuiz_cROUTE(quiz);
+                console.log("save quiz called and new quiz"); 
+                const newQuiz = await client.createQuiz_cROUTE(qid as string, quiz);
                 dispatch(addQuiz(newQuiz));
             }
             navigate(`/Kanbas/Courses/${cid}/Quizzes`);
         } catch (error) {
             console.error("Error updating/adding quiz:", error);
         }
-    };
-
-    const [active, setActive] = useState('Details');
-
-    const handleClick = (event: any) => {
-        setActive(event.target.id);
     };
 
     interface Field {
@@ -127,7 +132,7 @@ export default function QuizEditor() {
     const fields: Field[] = [
         { label: "Quiz Title", type: "text", id: "quizTitle", stateKey: "title" },
         { label: "Quiz Instructions", type: "wysiwyg", id: "quizDescription", stateKey: "description" },
-        { label: "Assigned To", type: "select", id: "quizAssignedTo", stateKey: "assignTo", options: ["Everyone"]},
+        { label: "Assigned To", type: "select", id: "quizAssignedTo", stateKey: "assignTo", options: ["Everyone"] },
         { label: "Quiz Type", type: "select", id: "quizType", stateKey: "quizType", options: ["Graded Quiz", "Practice Quiz", "Graded Survey", "Ungraded Survey"] },
         { label: "Points", type: "text", id: "quizPoints", stateKey: "points" },
         { label: "Assignment Group", type: "select", id: "quizAssignmentGroup", stateKey: "assignmentGroup", options: ["QUIZZES", "ASSIGNMENTS", "PROJECTS", "EXAMS"] },
@@ -138,7 +143,7 @@ export default function QuizEditor() {
         { label: "Access Code", type: "text", id: "quizAccessCode", stateKey: "accessCode" },
         { label: "One Question At A Time", type: "select", id: "quizOneQuestionAtATime", stateKey: "oneQuestionAtATime" },
         { label: "Webcam Required", type: "select", id: "quizWebcamRequired", stateKey: "webcamRequired" },
-        { label: "Lock Questions After Answering", type: "select", id: "quizLockQuestionsAfterAnwsering", stateKey: "lockQuestionsAfterAnswering", options: ["Yes", "No"]  },
+        { label: "Lock Questions After Answering", type: "select", id: "quizLockQuestionsAfterAnwsering", stateKey: "lockQuestionsAfterAnswering", options: ["Yes", "No"] },
         { label: "Available Date", type: "date", id: "quizAvailableDate", stateKey: "availableDate" },
         { label: "Due Date", type: "date", id: "quizDueDate", stateKey: "dueDate" },
         { label: "Avaialbe Until Date", type: "date", id: "quizAvailableUntilDate", stateKey: "untilDate" },
@@ -239,7 +244,7 @@ export default function QuizEditor() {
 
                                 <div>
                                     <button onClick={() => {
-                                        updateQuiz_quizEditor_eHANDLER(quiz);
+                                        handleSaveQuiz(quiz);
                                     }}
                                         className="btn btn-lg bg-danger text-white m-2"
                                         style={{ backgroundColor: '#f8f9fb' }}>
