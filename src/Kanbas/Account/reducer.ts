@@ -10,16 +10,6 @@ const accountSlice = createSlice({
       state.currentUser = action.payload;
     },
 
-    // updateCourseEnrollment: (state, { payload: courseId }) => {
-    //   if (state.currentUser == null) {
-    //     return; 
-    //   } else {
-    //      state.currentUser = state.currentUser.enrolledCourses.push(courseId); 
-      
-
-    //   }
-     
-    // },
 
 
   },

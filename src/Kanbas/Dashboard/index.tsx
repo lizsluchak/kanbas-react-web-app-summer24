@@ -1,11 +1,12 @@
 // import React, { useState } from "react";
-
+import * as userClient from "../Account/client"
 import * as client from "../Courses/client";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { addCourse, editCourse, updateCourse, deleteCourse, setCourses }
   from "../Courses/reducer";
+import { setCurrentUser } from "../Account/reducer";
 
 
 
@@ -21,8 +22,7 @@ export default function Dashboard() {
 
   //component state
   const [course, setCourse] = useState<any>({});
-  const [userEnrolledCourses, setUserEnrolledCourses] = useState<any>([]);
-  console.log("user enrolled courses, dash index=", userEnrolledCourses); 
+  // const [userEnrolledCourses, setUserEnrolledCourses] = useState<any>([]);
 
   //application state
   const { currentUser } = useSelector((state: any) => state.accountReducer);
@@ -51,22 +51,37 @@ export default function Dashboard() {
       image_url: "images/reactjs.jpg",
     });
     dispatch(setCourses([...courses, newCourse]));
+    console.log(newCourse); 
+
+     // Add the new course ID to the faculty member's enrolled courses
+     const updatedUser = {
+      ...currentUser,
+      enrolledCourses: [...currentUser.enrolledCourses, newCourse._id]
+  };
+    await userClient.updateUser(updatedUser);
+    dispatch(setCurrentUser(updatedUser));
+    console.log(updatedUser); 
   };
 
-  /**
- * In the Modules component, implement an async function saveModule invoked 
- * when the user clicks the Update or Save button as shown below. 
- * The function should invoke the service function updateModule passing the 
- * module updates as a parameter. When the response is done, dispatch the 
- * new module to the updateModule reducer function which will replace the 
- * module in the modules reducer state variable. Confirm you can update the 
- * module and that the changes persist if you refresh the user interface.
- * @param module 
- */
+
   const updateCourseHandler = async (course: any) => {
     const status = await client.updateCourse(course);
     dispatch(updateCourse(course));
   };
+
+  const deleteCourseHandler = async (course: any) => {
+    const status = await client.deleteCourse(course._id);
+    dispatch(deleteCourse(course._id));
+
+    // Add the new course ID to the faculty member's enrolled courses
+    const updatedUser = {
+      ...currentUser,
+      enrolledCourses: [currentUser.enrolledCourses.filter((id: string) => id !== course._id)]
+  };
+    await userClient.updateUser(updatedUser);
+    dispatch(setCurrentUser(updatedUser));
+  };
+
 
 
 
@@ -90,7 +105,7 @@ export default function Dashboard() {
       <h5><strong>Create/Edit Course</strong>
         <button className="btn btn-primary float-end"
           id="wd-add-new-course-click"
-          onClick={addCourse} > Add </button>
+          onClick={() => addNewCourseEventHandler()} > Add </button>
         <button className="btn btn-warning float-end me-2"
           onClick={() => updateCourseHandler(course)} id="wd-update-course-click">
           Update
@@ -146,7 +161,7 @@ export default function Dashboard() {
 
                       <button onClick={(event) => {
                         event.preventDefault();
-                        deleteCourse(course._id);
+                        deleteCourseHandler(course); 
                       }} className="btn btn-danger float-end"
                         id="wd-delete-course-click">
                         Delete </button>
