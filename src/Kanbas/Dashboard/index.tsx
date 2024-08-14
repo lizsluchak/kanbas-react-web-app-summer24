@@ -1,14 +1,11 @@
 // import React, { useState } from "react";
 
-import * as userClient from "../Account/client";
 import * as client from "../Courses/client";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { addCourse, editCourse, updateCourse, deleteCourse, setCourses }
   from "../Courses/reducer";
-import FacultyViewDashboard from "./FacultyViewDashboard";
-import StudentViewDashboard from "./StudentViewDashboard";
 
 
 
@@ -25,10 +22,13 @@ export default function Dashboard() {
   //component state
   const [course, setCourse] = useState<any>({});
   const [userEnrolledCourses, setUserEnrolledCourses] = useState<any>([]);
+  console.log("user enrolled courses, dash index=", userEnrolledCourses); 
 
   //application state
   const { currentUser } = useSelector((state: any) => state.accountReducer);
+  const userCourseIds = currentUser.enrolledCourses; 
   const { courses } = useSelector((state: any) => state.coursesReducer); // retrieve modules state variables
+
 
   //event handlers
   const fetchCoursesEventHandler = async () => {
@@ -39,75 +39,33 @@ export default function Dashboard() {
     fetchCoursesEventHandler();
   }, []);
 
-  // Event handlers
-  const fetchUserEnrolledCoursesEventHandler = () => {
-    const userEnrolledCourses = currentUser.enrolledCourses.map((enrolledCourseId: string) =>
-      courses.find((course: any) => course._id === enrolledCourseId)
-    );
-
-    if (userEnrolledCourses.length === 0) {
-
-
-    } else {
-      setUserEnrolledCourses(userEnrolledCourses);
-    }
-
-    // Perform any additional actions with the enrolledCourses, like storing them in state or dispatching an action
-    // console.log(userEnrolledCourses); // Example: logging the enrolled courses
-  };
-
-  useEffect(() => {
-    if (currentUser && currentUser.enrolledCourses && courses.length > 0) {
-      fetchUserEnrolledCoursesEventHandler();
-    }
-  }, [currentUser, courses, currentUser.enrolledCourses]); // Dependencies to ensure the handler runs when currentUser or courses change
-
-  useEffect(() => {
-    if (currentUser && currentUser.enrolledCourses && courses.length > 0) {
-      fetchUserEnrolledCoursesEventHandler();
-    }
-  }, [currentUser, courses]); // Dependencies to ensure the handler runs when currentUser or courses change
 
 
   const addNewCourseEventHandler = async () => {
-    try {
-      // Create the new course
-      const newCourse = await client.createCourse({
-        name: course.name,
-        number: course.number,
-        startDate: course.startDate,
-        endDate: course.endDate,
-        description: course.description,
-        image_url: "images/reactjs.jpg",
-      });
+    const newCourse = await client.createCourse({
+      name: course.name,
+      number: course.number,
+      startDate: course.startDate,
+      endDate: course.endDate,
+      description: course.description,
+      image_url: "images/reactjs.jpg",
+    });
+    dispatch(setCourses([...courses, newCourse]));
+  };
 
-      // Update the courses state
-      dispatch(setCourses([...courses, newCourse]));
-
-      // Add the new course ID to the faculty member's enrolled courses
-      const updatedUser = {
-        ...currentUser,
-        enrolledCourses: [...currentUser.enrolledCourses, newCourse._id]
-      };
-      console.log('Updated user:', updatedUser.enrolledCourses);
-
-
-
-
-      // Update the user in the backend
-      await userClient.updateUser(updatedUser);
-      setUserEnrolledCourses(updatedUser.enrolledCourses);
-
-      // Optionally update the local state (if currentUser is managed locally)
-      // You might already be handling user updates globally via Redux, so this might not be necessary
-
-
-      // Refresh enrolled courses for UI
-      fetchUserEnrolledCoursesEventHandler();
-
-    } catch (error) {
-      console.error("Error adding course: ", error);
-    }
+  /**
+ * In the Modules component, implement an async function saveModule invoked 
+ * when the user clicks the Update or Save button as shown below. 
+ * The function should invoke the service function updateModule passing the 
+ * module updates as a parameter. When the response is done, dispatch the 
+ * new module to the updateModule reducer function which will replace the 
+ * module in the modules reducer state variable. Confirm you can update the 
+ * module and that the changes persist if you refresh the user interface.
+ * @param module 
+ */
+  const updateCourseHandler = async (course: any) => {
+    const status = await client.updateCourse(course);
+    dispatch(updateCourse(course));
   };
 
 
@@ -122,29 +80,25 @@ export default function Dashboard() {
 
 
   return (
-    <div>
-      {currentUser.role === 'STUDENT' ? (
-        <StudentViewDashboard />
-
-      ) : currentUser.role === 'FACULTY' ? (
-
-        <div id="wd-dashboard" className="p-4" >
-            <h1 id="wd-dashboard-title">Professor {currentUser.firstName}'s Dashboard</h1> <hr />
-            <h2 id="wd-dashboard-published">My Published Courses ({userEnrolledCourses.length})</h2><hr />
-            <h5>New Course
-                <button className="btn btn-primary float-end"
-                    id="wd-add-new-course-click"
-                    onClick={addNewCourseEventHandler}
-                > Add </button>
-                <button className="btn btn-warning float-end me-2"
-                    onClick={updateCourse} id="wd-update-course-click">
-                    Update
-                </button>
-            </h5><br />
 
 
 
-      {/* New Course Input Form Elements:
+
+    <div id="wd-dashboard" className="p-4" >
+      <h1 id="wd-dashboard-title">Professor {currentUser.firstName}'s Dashboard</h1> <hr />
+
+      <h5><strong>Create/Edit Course</strong>
+        <button className="btn btn-primary float-end"
+          id="wd-add-new-course-click"
+          onClick={addCourse} > Add </button>
+        <button className="btn btn-warning float-end me-2"
+          onClick={() => updateCourseHandler(course)} id="wd-update-course-click">
+          Update
+        </button></h5>
+      <br />
+
+
+      {/* {/* New Course Input Form Elements:
           onChange attribute used to update field via setCourse mutator function */}
       <input value={course.name} className="form-control mb-2"
         onChange={(e) => setCourse({ ...course, name: e.target.value })} />
@@ -163,11 +117,62 @@ export default function Dashboard() {
       <textarea value={course.description} className="form-control mb-2"
         onChange={(e) => setCourse({ ...course, description: e.target.value })} />
       <hr />
+      <h2 id="wd-dashboard-published">Your Published Courses ({currentUser.enrolledCourses.length})</h2><hr />
+    
+
 
       {/** Dyanmically Rendered Course Offerings */}
       <div id="wd-dashboard-courses" className="row">
         <div className="row row-cols-1 row-cols-md-5 g-4">
-          {userEnrolledCourses.map((course: any) => (
+          {courses
+          .filter((course : any) => userCourseIds.includes(course._id))
+          .map((course: any) => (
+
+            <div key={course._id} id="wd-dashboard-course" className="col" style={{ width: "300px" }}>
+              <div className="card">
+
+                <Link to={`/Kanbas/Courses/${course.number}/Home`} className="text-decoration-none" >
+                  <div className="card rounded-3 overflow-hidden">
+                    <img src={course.image_url} alt="reflects name of course" style={{ height: "200px" }} />
+
+                    <div className="card-body">
+                      <span className="wd-dashboard-course-link"
+                        style={{ textDecoration: "none", color: "navy", fontWeight: "bold" }} >
+                        {course.number}: {course.name}</span>
+                      <p className="wd-dashboard-course-title card-text" style={{ maxHeight: 50, overflow: "hidden" }}>
+                        {course.description} </p>
+
+                      <Link to={`/Kanbas/Courses/${course.number}/Home`} className="btn btn-primary">Go</Link>
+
+                      <button onClick={(event) => {
+                        event.preventDefault();
+                        deleteCourse(course._id);
+                      }} className="btn btn-danger float-end"
+                        id="wd-delete-course-click">
+                        Delete </button>
+
+                      <button id="wd-edit-course-click"
+                        onClick={(event) => {
+                          event.preventDefault(); // prevent default navigates to course screen
+                          setCourse(course);
+                        }}
+                        className="btn btn-warning me-2 float-end" >
+                        Edit
+                      </button>
+
+
+                    </div>
+                  </div>
+
+                </Link>
+              </div>
+            </div>
+          ))}
+          
+
+          <h2 id="wd-dashboard-published">All Courses ({courses.length})</h2><hr />
+{courses
+          .map((course: any) => (
 
             <div key={course._id} id="wd-dashboard-course" className="col" style={{ width: "300px" }}>
               <div className="card">
@@ -208,25 +213,10 @@ export default function Dashboard() {
                 </Link>
               </div>
             </div>
-          ))}
-   
-
-
-
-
-       
+          ))} 
         </div>
-        </div>
-        </div>
-      ) : (
-        <div>Unauthorized</div> // Handle cases where the role doesn't match expected values
-      )}
+      </div>
     </div>
   );
-};
-
-
-
-      
-
+}
 
