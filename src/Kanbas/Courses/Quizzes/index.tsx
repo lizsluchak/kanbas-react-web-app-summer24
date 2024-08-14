@@ -292,7 +292,7 @@ export default function Quizzes() {
                                         style={{ borderLeft: "10px solid green" }}
                                     >
                                         {quizzes
-                                            .filter((quiz: any) => quiz.course === cid)
+                                            .filter((quiz: any) => quiz.course === cid && quiz.published === "Yes")
                                             .map((quiz: any) => (
                                                 <li key={quiz._id} className="wd-module list-group-item border-light-gray">
                                                     <div className="wd-title p-3 ps-2 d-flex align-items-center">

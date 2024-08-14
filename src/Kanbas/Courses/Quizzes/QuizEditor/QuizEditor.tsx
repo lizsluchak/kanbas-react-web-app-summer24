@@ -7,6 +7,8 @@ import * as client from "../client";
 import { addQuiz, updateQuiz } from "../reducer";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // Import Quill's CSS
+import { FaEdit } from "react-icons/fa";
+import { FaPencil } from "react-icons/fa6";
 
 export default function QuizEditor() {
     //fetch params
@@ -55,22 +57,28 @@ export default function QuizEditor() {
                     setQuiz(current);
                 } else {
                     console.warn(`Quiz with qid ${qid} not found.`);
-                 
+
                 }
             } catch (error) {
                 console.error("Error fetching quiz:", error);
-             
+
             } finally {
                 setIsLoading(false); // Set loading to false
             }
         } else {
-          
+
             setIsLoading(false);
         }
     };
     useEffect(() => {
         fetchCurrentQuiz();
     }, [qid]);
+
+    const [isEditMode, setIsEditMode] = useState<boolean>(qid === 'New'); // Automatically in edit mode if creating a new quiz
+    const handleEditClick = () => {
+        setIsEditMode(true); // Enable edit mode
+    };
+
 
 
 
@@ -83,11 +91,11 @@ export default function QuizEditor() {
     const handleSaveQuiz = async (quiz: any) => {
         try {
             if (qid !== 'New') {
-                console.log("save quiz called and not a new quiz"); 
+                console.log("save quiz called and not a new quiz");
                 const status = await client.updateQuiz_cROUTE(quiz);
                 dispatch(updateQuiz(status));
             } else {
-                console.log("save quiz called and new quiz"); 
+                console.log("save quiz called and new quiz");
                 const newQuiz = await client.createQuiz_cROUTE(qid as string, quiz);
                 dispatch(addQuiz(newQuiz));
             }
@@ -128,7 +136,7 @@ export default function QuizEditor() {
         availableTime: string;
         dueTime: string;
         untilDate: Date;
-        published: string; 
+        published: string;
     }
 
     const fields: Field[] = [
@@ -157,7 +165,36 @@ export default function QuizEditor() {
 
     return (
         <div id="divA-mother">
-            <div>
+            {!isEditMode ? (
+                <div>
+                    <h4 className="text-center">
+                        <button className="btn btn-primary m-2"
+                            id="wd-add-new-course-click"
+                        > Preview Quiz </button>
+                        <button className="btn btn-warning"
+                            id="wd-update-course-click" onClick={handleEditClick}>
+                            <FaPencil className="me-2" />
+                            Edit Quiz
+                        </button></h4>
+
+                    {/* Render the quiz details here when not in edit mode */}
+                    <h3>{quiz.title}</h3>
+                    <p>{quiz.description}</p>
+                    <p><strong>Points:</strong> {quiz.points}</p>
+                    <p><strong>Due Date:</strong> {quiz.dueDate}</p>
+                    {/* Add more fields as needed */}
+                    <button className="btn btn-warning" onClick={handleEditClick}>
+                        <FaPencil className="me-2" />
+                        Edit Quiz
+                    </button>
+                </div>
+
+
+
+
+
+            ) : (
+
                 <div className="container">
                     <div className="tabs">
                         <button
@@ -178,6 +215,17 @@ export default function QuizEditor() {
                     <div className="tabs-content">
                         <div className={`tab-page ${active === 'Details' ? 'active' : ''}`}>
                             <p>Details page</p>
+
+
+                            <h4 className="text-center">
+                                <button className="btn btn-primary m-2"
+                                    id="wd-add-new-course-click"
+                                > Preview Quiz </button>
+                                <button className="btn btn-warning"
+                                    id="wd-update-course-click">
+                                    <FaPencil className="me-2" />
+                                    Edit Quiz
+                                </button></h4>
 
                             <div id="king-column" className="form-container">
                                 <div className="form-group">
@@ -260,7 +308,17 @@ export default function QuizEditor() {
                         </div>
                     </div>
                 </div>
-            </div>
+
+
+
+
+            )
+
+
+
+
+            }
+
         </div>
     );
 }
