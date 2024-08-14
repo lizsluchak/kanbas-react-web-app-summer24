@@ -29,7 +29,7 @@ const initialState = {
   modules: [],
   
 };
-console.log("initital module state passed to reducer", initialState);
+
 
 /**
  * Create Module Slice:

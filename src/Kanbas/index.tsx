@@ -7,44 +7,36 @@ import ScreenSizeLabel from "../ScreenSizeLabel";
 // import * as db from "./Database"; //kanbas needs a database now
 import { useEffect, useState } from "react"; //needs use state
 import store from "./store";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import * as client from "./Courses/client";
 import Account from "./Account";
 import ProtectedRoute from "./ProtectedRoute";
 
 
 export default function Kanbas() {
-  const [courses, setCourses] = useState<any[]>([]);
 
-  /**
-   * we use useEffect to fetach all courses from the server on component load
-   * and update the courses state variable that populates the Dashboard. 
-   */
+  //state variables
+
+  const [courses, setCourses] = useState<any[]>([]);
+  const [course, setCourse] = useState<any>({
+    // convert course into a state variable so we can change it and force a redraw of UI
+    // create a course object with default values
+    _id: "0", name: "New Course", number: "New Number",
+    startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description"
+  });
+
+
+  //load state
   const fetchCourses = async () => {
     const courses = await client.findAllCourses();
     setCourses(courses);
-    // console.log(courses);
   };
   useEffect(() => {
     fetchCourses();
   }, []);
 
 
-  // convert course into a state variable so we can change it and force a redraw of UI
-  const [course, setCourse] = useState<any>({
-
-    // create a course object with default values
-    _id: "0", name: "New Course", number: "New Number",
-    startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description"
-
-  });
-
-
-  /**
-   * Add New Course:
-   * Posts new course to server, and new course, via response, is appended to
-   * the end of the courses state variable. 
-   */
+  //manipulate data
   const addNewCourse = async () => {
     const newCourse = await client.createCourse({
       name: course.name,
@@ -54,7 +46,9 @@ export default function Kanbas() {
       description: course.description,
       image_url: "images/reactjs.jpg", 
   }); 
-    setCourses([...courses, newCourse ]); 
+    setCourses([...courses, newCourse ]);
+    
+    //create updated user
   };
 
 
