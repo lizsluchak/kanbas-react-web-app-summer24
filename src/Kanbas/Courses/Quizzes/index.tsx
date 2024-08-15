@@ -10,6 +10,7 @@ import { FaCircleHalfStroke, FaFilePen, FaPencil, FaRegCircleStop } from "react-
 import { Link } from "react-router-dom";
 import GreenCheckmark from "../Modules/GreenCheckmark";
 import "../Quizzes/QuizEditor/QuizEditorTabs.css";
+import axios from 'axios';
 
 export default function Quizzes() {
     //tools
@@ -113,11 +114,23 @@ export default function Quizzes() {
         return response.data;
     };
 
+    const handleResetQuestions = async () => {
+        try {
+          const result = await axios.put("http://localhost:4000/api/quizzes/reset-questions");
+          console.log('Questions reset:', result.data);
+        } catch (error) {
+          console.error('Error resetting questions:', error);
+        }
+      };
+
 
 
 
     return (
         <div>
+            <button onClick={handleResetQuestions}>
+  Reset All Questions
+</button>
             {currentUser.role === "FACULTY" && (
                 <div id="wd-quizzes">
                     <ul id="wd-quizzes-list" className="list-group rounded-0">

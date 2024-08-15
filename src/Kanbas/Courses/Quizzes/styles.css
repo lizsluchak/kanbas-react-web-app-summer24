@@ -40,3 +40,7 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+.modal {
+    z-index: 1050 !important;
+}

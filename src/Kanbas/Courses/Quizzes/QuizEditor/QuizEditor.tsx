@@ -10,6 +10,7 @@ import "react-quill/dist/quill.snow.css"; // Import Quill's CSS
 import { FaBan, FaEdit } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
 import GreenCheckmark from "../../Modules/GreenCheckmark";
+import QuizQuestionsEditor from "./QuizQuestionsEditor";
 
 export default function QuizEditor() {
     //fetch params
@@ -45,6 +46,7 @@ export default function QuizEditor() {
         dueTime: "11:59pm",
         untilDate: new Date().toISOString().split("T")[0],
         published: "No",
+        questions: [], 
     });
 
     const [isLoading, setIsLoading] = useState(true); // Track loading state
@@ -377,7 +379,7 @@ export default function QuizEditor() {
                             </div>
                         </div>
                         <div className={`tab-page ${active === 'tab-2' ? 'active' : ''}`}>
-                            <p>Questions Page</p>
+                            <QuizQuestionsEditor />
                         </div>
                     </div>
                 </div>
