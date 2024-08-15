@@ -69,8 +69,10 @@ export default function QuizEditor() {
     const [answerChoices, setAnswerChoices] = useState<any>([]);
     const [showEditor, setShowEditor] = useState(false);
     const [title, setTitle] = useState<string>("");
+    const [currentQuestion, setCurrentQuestion]= useState<any>();
     const [points, setPoints] = useState<number>(0);
-    const [question, setQuestion] = useState<string>("");
+    const [question, setQuestion] = useState<any>();
+    const [questionType, setQuestionType] = useState<string>("Multiple Choice");
     const [choices, setChoices] = useState<{ text: string; correct: boolean }[]>([
         { text: "", correct: false },
     ]);
@@ -133,24 +135,24 @@ export default function QuizEditor() {
         index: number,
         field: "text" | "correct",
         value: string | boolean
-      ) => {
+    ) => {
         const updatedChoices = [...answerChoices];
         if (field === "text" && typeof value === "string") {
-          updatedChoices[index].text = value;
+            updatedChoices[index].text = value;
         } else if (field === "correct" && typeof value === "boolean") {
-          updatedChoices[index].correct = value;
+            updatedChoices[index].correct = value;
         }
         setAnswerChoices(updatedChoices);
-      };
-    
-      const handleAddChoice = () => {
+    };
+
+    const handleAddChoice = () => {
         setAnswerChoices([...answerChoices, { text: "", correct: false }]);
-      };
-    
-      const handleRemoveChoice = (index: number) => {
-        const updatedChoices = answerChoices.filter((_ : any, i : any) => i !== index);
+    };
+
+    const handleRemoveChoice = (index: number) => {
+        const updatedChoices = answerChoices.filter((_: any, i: any) => i !== index);
         setAnswerChoices(updatedChoices);
-      };
+    };
 
     const handleAddQuestion = () => {
         const newQuestion = quizQuestion;
@@ -217,6 +219,22 @@ export default function QuizEditor() {
     if (isLoading) {
         return <div>Loading...</div>; // Show loading indicator while fetching
     }
+
+    // useEffect(() => {
+    //     // Ensure the "Choices" section is rendered when questionType is "Multiple Choice"
+    //     if (questionType === 'Multiple Choice' && answerChoices.length === 0) {
+    //         setAnswerChoices([{ text: '', correct: false }]);
+    //     }
+    // }, [questionType]);
+
+    const handleQuestionTypeChange = (type: any) => {
+        setQuestionType(type);
+        if (type === 'Multiple Choice' && answerChoices.length === 0) {
+            setAnswerChoices([{ text: '', correct: false }]);
+        }
+    };
+
+    
 
     return (
         <div id="divA-mother">
@@ -383,94 +401,126 @@ export default function QuizEditor() {
                         </div>
                         <div className={`tab-page ${active === 'tab-2' ? 'active' : ''}`}>
                             <h4><strong>Quiz Questions Editor</strong></h4>
-                            <button className="btn btn-primary" onClick={handleAddQuestion}>
-                                        <FaPlus className="me-2 align-middle" />
-                                        Add New Quiz Question
-                                    </button>
-                                    <br/>
 
-                                    
+                            <br />
 
 
-
-
-<div>
-<p>
-  <button className="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Button with data-bs-target
-  </button>
-</p>
-<div className="collapse" id="collapseExample">
-  <div className="card card-body">
-  <Form>
-                        <Form.Group controlId="questionTitle">
-                            <Form.Label>Title</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter question title"
-                                value={title}
-                                onChange={(e) => setTitle(e.target.value)}
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="questionPoints" className="mt-3">
-                            <Form.Label>Points</Form.Label>
-                            <Form.Control
-                                type="number"
-                                placeholder="Enter points"
-                                value={points}
-                                onChange={(e) => setPoints(Number(e.target.value))}
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="questionText" className="mt-3">
-                            <Form.Label>Question</Form.Label>
-                            <ReactQuill
-                                theme="snow"
-                                value={question}
-                                onChange={setQuestion}
-                                placeholder="Enter the question text"
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="questionChoices" className="mt-3">
-                            <Form.Label>Choices</Form.Label>
-                            {answerChoices.map((choice: any, index: any) => (
-                                <InputGroup className="mb-2" key={index}>
-                                    <InputGroup.Radio
-                                        name="correctChoice"
-                                        checked={choice.correct}
-                                        // onChange={() =>
-                                        //     setAnswerChoices(index, "correct", true)
-                                        // }
-                                    />
-                                    <Form.Control
-                                        type="text"
-                                        value={choice.text}
-                                        onChange={(e) =>
-                                            handleChoiceChange(index, "text", e.target.value)
-                                        }
-                                        placeholder={`Choice ${index + 1}`}
-                                    />
-                                    <Button variant="danger" onClick={() => handleRemoveChoice(index)}>
-                                        <FaTrash />
-                                    </Button>
-                                </InputGroup>
-                            ))}
-                            <Button variant="secondary" onClick={handleAddChoice}>
-                                <FaPlus className="me-2" /> Add Choice
-                            </Button>
-                        </Form.Group>
-                    </Form>
-  </div>
-</div>
-
-
-</div>
 
 
 
 
                             <div>
+                                <p>
+                                    <button className="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        Add Quiz Question:
+                                    </button>
+                                </p>
+                                <div className="collapse" id="collapseExample">
+                                    <div className="card card-body">
+                                        <Form>
+                                            <Form>
+                                                <Form.Group controlId="questionType">
+                                                    <Form.Label>Change Question Type</Form.Label>
+                                                    <Form.Control
+                                                        as="select"
+                                                        value={questionType}
+                                                        onChange={(e) => handleQuestionTypeChange(e.target.value)}
+                                                    >
+                                                        <option value="Multiple Choice">Multiple Choice</option>
+                                                        <option value="True/False">True/False</option>
+                                                        <option value="Fill in the Blanks">Fill in the Blanks</option>
+                                                    </Form.Control>
+                                                </Form.Group>
+                                            </Form>
+                                            <Form.Group controlId="questionTitle" className="mt-3">
+                                                <Form.Label>Title</Form.Label>
+                                                <Form.Control
+                                                    type="text"
+                                                    placeholder="Enter question title"
+                                                    value={title}
+                                                    onChange={(e) => setTitle(e.target.value)}
+                                                />
+                                            </Form.Group>
+
+                                            <Form.Group controlId="questionPoints" className="mt-3">
+                                                <Form.Label>Points</Form.Label>
+                                                <Form.Control
+                                                    type="number"
+                                                    placeholder="Enter points"
+                                                    value={points}
+                                                    onChange={(e) => setPoints(Number(e.target.value))}
+                                                />
+                                            </Form.Group>
+
+                                            {questionType === 'Multiple Choice' && (
+                                                <Form.Group controlId="questionChoices" className="mt-3">
+                                                    <Form.Label>Choices</Form.Label>
+                                                    {answerChoices.map((choice: any, index: any) => (
+                                                        <InputGroup className="mb-2" key={index}>
+                                                            <InputGroup.Radio
+                                                                name="correctChoice"
+                                                                checked={choice.correct}
+                                                                onChange={() => handleChoiceChange(index, 'correct', true)}
+                                                            />
+                                                            <Form.Control
+                                                                type="text"
+                                                                value={choice.text}
+                                                                onChange={(e) =>
+                                                                    handleChoiceChange(index, 'text', e.target.value)
+                                                                }
+                                                                placeholder={`Choice ${index + 1}`}
+                                                            />
+                                                            <Button variant="danger" onClick={() => handleRemoveChoice(index)}>
+                                                                <FaTrash />
+                                                            </Button>
+                                                        </InputGroup>
+                                                    ))}
+                                                    <Button className="m-3" variant="secondary" onClick={handleAddChoice}>
+                                                        <FaPlus className="me-2" /> Add Choice
+                                                    </Button>
+                                                </Form.Group>
+                                            )}
+
+                                            {questionType === 'True/False' && (
+                                                <Form.Group controlId="questionTrueFalse" className="mt-3">
+                                                    <Form.Label>Answer</Form.Label>
+                                                    <Form.Control
+                                                        as="select"
+                                                        value={question}
+                                                        onChange={(e) => setQuestion(e.target.value)}
+                                                    >
+                                                        <option value="True">True</option>
+                                                        <option value="False">False</option>
+                                                    </Form.Control>
+                                                </Form.Group>
+                                            )}
+
+                                            {questionType === 'Fill in the Blanks' && (
+                                                <Form.Group controlId="questionFillBlanks" className="mt-3">
+                                                    <Form.Label>Question</Form.Label>
+                                                    <ReactQuill
+                                                        theme="snow"
+                                                        value={question}
+                                                        onChange={setQuestion}
+                                                        placeholder="Enter the question text with blanks"
+                                                    />
+                                                </Form.Group>
+                                            )}
+                                        </Form>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+                            <br />
+                            <br />
+
+                            <div>
                                 <div className="d-flex justify-content-center align-items-center">
-                                    
+
                                     <div id="wd-quizQuestion-list">
                                         <ul id="wd-quizQuestions-list" className="list-group rounded-0">
                                             <li className="list-group-item p-0 mb-5 fs-5 border-light-grey">
