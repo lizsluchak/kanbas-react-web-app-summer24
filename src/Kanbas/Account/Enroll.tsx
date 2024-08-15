@@ -9,27 +9,6 @@ import AllCourseViewDashboard from "../Dashboard/AllCourseViewDashboard";
 export default function Enroll() {
 
 
-  const [profile, setProfile] = useState<any>({});
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-
-  const fetchProfile = async () => {
-    try {
-      const account = await client.profile();
-      setProfile(account);
-    } catch (err: any) {
-      navigate("/Kanbas/Account/Signin");
-    }
-  };
-
-  useEffect(() => { fetchProfile(); }, []);
-
-  const signout = async () => {
-    await client.signout();
-    dispatch(setCurrentUser(null));
-    navigate("/Kanbas/Account/Signin");
-  };
 
   return (
     <div className="wd-profile-screen">

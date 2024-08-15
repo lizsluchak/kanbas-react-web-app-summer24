@@ -19,7 +19,7 @@ export default function QuizQuestionsEditor() {
     const [questions, setQuestions] = useState<any[]>(quiz?.questions || []);
     const [editIndex, setEditIndex] = useState<number | null>(null);
     const [newQuestion, setNewQuestion] = useState<any>(null);
-
+    const [answerChoices, setAnswerChoices] = useState<any>([]);
     const [showEditor, setShowEditor] = useState(false);
     const [title, setTitle] = useState<string>("");
     const [points, setPoints] = useState<number>(0);
@@ -31,21 +31,21 @@ export default function QuizQuestionsEditor() {
     const handleOpenEditor = () => setShowEditor(true);
     const handleCloseEditor = () => setShowEditor(false);
 
-    const handleAddQuestion = () => {
-        console.log("Add New Question button clicked");
+    // const handleAddQuestion = () => {
+    //     console.log("Add New Question button clicked");
 
-        const defaultQuestion = {
-            id: new Date().getTime(),
-            type: "Multiple Choice",
-            text: "",
-            options: [],
-            correctAnswer: "",
-            points: 0,
-        };
-        setNewQuestion(defaultQuestion);
-        setEditIndex(questions.length);
-        console.log("New question initialized:", defaultQuestion);
-    };
+    //     const defaultQuestion = {
+    //         id: new Date().getTime(),
+    //         type: "Multiple Choice",
+    //         text: "",
+    //         options: [],
+    //         correctAnswer: "",
+    //         points: 0,
+    //     };
+    //     setNewQuestion(defaultQuestion);
+    //     setEditIndex(questions.length);
+    //     console.log("New question initialized:", defaultQuestion);
+    // };
 
     const handleSaveQuestion = () => {
         const updatedQuestions = [...questions];
@@ -92,17 +92,114 @@ export default function QuizQuestionsEditor() {
 
     const totalPoints = questions.reduce((total, q) => total + q.points, 0);
 
+    const handleChoiceChange = (
+        index: number,
+        field: "text" | "correct",
+        value: string | boolean
+      ) => {
+        const updatedChoices = [...answerChoices];
+        if (field === "text" && typeof value === "string") {
+          updatedChoices[index].text = value;
+        } else if (field === "correct" && typeof value === "boolean") {
+          updatedChoices[index].correct = value;
+        }
+        setAnswerChoices(updatedChoices);
+      };
+    
+      const handleAddChoice = () => {
+        setAnswerChoices([...answerChoices, { text: "", correct: false }]);
+      };
+    
+      const handleRemoveChoice = (index: number) => {
+        const updatedChoices = answerChoices.filter((_ : any, i : any) => i !== index);
+        setAnswerChoices(updatedChoices);
+      };
+    //   const saveQuizQuestions = async (updatedQuestions: any[]) => {
+    //     if (!qid) {
+    //         console.error("Quiz ID is undefined.");
+    //         return;
+    //     }
+    //     try {
+    //        const updatedQuestion = [ question ]
+    //         const response = await client.addQuestionToQuiz_cROUTE(qid as string, question); // Pass the correct quiz ID
+    //         dispatch(addQuestionToQuiz(response));
+    //     } catch (error) {
+    //         console.error("Error saving quiz questions:", error);
+    //     }
+    // };
+
     return (
         <div>
             <h4><strong>Quiz Questions Editor</strong></h4>
             <div>
                 <div className="d-flex justify-content-center align-items-center">
-                    <button className="btn btn-primary" onClick={handleAddQuestion}>
+                    <button className="btn btn-primary">
                         <FaPlus className="me-2 align-middle" />
                         New Question
                     </button>
 
-                    <button className="primary" onClick={handleOpenEditor}>
+                    <Form>
+                        <Form.Group controlId="questionTitle">
+                            <Form.Label>Title</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter question title"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="questionPoints" className="mt-3">
+                            <Form.Label>Points</Form.Label>
+                            <Form.Control
+                                type="number"
+                                placeholder="Enter points"
+                                value={points}
+                                onChange={(e) => setPoints(Number(e.target.value))}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="questionText" className="mt-3">
+                            <Form.Label>Question</Form.Label>
+                            <ReactQuill
+                                theme="snow"
+                                value={question}
+                                onChange={setQuestion}
+                                placeholder="Enter the question text"
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="questionChoices" className="mt-3">
+                            <Form.Label>Choices</Form.Label>
+                            {answerChoices.map((choice: any, index: any) => (
+                                <InputGroup className="mb-2" key={index}>
+                                    <InputGroup.Radio
+                                        name="correctChoice"
+                                        checked={choice.correct}
+                                        // onChange={() =>
+                                        //     setAnswerChoices(index, "correct", true)
+                                        // }
+                                    />
+                                    <Form.Control
+                                        type="text"
+                                        value={choice.text}
+                                        onChange={(e) =>
+                                            handleChoiceChange(index, "text", e.target.value)
+                                        }
+                                        placeholder={`Choice ${index + 1}`}
+                                    />
+                                    <Button variant="danger" onClick={() => handleRemoveChoice(index)}>
+                                        <FaTrash />
+                                    </Button>
+                                </InputGroup>
+                            ))}
+                            <Button variant="secondary" onClick={handleAddChoice}>
+                                <FaPlus className="me-2" /> Add Choice
+                            </Button>
+                        </Form.Group>
+                    </Form>
+
+                </div>
+            </div>
+
+            {/*<button className="primary" onClick={handleOpenEditor}>
                         Add Multiple Choice Question
                     </button>
 
@@ -202,7 +299,7 @@ export default function QuizQuestionsEditor() {
                     <button onClick={handleSaveQuestion}>Save</button>
                     <button onClick={handleCancelEdit}>Cancel</button>
                 </div>
-            )}
+            )} */}
         </div>
     );
 }

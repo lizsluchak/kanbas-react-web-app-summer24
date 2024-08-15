@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import * as client from "./client";
-import { addQuiz, setQuizzes, updateQuiz } from "./reducer";
+import { addQuiz, setQuizzes, updateQuiz, deleteQuiz } from "./reducer";
 import { BsGripVertical, BsPlus, BsSlashCircle } from "react-icons/bs";
 import { FaCaretDown, FaTrash, FaRocket, FaSlash, FaStopCircle, FaBan } from "react-icons/fa";
 import { IoEllipsisVertical } from "react-icons/io5";
@@ -66,8 +66,10 @@ export default function Quizzes() {
     const handleDelete = async () => {
         if (selectedQuizId) {
             await client.deleteQuiz_cROUTE(selectedQuizId); // Assuming this function exists
+            dispatch(deleteQuiz(selectedQuizId)); 
             fetchQuizzesHandler(); // Refresh quizzes list
             setShowModal(false); // Close modal after deletion
+
         }
     };
 
@@ -114,23 +116,12 @@ export default function Quizzes() {
         return response.data;
     };
 
-    const handleResetQuestions = async () => {
-        try {
-          const result = await axios.put("http://localhost:4000/api/quizzes/reset-questions");
-          console.log('Questions reset:', result.data);
-        } catch (error) {
-          console.error('Error resetting questions:', error);
-        }
-      };
 
 
 
 
     return (
         <div>
-            <button onClick={handleResetQuestions}>
-  Reset All Questions
-</button>
             {currentUser.role === "FACULTY" && (
                 <div id="wd-quizzes">
                     <ul id="wd-quizzes-list" className="list-group rounded-0">

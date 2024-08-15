@@ -10,14 +10,14 @@
  * @param param0 
  * @returns 
  */
-export default function ModuleEditor(
+export default function QuizQuestionEditorPopUp(
     { dialogTitle, moduleName, setModuleName, addModule }:
         { dialogTitle: string; 
         moduleName: string; 
         setModuleName: (name: string) => void; 
         addModule: () => void; }) {
       return (
-        <div id="wd-add-module-dialog" className="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"  style={{ zIndex: 9999, position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}  >
+        <div id="wd-add-module-dialog" className="modal fade" data-bs-backdrop="static" data-bs-keyboard="false">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">

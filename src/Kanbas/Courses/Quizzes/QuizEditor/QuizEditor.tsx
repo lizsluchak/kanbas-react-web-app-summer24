@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { Form, InputGroup, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import "../styles.css";
@@ -7,22 +8,25 @@ import * as client from "../client";
 import { addQuiz, updateQuiz } from "../reducer";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // Import Quill's CSS
-import { FaBan, FaEdit } from "react-icons/fa";
-import { FaPencil } from "react-icons/fa6";
+import { FaBan, FaCaretDown, FaEdit, FaPlus, FaTrash } from "react-icons/fa";
+import { FaFilePen, FaPencil } from "react-icons/fa6";
 import GreenCheckmark from "../../Modules/GreenCheckmark";
 import QuizQuestionsEditor from "./QuizQuestionsEditor";
+import { BsGripVertical, BsPlus } from "react-icons/bs";
+import { IoEllipsisVertical } from "react-icons/io5";
+import { Accordion, Card } from 'react-bootstrap';
 
 export default function QuizEditor() {
-    //fetch params
+    // Fetch params
     const { qid, cid } = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    //fetch quizzes from redux
+    // Fetch quizzes from Redux
     const { quizzes } = useSelector((state: any) => state.quizzesReducer);
 
-    //create quiz useState Hook: add state to functional component
-    const [quiz, setQuiz] = useState<any>({                           //initalize object state variable, assignment, with type `any`
+    // Create quiz useState hook: add state to functional component
+    const [quiz, setQuiz] = useState<any>({
         qid: `${qid}`,
         title: `New Quiz for Course ${cid}`,
         course: `${cid}`,
@@ -46,11 +50,32 @@ export default function QuizEditor() {
         dueTime: "11:59pm",
         untilDate: new Date().toISOString().split("T")[0],
         published: "No",
-        questions: [], 
+        questions: [],
     });
 
-    const [isLoading, setIsLoading] = useState(true); // Track loading state
+    // Quiz question useState hook
+    const [quizQuestion, setQuizQuestion] = useState<any>({
+        id: quiz.questions.length,
+        title: "New Quiz Question Title",
+        points: 10,
+        quesitonType: "Multiple Choice",
+    });
 
+    // State variables
+    const [questions, setQuestions] = useState<any[]>(quiz?.questions || []);
+    const [editIndex, setEditIndex] = useState<number>(quiz?.questions.length);
+    const [newQuestion, setNewQuestion] = useState<any>();
+    const [isLoading, setIsLoading] = useState(true); // Track loading state
+    const [answerChoices, setAnswerChoices] = useState<any>([]);
+    const [showEditor, setShowEditor] = useState(false);
+    const [title, setTitle] = useState<string>("");
+    const [points, setPoints] = useState<number>(0);
+    const [question, setQuestion] = useState<string>("");
+    const [choices, setChoices] = useState<{ text: string; correct: boolean }[]>([
+        { text: "", correct: false },
+    ]);
+
+    // Fetch current quiz to edit handler
     const fetchCurrentQuiz = async () => {
         if (qid !== 'New') {
             try {
@@ -60,78 +85,78 @@ export default function QuizEditor() {
                     setQuiz(current);
                 } else {
                     console.warn(`Quiz with qid ${qid} not found.`);
-
                 }
             } catch (error) {
                 console.error("Error fetching quiz:", error);
-
             } finally {
                 setIsLoading(false); // Set loading to false
             }
         } else {
-
             setIsLoading(false);
         }
     };
+
     useEffect(() => {
         fetchCurrentQuiz();
     }, [qid]);
 
     const [isEditMode, setIsEditMode] = useState<boolean>(qid === 'New'); // Automatically in edit mode if creating a new quiz
     const handleEditClick = () => {
-        if (isEditMode) {
-            setIsEditMode(false);
-        } else {
-            setIsEditMode(true); // Enable edit mode
-
-        }
-
+        setIsEditMode(!isEditMode);
     };
+
     const handlePublishStatus = async (quiz: any) => {
-        // Create a shallow copy of the quiz object
-        const updatedQuiz = { ...quiz };
-
-        // Toggle the published status
-        if (updatedQuiz.published === "No") {
-            updatedQuiz.published = "Yes";
-        } else if (updatedQuiz.published === "Yes") {
-            updatedQuiz.published = "No";
-        }
-
-        // Send the updated quiz object to the server
+        const updatedQuiz = { ...quiz, published: quiz.published === "No" ? "Yes" : "No" };
         const response = await client.updateQuiz_cROUTE(updatedQuiz);
-
-        // Refresh the list of quizzes
-
-
-
         return response.data;
     };
 
-
-
     const [active, setActive] = useState('Details');
-
-    const handleClick = (event: any) => {
-        setActive(event.target.id);
-    };
+    const handleClick = (event: any) => setActive(event.target.id);
 
     const handleSaveQuiz = async (quiz: any) => {
         try {
             if (qid !== 'New') {
-                console.log("save quiz called and not a new quiz");
                 const status = await client.updateQuiz_cROUTE(quiz);
                 dispatch(updateQuiz(status));
             } else {
-                console.log("save quiz called and new quiz");
                 const newQuiz = await client.createQuiz_cROUTE(qid as string, quiz);
                 dispatch(addQuiz(newQuiz));
             }
             handleEditClick();
-            // navigate(`/Kanbas/Courses/${cid}/Quizzes`);
         } catch (error) {
             console.error("Error updating/adding quiz:", error);
         }
+    };
+
+    const handleChoiceChange = (
+        index: number,
+        field: "text" | "correct",
+        value: string | boolean
+      ) => {
+        const updatedChoices = [...answerChoices];
+        if (field === "text" && typeof value === "string") {
+          updatedChoices[index].text = value;
+        } else if (field === "correct" && typeof value === "boolean") {
+          updatedChoices[index].correct = value;
+        }
+        setAnswerChoices(updatedChoices);
+      };
+    
+      const handleAddChoice = () => {
+        setAnswerChoices([...answerChoices, { text: "", correct: false }]);
+      };
+    
+      const handleRemoveChoice = (index: number) => {
+        const updatedChoices = answerChoices.filter((_ : any, i : any) => i !== index);
+        setAnswerChoices(updatedChoices);
+      };
+
+    const handleAddQuestion = () => {
+        const newQuestion = quizQuestion;
+        quiz.questions.push(newQuestion);
+        setEditIndex(questions.length);
+        dispatch(updateQuiz(quiz));
     };
 
     interface Field {
@@ -166,6 +191,7 @@ export default function QuizEditor() {
         dueTime: string;
         untilDate: Date;
         published: string;
+        questions: Array<any>;
     }
 
     const fields: Field[] = [
@@ -180,13 +206,12 @@ export default function QuizEditor() {
         { label: "Multiple Attempts", type: "select", id: "quizMultipleAttempts", stateKey: "multipleAttempts", options: ["Yes", "No"] },
         { label: "Show Correct Anwsers", type: "select", id: "quizShowCorrectAnwsers", stateKey: "showCorrectAnwsers", options: ["No", "Yes, at end of quiz", "Yes, immediately"] },
         { label: "Access Code", type: "text", id: "quizAccessCode", stateKey: "accessCode" },
-        { label: "One Question At A Time", type: "select", id: "quizOneQuestionAtATime", stateKey: "oneQuestionAtATime" },
+        { label: "One Question At A Time", type: "select", id: "quizOneQuestionAtATime", stateKey: "oneQuestionAtATime", options: ["Yes", "No"] },
         { label: "Webcam Required", type: "select", id: "quizWebcamRequired", stateKey: "webcamRequired" },
         { label: "Lock Questions After Answering", type: "select", id: "quizLockQuestionsAfterAnwsering", stateKey: "lockQuestionsAfterAnswering", options: ["Yes", "No"] },
         { label: "Available Date", type: "date", id: "quizAvailableDate", stateKey: "availableDate" },
         { label: "Due Date", type: "date", id: "quizDueDate", stateKey: "dueDate" },
-        { label: "Avaialbe Until Date", type: "date", id: "quizAvailableUntilDate", stateKey: "untilDate" },
-   
+        { label: "Available Until Date", type: "date", id: "quizAvailableUntilDate", stateKey: "untilDate" },
     ];
 
     if (isLoading) {
@@ -198,16 +223,15 @@ export default function QuizEditor() {
             {!isEditMode ? (
                 <div>
                     <h4 className="text-center">
-                        <button className="btn btn-primary m-2"
-                            id="wd-add-new-course-click"
-                        > Preview Quiz </button>
-                        <button className="btn btn-warning"
-                            id="wd-update-course-click" onClick={handleEditClick}>
+                        <button className="btn btn-primary m-2" id="wd-add-new-course-click">
+                            Preview Quiz
+                        </button>
+                        <button className="btn btn-warning" id="wd-update-course-click" onClick={handleEditClick}>
                             <FaPencil className="me-2" />
                             Edit Quiz
-                        </button></h4><hr />
-
-                    {/* Render the quiz details here when not in edit mode */}
+                        </button>
+                    </h4>
+                    <hr />
                     <div>
                         <h3>
                             <strong>
@@ -256,15 +280,7 @@ export default function QuizEditor() {
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
             ) : (
-
                 <div className="container">
                     <div className="tabs">
                         <button
@@ -285,8 +301,6 @@ export default function QuizEditor() {
                     <div className="tabs-content">
                         <div className={`tab-page ${active === 'Details' ? 'active' : ''}`}>
                             <p>Details page</p>
-
-
                             <div id="king-column" className="form-container">
                                 <div className="form-group">
                                     {fields.map((field) => (
@@ -298,7 +312,7 @@ export default function QuizEditor() {
                                                 <select
                                                     className="form-control"
                                                     id={field.id}
-                                                    value={quiz[field.stateKey]} // Assume value is never null here
+                                                    value={quiz[field.stateKey]}
                                                     onChange={(e) => setQuiz({ ...quiz, [field.stateKey]: e.target.value })}
                                                     aria-label={field.label}
                                                     aria-describedby={`inputGroup-sizing-${field.id}`}
@@ -313,7 +327,7 @@ export default function QuizEditor() {
                                                 <div className="form-control" style={{ padding: 0, height: 'auto' }}>
                                                     <ReactQuill
                                                         theme="snow"
-                                                        value={quiz[field.stateKey]} // Assume value is never null here
+                                                        value={quiz[field.stateKey]}
                                                         onChange={(value) => setQuiz({ ...quiz, [field.stateKey]: value })}
                                                         aria-label={field.label}
                                                         aria-describedby={`inputGroup-sizing-${field.id}`}
@@ -325,7 +339,7 @@ export default function QuizEditor() {
                                                     type={field.type}
                                                     className="form-control"
                                                     id={field.id}
-                                                    value={quiz[field.stateKey]} // Assume value is never null here
+                                                    value={quiz[field.stateKey]}
                                                     onChange={(e) => setQuiz({ ...quiz, [field.stateKey]: e.target.value })}
                                                     aria-label={field.label}
                                                     aria-describedby={`inputGroup-sizing-${field.id}`}
@@ -335,65 +349,183 @@ export default function QuizEditor() {
                                     ))}
                                 </div>
                             </div>
-
-                            <hr></hr>
-
+                            <hr />
                             <div className="d-flex flex-row flex-fill justify-content-end">
                                 <div>
-                                    <button className="btn btn-lg border-secondary m-2"
-                                        style={{
-                                            backgroundColor: '#f8f9fb',
-                                            textDecoration: "none"
-                                        }}>
-                                        <Link to={`/Kanbas/Courses/${cid}/Quizzes/`}
-                                            className="custom-link">
+                                    <button className="btn btn-lg border-secondary m-2" style={{ backgroundColor: '#f8f9fb', textDecoration: "none" }}>
+                                        <Link to={`/Kanbas/Courses/${cid}/Quizzes/`} className="custom-link">
                                             Cancel
                                         </Link>
                                     </button>
                                 </div>
-
                                 <div>
-                                    <button onClick={() => {
-                                        handleSaveQuiz(quiz);
-                                    }}
+                                    <button
+                                        onClick={() => handleSaveQuiz(quiz)}
                                         className="btn btn-lg bg-success text-white m-2"
-                                        style={{ backgroundColor: '#f8f9fb' }}>
+                                        style={{ backgroundColor: '#f8f9fb' }}
+                                    >
                                         Save
                                     </button>
                                 </div>
-
                                 <div>
-                                    <button onClick={() => {
-
-                                        handlePublishStatus(quiz);
-                                        handleSaveQuiz(quiz);
-                                        console.log(quiz); 
-
-
-                                    }}
+                                    <button
+                                        onClick={() => {
+                                            handlePublishStatus(quiz);
+                                            handleSaveQuiz(quiz);
+                                        }}
                                         className="btn btn-lg bg-danger text-white m-2"
-                                        style={{ backgroundColor: '#f8f9fb' }}>
+                                        style={{ backgroundColor: '#f8f9fb' }}
+                                    >
                                         Save & PUBLISH
                                     </button>
                                 </div>
                             </div>
                         </div>
                         <div className={`tab-page ${active === 'tab-2' ? 'active' : ''}`}>
-                            <QuizQuestionsEditor />
+                            <h4><strong>Quiz Questions Editor</strong></h4>
+                            <button className="btn btn-primary" onClick={handleAddQuestion}>
+                                        <FaPlus className="me-2 align-middle" />
+                                        Add New Quiz Question
+                                    </button>
+                                    <br/>
+
+                                    
+
+
+
+
+<div>
+<p>
+  <button className="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Button with data-bs-target
+  </button>
+</p>
+<div className="collapse" id="collapseExample">
+  <div className="card card-body">
+  <Form>
+                        <Form.Group controlId="questionTitle">
+                            <Form.Label>Title</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter question title"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="questionPoints" className="mt-3">
+                            <Form.Label>Points</Form.Label>
+                            <Form.Control
+                                type="number"
+                                placeholder="Enter points"
+                                value={points}
+                                onChange={(e) => setPoints(Number(e.target.value))}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="questionText" className="mt-3">
+                            <Form.Label>Question</Form.Label>
+                            <ReactQuill
+                                theme="snow"
+                                value={question}
+                                onChange={setQuestion}
+                                placeholder="Enter the question text"
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="questionChoices" className="mt-3">
+                            <Form.Label>Choices</Form.Label>
+                            {answerChoices.map((choice: any, index: any) => (
+                                <InputGroup className="mb-2" key={index}>
+                                    <InputGroup.Radio
+                                        name="correctChoice"
+                                        checked={choice.correct}
+                                        // onChange={() =>
+                                        //     setAnswerChoices(index, "correct", true)
+                                        // }
+                                    />
+                                    <Form.Control
+                                        type="text"
+                                        value={choice.text}
+                                        onChange={(e) =>
+                                            handleChoiceChange(index, "text", e.target.value)
+                                        }
+                                        placeholder={`Choice ${index + 1}`}
+                                    />
+                                    <Button variant="danger" onClick={() => handleRemoveChoice(index)}>
+                                        <FaTrash />
+                                    </Button>
+                                </InputGroup>
+                            ))}
+                            <Button variant="secondary" onClick={handleAddChoice}>
+                                <FaPlus className="me-2" /> Add Choice
+                            </Button>
+                        </Form.Group>
+                    </Form>
+  </div>
+</div>
+
+
+</div>
+
+
+
+
+                            <div>
+                                <div className="d-flex justify-content-center align-items-center">
+                                    
+                                    <div id="wd-quizQuestion-list">
+                                        <ul id="wd-quizQuestions-list" className="list-group rounded-0">
+                                            <li className="list-group-item p-0 mb-5 fs-5 border-light-grey">
+                                                <div className="wd-title p-4 ps-2 list-group-item list-group-item-active" style={{ backgroundColor: "#F5F5F5", color: "#000" }}>
+                                                    <button className="p-2" style={{ all: 'unset', cursor: 'pointer' }}>
+                                                        <strong>Current Quiz Questions for {quiz.title}</strong>
+                                                    </button>
+                                                    <div className="float-end">
+                                                        <button className="btn btn-md rounded-5 me-4" style={{ borderColor: '#adb5bd' }}>40% of Total</button>
+                                                        <BsPlus className="me-3" />
+                                                        <IoEllipsisVertical />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <ul id="wd-modules" className="list-group rounded-0 p-0 m-0" style={{ borderLeft: '10px solid green' }}>
+                                                        {quizzes
+                                                            .filter((quiz: any) => quiz.course === cid)
+                                                            .flatMap((quiz: any) =>
+                                                                quiz.questions.map((question: any) => (
+                                                                    <li key={question._id} className="wd-module list-group-item border-light-gray">
+                                                                        <div className="wd-title p-3 ps-2 d-flex align-items-center">
+                                                                            <div className="flex-grow-1">
+                                                                                <div className="flex-column">
+                                                                                    <Link to={`/Kanbas/Courses/${cid}/Assignments/AssignmentEditor/${question._id}`} className="custom-link">
+                                                                                        <h4 className="fw-bold">{quiz.title}</h4>
+                                                                                    </Link>
+                                                                                    <p>
+                                                                                        <span style={{ fontWeight: 550, color: 'darkred' }}>Multiple Modules</span> |
+                                                                                        <span style={{ fontWeight: 550 }}> Not available until </span>
+                                                                                        <ul>
+                                                                                            {question.answerChoices.map((choice: string, index: number) => (
+                                                                                                <li key={index}>{choice}</li>
+                                                                                            ))}
+                                                                                        </ul>
+                                                                                        | {question.points ? question.points + " pts" : " n/a "}
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                            <GreenCheckmark />
+                                                                            <IoEllipsisVertical className="fs-4" />
+                                                                        </div>
+                                                                    </li>
+                                                                ))
+                                                            )}
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-
-
-
-            )
-
-
-
-
-            }
-
+            )}
         </div>
     );
 }

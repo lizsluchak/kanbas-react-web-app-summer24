@@ -4,16 +4,22 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { FaPlus, FaTrash } from "react-icons/fa";
 import "../../Quizzes/styles.css"
+import { useParams } from "react-router";
+import * as client from "../client";
+import { useDispatch } from "react-redux";
+import { addQuestionToQuiz } from "../reducer";
 
 // Define the interface for props
 interface MultipleChoiceQuestionEditorProps {
   show: boolean;
   handleClose: () => void;
   saveQuestion: (question: {
+    id: number,
     title: string;
     points: number;
+    questionType: string;
     question: string;
-    choices: { text: string; correct: boolean }[];
+    answerChoices:[];
   }) => void;
 }
 
@@ -23,42 +29,59 @@ export default function MultipleChoiceQuestionEditor({
   handleClose,
   saveQuestion,
 }: MultipleChoiceQuestionEditorProps) {
+    const { qid, cid } = useParams();
+    const [id, setId] = useState<number>(0);
   const [title, setTitle] = useState<string>("");
   const [points, setPoints] = useState<number>(0);
+  const [questionType, setQuestionType] = useState<string>("");
   const [question, setQuestion] = useState<string>("");
-  const [choices, setChoices] = useState<{ text: string; correct: boolean }[]>([
-    { text: "", correct: false },
-  ]);
+  const [answerChoices, setAnswerChoices] = useState<any>([]);
+  const dispatch = useDispatch();
 
   const handleChoiceChange = (
     index: number,
     field: "text" | "correct",
     value: string | boolean
   ) => {
-    const updatedChoices = [...choices];
+    const updatedChoices = [...answerChoices];
     if (field === "text" && typeof value === "string") {
       updatedChoices[index].text = value;
     } else if (field === "correct" && typeof value === "boolean") {
       updatedChoices[index].correct = value;
     }
-    setChoices(updatedChoices);
+    setAnswerChoices(updatedChoices);
   };
 
   const handleAddChoice = () => {
-    setChoices([...choices, { text: "", correct: false }]);
+    setAnswerChoices([...answerChoices, { text: "", correct: false }]);
   };
 
   const handleRemoveChoice = (index: number) => {
-    const updatedChoices = choices.filter((_, i) => i !== index);
-    setChoices(updatedChoices);
+    const updatedChoices = answerChoices.filter((_ : any, i : any) => i !== index);
+    setAnswerChoices(updatedChoices);
   };
+  const saveQuizQuestions = async (updatedQuestions: any[]) => {
+    if (!qid) {
+        console.error("Quiz ID is undefined.");
+        return;
+    }
+    try {
+       const updatedQuestion = [ question ]
+        const response = await client.addQuestionToQuiz_cROUTE(qid as string, question); // Pass the correct quiz ID
+        dispatch(addQuestionToQuiz(response));
+    } catch (error) {
+        console.error("Error saving quiz questions:", error);
+    }
+};
 
   const handleSave = () => {
     const newQuestion = {
+        id,
       title,
       points,
+      questionType,
       question,
-      choices,
+      answerChoices,
     };
     saveQuestion(newQuestion);
     handleClose();
@@ -100,7 +123,7 @@ export default function MultipleChoiceQuestionEditor({
           </Form.Group>
           <Form.Group controlId="questionChoices" className="mt-3">
             <Form.Label>Choices</Form.Label>
-            {choices.map((choice, index) => (
+            {answerChoices.map((choice : any, index : any) => (
               <InputGroup className="mb-2" key={index}>
                 <InputGroup.Radio
                   name="correctChoice"
@@ -132,7 +155,14 @@ export default function MultipleChoiceQuestionEditor({
         <Button variant="secondary" onClick={handleClose}>
           Cancel
         </Button>
-        <Button variant="primary" onClick={handleSave}>
+        <Button variant="primary" onClick={() => saveQuestion({
+    id: id,
+    title: title,
+    points: points,
+    questionType: questionType,
+    question: question,
+    answerChoices: answerChoices,
+})}>
           Save/Update Question
         </Button>
       </Modal.Footer>

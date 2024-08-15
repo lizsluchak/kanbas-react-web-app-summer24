@@ -12,11 +12,19 @@ import * as client from "./client";
 
 
 export default function Modules() {
+  //params
   const { cid } = useParams();
-  const [moduleName, setModuleName] = useState("");
-  const { modules } = useSelector((state: any) => state.modulesReducer); // retrieve modules state variables
+
+  //tools
   const dispatch = useDispatch(); // get dispatch to call reducer functions
 
+  //application state
+  const { modules } = useSelector((state: any) => state.modulesReducer); // retrieve modules state variables
+  
+  //local state
+  const [moduleName, setModuleName] = useState("");
+  
+  //handlers
   const fetchModules = async () => {
     const modules = await client.findModulesForCourse(cid as string);
     console.log("modules fetched =", modules);
