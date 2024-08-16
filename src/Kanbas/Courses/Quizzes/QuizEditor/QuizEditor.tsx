@@ -46,7 +46,7 @@ export default function QuizEditor() {
         dueTime: "11:59pm",
         untilDate: new Date().toISOString().split("T")[0],
         published: "No",
-        questions: [],
+        data: [],
     });
 
     const [isLoading, setIsLoading] = useState(true); // Track loading state

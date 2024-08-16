@@ -64,6 +64,12 @@ export default function Dashboard() {
     console.log(updatedUser);
   };
 
+  const handleEnroll = async () =>{
+    navigate('/Kanbas/Account/Enroll');
+    dispatch(setCurrentUser(currentUser));
+    fetchCoursesEventHandler();
+  }
+
 
   const updateCourseHandler = async (course: any) => {
     const status = await client.updateCourse(course);
@@ -215,7 +221,7 @@ export default function Dashboard() {
 
           <h4><strong>Your Enrolled Courses ({currentUser.enrolledCourses.length})</strong>
             <button className="btn btn-success float-end"
-               id="wd-update-course-click" onClick={() => navigate('/Kanbas/Account/Enroll')}>
+               id="wd-update-course-click" onClick={() => handleEnroll()}>
               Enroll
             </button></h4>
           <br />

@@ -14,6 +14,11 @@ export const createQuiz_cROUTE = async (quizId: string, quiz: any) => {
     return response.data;
 };
 
+export const addQuestionToQuiz_cROUTE = async (quizId: string, question: any) => {
+    const response = await axios.post(`${QUIZZES_API}/${quizId}/questions`, question);
+    return response.data;
+};
+
 // ====================================================
 // READ QUIZZES CLIENT ROUTES
 // ====================================================
@@ -49,9 +54,16 @@ export const findQuizById_cROUTE = async (quizId: string) => {
   // UPDATE QUIZ CLIENT ROUTES
   // ====================================================
   export const updateQuiz_cROUTE = async (quiz: any) => {
-    const response = await axios.put(`${QUIZZES_API}/${quiz._id}`, quiz);
+    console.log("client route recieved quiz", quiz);
+    console.log(quiz.qid);
+    const response = await axios.put(`${QUIZZES_API}/${quiz.qid}`, quiz);
     return response.data;
 };
+
+export const updateQuestionInQuiz_cROUTE = async (quizId: string, questionId: string, question: any) => {
+    const response = await axios.put(`${QUIZZES_API}/${quizId}/data/${questionId}`, question);
+    return response.data;
+}; 
 
 
   // ====================================================

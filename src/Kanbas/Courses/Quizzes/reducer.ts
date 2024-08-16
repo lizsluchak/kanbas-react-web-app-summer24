@@ -45,6 +45,7 @@ const quizSlice = createSlice({
         dueTime: quiz.dueTime, 
         untilDate: quiz.untilDate, 
         published: quiz.published,
+        data: quiz.data,
       };
 
       // updates the modules array in state: current module state is spread
@@ -68,10 +69,47 @@ const quizSlice = createSlice({
         q._id === quizId ? { ...q, editing: true } : q
       ) as any;
     },
+    // New reducer to add a question to a quiz
+    addQuestionToQuiz: (state, { payload }) => {
+      const { quizId, question } = payload;
+      state.quizzes = state.quizzes.map((q: any) =>
+        q._id === quizId ? { ...q, questions: [...q.questions, question] } : q
+      ) as any; // Added to handle adding a question to the quiz
+    },
+
+    // New reducer to update a question within a quiz
+    updateQuestionInQuiz: (state, { payload }) => {
+      const { quizId, questionId, updatedQuestion } = payload;
+      state.quizzes = state.quizzes.map((q: any) =>
+        q._id === quizId
+          ? {
+              ...q,
+              questions: q.questions.map((question: any) =>
+                question.id === questionId ? updatedQuestion : question
+              ),
+            }
+          : q
+      ) as any; // Added to handle updating a question in the quiz
+    },
+
+    // New reducer to delete a question from a quiz
+    deleteQuestionFromQuiz: (state, { payload }) => {
+      const { quizId, questionId } = payload;
+      state.quizzes = state.quizzes.map((q: any) =>
+        q._id === quizId
+          ? {
+              ...q,
+              questions: q.questions.filter(
+                (question: any) => question.id !== questionId
+              ),
+            }
+          : q
+      ) as any; // Added to handle deleting a question from the quiz
+    },
 
     
   },
 });
-export const { addQuiz, deleteQuiz, updateQuiz, editQuiz, setQuizzes } =
+export const { addQuiz, deleteQuiz, updateQuiz, editQuiz, setQuizzes, deleteQuestionFromQuiz, addQuestionToQuiz, updateQuestionInQuiz } =
   quizSlice.actions; // export all reducer functions
 export default quizSlice.reducer; //export reducer
