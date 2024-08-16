@@ -524,9 +524,8 @@ export default function QuizEditor() {
                                 <div className="d-flex">
                                     <div className="w-100">
                                         <ul className="list-group">
-                                            <li className="list-group-item">
-                                                <h3 className="list-group-item-heading"><strong>{quiz.title}: Current Quiz Questions</strong></h3>
-
+                                            <li className="list-group-item bg-secondary">
+                                                <h3 className="list-group-item-heading p-2"><strong>{quiz.title}: Current Quiz Questions</strong></h3>
 
                                             </li>
 
@@ -538,12 +537,11 @@ export default function QuizEditor() {
                                                             <div>
                                                                 <h5>{question.question}</h5> {/* Title */}
                                                             </div>
-
                                                             <div>
-                                                                <p>Answer Choices: {question.answerChoices.join(', ')}</p> {/* Answer Choices */}
+                                                                Answer Choices: {question.answerChoices.join(', ')} {/* Answer Choices */}
                                                             </div>
                                                             <div>
-                                                                <p>Points: {question.points}</p> {/* Points */}
+                                                                Points: {question.points} {/* Points */}
                                                             </div>
                                                         </li>
                                                     )))
