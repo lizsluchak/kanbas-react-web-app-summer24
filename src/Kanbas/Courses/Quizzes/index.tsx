@@ -303,7 +303,7 @@ export default function Quizzes() {
                                                         <div className="flex-grow-1">
                                                             <div className="flex-column">
                                                                 <Link
-                                                                    to={`/Kanbas/Courses/${cid}/Quizzes/QuizEditor/${quiz._id}`}
+                                                                    to={`/Kanbas/Courses/${cid}/Quizzes/TakeQuiz/${quiz._id}`}
                                                                     className="custom-link"
                                                                 >
                                                                     <h4 className="fw-bold">{quiz.title}</h4>

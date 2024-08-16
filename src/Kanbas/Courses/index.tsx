@@ -11,6 +11,8 @@ import PeopleTable from "./People/table";
 import { useSelector } from "react-redux";
 import QuizEditor from "./Quizzes/QuizEditor/QuizEditor";
 import Dashboard from "../Dashboard";
+import TakeQuiz from "./Quizzes/TakeQuiz";
+
 
 
 
@@ -47,8 +49,10 @@ export default function Courses() {
                 <Route path="/Modules" element={<Modules />} />
                 <Route path="Assignments" element={<Assignments />} />
                 <Route path="Assignments/AssignmentEditor/:aid/*" element={<AssignmentEditor />} />
-                <Route path="Quizzes" element={<Quizzes />} />
+                <Route path="Quizzes/*" element={<Quizzes />} />
+                <Route path="Quizzes/TakeQuiz/:qid/*" element={<TakeQuiz />} />
                 <Route path="Quizzes/QuizEditor/:qid/*" element={<QuizEditor />} />
+                {/* <Route path="Quizzes/TakeQuiz/:qid/*" element={<QuizPreviewScreen currentQuiz={quizData}/>} /> */}
                 <Route path="Grades" element={<Grades />} />
                 <Route path="People" element={<PeopleTable />} />
                 <Route path="People/:uid" element={<PeopleTable />} />
