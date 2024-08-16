@@ -38,34 +38,39 @@ export default function TakeQuiz() {
             </ul>
 
             <div className="tab-content">
-                <div className="tab-pane fade show active" id="quiz" role="tabpanel" aria-labelledby="quiz-tab">
-                    {currentQuiz && currentQuiz.data ? (
-                        <ul className="list-group list-group-flush">
-                            {currentQuiz.data.map((question: any, index: number) => (
-                                <div key={index}>
-                                    <li className="list-group-item">
-                                        {question.question}
-                                        {question.points}
-                                        {question.answerChoices.map((a: any) => (
+            <div className="tab-pane fade show active" id="quiz" role="tabpanel" aria-labelledby="quiz-tab">
+                
+    {currentQuiz && currentQuiz.data ? (
+        <ul className="list-group list-group-flush">
+            {currentQuiz.data.map((question: any, index: number) => (
+                <li className="list-group-item" key={index}>
+                    <h5>{`Question ${index + 1}: ${question.question}`}</h5>
+                    <p>{`Points: ${question.points}`}</p>
+                    <ul className="list-group">
+                        {question.answerChoices.map((choice: any, choiceIndex: number) => (
+                            <li className="list-group-item" key={choiceIndex}>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name={`question-${index}`}
+                                        value={choice.text}
+                                    />
+                                    {choice.text}
+                                </label>
+                            </li>
+                        ))}
+                    </ul>
+                </li>
+            ))}
+        </ul>
+    ) : (
+        <p>Loading quiz...</p>
+    )}
+</div>
 
-                                            <li>a.text</li>
-
-                                        ))
-                                            
-
-                                        
-                                        }
 
 
-                                    </li>
-                            
-                                </div>
-                            ))}
-                        </ul>
-                    ) : (
-                        <p>Loading quiz...</p>
-                    )}
-                </div>
+
                 <div className="tab-pane fade" id="result" role="tabpanel" aria-labelledby="result-tab">
                     <h3>Result</h3>
                     <div className="card">
