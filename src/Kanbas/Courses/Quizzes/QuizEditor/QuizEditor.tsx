@@ -69,7 +69,7 @@ export default function QuizEditor() {
     const [answerChoices, setAnswerChoices] = useState<any>([]);
     const [showEditor, setShowEditor] = useState(false);
     const [title, setTitle] = useState<string>("");
-    const [currentQuestion, setCurrentQuestion]= useState<any>();
+    const [currentQuestion, setCurrentQuestion] = useState<any>();
     const [points, setPoints] = useState<number>(0);
     const [question, setQuestion] = useState<any>();
     const [questionType, setQuestionType] = useState<string>("Multiple Choice");
@@ -234,7 +234,7 @@ export default function QuizEditor() {
         }
     };
 
-    
+
 
     return (
         <div id="divA-mother">
@@ -418,20 +418,20 @@ export default function QuizEditor() {
                                 <div className="collapse" id="collapseExample">
                                     <div className="card card-body">
                                         <Form>
-                                            <Form>
-                                                <Form.Group controlId="questionType">
-                                                    <Form.Label>Change Question Type</Form.Label>
-                                                    <Form.Control
-                                                        as="select"
-                                                        value={questionType}
-                                                        onChange={(e) => handleQuestionTypeChange(e.target.value)}
-                                                    >
-                                                        <option value="Multiple Choice">Multiple Choice</option>
-                                                        <option value="True/False">True/False</option>
-                                                        <option value="Fill in the Blanks">Fill in the Blanks</option>
-                                                    </Form.Control>
-                                                </Form.Group>
-                                            </Form>
+
+                                            <Form.Group controlId="questionType">
+                                                <Form.Label>Change Question Type</Form.Label>
+                                                <Form.Control
+                                                    as="select"
+                                                    value={questionType}
+                                                    onChange={(e) => handleQuestionTypeChange(e.target.value)}
+                                                >
+                                                    <option value="Multiple Choice">Multiple Choice</option>
+                                                    <option value="True/False">True/False</option>
+                                                    <option value="Fill in the Blanks">Fill in the Blanks</option>
+                                                </Form.Control>
+                                            </Form.Group>
+
                                             <Form.Group controlId="questionTitle" className="mt-3">
                                                 <Form.Label>Title</Form.Label>
                                                 <Form.Control
@@ -455,6 +455,9 @@ export default function QuizEditor() {
                                             {questionType === 'Multiple Choice' && (
                                                 <Form.Group controlId="questionChoices" className="mt-3">
                                                     <Form.Label>Choices</Form.Label>
+                                                    <Button className="m-3" variant="secondary" onClick={handleAddChoice}>
+                                                        <FaPlus className="me-2" /> Add Choice
+                                                    </Button>
                                                     {answerChoices.map((choice: any, index: any) => (
                                                         <InputGroup className="mb-2" key={index}>
                                                             <InputGroup.Radio
@@ -475,9 +478,7 @@ export default function QuizEditor() {
                                                             </Button>
                                                         </InputGroup>
                                                     ))}
-                                                    <Button className="m-3" variant="secondary" onClick={handleAddChoice}>
-                                                        <FaPlus className="me-2" /> Add Choice
-                                                    </Button>
+                                                    
                                                 </Form.Group>
                                             )}
 
@@ -507,6 +508,8 @@ export default function QuizEditor() {
                                                 </Form.Group>
                                             )}
                                         </Form>
+
+
                                     </div>
                                 </div>
 
@@ -517,60 +520,38 @@ export default function QuizEditor() {
 
                             <br />
                             <br />
-
                             <div>
-                                <div className="d-flex justify-content-center align-items-center">
+                                <div className="d-flex">
+                                    <div className="w-100">
+                                        <ul className="list-group">
+                                            <li className="list-group-item">
+                                                <h3 className="list-group-item-heading"><strong>{quiz.title}: Current Quiz Questions</strong></h3>
 
-                                    <div id="wd-quizQuestion-list">
-                                        <ul id="wd-quizQuestions-list" className="list-group rounded-0">
-                                            <li className="list-group-item p-0 mb-5 fs-5 border-light-grey">
-                                                <div className="wd-title p-4 ps-2 list-group-item list-group-item-active" style={{ backgroundColor: "#F5F5F5", color: "#000" }}>
-                                                    <button className="p-2" style={{ all: 'unset', cursor: 'pointer' }}>
-                                                        <strong>Current Quiz Questions for {quiz.title}</strong>
-                                                    </button>
-                                                    <div className="float-end">
-                                                        <button className="btn btn-md rounded-5 me-4" style={{ borderColor: '#adb5bd' }}>40% of Total</button>
-                                                        <BsPlus className="me-3" />
-                                                        <IoEllipsisVertical />
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <ul id="wd-modules" className="list-group rounded-0 p-0 m-0" style={{ borderLeft: '10px solid green' }}>
-                                                        {quizzes
-                                                            .filter((quiz: any) => quiz.course === cid)
-                                                            .flatMap((quiz: any) =>
-                                                                quiz.questions.map((question: any) => (
-                                                                    <li key={question._id} className="wd-module list-group-item border-light-gray">
-                                                                        <div className="wd-title p-3 ps-2 d-flex align-items-center">
-                                                                            <div className="flex-grow-1">
-                                                                                <div className="flex-column">
-                                                                                    <Link to={`/Kanbas/Courses/${cid}/Assignments/AssignmentEditor/${question._id}`} className="custom-link">
-                                                                                        <h4 className="fw-bold">{quiz.title}</h4>
-                                                                                    </Link>
-                                                                                    <p>
-                                                                                        <span style={{ fontWeight: 550, color: 'darkred' }}>Multiple Modules</span> |
-                                                                                        <span style={{ fontWeight: 550 }}> Not available until </span>
-                                                                                        <ul>
-                                                                                            {question.answerChoices.map((choice: string, index: number) => (
-                                                                                                <li key={index}>{choice}</li>
-                                                                                            ))}
-                                                                                        </ul>
-                                                                                        | {question.points ? question.points + " pts" : " n/a "}
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                            <GreenCheckmark />
-                                                                            <IoEllipsisVertical className="fs-4" />
-                                                                        </div>
-                                                                    </li>
-                                                                ))
-                                                            )}
-                                                    </ul>
-                                                </div>
+
                                             </li>
+
+                                            {quizzes
+                                                .filter((quiz: any) => quiz.course === cid)
+                                                .flatMap((quiz: any) =>
+                                                    quiz.questions.map((question: any, index: number) => (
+                                                        <li key={question._id} className="list-group-item">
+                                                            <div>
+                                                                <h5>{question.question}</h5> {/* Title */}
+                                                            </div>
+
+                                                            <div>
+                                                                <p>Answer Choices: {question.answerChoices.join(', ')}</p> {/* Answer Choices */}
+                                                            </div>
+                                                            <div>
+                                                                <p>Points: {question.points}</p> {/* Points */}
+                                                            </div>
+                                                        </li>
+                                                    )))
+                                            }
                                         </ul>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
