@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import * as client from "./client";
+import QuizPreviewScreen from "./QuizPreviewScreen";
 
 export default function TakeQuiz() {
     const navigate = useNavigate();
@@ -10,7 +11,7 @@ export default function TakeQuiz() {
 
     const { cid, qid } = useParams();
     const { currentUser } = useSelector((state: any) => state.accountReducer);
-    const [currentQuiz, setCurrentQuiz] = useState<any>(null);
+    const [currentQuiz, setCurrentQuiz] = useState<any>();
 
     const fetchCurrentQuiz = async () => {
         const quizData = await client.findQuizById_cROUTE(qid as string);
@@ -39,30 +40,38 @@ export default function TakeQuiz() {
 
             <div className="tab-content">
             <div className="tab-pane fade show active" id="quiz" role="tabpanel" aria-labelledby="quiz-tab">
-                
+        <QuizPreviewScreen />
     {currentQuiz && currentQuiz.data ? (
-        <ul className="list-group list-group-flush">
+        <ul className="list-group list-group-flush p-3">
             {currentQuiz.data.map((question: any, index: number) => (
-                <li className="list-group-item" key={index}>
-                    <h5>{`Question ${index + 1}: ${question.question}`}</h5>
+                <li className="list-group-item p-5" key={index}>
+                    <h6><strong>{`Question ${index + 1}: `}</strong></h6>
+                    <h5>{question.question}</h5>
+
+                    
                     <p>{`Points: ${question.points}`}</p>
                     <ul className="list-group">
                         {question.answerChoices.map((choice: any, choiceIndex: number) => (
                             <li className="list-group-item" key={choiceIndex}>
                                 <label>
                                     <input
+                                    className="m-2"
                                         type="radio"
                                         name={`question-${index}`}
                                         value={choice.text}
                                     />
                                     {choice.text}
                                 </label>
+
+                                
                             </li>
                         ))}
                     </ul>
                 </li>
             ))}
+            
         </ul>
+        
     ) : (
         <p>Loading quiz...</p>
     )}

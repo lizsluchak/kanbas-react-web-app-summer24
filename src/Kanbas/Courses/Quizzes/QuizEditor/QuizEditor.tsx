@@ -11,6 +11,7 @@ import { FaBan, FaEdit } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
 import GreenCheckmark from "../../Modules/GreenCheckmark";
 import QuestionsEditor from "./QuestionsEditor";
+import QuizPreviewScreen from "../QuizPreviewScreen";
 
 export default function QuizEditor() {
     //fetch params
@@ -365,8 +366,12 @@ export default function QuizEditor() {
                                 <div>
                                     <button onClick={() => {
 
-                                        handlePublishStatus(quiz);
+                                        
                                         handleSaveQuiz(quiz);
+                                        
+                                        navigate(`/Kanbas/Courses/${cid}/Quizzes/`);
+                                        handlePublishStatus(quiz);
+
                                         console.log(quiz); 
 
 
@@ -380,6 +385,7 @@ export default function QuizEditor() {
                         </div>
                         <div className={`tab-page ${active === 'tab-2' ? 'active' : ''}`}>
                             <p>Questions Page</p>
+                            <QuizPreviewScreen/>
                             <QuestionsEditor />
                         </div>
                     </div>

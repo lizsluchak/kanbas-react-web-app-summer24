@@ -17,7 +17,7 @@ export default function Quizzes() {
     const dispatch = useDispatch();
 
     //fetch params
-    const { cid, qid } = useParams();
+    const { cid } = useParams();
 
     //redux state variables
     const { quizzes } = useSelector((state: any) => state.quizzesReducer);
@@ -119,6 +119,7 @@ export default function Quizzes() {
     return (
         <div>
             {currentUser.role === "FACULTY" && (
+                
                 <div id="wd-quizzes">
                     <ul id="wd-quizzes-list" className="list-group rounded-0">
                         <li className="list-group-item p-0 mb-5 fs-5 border-light-grey">

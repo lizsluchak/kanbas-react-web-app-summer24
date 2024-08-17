@@ -3,13 +3,13 @@ import axios from "axios";
 // const LOCAL_SERVER = process.env.REACT_APP_LOCAL_SERVER; 
 // const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
 // // const USERS_API = `https://kanbas-server-a6.onrender.com/api/users`;
-const QUIZZES_API = `http://localhost:4000/api/quizzes`;
+const QUIZZES_API = `http://localhost:4000/api/:cid/quizzes`;
 
 
 // ====================================================
 // CREATE QUIZ CLIENT ROUTES
 // ====================================================
-export const createQuiz_cROUTE = async (quizId: string, quiz: any) => {
+export const createQuiz_cROUTE = async (quiz: any) => {
     const response = await axios.post(`${QUIZZES_API}`, quiz);
     return response.data;
 };

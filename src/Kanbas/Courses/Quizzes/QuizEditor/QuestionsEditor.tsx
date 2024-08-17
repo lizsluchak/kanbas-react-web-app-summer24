@@ -45,15 +45,19 @@ export default function QuestionsEditor() {
         data: [],
     });
 
+    console.log("starting quiz", quiz);
+
     // Quiz question useState hook
     const [quizQuestion, setQuizQuestion] = useState<any>({
         questionId: 999,
         title: "New",
         points: 10,
-        questionType: "Multiple Choice",
+        questionType: "MULTIPLE CHOICE",
         question: "New Quiz Question",
         answerChoices: [{ text: "", correct: "" }],
     });
+
+
 
     // State variables
     const [questions, setQuestions] = useState<any[]>(quiz?.data || []);
@@ -95,9 +99,8 @@ export default function QuestionsEditor() {
 
     const handleQuestionTypeChange = (type: string) => {
         setQuestionType(type);
-        if (type === "Multiple Choice" && answerChoices.length === 0) {
-            setAnswerChoices([{ text: "", correct: false }]);
-        }
+        console.log("question type changed:", type);
+        console.log("current question", quizQuestion);
     };
 
     const handleChoiceChange = (
@@ -121,7 +124,8 @@ export default function QuestionsEditor() {
 
     const handleAddChoice = () => {
         setAnswerChoices([...answerChoices, { text: "", correct: false }]);
-        console.log(answerChoices); 
+        console.log(answerChoices);
+        console.log("quiz after add choice", question); 
     };
 
     const handleRemoveChoice = (index: number) => {
@@ -132,12 +136,12 @@ export default function QuestionsEditor() {
     const handleSaveQuestion = async (quizQuestion: any) => {
         console.log("handle save called");
         console.log("quizQuestion", quizQuestion); // Log the structure
-        
+    
         try {
             // Clone the quiz object to avoid direct mutation
             const updatedQuiz = { ...quiz };
     
-            if (quizQuestion.title !== "New") {
+            if (quizQuestion.questionId && quizQuestion.title !== "New") {
                 // Find the index of the question to be updated
                 const questionIndex = updatedQuiz.data.findIndex((q: any) => q.questionId === quizQuestion.questionId);
                 
@@ -149,11 +153,14 @@ export default function QuestionsEditor() {
                     return;
                 }
             } else {
-                // Ensure the questionId is serializable
-                const newQuestion = { 
-                    ...quizQuestion, 
-                    title: updatedQuiz.data.length.toString(), 
-                    questionId: new Date().getTime().toString() // Serialize the questionId as an ISO string
+                // Handle title change if the title is "New"
+                const newTitle = quizQuestion.title === "New" ? "" : quizQuestion.title;
+    
+                // Ensure the questionId is serializable and set the title correctly
+                const newQuestion = {
+                    ...quizQuestion,
+                    title: newTitle,
+                    questionId: new Date().getTime().toString(), // Serialize the questionId as an ISO string
                 };
                 
                 console.log("newQuestion", newQuestion);
@@ -171,6 +178,8 @@ export default function QuestionsEditor() {
             console.error("Error saving question", error);
         }
     };
+    
+    
 
     // const handleEditClick = () => {
     //     setIsEditMode(!isEditMode);
@@ -201,6 +210,7 @@ export default function QuestionsEditor() {
                         Add Quiz Question:
                     </button>
                 </p>
+                
                 <div className="collapse" id="collapseExample">
                     <div className="card card-body">
                         <Form>
@@ -218,11 +228,11 @@ export default function QuestionsEditor() {
                             </Form.Group>
 
                             <Form.Group controlId="questionTitle" className="mt-3">
-                                <Form.Label>Title</Form.Label>
+                                <Form.Label>Quiz Question Title/Instructions</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    placeholder="Enter question title"
-                                    value={title}
+                                    placeholder="Enter question title/instructions"
+                                    value={quizQuestion.title}
                                     onChange={(e) => setTitle(e.target.value)}
                                 />
                             </Form.Group>
@@ -237,7 +247,18 @@ export default function QuestionsEditor() {
                                 />
                             </Form.Group>
 
-                            {questionType === "Multiple Choice" && (
+                            <Form.Group controlId="questionTitle" className="mt-3">
+                                <Form.Label>Quiz Question To Anwser</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Enter question title"
+                                    value={quizQuestion.question}
+                                    onChange={(e) => setQuestion(e.target.value)}
+                                />
+                            </Form.Group>
+
+                        
+                            {questionType === "MULTIPLE CHOICE" && (
                                 <Form.Group controlId="questionChoices" className="mt-3">
                                     <Form.Label>Choices</Form.Label>
                                     <Button className="m-3" variant="secondary" onClick={handleAddChoice}>
